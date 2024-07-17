@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { inputs } from "./data";
+import Input from "./components/input/Input";
+import { Link } from "react-router-dom";
 const Register = () => {
   const [form, setForm] = useState({});
 
@@ -30,7 +32,10 @@ const Register = () => {
       </p>
 
       {inputs.map((input) => (
-        <div key={input.name} className="self-center flex flex-col gap-y-1">
+        <div
+          key={input.name}
+          className="self-center flex flex-col gap-y-1 w-auto min-[500px]:w-[30vw]"
+        >
           <label
             htmlFor={input.name}
             className="font-medium text-xs min-[500px]:text-[0.9rem] min-[500px]:font-semibold"
@@ -38,32 +43,25 @@ const Register = () => {
             {input.displayName}{" "}
             {input.required && <span className="text-red-600">*</span>}
           </label>
-          <input
-            className="px-2 py-[0.6rem] mb-2 border border-gray-400 border-opacity-60 focus-visible:outline
-        focus-visible:border-none focus-visible:outline-1 focus-visible:outline-gray-400
-        placeholder:font-medium placeholder:text-xs placeholder-gray-400
-        placeholder-opacity-80"
-            onChange={(e) => handleChange(e)}
-            type={input.type}
-            name={input.name}
-            placeholder={input.placeholder}
-            required={input.required}
-          />
+          <Input handleChange={handleChange} input={input} />
         </div>
       ))}
-
-      <button
-        type="submit"
-        className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
-      >
-        Sign Up
-      </button>
+      <div className="flex flex-wrap self-center gap-2 items-center w-auto min-[500px]:w-[30vw] mb-5">
+        <button
+          type="submit"
+          className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
+        >
+          Sign Up
+        </button>
+        <p className="ml-auto">
+          Returning Customer?{" "}
+          <Link to="/login" className="text-cyan-700">
+            Login →
+          </Link>
+        </p>
+      </div>
     </form>
   );
 };
 
 export default Register;
-
-{
-  /* */
-}
