@@ -8,11 +8,13 @@ const App = () => {
   return (
     <main className="flex flex-col gap-y-2">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <main className="md:mt-16 mt-0">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </main>
     </main>
   );
 };

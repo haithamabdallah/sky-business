@@ -1,7 +1,14 @@
+import DesktopNavbar from "./desktopNavbar/DesktopNavbar";
+import MobileNavbar from "./mobileNavbar/MibileNavbar";
+
 const Navbar = () => {
-    return (
-      <p>Hello Navbar!</p>
-    );
-  }
+  return (
+    <>
+     <DesktopNavbar />
+     <MobileNavbar />
+    </>
+  )
   
-  export default Navbar;
+};
+
+export default Navbar;
