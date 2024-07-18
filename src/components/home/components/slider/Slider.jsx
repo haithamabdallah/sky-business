@@ -42,7 +42,7 @@ const Slider = () => {
         ))}
       </div>
 
-      <div className="relative w-full h-64 flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <div className="relative w-full h-64 flex transition-transform duration-500 ease-in-out -z-10" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <img
             key={index}

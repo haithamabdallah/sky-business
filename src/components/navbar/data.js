@@ -1,30 +1,41 @@
 export const tabs = [
-    {
-        route: '#',
-        name: 'about us'
-    },
-    {
-        route: '#',
-        name: 'Beauty'
-    },
-    {
-        route: '#',
-        name: 'Organic foods'
-    },
-    {
-        route: '#',
-        name: 'Brands'
-    },
-    {
-        route: '#',
-        name: 'Blog'
-    },
-    {
-        route: 'register',
-        name: 'Become a customer'
-    },
-    {
-        route: '#',
-        name: 'Contact'
-    },
-]
+  {
+    route: "#",
+    name: "about us",
+    type: "link",
+  },
+  {
+    route: "#",
+    name: "Beauty",
+    type: "link",
+  },
+  {
+    route: "#",
+    name: "Organic foods",
+    type: "link",
+  },
+  {
+    route: "#",
+    name: "Brands",
+    type: "link",
+  },
+  {
+    route: "#",
+    name: "Blog",
+    type: "link",
+  },
+  {
+    name: "search",
+    type: "search",
+  },
+  {
+    route: "register",
+    name: "Become a customer",
+    type: "link",
+  },
+  {
+    route: "#",
+    name: "Contact",
+    type: "link",
+  },
+];
