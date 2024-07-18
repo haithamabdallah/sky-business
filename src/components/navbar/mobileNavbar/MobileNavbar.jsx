@@ -10,9 +10,9 @@ const MobileNavbar = () => {
     <nav className="flex md:hidden bg-black px-3 sm:px-4 relative">
       <MenuIcon show={show} setShow={setShow} />
       <ul
-        className={` ${
+        className={`${
           show ? "flex" : "hidden"
-        } flex-col absolute w-fit left-0 px-2 items-center bg-black`}
+        } flex-col absolute w-fit left-0 px-2 items-center bg-black z-50`}
       >
         {tabs.map(
           (tab, i) =>
