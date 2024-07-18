@@ -5,7 +5,7 @@ import { tabs } from "../data";
 import Search from "../components/search/Search";
 const DesktopNavbar = () => {
   return (
-    <nav className="hidden w-screen gap-x-10 md:flex bg-black px-3 sm:px-4 fixed top-0">
+    <nav className="hidden w-screen gap-x-10 md:flex bg-black px-3 sm:px-4 fixed top-0 z-10">
       <Link className="max-w-28" to="/">
         <img alt="logo" src={logo} />
       </Link>

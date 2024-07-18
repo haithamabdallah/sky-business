@@ -8,7 +8,7 @@ const App = () => {
   return (
     <main className="flex flex-col gap-y-2">
       <Navbar />
-      <main className="md:mt-16 mt-0">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
