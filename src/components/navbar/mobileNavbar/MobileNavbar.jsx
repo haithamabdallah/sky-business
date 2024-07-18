@@ -18,6 +18,7 @@ const MobileNavbar = () => {
           (tab, i) =>
             i !== 5 && (
               <li
+                key={i}
                 className={`text-white text-sm min-[1000px]:text-base hover:underline hover:underline-offset-[10px]`}
               >
                 <Link to={tab.route} onClick={() => setShow(false)}>
