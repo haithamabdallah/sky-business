@@ -1,26 +1,26 @@
 export const tabs = [
   {
-    route: "#",
+    route: "/about",
     name: "about us",
     type: "link",
   },
   {
-    route: "#",
+    route: "/beauty",
     name: "Beauty",
     type: "link",
   },
   {
-    route: "#",
+    route: "/organic_foods",
     name: "Organic foods",
     type: "link",
   },
   {
-    route: "#",
+    route: "/brands",
     name: "Brands",
     type: "link",
   },
   {
-    route: "#",
+    route: "/blog",
     name: "Blog",
     type: "link",
   },
@@ -29,12 +29,12 @@ export const tabs = [
     type: "search",
   },
   {
-    route: "register",
+    route: "/register",
     name: "Become a customer",
     type: "link",
   },
   {
-    route: "#",
+    route: "/contact",
     name: "Contact",
     type: "link",
   },
