@@ -39,11 +39,14 @@ const ContactForm = () => {
       ))}
       <div className="flex gap-x-[10px] w-[98%]">
         <input
-          className="w-[18px] h-[18px] cursor-pointer"
+          className="appearance-none w-[18px] h-[18px] border border-black bg-white
+          cursor-pointer checked:bg-[url('./components/contact/components/contactForm/correct.svg')]
+          bg-[center] bg-[length:18px_18px] bg-no-repeat"
           onChange={(e) => handleChange(e)}
           type="checkbox"
           name="receive_emails"
         />
+        
         <small
           className={`flex-auto ${
             form.receive_emails ? "font-semibold" : "font-normal"
