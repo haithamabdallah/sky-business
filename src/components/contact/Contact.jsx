@@ -1,3 +1,4 @@
+import ContactForm from "./components/contactForm/ContactForm";
 import { paragraphs } from "./data";
 
 const Contact = () => {
@@ -7,6 +8,7 @@ const Contact = () => {
       {paragraphs.map((paragraph) => (
         <p className={paragraph.style}>{paragraph.content}</p>
       ))}
+      <ContactForm />
     </section>
   );
 };

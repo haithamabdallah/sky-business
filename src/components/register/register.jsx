@@ -1,14 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { inputs } from "./data";
 import Input from "./components/input/Input";
 import { Link } from "react-router-dom";
 const Register = () => {
   const [form, setForm] = useState({});
+  const [error, setError] = useState("");
+  const [data, setData] = useState({});
+  // const [countries, setCountries] = useState("");
+  // useEffect(() => {
+  // const fetchCountries = async () =>
+  //   await fetch(process.env.API_URL)
+  //     .then((res) => res.json())
+  //     .then(res => res);
+  //   console.log({ api_url: process.env.API_URL });
+  // }, []);
 
+  // useEffect(() => {
+  //   const postRegister = async () => {
+  //     const result = await fetch(process.env.API_URL, {
+  //       method: "POST",
+  //       body: JSON.stringify({ form }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((res) => res);
+  //     if (result.status === "success") {
+  //       setData(result.data);
+  //     } else {
+  //       setError(result.data);
+  //     }
+  //   };
+  // });
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
-    console.log({ key, value });
     setForm({ ...form, [key]: value });
   };
 
