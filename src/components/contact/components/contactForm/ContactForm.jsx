@@ -62,7 +62,8 @@ const ContactForm = () => {
       <div className="w-[98%] justify-start">
         <button
           className="rounded-[1.5625rem] px-16 py-5 bg-black text-white text-sm
-          leading-[14px] mb-3 font-semibold border border-black hover:bg-white hover:text-black"
+          leading-[14px] mb-3 font-semibold border border-black hover:bg-white
+          hover:text-black transition-colors duration-200"
           type="submit"
         >
           SEND

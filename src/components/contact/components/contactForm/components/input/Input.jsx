@@ -14,8 +14,10 @@ const Input = ({ input, handleChange }) => {
         defaultValue=""
         name={input.name}
         className="px-[18px] rounded-[1.5625rem] text-[12px] leading-5 h-[3.125rem]
+         bg-[url('./components/contact/components/contactForm/components/input/down-arrow.png')]
+        bg-[center_right_18px] bg-[length:12px_12px] bg-no-repeat appearance-none
       hover:[box-shadow:inset_0_0_0_.0625rem_#000] hover:border hover:border-black
-      focus-visible:outline-none cursor-pointer"
+      focus-visible:outline-none cursor-pointer [transition:box-shadow_.2s,border-color_.2s_ease-in-out]"
         onChange={(e) => handleChange(e)}
         required={input.required}
       >
