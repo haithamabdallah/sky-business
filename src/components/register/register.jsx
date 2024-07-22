@@ -7,16 +7,16 @@ const Register = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [countries, setCountries] = useState("");
-  // useEffect(() => {
-  //   const fetchCountries = async () => {
-  //     console.log({ endpoint: `${process.env.API_URL}/register` });
-  //     const result = await fetch(`${process.env.API_URL}/register`)
-  //       .then((res) => res.json())
-  //       .then((res) => res);
-  //     console.log({ result });
-  //   };
-  //   fetchCountries();
-  // }, []);
+  useEffect(() => {
+    const fetchCountries = async () => {
+      console.log({ endpoint: `${process.env.API_URL}/register` });
+      const result = await fetch(`${process.env.API_URL}/register`)
+        .then((res) => res.json())
+        .then((res) => res);
+      console.log({ result });
+    };
+    fetchCountries();
+  }, []);
 
   // useEffect(() => {
   //   const postRegister = async () => {
