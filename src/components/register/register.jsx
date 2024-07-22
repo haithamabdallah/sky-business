@@ -6,13 +6,16 @@ const Register = () => {
   const [form, setForm] = useState({});
   const [error, setError] = useState("");
   const [data, setData] = useState({});
-  // const [countries, setCountries] = useState("");
+  const [countries, setCountries] = useState("");
   // useEffect(() => {
-  // const fetchCountries = async () =>
-  //   await fetch(process.env.API_URL)
-  //     .then((res) => res.json())
-  //     .then(res => res);
-  //   console.log({ api_url: process.env.API_URL });
+  //   const fetchCountries = async () => {
+  //     console.log({ endpoint: `${process.env.API_URL}/register` });
+  //     const result = await fetch(`${process.env.API_URL}/register`)
+  //       .then((res) => res.json())
+  //       .then((res) => res);
+  //     console.log({ result });
+  //   };
+  //   fetchCountries();
   // }, []);
 
   // useEffect(() => {
@@ -40,6 +43,7 @@ const Register = () => {
     console.log(`Sending form`);
     console.log({ form });
   };
+  console.log({ countries });
   return (
     <form
       className="flex flex-col gap-y-2 px-3 sm:px-4"
