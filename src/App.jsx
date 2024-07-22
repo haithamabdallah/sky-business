@@ -11,7 +11,7 @@ import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
 const App = () => {
   return (
-    <main className="flex flex-col gap-y-2">
+    <main className="flex flex-col">
       <Navbar />
       <main className="mt-0 md:mt-[44px]">
         <Routes>
