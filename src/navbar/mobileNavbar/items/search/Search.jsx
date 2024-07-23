@@ -5,46 +5,52 @@ const Search = () => {
   const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
   const [foucs, setFoucs] = useState(false);
+  let typingTimer;
   const handleSearch = (e) => {
-    console.log({ term });
-    setTerm(e.target.value);
+    const value = e.target.value;
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => {
+      setTerm(value);
+    }, 500);
   };
   return (
     <div>
-      <button className="mt-2" onClick={() => setShow(!show)}>
-        {show ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="white"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
-        ) : (
-          <svg
-            width="24"
-            height="24"
-            className="scale-[0.625]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3.19 3.19c4.253-4.253 11.149-4.253 15.402 0 3.976 3.976 4.235 10.263.775 14.54.067.069.134.135.199.2l.6.6 1.058 1.059.13.13.288.288.693.692.846.846.48.481a1.156 1.156 0 01-1.526 1.732l-.109-.097-4.294-4.295c-4.277 3.46-10.565 3.203-14.543-.775-4.252-4.253-4.252-11.148 0-15.401zm13.113 1.768a8.031 8.031 0 10.266.254z"
-              fill-rule="evenodd"
-            />
-          </svg>
-        )}
+      <button className="mt-2" onClick={() => setShow(true)}>
+        <svg
+          width="24"
+          height="24"
+          className="scale-[0.625]"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.19 3.19c4.253-4.253 11.149-4.253 15.402 0 3.976 3.976 4.235 10.263.775 14.54.067.069.134.135.199.2l.6.6 1.058 1.059.13.13.288.288.693.692.846.846.48.481a1.156 1.156 0 01-1.526 1.732l-.109-.097-4.294-4.295c-4.277 3.46-10.565 3.203-14.543-.775-4.252-4.253-4.252-11.148 0-15.401zm13.113 1.768a8.031 8.031 0 10.266.254z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </button>
       {show && (
-        <section
-          className="w-screen h-screen absolute top-0 left-0 bg-white flex flex-col z-50 pt-10"
-        >
+        <section className="w-screen h-screen absolute top-0 left-0 bg-white flex flex-col z-50 pt-10">
+          <button
+            className="absolute right-4 top-13"
+            onClick={() => {
+              setTerm("");
+              setShow(false);
+            }}
+          >
+            <svg
+              width="22"
+              height="22"
+              xmlns="http://www.w3.org/2000/svg"
+              className="scale-[0.6818181818181818]"
+            >
+              <path
+                d="M21 1 1 21m20 0L1 1"
+                stroke="#000"
+                stroke-width="1.5"
+                fill="none"
+              />
+            </svg>
+          </button>
           <label
             htmlFor="search"
             className={`max-w-full p-[0_.3125rem] overflow-hidden pointer-events-none absolute
@@ -59,7 +65,7 @@ const Search = () => {
             I'm Looking for...
           </label>
           <input
-            onChange={(e) => handleSearch(e)}
+            onChange={handleSearch}
             onFocus={() => setFoucs(true)}
             onBlur={(e) => {
               if (!e.target.value) setFoucs(false);
@@ -67,7 +73,8 @@ const Search = () => {
             type="text"
             name="search"
             className="outline-none py-[0.25rem] px-[0.3125rem]
-      h-[2.1rem] text-[14px] font-semibold"
+            h-[2.1rem] text-[14px] font-semibold"
+            autoFocus
           />
         </section>
       )}
