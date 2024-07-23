@@ -56,7 +56,7 @@ export const inputs = [
     required: true,
   },
   {
-    name: "country",
+    name: "country_id",
     displayName: "Country",
     type: "select",
     placeholder: "Country",

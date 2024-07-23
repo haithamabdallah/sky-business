@@ -1,5 +1,5 @@
-import { countries } from "../../data";
-const Input = ({ input, handleChange }) => {
+// import { countries } from "../../data";
+const Input = ({ input, handleChange, countries }) => {
   return input.type === "select" ? (
     <select
       defaultValue=""
@@ -11,9 +11,9 @@ const Input = ({ input, handleChange }) => {
       <option value="" disabled>
         Select Your Country
       </option>
-      {countries.map((country) => (
-        <option key={country.name.common} value={country.name.common}>
-          {country.name.common}
+      {Object.entries(countries).map(([id, name]) => (
+        <option key={id} value={id}>
+          {name}
         </option>
       ))}
     </select>

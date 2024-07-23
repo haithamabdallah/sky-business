@@ -1,49 +1,74 @@
 import { useState, useEffect } from "react";
 import { inputs } from "./data";
 import Input from "./components/input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [form, setForm] = useState({});
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [countries, setCountries] = useState("");
+
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchCountries = async () => {
-      console.log({ endpoint: `${process.env.API_URL}/register` });
       const result = await fetch(`${process.env.API_URL}/register`)
         .then((res) => res.json())
         .then((res) => res);
-      console.log({ result });
+      if (result.status === "success") setCountries(result.data.countries);
     };
     fetchCountries();
   }, []);
 
-  // useEffect(() => {
-  //   const postRegister = async () => {
-  //     const result = await fetch(process.env.API_URL, {
-  //       method: "POST",
-  //       body: JSON.stringify({ form }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((res) => res);
-  //     if (result.status === "success") {
-  //       setData(result.data);
-  //     } else {
-  //       setError(result.data);
-  //     }
-  //   };
-  // });
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [key]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(`Sending form`);
-    console.log({ form });
+    console.log( JSON.stringify({
+      business_name: form.business_name,
+      first_name: form.first_name,
+      last_name: form.last_name,
+      business_phone: form.business_phone,
+      address_line1: form.address_line1,
+      city: form.city,
+      country_id: form.country_id,
+      postal_code: form.postal_code,
+      email: form.email,
+      email_confirmation: form.email_confirmation,
+      password: form.password,
+      password_confirmation: form.password_confirmation,
+    }));
+    const result = await fetch(`${process.env.API_URL}/register`, {
+      method: "POST",
+      body: {
+        "business_name": "saied",
+        "first_name": "saied",
+        "last_name": "saied",
+        "business_phone": "1010384125",
+        "address_line1": "saied",
+        "city": "saied",
+        "country_id": "4",
+        "postal_code": "35511",
+        "email": "saied24219983@gmail.com",
+        "email_confirmation": "saied24219983@gmail.com",
+        "password": "saied1998",
+        "password_confirmation": "saied1998"
+    },
+    })
+      .then((res) => res.json())
+      .then((res) => res);
+    if (result.status === "success") {
+      localStorage.setItem("token", result.data.token);
+      navigate("/");
+    } else {
+      console.log("hello", result);
+      setError(result.data);
+    }
   };
-  console.log({ countries });
+
   return (
     <form
       className="flex flex-col gap-y-2 px-3 sm:px-4"
@@ -71,7 +96,15 @@ const Register = () => {
             {input.displayName}{" "}
             {input.required && <span className="text-red-600">*</span>}
           </label>
-          <Input handleChange={handleChange} input={input} />
+          {input.type === "select" ? (
+            <Input
+              handleChange={handleChange}
+              input={input}
+              countries={countries}
+            />
+          ) : (
+            <Input handleChange={handleChange} input={input} />
+          )}
         </div>
       ))}
       <div className="flex flex-wrap self-center gap-2 items-center w-auto min-[500px]:w-[30vw] mb-5">
