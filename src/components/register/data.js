@@ -27,13 +27,13 @@ export const inputs = [
     placeholder: "Business Phone Number",
     required: true,
   },
-  {
-    name: "cell_phone",
-    displayName: "Cell Phone Number",
-    type: "text",
-    placeholder: "Cell Phone Number",
-    required: false,
-  },
+  // {
+  //   name: "cell_phone",
+  //   displayName: "Cell Phone Number",
+  //   type: "text",
+  //   placeholder: "Cell Phone Number",
+  //   required: false,
+  // },
   {
     name: "address_line1",
     displayName: "Address Line 1",
@@ -41,13 +41,13 @@ export const inputs = [
     placeholder: "Address",
     required: true,
   },
-  {
-    name: "apartment",
-    displayName: "Apartment, suite, etc",
-    type: "text",
-    placeholder: "Apartment, suite, etc",
-    required: false,
-  },
+  // {
+  //   name: "apartment",
+  //   displayName: "Apartment, suite, etc",
+  //   type: "text",
+  //   placeholder: "Apartment, suite, etc",
+  //   required: false,
+  // },
   {
     name: "city",
     displayName: "City",

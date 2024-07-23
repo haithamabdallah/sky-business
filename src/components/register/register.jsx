@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { inputs } from "./data";
 import Input from "./components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,39 +28,27 @@ const Register = () => {
 
   const handleSubmit = async () => {
     console.log(`Sending form`);
-    console.log( JSON.stringify({
-      business_name: form.business_name,
-      first_name: form.first_name,
-      last_name: form.last_name,
-      business_phone: form.business_phone,
-      address_line1: form.address_line1,
-      city: form.city,
-      country_id: form.country_id,
-      postal_code: form.postal_code,
-      email: form.email,
-      email_confirmation: form.email_confirmation,
-      password: form.password,
-      password_confirmation: form.password_confirmation,
-    }));
-    const result = await fetch(`${process.env.API_URL}/register`, {
-      method: "POST",
-      body: {
-        "business_name": "saied",
-        "first_name": "saied",
-        "last_name": "saied",
-        "business_phone": "1010384125",
-        "address_line1": "saied",
-        "city": "saied",
-        "country_id": "4",
-        "postal_code": "35511",
-        "email": "saied24219983@gmail.com",
-        "email_confirmation": "saied24219983@gmail.com",
-        "password": "saied1998",
-        "password_confirmation": "saied1998"
-    },
-    })
-      .then((res) => res.json())
-      .then((res) => res);
+    console.log(
+      JSON.stringify({
+        business_name: form.business_name,
+        first_name: form.first_name,
+        last_name: form.last_name,
+        business_phone: form.business_phone,
+        address_line1: form.address_line1,
+        city: form.city,
+        country_id: form.country_id,
+        postal_code: form.postal_code,
+        email: form.email,
+        email_confirmation: form.email_confirmation,
+        password: form.password,
+        password_confirmation: form.password_confirmation,
+      })
+    );
+    const result = await axios
+      .post(`${process.env.API_URL}/register`, {...form})
+      .then((res) => res.data)
+      .then((res) => res)
+      .catch((error) => error.response.data);
     if (result.status === "success") {
       localStorage.setItem("token", result.data.token);
       navigate("/");
