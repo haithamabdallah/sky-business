@@ -5,7 +5,8 @@ export default {
     extend: {
       colors: {},
       fontFamily: {
-        futura: ["Montserrat", "sans-serif"],
+        futura: ["Futura PT Medium", "sans-serif"],
+        futuraDemi: ["Futura PT Demi", "sans-serif"]
       },
     },
   },

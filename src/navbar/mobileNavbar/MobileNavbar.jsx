@@ -8,9 +8,9 @@ const MobileNavbar = () => {
   const [show, setShow] = useState(false);
   return (
     <nav
-      className={`flex md:hidden bg-white ${
+      className={`flex min-[1200px]:hidden w-screen bg-white fixed top-0 ${
         show ? "" : "px-[15px]"
-      } h-[54px] z-50 relative items-center font-futura`}
+      } h-[54px] z-50 items-center font-futura`}
     >
       <Link
         className={`max-w-[6.5625rem] ${show ? "hidden" : "mr-auto"}`}
