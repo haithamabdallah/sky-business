@@ -5,10 +5,10 @@ const Banners = () => {
   return (
     <section className="w-full flex flex-col mt-5">
       {banners.map((banner, i) => (
-        <Link to={banner.link}>
+        <Link to={banner.link} key={`banner ${i + 1}`}>
           <picture>
             <source
-              srcset={banner.src[0]}
+              srcSet={banner.src[0]}
               sizes="100vw"
               media="(min-width:1024px)"
               width="2880"
@@ -16,7 +16,7 @@ const Banners = () => {
               data-aspectratio="6.4"
             />
             <source
-              srcset={banner.src[1]}
+              srcSet={banner.src[1]}
               sizes="100vw"
               media="(min-width:768px)"
               width="2880"
@@ -24,7 +24,7 @@ const Banners = () => {
               data-aspectratio="3.2"
             />
             <source
-              srcset={banner.src[2]}
+              srcSet={banner.src[2]}
               sizes="100vw"
               media="(min-width:0)"
               width="960"

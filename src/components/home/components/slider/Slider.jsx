@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,20 +13,18 @@ import { slideImages } from "./data";
 
 export default function App() {
   return (
-    <>
-      <Swiper
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        {slideImages.map((image, i) => (
-          <SwiperSlide>
-            <img src={image} alt={`Image ${i + 1}`} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+    <Swiper
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Pagination]}
+      className="mySwiper"
+    >
+      {slideImages.map((image, i) => (
+        <SwiperSlide key={`swiper_slide${i + 1}`}>
+          <img src={image} alt={`Image ${i + 1}`} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

@@ -11,7 +11,10 @@ const ProductsByCategory = () => {
         EXPLORE PRODUCTS BY CATEGORY
       </p>
       {categories.map((category, i) => (
-        <div className="flex flex-col gap-y-[27px] max-w-auto w-[46%] min-[230px]:w-[40%] lg:max-w-[22%] lg:w-auto">
+        <div
+          key={`category ${i + 1}`}
+          className="flex flex-col gap-y-[27px] max-w-auto w-[46%] min-[230px]:w-[40%] lg:max-w-[22%] lg:w-auto"
+        >
           <Link to={category.link}>
             <img src={category.src} alt={category.name} />
           </Link>

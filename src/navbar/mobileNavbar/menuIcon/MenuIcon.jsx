@@ -11,7 +11,7 @@ const MenuIcon = ({ show, setShow }) => {
           <path
             d="M21 1L1 21m20 0L1 1"
             stroke="#fff"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             fill="none"
           />
         </svg>
@@ -20,10 +20,10 @@ const MenuIcon = ({ show, setShow }) => {
           <path
             d="M2 1.474h19M2 10h19M2 18.526h19"
             stroke="#000"
-            stroke-width="2.16"
+            strokeWidth="2.16"
             fill="none"
-            stroke-linecap="square"
-            stroke-linejoin="round"
+            strokeLinecap="square"
+            strokeLinejoin="round"
           />
         </svg>
       )}
