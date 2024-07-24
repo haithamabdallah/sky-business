@@ -4,8 +4,8 @@ import Help from "./help/Help";
 
 const SideList = () => {
   return (
-    <ul className="flex items-center gap-x-2 font-futura">
-      <li>
+    <ul className="flex items-center font-futura">
+      <li className="ml-3 pl-3">
         <button
           className="font-futuraBook text-[12px] leading-5 text-[#404040]
               border border-[#404040] hover:[box-shadow:inset_0_0_0_.0625rem_#000]
@@ -16,7 +16,7 @@ const SideList = () => {
           {`C$ - CA (EN)`}
         </button>
       </li>
-      <li className="text-[10px] leading-[14px]">
+      <li className="text-[10px] leading-[14px] ml-3 pl-3">
         <Link to="#">
           <span
             className="flex items-center gap-x-[.3125rem] order-2
@@ -29,6 +29,40 @@ const SideList = () => {
       </li>
       <WhyShopOnline />
       <Help />
+      <li className="ml-3 pl-3">
+        <Link to="#">
+          <span
+            className="block leading-[1] text-center before:bg-black before:inline-block
+          before:h-[1.125rem] before:w-[1.125rem]
+          before:[mask:url(./navbar/desktopNavbar/sideList/gmail.svg)_no-repeat_center/contain]"
+          ></span>
+        </Link>
+      </li>
+      <li className="ml-3 pl-3">
+        <button className="bg-black rounded-[0.25rem] text-white my-[-0.5rem] py-2 px-[0.625rem]">
+          <Link to="#">
+            <span
+              className="block leading-[1] text-center before:bg-white before:inline-block
+             before:h-4 before:w-4
+             before:[mask:url(./navbar/desktopNavbar/sideList/user.svg)_no-repeat_center/contain]"
+            ></span>
+          </Link>
+        </button>
+      </li>
+      <li className="ml-3 pl-3">
+        <button
+          className="flex items-center pr-[1.875rem]"
+          type="button"
+        >
+          <span className="before:[content:'('] after:[content:')'] text-[10px]">
+            0
+          </span>
+          <span
+            className="inline-block h-[1.21875rem] bg-black w-[1.125rem] mt-[-.1875rem] ml-[.625rem]
+            order-3 [mask:url(./navbar/desktopNavbar/sideList/basket.svg)_no-repeat_center/contain]"
+          ></span>
+        </button>
+      </li>
     </ul>
   );
 };

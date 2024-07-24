@@ -5,13 +5,13 @@ const WhyShopOnline = () => {
   const [shopOnlineHover, setshopOnlineHover] = useState(false);
   return (
     <li
-      className="text-[10px] leading-[14px] cursor-pointer"
+      className="text-[10px] leading-[14px] cursor-pointer ml-3 pl-3"
       onMouseEnter={() => setshopOnlineHover(true)}
       onMouseLeave={() => setshopOnlineHover(false)}
     >
       WHY SHOP ONLINE
       {shopOnlineHover && (
-        <div className="cursor-default max-w-[1200px] absolute [inset:43px_auto_auto_81px]">
+        <div className="z-50 cursor-default max-w-[1200px] absolute [inset:43px_auto_auto_81px]">
           <section
             className="bg-[#fff] border border-[#d1d1d1] rounded-[0.25rem] max-w-full
                 min-w-[9.375rem] p-[0.625rem] relative"
