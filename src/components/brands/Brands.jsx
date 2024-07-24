@@ -1,36 +1,10 @@
 import React from 'react';
 import ProductList from '../innerPages/components/productList/ProductList';
+import { products } from '../innerPages/components/productList/data';
 import PageCover from '../innerPages/components/pageCover/PageCover';
 
 const Brands = () => {
     // Sample product data
-    const products = [
-        {
-            id: 1,
-            image: 'https://example.com/image1.jpg',
-            tags: ['new', 'best selling'],
-            title: 'Product 1',
-            description: 'This is a short description of Product 1.',
-            rating: 4.5,
-            variants: [{ size: 'S', price: 10 }, { size: 'M', price: 12 }],
-            discountHint: '10% off',
-            tooltip: 'More details about Product 1',
-            price: 10,
-        },
-        {
-            id: 2,
-            image: 'https://example.com/image2.jpg',
-            tags: ['editor choice'],
-            title: 'Product 2',
-            description: 'This is a short description of Product 2.',
-            rating: 4.0,
-            variants: [{ size: 'S', price: 15 }, { size: 'M', price: 18 }],
-            discountHint: '5% off',
-            tooltip: 'More details about Product 2',
-            price: 15,
-        },
-        // Add more products as needed
-    ];
 
     return (
         <>
