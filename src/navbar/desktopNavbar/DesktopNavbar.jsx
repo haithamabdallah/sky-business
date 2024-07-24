@@ -9,8 +9,8 @@ const DesktopNavbar = () => {
       className="hidden w-screen min-[1200px]:flex flex-col bg-white px-[30px] text-sm leading-5 font-medium
     sm:px-4 fixed top-0 z-10 font-futuraDemi"
     >
-      <div className="flex items-center">
-        <Link className="max-w-[10.9375rem]" to="/">
+      <div className="flex items-center relative">
+        <Link className="max-w-[10.9375rem] mr-auto" to="/">
           <img alt="logo" src={logo} />
         </Link>
         <SideList />
