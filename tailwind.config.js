@@ -6,7 +6,8 @@ export default {
       colors: {},
       fontFamily: {
         futura: ["Futura PT Medium", "sans-serif"],
-        futuraDemi: ["Futura PT Demi", "sans-serif"]
+        futuraDemi: ["Futura PT Demi", "sans-serif"],
+        futuraBook: ["Futura PT Book", "sans-serif"]
       },
     },
   },
