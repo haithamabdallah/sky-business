@@ -1,4 +1,3 @@
-import React from 'react';
 import PageCover from '../innerPages/components/pageCover/PageCover';
 
 const Beauty = () => (
