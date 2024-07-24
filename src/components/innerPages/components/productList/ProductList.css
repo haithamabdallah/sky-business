@@ -1,0 +1,7 @@
+.AddToCartButton {
+    transition: transform 0.2s;
+}
+
+.AddToCartButton:hover {
+    transform: scale(1.05);
+}
