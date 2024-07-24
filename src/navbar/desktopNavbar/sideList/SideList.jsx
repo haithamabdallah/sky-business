@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import WhyShopOnline from "./whyShopOnline/WhyShopOnline";
+import Help from "./help/Help";
 
 const SideList = () => {
   return (
@@ -27,6 +28,7 @@ const SideList = () => {
         </Link>
       </li>
       <WhyShopOnline />
+      <Help />
     </ul>
   );
 };
