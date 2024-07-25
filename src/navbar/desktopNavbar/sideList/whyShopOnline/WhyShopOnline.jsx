@@ -21,7 +21,7 @@ const WhyShopOnline = () => {
                 <li className="flex border-r border-[#d1d1d1] px-[1.25rem] flex-grow basis-[100%]">
                   <div className="flex items-start">
                     <img
-                      class="flex-shrink-0 mr-[1.25rem]"
+                        className="flex-shrink-0 mr-[1.25rem]"
                       alt={item.alt}
                       src={item.src}
                       width="80"
