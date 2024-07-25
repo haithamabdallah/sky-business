@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import WhyShopOnline from "./whyShopOnline/WhyShopOnline";
 import Help from "./help/Help";
 import Mail from "./mail/Mail";
+import Cart from "./cart/Cart";
 
 const SideList = () => {
   return (
@@ -42,20 +43,7 @@ const SideList = () => {
           </Link>
         </button>
       </li>
-      <li className="ml-3 pl-3">
-        <button
-          className="flex items-center pr-[1.875rem]"
-          type="button"
-        >
-          <span className="before:[content:'('] after:[content:')'] text-[10px]">
-            0
-          </span>
-          <span
-            className="inline-block h-[1.21875rem] bg-black w-[1.125rem] mt-[-.1875rem] ml-[.625rem]
-            order-3 [mask:url(./navbar/desktopNavbar/sideList/basket.svg)_no-repeat_center/contain]"
-          ></span>
-        </button>
-      </li>
+      <Cart />
     </ul>
   );
 };
