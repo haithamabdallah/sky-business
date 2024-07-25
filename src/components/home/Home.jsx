@@ -11,7 +11,7 @@ const Home = () => {
       <Slider />
       <Banners />
       <ProductsByCategory />
-        <ProductList products={products} />
+
       {/* <NewsletterSubscription /> */}
     </main>
   );
