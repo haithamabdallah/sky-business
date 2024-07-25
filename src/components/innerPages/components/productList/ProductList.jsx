@@ -47,7 +47,7 @@ const ProductList = ({ products }) => {
                             </Tags>
                             <Title>{product.title}</Title>
                             <Description>{product.description}</Description>
-                            <Rating>Rating: {product.rating}</Rating>
+                            {/*<Rating>Rating: {product.rating}</Rating>*/}
                             <VariantSelector
                                 value={variant.size}
                                 onChange={(e) => handleVariantChange(product.id, e.target.value)}
