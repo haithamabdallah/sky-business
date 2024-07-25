@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import WhyShopOnline from "./whyShopOnline/WhyShopOnline";
 import Help from "./help/Help";
+import Mail from "./mail/Mail";
 
 const SideList = () => {
   return (
@@ -29,15 +30,7 @@ const SideList = () => {
       </li>
       <WhyShopOnline />
       <Help />
-      <li className="ml-3 pl-3">
-        <Link to="#">
-          <span
-            className="block leading-[1] text-center before:bg-black before:inline-block
-          before:h-[1.125rem] before:w-[1.125rem]
-          before:[mask:url(./navbar/desktopNavbar/sideList/gmail.svg)_no-repeat_center/contain]"
-          ></span>
-        </Link>
-      </li>
+      <Mail />
       <li className="ml-3 pl-3">
         <button className="bg-black rounded-[0.25rem] text-white my-[-0.5rem] py-2 px-[0.625rem]">
           <Link to="#">

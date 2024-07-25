@@ -23,7 +23,7 @@ const Help = () => {
             <ul className="flex">
               <li className="flex border-r border-[#d1d1d1] px-[1.25rem] flex-grow">
                 <div>
-                  <p className="font-futuraBook font-bold text-[0.875rem]">
+                  <p className="font-semibold text-[0.875rem]">
                     A QUESTION ?
                   </p>
                   <ul>
@@ -47,7 +47,7 @@ const Help = () => {
               </li>
               <li className="flex border-r border-[#d1d1d1] px-[1.25rem] flex-grow">
                 <div>
-                  <p className="font-futuraBook font-bold text-[0.875rem]">
+                  <p className="font-semibold text-[0.875rem]">
                     CONTACT US
                   </p>
                   <ul>
