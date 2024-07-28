@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const SkinConsultAIBanner = () => {
   return (
     <section
-      className="lg:my-[3.75rem] px-[1.125rem] md:py-[15px] lg:px-[2.375rem] m-auto py-[10px]
-    max-w-[75rem] w-full relative"
+      className="lg:my-[3.75rem] px-[1.125rem] md:py-[15px] lg:px-[2.375rem] m-auto py-[10px] 
+      w-full relative"
     >
       <picture>
         <source
@@ -42,7 +42,7 @@ const SkinConsultAIBanner = () => {
         />
       </picture>
       <div
-        className="flex h-full w-full lg:left-[25%] px-[0.9375rem] lg:absolute lg:top-[50%]
+        className="flex h-full w-full lg:left-[27.2%] px-[0.9375rem] lg:absolute lg:top-[50%]
         lg:translate-x-[-50%] lg:translate-y-[-50%] mx-auto max-w-[75rem] relative z-50
         justify-center items-center"
       >
