@@ -17,15 +17,12 @@ const DesktopNavbar = () => {
   };
   return (
     <nav
-      className="hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
-      fixed top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem]"
+      className="hidden w-screen min-[1200px]:flex flex-wrap bg-white text-sm leading-5 font-medium
+      fixed top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem] items-center"
     >
-      <div className="flex items-center relative">
         <Link className="max-w-[10.9375rem] mr-auto" to="/">
           <img alt="logo" src={logo} />
         </Link>
-        <SideList />
-      </div>
 
       <div className="flex flex-auto justify-between relative">
         <ul className="flex max-w-[75em] px-[.9375rem] mx-auto">
@@ -41,7 +38,7 @@ const DesktopNavbar = () => {
             </Fragment>
           ))}
         </ul>
-        <Search  setShow={setShow} show={show}/>
+        <Search setShow={setShow} show={show}/>
       </div>
       {show && (
         <section
