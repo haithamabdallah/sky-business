@@ -14,7 +14,7 @@ const App = () => {
   return (
     <main className="flex flex-col">
       <Navbar />
-      <main className="mt-[54px] min-[1200px]:mt-[69px]">
+      <main className="mt-[54px] min-[1200px]:mt-[73px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
