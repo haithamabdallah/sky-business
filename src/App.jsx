@@ -13,23 +13,27 @@ import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./components/footer/Footer";
 const App = () => {
   return (
-    <main className="flex flex-col">
-      <Navbar />
-      <main className="mt-[54px] min-[1200px]:mt-[73px]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/beauty" element={<Beauty />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/brands" element={<Brands />} />
-          <Route path="/retail" element={<Retail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/organic_foods" element={<OrganicFoods />} />
-        </Routes>
-      </main>
-      <Footer />
+    <main className="grid grid-cols-1 gap-0 min-h-[100vh]">
+      <div className="self-start">
+        <Navbar />
+        <main className="mt-[54px] min-[1200px]:mt-[73px]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/beauty" element={<Beauty />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/brands" element={<Brands />} />
+            <Route path="/retail" element={<Retail />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/organic_foods" element={<OrganicFoods />} />
+          </Routes>
+        </main>
+      </div>
+      <div className="self-end">
+        <Footer />
+      </div>
     </main>
   );
 };
