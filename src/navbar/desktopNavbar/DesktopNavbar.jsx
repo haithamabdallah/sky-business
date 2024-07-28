@@ -20,7 +20,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
       className={`hidden w-screen min-[1200px]:flex flex-wrap bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem] items-center
       transition-[height] duration-300 ${
-        scrollStatus === "down" ? "h-0 static" : "h-auto fixed"
+        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
       }`}
     >
       <Link className="max-w-[10.9375rem] mr-auto" to="/">

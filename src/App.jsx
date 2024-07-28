@@ -10,6 +10,7 @@ import Brands from "./components/brands/Brands";
 import Retail from "./components/retail/Retail";
 import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
+import Footer from "./components/footer/Footer";
 const App = () => {
   return (
     <main className="flex flex-col">
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/organic_foods" element={<OrganicFoods />} />
         </Routes>
       </main>
+      <Footer />
     </main>
   );
 };
