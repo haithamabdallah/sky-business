@@ -4,12 +4,14 @@ import { tabs } from "../data";
 import { useState } from "react";
 import MenuIcon from "./menuIcon/MenuIcon";
 import Items from "./items/Items";
-const MobileNavbar = () => {
+const MobileNavbar = ({ scrollStatus }) => {
   const [show, setShow] = useState(false);
   return (
     <nav
-      className={`flex min-[1200px]:hidden w-screen bg-white fixed top-0 ${
+      className={`flex min-[1200px]:hidden w-screen bg-white top-0 ${
         show ? "" : "px-[15px]"
+      } ${
+        scrollStatus === "down" ? "h-0 static" : "h-[54px] fixed"
       } h-[54px] z-50 items-center font-futura`}
     >
       <Link

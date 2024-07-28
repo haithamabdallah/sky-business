@@ -63,7 +63,7 @@ const SkinConsultAIBanner = () => {
             STRENGTHS AND PRIORITIES TO FIND THE RIGHT PROTOCOL FOR YOUR SKIN.
           </p>
           <div>
-            <div class="w-full inline-block relative align-top">
+            <div className="w-full inline-block relative align-top">
               <Link
                 to="#"
                 className="text-center appearance-none bg-[#000]
