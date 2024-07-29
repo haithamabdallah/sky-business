@@ -13,8 +13,8 @@ import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./components/footer/Footer";
 const App = () => {
   return (
-    <main className="grid grid-cols-1 gap-0 min-h-[100vh]">
-      <div className="self-start overflow-y-hidden">
+    <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
+      <div className="self-start">
         <Navbar />
         <main className="mt-[54px] min-[1200px]:mt-[73px]">
           <Routes>
