@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const SkinHealthScienceBanner = () => {
   return (
     <section
-      className="mb-[60px] px-[1.125rem] lg:px-[2.375rem] m-auto w-full relative"
+      className="max-w-[75rem] px-[.9375rem] mx-auto mb-[60px]"
     >
       <picture>
         <source
@@ -35,7 +35,7 @@ const SkinHealthScienceBanner = () => {
         />
         <img
           alt="Committed to skin health science"
-          className="m-auto"
+          className="m-au"
           src={imageDefault}
           width="600"
           height="299"
