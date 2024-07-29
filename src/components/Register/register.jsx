@@ -3,6 +3,8 @@ import axios from "axios";
 import { inputs } from "./data";
 import Input from "./components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
+import PageCover from '../innerPages/components/pageCover/PageCover';
+
 const Register = () => {
   const [form, setForm] = useState({});
   const [error, setError] = useState("");
@@ -45,7 +47,7 @@ const Register = () => {
       })
     );
     const result = await axios
-      .post(`${import.meta.env.VITE_API_URL}/register`, {...form})
+      .post(`${import.meta.env.VITE_API_URL}/register`, { ...form })
       .then((res) => res.data)
       .then((res) => res)
       .catch((error) => error.response.data);
@@ -59,58 +61,68 @@ const Register = () => {
   };
 
   return (
-    <form
-      className="flex flex-col gap-y-2 px-3 sm:px-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-    >
-      <p
+    <div className="">
+
+      {/* <p
         className="w-full mb-8 border-b border-gray-400 border-opacity-80 pb-4 text-left
       font-normal min-[500px]:font-semibold text-base min-[500px]:text-xl"
       >
         Create Account
-      </p>
+      </p> */}
+      <PageCover
+        title=""
+        subtitle=""
+        backgroundImage="https://images.unsplash.com/photo-1559329513-4980242cf53d?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      />
+      <div className="my-[3rem]">
+        <form
+          className="flex flex-col gap-y-2 px-3 sm:px-4 "
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
 
-      {inputs.map((input) => (
-        <div
-          key={input.name}
-          className="self-center flex flex-col gap-y-1 w-auto min-[500px]:w-[30vw]"
-        >
-          <label
-            htmlFor={input.name}
-            className="font-medium text-xs min-[500px]:text-[0.9rem] min-[500px]:font-semibold"
-          >
-            {input.displayName}{" "}
-            {input.required && <span className="text-red-600">*</span>}
-          </label>
-          {input.type === "select" ? (
-            <Input
-              handleChange={handleChange}
-              input={input}
-              countries={countries}
-            />
-          ) : (
-            <Input handleChange={handleChange} input={input} />
-          )}
-        </div>
-      ))}
-      <div className="flex flex-wrap self-center gap-2 items-center w-auto min-[500px]:w-[30vw] mb-5">
-        <button
-          type="submit"
-          className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
-        >
-          Sign Up
-        </button>
-        <p className="ml-auto">
-          Returning Customer?{" "}
-          <Link to="/login" className="text-cyan-700">
-            Login →
-          </Link>
-        </p>
+          {inputs.map((input) => (
+            <div
+              key={input.name}
+              className="self-center flex flex-col gap-y-1 w-auto min-[500px]:w-[30vw]"
+            >
+              <label
+                htmlFor={input.name}
+                className="font-medium text-xs min-[500px]:text-[0.9rem] min-[500px]:font-semibold"
+              >
+                {input.displayName}{" "}
+                {input.required && <span className="text-red-600">*</span>}
+              </label>
+              {input.type === "select" ? (
+                <Input
+                  handleChange={handleChange}
+                  input={input}
+                  countries={countries}
+                />
+              ) : (
+                <Input handleChange={handleChange} input={input} />
+              )}
+            </div>
+          ))}
+          <div className="flex flex-wrap self-center gap-2 items-center w-auto min-[500px]:w-[30vw] mb-5">
+            <button
+              type="submit"
+              className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
+            >
+              Sign Up
+            </button>
+            <p className="ml-auto">
+              Returning Customer?{" "}
+              <Link to="/login" className="text-cyan-700">
+                Login →
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 
