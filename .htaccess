@@ -1,8 +1,3 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^ index.html [L]
-</IfModule>
 <FilesMatch \.php$>
   SetHandler proxy:fcgi://skybusiness-php83
 </FilesMatch>
