@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchCountries = async () => {
-      const result = await fetch(`${process.env.API_URL}/register`)
+      const result = await fetch(`${process.env.VITE_API_URL}/register`)
         .then((res) => res.json())
         .then((res) => res);
       if (result.status === "success") setCountries(result.data.countries);
@@ -45,7 +45,7 @@ const Register = () => {
       })
     );
     const result = await axios
-      .post(`${process.env.API_URL}/register`, {...form})
+      .post(`${process.env.VITE_API_URL}/register`, {...form})
       .then((res) => res.data)
       .then((res) => res)
       .catch((error) => error.response.data);
