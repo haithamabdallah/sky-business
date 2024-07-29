@@ -7,7 +7,7 @@ import About from "./components/about/About";
 import Beauty from "./components/beauty/Beauty";
 import Blog from "./components/blog/Blog";
 import Brands from "./components/brands/Brands";
-import Retail from "./components/retail/Retail";
+import Retailers from "./components/retailers/Retailers";
 import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./components/footer/Footer";
@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/beauty" element={<Beauty />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/brands" element={<Brands />} />
-            <Route path="/retail" element={<Retail />} />
+            <Route path="/retailers" element={<Retailers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/organic_foods" element={<OrganicFoods />} />
           </Routes>
