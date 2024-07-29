@@ -25,8 +25,8 @@ export const tabs = [
     type: "link",
   },
   {
-    route: "/retail",
-    name: "Retails",
+    route: "/retailers",
+    name: "Retailers",
     type: "link",
   },
   {
