@@ -2,7 +2,7 @@ import { list } from "./data";
 
 const ProsList = () => {
   return (
-    <ul className="md:mx-[-15px] mx-[10px] flex flex-wrap font-futura">
+    <ul className="md:mx-[-15px] mx-[10px] flex flex-wrap font-futura place-items-center text-center">
       {list.map(({ id, src, content, subContent }) => (
         <li
           key={id}
