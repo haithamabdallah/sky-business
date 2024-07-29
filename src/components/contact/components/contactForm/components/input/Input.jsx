@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { selectOptions } from "../../../../data";
 const Input = ({ input, handleChange }) => {
-  const [foucs, setFoucs] = useState(false);
+  const [focus, setFocus] = useState(false);
   return input.type === "select" ? (
     <>
       <label
@@ -39,7 +39,7 @@ const Input = ({ input, handleChange }) => {
               text-left left-0 [transition:transform_.2s,_font-size_.2s,_left_.2s] 
               whitespace-nowrap w-auto z-[1]
             ${
-              foucs
+              focus
                 ? "h-auto top-[-16px] text-[.6875rem] [transform:translate3d(0,-.5rem,0)] text-[#626566] font-light leading-5"
                 : `[transform:translateZ(0)] top-0 h-[3.125rem] text-[12px] font-normal leading-none`
             }`}
@@ -48,9 +48,9 @@ const Input = ({ input, handleChange }) => {
       </label>
       <textarea
         onChange={(e) => handleChange(e)}
-        onFocus={() => setFoucs(true)}
+        onFocus={() => setFocus(true)}
         onBlur={(e) => {
-          if (!e.target.value) setFoucs(false);
+          if (!e.target.value) setFocus(false);
         }}
         type={input.type}
         name={input.name}
@@ -70,7 +70,7 @@ const Input = ({ input, handleChange }) => {
               text-left left-0 [transition:transform_.2s,_font-size_.2s,_left_.2s] 
               whitespace-nowrap w-auto z-[1]
             ${
-              foucs
+              focus
                 ? "h-auto top-[-16px] text-[.6875rem] [transform:translate3d(0,-.5rem,0)] text-[#626566] font-light"
                 : `[transform:translateZ(0)] top-0 h-[3.125rem] text-[12px] font-normal`
             }`}
@@ -79,9 +79,9 @@ const Input = ({ input, handleChange }) => {
       </label>
       <input
         onChange={(e) => handleChange(e)}
-        onFocus={() => setFoucs(true)}
+        onFocus={() => setFocus(true)}
         onBlur={(e) => {
-          if (!e.target.value) setFoucs(false);
+          if (!e.target.value) setFocus(false);
         }}
         type={input.type}
         name={input.name}
