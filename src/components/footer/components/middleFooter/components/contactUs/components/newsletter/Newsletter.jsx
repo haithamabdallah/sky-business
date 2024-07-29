@@ -8,6 +8,12 @@ const Newsletter = () => {
   return (
     <div className="bg-transparent mt-5 pt-0 lg:pt-0">
       <div className="text-[#626566]">
+        <h2
+          className="text-[#000] block lg:hidden mb-[.9375rem]
+          [font:_600_.875rem_/_1.25rem_Futura_PT_Medium,_sans-serif]"
+        >
+          CONNECT WITH US
+        </h2>
         <form>
           <p className="text-[0.75rem] mb-5 text-black">
             Required fields are marked with an asterisk
