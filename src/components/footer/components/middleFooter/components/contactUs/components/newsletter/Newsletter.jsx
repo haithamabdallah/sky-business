@@ -116,7 +116,8 @@ const Newsletter = () => {
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border
               border-transparent rounded-[1.5625rem] text-white cursor-pointer inline-block
               font-semibold text-[0.875rem] leading-4 py-[1.0625rem] px-[0.75rem] relative
-              text-center no-underline uppercase transition-colors duration-250 align-middle"
+              text-center no-underline uppercase transition-colors duration-250 align-middle
+              hover:text-black hover:bg-white hover:border-black"
               type="submit"
             >
               Sign up
