@@ -37,7 +37,7 @@ const ContactForm = () => {
           <Input handleChange={handleChange} input={input} />
         </div>
       ))}
-      <div className="flex gap-x-[10px] w-[98%]">
+      <div className="flex flex-wrap w-[98%]">
         <input
           className="appearance-none w-[18px] h-[18px] border border-black bg-white
           cursor-pointer checked:bg-[url('./components/contact/components/contactForm/correct.svg')]
@@ -48,9 +48,9 @@ const ContactForm = () => {
         />
         
         <small
-          className={`flex-auto ${
+          className={`w-[80%] ${
             form.receive_emails ? "font-semibold" : "font-normal"
-          } leading-5 text-[12px]`}
+          } leading-5 text-[12px] ml-[0.5rem]`}
         >
           Yes, sign me up for <span className="font-bold">Emails</span>
           <br />
