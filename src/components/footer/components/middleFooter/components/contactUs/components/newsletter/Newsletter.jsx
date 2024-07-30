@@ -6,7 +6,7 @@ const Newsletter = () => {
   const [focus, setFocus] = useState(false);
   const [checked, setChecked] = useState(false);
   return (
-    <div className="bg-transparent mt-5 pt-0 lg:pt-0">
+    <div className="bg-transparent mt-5 pt-0 lg:pt-0 font-futura">
       <div className="text-[#626566]">
         <h2
           className="text-[#000] block lg:hidden mb-[.9375rem]
