@@ -4,7 +4,7 @@ const BottomFooterLinks = () => {
   return (
     <div
       className="lg:flex lg:justify-end lg:mt-[2.1875rem] lg:mx-0 lg:mb-[2.5rem] lg:px-[.9375rem] 
-    text-left lg:whitespace-nowrap lg:w-1/3"
+      text-left lg:whitespace-nowrap lg:w-1/3 text-[10px] font-futura"
     >
       <ul>
         <li className="text-[0.625rem] inline-block leading-[0.875rem]">
@@ -14,7 +14,7 @@ const BottomFooterLinks = () => {
         </li>
         <li
           className={`text-[0.625rem] inline-block leading-[0.875rem] before:[content:"•"]
-          before:py-0 before:px-[0.375rem]`}
+          before:py-0 before:px-[0.1rem]`}
         >
           <Link className="text-[0.625rem] leading-[0.875rem]" to="#">
             Site Map
@@ -22,7 +22,7 @@ const BottomFooterLinks = () => {
         </li>
         <li
           className={`text-[0.625rem] inline-block leading-[0.875rem] before:[content:"•"]
-          before:py-0 before:px-[0.375rem]`}
+          before:py-0 before:px-[0.1rem]`}
         >
           <Link className="text-[0.625rem] leading-[0.875rem]" to="#">
             Privacy Policy
@@ -30,7 +30,7 @@ const BottomFooterLinks = () => {
         </li>
         <li
           className={`text-[0.625rem] inline-block leading-[0.875rem] before:[content:"•"]
-          before:py-0 before:px-[0.375rem]`}
+          before:py-0 before:px-[0.1rem]`}
         >
           <Link className="text-[0.625rem] leading-[0.875rem]" to="#">
             Cookie Settings

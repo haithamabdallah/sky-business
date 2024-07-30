@@ -61,14 +61,7 @@ const Register = () => {
   };
 
   return (
-    <div className="">
-
-      {/* <p
-        className="w-full mb-8 border-b border-gray-400 border-opacity-80 pb-4 text-left
-      font-normal min-[500px]:font-semibold text-base min-[500px]:text-xl"
-      >
-        Create Account
-      </p> */}
+    <div>
       <PageCover
         title=""
         subtitle=""
@@ -76,7 +69,7 @@ const Register = () => {
       />
       <div className="my-[3rem]">
         <form
-          className="flex flex-col gap-y-2 px-3 sm:px-4 "
+          className="flex flex-col gap-y-2 px-0 sm:px-4"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
@@ -86,7 +79,7 @@ const Register = () => {
           {inputs.map((input) => (
             <div
               key={input.name}
-              className="self-center flex flex-col gap-y-1 w-auto min-[500px]:w-[30vw]"
+              className="self-center flex flex-col gap-y-1 w-[80%] min-[500px]:w-[30vw]"
             >
               <label
                 htmlFor={input.name}
@@ -106,7 +99,7 @@ const Register = () => {
               )}
             </div>
           ))}
-          <div className="flex flex-wrap self-center gap-2 items-center w-auto min-[500px]:w-[30vw] mb-5">
+          <div className="self-center flex flex-wrap gap-2 w-[80%] min-[500px]:w-[30vw] mb-5">
             <button
               type="submit"
               className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
