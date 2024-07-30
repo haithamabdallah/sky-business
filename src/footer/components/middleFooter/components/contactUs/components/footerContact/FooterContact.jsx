@@ -33,7 +33,7 @@ const FooterContact = () => {
           before:bg-[0] before:bg-no-repeat before:bg-[length:100%] before:mr-[.3125rem] before:mt-0
           before:mb-0 before:ml-0 before:w-[1.1875rem] before:h-[3.125rem] before:inline-block
           before:align-middle
-          before:bg-[url('./components/footer/components/middleFooter/components/contactUs/components/footerContact/assets/phone.svg')]"
+          before:bg-[url('./footer/components/middleFooter/components/contactUs/components/footerContact/assets/phone.svg')]"
         >
           1 888 458 4249
         </Link>
@@ -46,7 +46,7 @@ const FooterContact = () => {
           before:bg-[0] before:bg-no-repeat before:bg-[length:100%] before:mr-[0.625rem] before:mt-0
           before:mb-0 before:ml-0 before:w-[0.75rem] before:h-[3.125rem] before:inline-block
           before:align-middle
-          before:bg-[url('./components/footer/components/middleFooter/components/contactUs/components/footerContact/assets/location.svg')]"
+          before:bg-[url('./footer/components/middleFooter/components/contactUs/components/footerContact/assets/location.svg')]"
         >
           EMAIL US
         </Link>

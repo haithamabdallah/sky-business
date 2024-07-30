@@ -25,7 +25,7 @@ const PurchaseOption = () => {
               outline-none overflow-hidden px-[1.875rem] py-0 pl-[0.625rem] relative text-left
               truncate [transition:_box-shadow_.2s,_border-color_.2s_ease-in-out] select-none
               whitespace-nowrap w-full hover:border-black hover:border-2
-              after:[mask:url('./components/footer/components/middleFooter/components/contactUs/components/purchaseOption/assets/chevron-down.svg')_no-repeat_left/100%]
+              after:[mask:url('./footer/components/middleFooter/components/contactUs/components/purchaseOption/assets/chevron-down.svg')_no-repeat_left/100%]
               after:h-[0.625rem] after:w-[0.625rem] after:pointer-events-none after:absolute
               after:right-5 after:top-[50%] after:[transform:_translateY(-50%)] after:z-10 after:bg-[#404040]"
             >

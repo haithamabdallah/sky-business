@@ -10,7 +10,7 @@ import Brands from "./components/brands/Brands";
 import Retailers from "./components/retailers/Retailers";
 import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
-import Footer from "./components/footer/Footer";
+import Footer from "./footer/Footer";
 const App = () => {
   return (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
