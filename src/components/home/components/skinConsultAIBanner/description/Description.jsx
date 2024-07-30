@@ -3,8 +3,7 @@ const Description = () => {
   return (
     <div
       className="flex h-full w-full max-w-[75rem] lg:left-[50%] px-[0.9375rem] lg:absolute lg:top-[50%]
-        lg:[transform:translate(-50%,-50%)] mx-auto relative z-50
-        items-center"
+        lg:[transform:translate(-50%,-50%)] mx-auto relative items-center"
     >
       <div className="px-[0.9375rem] lg:w-[50%] w-full inline-block lg:py-10 py-5 text-left">
         <h2

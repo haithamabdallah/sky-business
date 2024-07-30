@@ -9,7 +9,6 @@ const ContactUs = () => {
       <Newsletter />
       <FooterContact />
       <Socials />
-      <PurchaseOption />
     </div>
   );
 };

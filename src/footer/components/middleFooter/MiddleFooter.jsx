@@ -5,7 +5,7 @@ const MiddleFooter = () => {
   return (
     <section>
       <div className="px-[0.9375rem] mx-auto max-w-[75rem] w-full">
-        <div className="mx-[-0.9375rem] lg:flex lg:flex-wrap">
+        <div className="lg:flex lg:flex-wrap">
           <LinkList />
           <ContactUs />
         </div>

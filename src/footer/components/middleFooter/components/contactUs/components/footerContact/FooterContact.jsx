@@ -23,13 +23,14 @@ const FooterContact = () => {
         <br />
       </span>
       <br />
-      <div className="lg:hidden flex flex-row font-futura text-[0.75rem] ml-[13.5px] leading-[1.25] m-0">
+      <div className="lg:hidden flex flex-row font-futura text-[0.75rem] ml-[13.5px] leading-[1.25]
+      m-0">
         <Link
         to="#"
           className="mr-[0.3125rem] bg-white basis-0 flex-grow items-center border
         border-gray-300 rounded-[1.5625rem] flex text-[.875rem] font-semibold
           leading-[1.25rem] font-futura-pt h-[3.125rem] justify-center
-          p-0 px-[.625rem] uppercase
+          p-0 uppercase
           before:bg-[0] before:bg-no-repeat before:bg-[length:100%] before:mr-[.3125rem] before:mt-0
           before:mb-0 before:ml-0 before:w-[1.1875rem] before:h-[3.125rem] before:inline-block
           before:align-middle
@@ -42,7 +43,7 @@ const FooterContact = () => {
           className="mr-[0.3125rem] bg-white basis-0 flex-grow items-center border
         border-gray-300 rounded-[1.5625rem] flex text-[.875rem] font-semibold
           leading-[1.25rem] font-futura-pt h-[3.125rem] justify-center
-          p-0 px-[.625rem] uppercase
+          p-0 uppercase
           before:bg-[0] before:bg-no-repeat before:bg-[length:100%] before:mr-[0.625rem] before:mt-0
           before:mb-0 before:ml-0 before:w-[0.75rem] before:h-[3.125rem] before:inline-block
           before:align-middle
