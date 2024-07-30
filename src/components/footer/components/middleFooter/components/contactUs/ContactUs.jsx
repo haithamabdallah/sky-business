@@ -1,5 +1,6 @@
 import FooterContact from "./components/footerContact/FooterContact";
 import Newsletter from "./components/newsletter/Newsletter";
+import PurchaseOption from "./components/purchaseOption/PurchaseOption";
 import Socials from "./components/socials/Socials";
 
 const ContactUs = () => {
@@ -8,6 +9,7 @@ const ContactUs = () => {
       <Newsletter />
       <FooterContact />
       <Socials />
+      <PurchaseOption />
     </div>
   );
 };
