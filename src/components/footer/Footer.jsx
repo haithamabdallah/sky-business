@@ -1,3 +1,4 @@
+import BottomFooter from "./components/bottomFooter/BottomFooter";
 import MiddleFooter from "./components/middleFooter/MiddleFooter";
 import TopFooter from "./components/topFooter/TopFooter";
 
@@ -9,6 +10,7 @@ const Footer = () => {
     >
       <TopFooter />
       <MiddleFooter />
+      <BottomFooter />
     </footer>
   );
 };
