@@ -1,4 +1,10 @@
 
+.active {
+  text-decoration: underline;
+  text-decoration-color: #0449ae;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 10px;
+}
 
 @font-face {
   font-family: "Futura PT Book";

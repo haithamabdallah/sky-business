@@ -2,9 +2,12 @@ const MenuIcon = ({ show, setShow }) => {
   return (
     <button
       className={`h-full self-center z-40 ${
-        show ? "w-[10%] flex justify-center items-center" : ""
+        show ? "w-[10%] flex justify-center items-center ml-1" : ""
       }`}
-      onClick={() => setShow(!show)}
+      onClick={() => {
+        setShow(!show)
+        document.querySelector('body').classList.toggle('overflow-hidden')
+      }}
     >
       {show ? (
         <svg width="26" height="26" xmlns="http://www.w3.org/2000/svg">

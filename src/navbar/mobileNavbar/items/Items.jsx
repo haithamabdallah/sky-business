@@ -7,12 +7,6 @@ const Items = () => {
       <li>
         <Search />
       </li>
-      <li>
-        <FindStore />
-      </li>
-      <li>
-        <Cart />
-      </li>
     </ul>
   );
 };
