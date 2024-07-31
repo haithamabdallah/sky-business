@@ -17,6 +17,7 @@ export default {
         futura: ["Futura PT Medium", "sans-serif"],
         futuraDemi: ["Futura PT Demi", "sans-serif"],
         futuraBook: ["Futura PT Book", "sans-serif"],
+        futuraLight: ["Futura PT Light", "sans-serif"],
       },
     },
   },
