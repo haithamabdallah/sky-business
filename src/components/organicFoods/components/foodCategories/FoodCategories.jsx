@@ -2,7 +2,7 @@ import FoodCategoriesList from "./components/foodCategoriesList/FoodCategoriesLi
 
 const FoodCategories = () => {
   return (
-    <section>
+    <section className="flex flex-col items-center">
       <h2
         className="text-center text-5xl mb-[30px] font-bold leading-[48px]
     uppercase [letter-spacing:_0]"
