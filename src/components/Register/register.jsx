@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect, Fragment } from "react";
 import { inputs } from "./data";
 import Input from "./components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
-import PageCover from '../innerPages/components/pageCover/PageCover';
+import PageCover from "../innerPages/components/pageCover/PageCover";
+import sendRequest from "../../methods/fetchData";
 
 const Register = () => {
   const [form, setForm] = useState({});
-  const [error, setError] = useState("");
-  const [data, setData] = useState({});
+  const [errors, setErrors] = useState("");
   const [countries, setCountries] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
     const fetchCountries = async () => {
-      const result = await fetch(`${import.meta.env.VITE_API_URL}/register`)
-        .then((res) => res.json())
-        .then((res) => res);
-      if (result.status === "success") setCountries(result.data.countries);
+      const result = await sendRequest({ method: "get", endpoint: "register" });
+      if (result.status === "success") {
+        setCountries(result.data.countries);
+      }
     };
     fetchCountries();
   }, []);
@@ -29,34 +28,17 @@ const Register = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(`Sending form`);
-    console.log(
-      JSON.stringify({
-        business_name: form.business_name,
-        first_name: form.first_name,
-        last_name: form.last_name,
-        business_phone: form.business_phone,
-        address_line1: form.address_line1,
-        city: form.city,
-        country_id: form.country_id,
-        postal_code: form.postal_code,
-        email: form.email,
-        email_confirmation: form.email_confirmation,
-        password: form.password,
-        password_confirmation: form.password_confirmation,
-      })
-    );
-    const result = await axios
-      .post(`${import.meta.env.VITE_API_URL}/register`, { ...form })
-      .then((res) => res.data)
-      .then((res) => res)
-      .catch((error) => error.response.data);
-    if (result.status === "success") {
-      localStorage.setItem("token", result.data.token);
+    const response = await sendRequest({
+      method: "post",
+      endpoint: "register",
+      body: { ...form },
+    });
+    const result = response.data;
+    if (response.status === "success") {
       navigate("/");
+      localStorage.setItem("token", result.token);
     } else {
-      console.log("hello", result);
-      setError(result.data);
+      setErrors(result);
     }
   };
 
@@ -75,7 +57,6 @@ const Register = () => {
             handleSubmit();
           }}
         >
-
           {inputs.map((input) => (
             <div
               key={input.name}
@@ -99,6 +80,14 @@ const Register = () => {
               )}
             </div>
           ))}
+          <small className="text-red-500 text-center font-semibold">
+            {Object.values(errors).map((error, i) => (
+              <Fragment key={`error ${i + 1}`}>
+                <span>{error}</span>
+                <br />
+              </Fragment>
+            ))}
+          </small>
           <div className="self-center flex flex-wrap gap-2 w-[80%] min-[500px]:w-[30vw] mb-5">
             <button
               type="submit"
