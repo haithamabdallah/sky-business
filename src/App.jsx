@@ -11,6 +11,7 @@ import Retailers from "./components/retailers/Retailers";
 import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./footer/Footer";
+import Article from "./components/blog/components/blogCards/components/article/Article";
 const App = () => {
   return (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/beauty" element={<Beauty />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands />} />
             <Route path="/retailers" element={<Retailers />} />
             <Route path="/contact" element={<Contact />} />
