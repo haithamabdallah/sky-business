@@ -11,6 +11,7 @@ import Retailers from "./components/retailers/Retailers";
 import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./footer/Footer";
+import Article from "./components/blog/components/blogCards/components/article/Article";
 const App = () => {
   const navigate = useNavigate();
   navigate(0);
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/beauty" element={<Beauty />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands />} />
             <Route path="/retailers" element={<Retailers />} />
             <Route path="/contact" element={<Contact />} />

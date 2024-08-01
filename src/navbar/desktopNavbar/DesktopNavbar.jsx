@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../logo.jpeg";
 import { tabs } from "../data";
 import SideList from "./sideList/SideList";
@@ -35,7 +35,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
                 <li
                   className={`text-[.875rem] leading-5 font-medium py-[.875rem] px-[1rem]`}
                 >
-                  <Link to={tab.route}>{tab.name.toUpperCase()}</Link>
+                  <NavLink to={tab.route}>{tab.name.toUpperCase()}</NavLink>
                 </li>
               }
             </Fragment>
