@@ -1,4 +1,4 @@
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
 import Register from "./components/Register/register";
@@ -30,9 +30,7 @@ const App = () => {
             <Route path="/retailers" element={<Retailers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/organic_foods" element={<OrganicFoods />} />
-            <Route path="*">
-              <Redirect to="/" />
-            </Route>
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
       </div>
