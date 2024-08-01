@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes , useNavigate  } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
 import Register from "./components/Register/register";
@@ -12,6 +12,8 @@ import Contact from "./components/contact/Contact";
 import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./footer/Footer";
 const App = () => {
+  const navigate = useNavigate();
+  navigate(0);
   return (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
