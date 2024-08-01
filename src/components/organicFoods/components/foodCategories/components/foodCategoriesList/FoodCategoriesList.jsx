@@ -2,7 +2,7 @@ import { foodCategories } from "./data";
 
 const FoodCategoriesList = () => {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-3 font-futura">
+    <ul className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 font-futura">
       {foodCategories.map(({ id, name, src, description }) => (
         <li key={id} className="relative px-[25px] mb-10">
           <img src={src} alt={name} className="w-full" />
