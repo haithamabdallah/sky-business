@@ -20,6 +20,7 @@ const App = () => {
   const [aboutData, setAboutData] = useState({});
   const [beautyData, setBeautyData] = useState({});
   const [retailerData, setRetailerData] = useState({});
+  const [organicFoodsData, setOrganicFoodsData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -45,6 +46,12 @@ const App = () => {
         // console.log({ res });
         if (res.status === "success") {
           setRetailerData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "organic-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setOrganicFoodsData(res.data);
         }
       }),
     ]).then(() => {
@@ -80,7 +87,10 @@ const App = () => {
               element={<Retailers retailerData={retailerData} />}
             />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/organic_foods" element={<OrganicFoods />} />
+            <Route
+              path="/organic_foods"
+              element={<OrganicFoods organicFoodsData={organicFoodsData} />}
+            />
           </Routes>
         </main>
       </div>

@@ -1,11 +1,10 @@
-import { foodCategories } from "./data";
-
-const FoodCategoriesList = () => {
+const FoodCategoriesList = ({ organics }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 font-futura">
-      {foodCategories.map(({ id, name, src, description }) => (
+      {organics.map(({ id, name, image, text }) => (
         <li key={id} className="relative px-[25px] mb-10">
-          <img src={src} alt={name} className="w-full" />
+          <img src={`${url}/${image}`} alt={name} className="w-full" />
           <h2
             className="absolute text-3xl leading-[0.9] bottom-0 pr-[10px] pl-[20px] pb-[21px]
           text-white h-[55px] uppercase font-bold"
@@ -22,7 +21,7 @@ const FoodCategoriesList = () => {
                 {name}
               </h2>
               <p className="text-base leading-[1.29] pt-[10px] font-sans font-thin">
-                {description}
+                {text}
               </p>
             </div>
           </div>
