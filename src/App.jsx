@@ -21,6 +21,7 @@ const App = () => {
   const [beautyData, setBeautyData] = useState({});
   const [retailerData, setRetailerData] = useState({});
   const [organicFoodsData, setOrganicFoodsData] = useState({});
+  const [brandData, setBrandData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -54,6 +55,12 @@ const App = () => {
           setOrganicFoodsData(res.data);
         }
       }),
+      sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setBrandData(res.data);
+        }
+      }),
     ]).then(() => {
       setLoading(false);
     });
@@ -81,7 +88,7 @@ const App = () => {
             />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />
-            <Route path="/brands" element={<Brands />} />
+            <Route path="/brands" element={<Brands brandData={brandData} />} />
             <Route
               path="/retailers"
               element={<Retailers retailerData={retailerData} />}

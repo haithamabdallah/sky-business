@@ -1,16 +1,20 @@
 import PageCover from '../innerPages/components/pageCover/PageCover';
 import BrandCategories from './components/brandCategories/BrandCategories';
+import parse from 'html-react-parser';
 
-const Brands = () => {
+
+const Brands = ( { brandData } ) => {
+    const url = import.meta.env.VITE_STORAGE_URL;
     return (
+        brandData.settings &&
         <>
             <PageCover
                 title="Our Brands"
                 subtitle="Explore our exclusive brands"
-                backgroundImage="https://images.unsplash.com/photo-1531646317777-0619c7c5d1d3?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                backgroundImage={`${url}/${brandData.settings.cover}`}
             />
             <section className='max-w-[75rem] mx-auto mt-16 px-5'>
-                <BrandCategories />
+                <BrandCategories categories={brandData.categories} />
             </section>
         </>
     );
