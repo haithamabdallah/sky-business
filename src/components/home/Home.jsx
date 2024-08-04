@@ -6,17 +6,22 @@ import ProductList from "../innerPages/components/productList/ProductList";
 import { products } from "../innerPages/components/productList/data";
 import SkinConsultAIBanner from "./components/skinConsultAIBanner/SkinConsultAIBanner";
 import SkinHealthScienceBanner from "./components/skinHealthScienceBanner/SkinHealthScienceBanner";
+import sendRequest from "../../methods/fetchData";
 
-const Home = () => {
+const Home = ({ homeData }) => {
   return (
-    <main className="flex flex-col">
-      <Slider />
-      <Banners />
-      <ProductsByCategory />
-      <SkinConsultAIBanner />
-      <SkinHealthScienceBanner />
-      {/* <NewsletterSubscription /> */}
-    </main>
+    homeData.sliders && (
+      <main className="flex flex-col">
+        <Slider sliders={homeData.sliders} />
+        <Banners banner={homeData.settings.banner1} />
+        <ProductsByCategory
+          categories={homeData.categories}
+          explore={homeData.explore}
+        />
+        <SkinConsultAIBanner banner={homeData.settings.banner2} />
+        <SkinHealthScienceBanner banner={homeData.settings.banner3} />
+      </main>
+    )
   );
 };
 

@@ -11,7 +11,8 @@ import "./slider.css";
 import { Pagination } from "swiper/modules";
 import { slideImages } from "./data";
 
-export default function App() {
+export default function Slider({ sliders }) {
+  const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <Swiper
       pagination={{
@@ -20,9 +21,9 @@ export default function App() {
       modules={[Pagination]}
       className="mySwiper"
     >
-      {slideImages.map((image, i) => (
-        <SwiperSlide key={`swiper_slide${i + 1}`}>
-          <img src={image} alt={`Image ${i + 1}`} />
+      {sliders.map((slider) => (
+        <SwiperSlide key={slider.id}>
+          <img src={`${url}/${slider.background_image}`} alt={`Image ${slider.id}`} />
         </SwiperSlide>
       ))}
     </Swiper>
