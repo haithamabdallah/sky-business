@@ -1,10 +1,18 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import sendRequest from "../../../../../../../methods/fetchData";
 
 const Newsletter = () => {
   const checkbox = useRef(null);
   const [focus, setFocus] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [form, setForm] = useState({});
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
+  }, [message]);
   return (
     <div className="bg-transparent mt-5 pt-0 lg:pt-0 font-futura">
       <div className="text-[#626566]">
@@ -14,7 +22,24 @@ const Newsletter = () => {
         >
           CONNECT WITH US
         </h2>
-        <form>
+        <form
+          onChange={(e) => {
+            console.log(e.target);
+            const key = e.target.name;
+            const value = e.target.value;
+            setForm({ ...form, [key]: value });
+          }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendRequest({
+              method: "get",
+              endpoint: "subscribe",
+              params: { ...form },
+            }).then((data) => {
+              if (data.status === "success") setMessage(data.message);
+            });
+          }}
+        >
           <p className="text-[0.75rem] mb-5 text-black">
             Required fields are marked with an asterisk
             <span className="text-[0.875rem]"> (*)</span>
@@ -33,6 +58,7 @@ const Newsletter = () => {
                 focus:[transition:_box-shadow_.2s,_border-color_.2s_ease-in-out]"
                 type="email"
                 name="email"
+                required
                 onFocus={() => setFocus(true)}
                 onBlur={(e) => {
                   if (!e.target.value) setFocus(false);
@@ -64,6 +90,7 @@ const Newsletter = () => {
                 overflow-visible text-[100%] leading-[1.15] m-0 [font-family:inherit]"
                 type="checkbox"
                 name="checkbox"
+                required
                 ref={checkbox}
               />
               <label
@@ -112,6 +139,12 @@ const Newsletter = () => {
           </span>
           <hr className="mb-5" />
           <div className="mb-5 flex items-start [flex:1_1_100%] flex-wrap">
+            {message.length > 0 && (
+              <small className="w-full py-5 text-green-700 text-[1rem]">
+                {message}
+              </small>
+            )}
+            {/* {message.length > 0 && <br/>} */}
             <button
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border
               border-transparent rounded-[1.5625rem] text-white cursor-pointer inline-block
