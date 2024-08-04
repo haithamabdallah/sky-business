@@ -3,9 +3,6 @@ import parse from 'html-react-parser';
 
 const About = ( { aboutData } ) => {
     const url = import.meta.env.VITE_STORAGE_URL;
-    if ( !aboutData.settings ) {
-        return <div className="w-full h-screen flex justify-center items-center">loading...</div>;
-    }
     return (
     aboutData.settings &&
         <div className="">

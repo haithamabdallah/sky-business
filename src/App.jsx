@@ -15,24 +15,31 @@ import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
 const App = () => {
-  const [loading, setLoading] = useState( false );
+  const [loading, setLoading] = useState( true );
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
+  const [retailerData, setRetailerData] = useState({});
 
   useEffect(() => {
     Promise.all([
       sendRequest({ method: "post", endpoint: "home-page" }).then((res) => {
-        console.log({ res });
+        // console.log({ res });
         if (res.status === "success") {
           setHomeData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "about-page" }).then((res) => {
-        console.log({ res });
+        // console.log({ res });
         if (res.status === "success") {
             setAboutData(res.data);
         }
-      })
+      }),
+      sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+            setRetailerData(res.data);
+        }
+      }),
     ]).then(( ) => {
       setLoading( false );
     });
@@ -54,7 +61,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands />} />
-            <Route path="/retailers" element={<Retailers />} />
+            <Route path="/retailers" element={<Retailers retailerData={retailerData} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/organic_foods" element={<OrganicFoods />} />
           </Routes>
