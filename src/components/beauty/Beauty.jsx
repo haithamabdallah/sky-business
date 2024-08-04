@@ -1,17 +1,22 @@
-import PageCover from '../innerPages/components/pageCover/PageCover';
-import Products from './components/products/Products';
+import PageCover from "../innerPages/components/pageCover/PageCover";
+import Products from "./components/products/Products";
 
-const Beauty = () => (
+const Beauty = ({ beautyData }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
+  const coverData = beautyData.settings
+  const products = beautyData["beauty products"]
+  return (
     <>
-    <PageCover
-        title="SUN CARE"
-        subtitle="Discover Vichy's advanced sun care and sun protection solutions. Protect your skin from harmful UV rays while enhancing its natural beauty with our innovative formulas."
-        backgroundImage="https://www.vichy.ca/on/demandware.static/-/Sites-vichy-ca-Library/default/dw63fc244e/images/banners-2024/VICHY-CLP-BANW-Desktop-2340x440_CAPITAL%20SOLEIL_EN.jpg"
-    />
-    <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
-      <Products />
-    </div>
+      <PageCover
+        title={coverData.header}
+        subtitle={coverData.text}
+        backgroundImage={`${url}/${coverData.cover}`}
+      />
+      <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
+        <Products products={products}/>
+      </div>
     </>
-);
+  );
+};
 
 export default Beauty;

@@ -8,9 +8,6 @@ import SkinConsultAIBanner from "./components/skinConsultAIBanner/SkinConsultAIB
 import SkinHealthScienceBanner from "./components/skinHealthScienceBanner/SkinHealthScienceBanner";
 
 const Home = ({ homeData }) => {
-  if ( !homeData.settings ) {
-    return <div className="w-full h-screen flex justify-center items-center">loading...</div>;
-  }
   return (
     homeData.sliders && (
       <main className="flex flex-col">
