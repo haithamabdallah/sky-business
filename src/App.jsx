@@ -15,7 +15,9 @@ import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
 const App = () => {
+  const [loading, setLoading] = useState( false );
   const [homeData, setHomeData] = useState({});
+  const [aboutData, setAboutData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -24,9 +26,20 @@ const App = () => {
         if (res.status === "success") {
           setHomeData(res.data);
         }
+      }),
+      sendRequest({ method: "post", endpoint: "about-page" }).then((res) => {
+        console.log({ res });
+        if (res.status === "success") {
+            setAboutData(res.data);
+        }
       })
-    ])
+    ]).then(( ) => {
+      setLoading( false );
+    });
   }, []);
+  if ( loading ) {
+    return <div className="w-full h-screen flex justify-center items-center">loading...</div>;
+  }
   return (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
@@ -36,7 +49,7 @@ const App = () => {
             <Route path="/" element={<Home homeData={homeData} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route path="/beauty" element={<Beauty />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />

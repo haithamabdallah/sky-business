@@ -6,9 +6,11 @@ import ProductList from "../innerPages/components/productList/ProductList";
 import { products } from "../innerPages/components/productList/data";
 import SkinConsultAIBanner from "./components/skinConsultAIBanner/SkinConsultAIBanner";
 import SkinHealthScienceBanner from "./components/skinHealthScienceBanner/SkinHealthScienceBanner";
-import sendRequest from "../../methods/fetchData";
 
 const Home = ({ homeData }) => {
+  if ( !homeData.settings ) {
+    return <div className="w-full h-screen flex justify-center items-center">loading...</div>;
+  }
   return (
     homeData.sliders && (
       <main className="flex flex-col">
