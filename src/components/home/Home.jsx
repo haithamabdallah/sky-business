@@ -15,7 +15,7 @@ const Home = ({ homeData }) => {
         <Banners banner={homeData.settings.banner1} />
         <ProductsByCategory
           categories={homeData.categories}
-          explore={homeData.explore}
+          explore={homeData.settings.explore}
         />
         <SkinConsultAIBanner banner={homeData.settings.banner2} />
         <SkinHealthScienceBanner banner={homeData.settings.banner3} />
