@@ -15,9 +15,10 @@ import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
 const App = () => {
-  const [loading, setLoading] = useState( true );
+  const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
+  const [beautyData, setBeautyData] = useState({});
   const [retailerData, setRetailerData] = useState({});
   const [brandData, setBrandData] = useState({});
 
@@ -32,13 +33,19 @@ const App = () => {
       sendRequest({ method: "post", endpoint: "about-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-            setAboutData(res.data);
+          setAboutData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "beauty-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setBeautyData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-            setRetailerData(res.data);
+          setRetailerData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
@@ -51,8 +58,12 @@ const App = () => {
       setLoading( false );
     });
   }, []);
-  if ( loading ) {
-    return <div className="w-full h-screen flex justify-center items-center">loading...</div>;
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        loading...
+      </div>
+    );
   }
   return (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
@@ -64,7 +75,10 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
-            <Route path="/beauty" element={<Beauty />} />
+            <Route
+              path="/beauty"
+              element={<Beauty beautyData={beautyData} />}
+            />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands brandData={brandData} />} />

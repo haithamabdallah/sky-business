@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-import { products } from "./data";
-
-const Products = () => {
+const Products = ({ products }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 font-futura">
-      {products.map(({ id, name, src, description }) => (
+      {products.map(({ id, name, image, text }) => (
         <li key={id} className="relative px-[25px] mb-10 flex flex-col">
-          <img src={src} alt={name} className="w-full" />
+          <img src={`${url}/${image}`} alt={name} className="w-full" />
           <h2
             className="leading-[0.9] text-center pr-[10px] pl-[20px] pb-[21px]
             h-[55px] uppercase font-bold mt-10"
@@ -23,7 +21,7 @@ const Products = () => {
                 {name}
               </h2>
               <p className="text-base leading-[1.29] pt-[10px] font-sans font-thin">
-                {description}
+                {text}
               </p>
               {/* <Link
                 className="mt-4 min-w-[auto] w-fit [white-space:nowrap] appearance-none bg-white border
