@@ -1,15 +1,17 @@
 const CategoryBrands = ({ brands }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
+
   return (
     <ul className="grid grid-cols-2 min-[400px]:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-12">
-      {brands.map(({ id, description, src }) => (
-        <li className="flex flex-col" key={id}>
+      {brands.map((brand) => (
+        <li className="flex flex-col" key={brand.id}>
           <img
-            alt={id}
-            src={src}
+            alt={`brand ${brand.id}`}
+            src={`${url}/${brand.image}`}
             className="rounded-full transition-transform duration-500 scale-100 hover:scale-125
             object-contain"
           />
-          <p className="text-center pt-10">{description}</p>
+          <p className="text-center pt-10">{brand.name}</p>
         </li>
       ))}
     </ul>

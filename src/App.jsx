@@ -19,6 +19,7 @@ const App = () => {
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
   const [retailerData, setRetailerData] = useState({});
+  const [brandData, setBrandData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -38,6 +39,12 @@ const App = () => {
         // console.log({ res });
         if (res.status === "success") {
             setRetailerData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+            setBrandData(res.data);
         }
       }),
     ]).then(( ) => {
@@ -60,7 +67,7 @@ const App = () => {
             <Route path="/beauty" element={<Beauty />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />
-            <Route path="/brands" element={<Brands />} />
+            <Route path="/brands" element={<Brands brandData={brandData} />} />
             <Route path="/retailers" element={<Retailers retailerData={retailerData} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/organic_foods" element={<OrganicFoods />} />
