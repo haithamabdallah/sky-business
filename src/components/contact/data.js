@@ -75,12 +75,6 @@ export const inputs = [
     required: true,
   },
   {
-    name: "order_number",
-    displayName: "Order number if related",
-    type: "text",
-    required: false,
-  },
-  {
     name: "message",
     displayName: "Your message",
     type: "textarea",

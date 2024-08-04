@@ -22,6 +22,7 @@ const App = () => {
   const [retailerData, setRetailerData] = useState({});
   const [organicFoodsData, setOrganicFoodsData] = useState({});
   const [brandData, setBrandData] = useState({});
+  const [contactData, setContactData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -61,6 +62,12 @@ const App = () => {
           setBrandData(res.data);
         }
       }),
+      sendRequest({ method: "post", endpoint: "contact-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setContactData(res.data);
+        }
+      }),
     ]).then(() => {
       setLoading(false);
     });
@@ -93,7 +100,10 @@ const App = () => {
               path="/retailers"
               element={<Retailers retailerData={retailerData} />}
             />
-            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/contact"
+              element={<Contact contactData={contactData} />}
+            />
             <Route
               path="/organic_foods"
               element={<OrganicFoods organicFoodsData={organicFoodsData} />}
