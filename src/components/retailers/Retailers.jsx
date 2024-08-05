@@ -6,13 +6,13 @@ const Retail = ( { retailerData } ) =>{
     const url = import.meta.env.VITE_STORAGE_URL;
     return (     
     retailerData.settings && 
-    <div className="">
+    <div className="max-w-[75rem] mx-auto">
         <PageCover
             title=""
             subtitle=""
             backgroundImage={`${url}/${retailerData.settings.cover}`}
         />
-        <div className="max-w-[80vw] md:max-w-[70vw] mx-auto my-[6rem]">
+        <div className="my-[6rem] px-[15px]">
             <Header retailerData={retailerData} />
             <Logos retailerData={retailerData} />
         </div>
