@@ -6,7 +6,7 @@ const Retail = ( { retailerData } ) =>{
     const url = import.meta.env.VITE_STORAGE_URL;
     return (     
     retailerData.settings && 
-    <div className="">
+    <div className="max-w-[75rem] mx-auto">
         <PageCover
             title=""
             subtitle=""
