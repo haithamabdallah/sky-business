@@ -1,36 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { data } from "./data";
 
 const LinkList = () => {
   return (
-    <div className="lg:px-[0.9375rem] lg:w-[66.66667%] w-auto">
-      <div className="mx-[-0.9375rem] flex flex-wrap max-w-full">
+    <div className="lg:px-[1rem] lg:w-[66.66667%] w-auto ">
+      <div className=" flex flex-wrap max-w-full justify-items-center">
         {data.map(({ id, h2, ul }) => (
           <ul
             key={id}
-            className={`lg:mt-9 lg:w-[25%] mt-5 w-full px-[0.9375rem] font-futura
-              ${id < 3 ? "hidden lg:block" : ""}`}
+            className={`lg:mt-9 lg:w-[50%] mt-5 w-full px-[0.9375rem] font-futura`}
           >
             <li>
               <h2
-                className="font-semibold lg:text-[0.75rem] lg:leading-[1rem] text-[1rem]
-                  leading-[1.25rem] mb-2"
+                className="font-semibold lg:text-[1.3rem] lg:leading-[3rem] text-[1.3rem]
+                  leading-[3rem] mb-2"
               >
                 {h2}
               </h2>
             </li>
             <li>
               <ul className="list-none m-0 lg:mt-[5px]">
-                {ul.map(({ id, content, to }) => (
-                  <li key={id}>
-                    <Link
-                      to={to}
-                      className="inline-block text-black font-normal text-[0.75rem]
-                              leading-[1rem] font-futura py-[0.3125rem] no-underline lg:py-0
-                              lg:font-normal lg:text-[0.75rem] lg:leading-[1rem] hover:underline"
+                {ul.map(({ name, route } , index) => (
+                  <li key={index}>
+                    <NavLink
+                      to={route}
+                      className="inline-block text-black font-normal text-[0.9rem]
+                              leading-[3rem] font-futura py-[0.3125rem] lg:py-0
+                              lg:font-normal lg:text-[0.9rem] lg:leading-[3rem] hover:opacity-80"
                     >
-                      {content}
-                    </Link>
+                      {name.toUpperCase()}
+                    </NavLink>
                   </li>
                 ))}
               </ul>
@@ -41,5 +40,4 @@ const LinkList = () => {
     </div>
   );
 };
-
 export default LinkList;
