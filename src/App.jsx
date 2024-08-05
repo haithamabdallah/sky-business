@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
@@ -15,6 +15,7 @@ import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
 import logo from "./navbar/logo.jpeg";
+import { Context } from "./ContextProvider";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
@@ -26,6 +27,7 @@ const App = () => {
   const [blogData, setBlogData] = useState({});
   const [contactData, setContactData] = useState({});
 
+  const { setValue } = useContext(Context);
   useEffect(() => {
     Promise.all([
       sendRequest({ method: "post", endpoint: "home-page" }).then((res) => {
@@ -74,6 +76,12 @@ const App = () => {
         // console.log({ res });
         if (res.status === "success") {
           setContactData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "general" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setValue(res.data);
         }
       }),
     ]).then(() => {

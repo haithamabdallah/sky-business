@@ -1,12 +1,18 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../logo.jpeg";
 import { tabs } from "../data";
 import SideList from "./sideList/SideList";
 import Search from "./search/Search";
+import { Context } from "../../ContextProvider";
+
 const DesktopNavbar = ({ scrollStatus }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
   const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
+
+  const { value } = useContext(Context)
+  const logo = `${url}/${value.settings.logo}`
+  
   let typingTimer;
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -15,6 +21,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
       setTerm(value);
     }, 500);
   };
+
   return (
     <nav
       className={`hidden w-screen min-[1200px]:grid grid-cols-12 bg-white text-sm leading-5 font-medium

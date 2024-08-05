@@ -1,11 +1,16 @@
-import logo from "../logo.jpeg";
 import { tabs } from "../data";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MenuIcon from "./menuIcon/MenuIcon";
 import Items from "./items/Items";
 import { NavLink, Link } from "react-router-dom";
+import { Context } from "../../ContextProvider";
 const MobileNavbar = ({ scrollStatus }) => {
+  const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
+
+  const { value } = useContext(Context);
+
+  const logo = `${url}/${value.settings.logo}`;
   return (
     <nav
       className={`flex min-[1200px]:hidden w-screen bg-white top-0 ${
