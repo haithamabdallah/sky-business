@@ -1,38 +1,39 @@
 import { useParams, useLocation } from "react-router-dom";
-import { articles } from "../../data";
 import PageCover from "../../../../../innerPages/components/pageCover/PageCover";
-const Article = () => {
-  const { id } = useParams();
-  const location = useLocation();
-  const articleInfo = location.state
-    ? location.state
-    : articles.filter((article) => article.id === Number(id))[0];
+import { useEffect, useState } from "react";
+import sendRequest from "../../../../../../methods/fetchData";
+import parse from "html-react-parser";
 
-  console.log(articleInfo);
+const Article = () => {
+
+  const url = import.meta.env.VITE_STORAGE_URL;
+
+  const { id } = useParams();
+
+  const location = useLocation();
+  
+  const postInfo = location.state
+
+  const [postData, setPostData] = useState( postInfo || {} );
+
+  useEffect(() => {
+    if (!postInfo) {
+      sendRequest({ method: "post", endpoint: "post-page/" + id }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setPostData(res.data);
+        }
+      });
+    }
+  }, [])
+
+  const articleInfo = postData;
 
   return (
     <>
-      <PageCover title="" subtitle="" backgroundImage={articleInfo.imgSrc} />
-      <div className="flex flex-col max-w-[75rem] mx-auto mt-[55px] font-futura px-5">
-        <p className="mb-6 text-base leading-[26px] text-[#475671]">
-          {articleInfo.introduction}
-        </p>
-        {articleInfo.sections.map(({ label, description }) => (
-          <>
-            <h2 className="mt-[52.5px] mb-[20.5px] text-[35px] text-[#293241] leading-[53px] font-bold">
-              {label}:
-            </h2>
-            <p className="mb-6 text-base leading-[26px] text-[#475671]">
-              {description}
-            </p>
-          </>
-        ))}
-        <h2 className="mt-[52.5px] mb-[20.5px] text-[35px] text-[#293241] leading-[53px] font-bold">
-          Conclusion:
-        </h2>
-        <p className="mb-12 text-base leading-[26px] text-[#475671]">
-          {articleInfo.conclusion}
-        </p>
+      <PageCover title="" subtitle="" backgroundImage={`${url}/${articleInfo.image}`} />
+      <div className="my-[5rem]  max-w-[75rem] mx-auto mt-[55px] font-futura px-5">
+        <div className="p-5">{parse(`${articleInfo.content}`)}</div>
       </div>
     </>
   );

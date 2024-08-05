@@ -21,6 +21,7 @@ const App = () => {
   const [beautyData, setBeautyData] = useState({});
   const [retailerData, setRetailerData] = useState({});
   const [brandData, setBrandData] = useState({});
+  const [blogData, setBlogData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -54,6 +55,12 @@ const App = () => {
             setBrandData(res.data);
         }
       }),
+      sendRequest({ method: "post", endpoint: "blog-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+            setBlogData(res.data);
+        }
+      }),
     ]).then(( ) => {
       setLoading( false );
     });
@@ -79,7 +86,7 @@ const App = () => {
               path="/beauty"
               element={<Beauty beautyData={beautyData} />}
             />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog" element={<Blog blogData={blogData} />} />
             <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands brandData={brandData} />} />
             <Route path="/retailers" element={<Retailers retailerData={retailerData} />} />
