@@ -17,18 +17,20 @@ const DesktopNavbar = ({ scrollStatus }) => {
   };
   return (
     <nav
-      className={`hidden w-screen min-[1200px]:flex flex-wrap bg-white text-sm leading-5 font-medium
+      className={`hidden w-screen min-[1200px]:grid grid-cols-12 bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem] items-center
       transition-[height] duration-300 ${
         scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
       }`}
     >
-      <Link className="max-w-[10.9375rem] mr-auto" to="/">
-        <img alt="logo" src={logo} />
-      </Link>
+      <div className="col-span-2 flex items-center relative">
+        <Link className="max-w-[10.9375rem] mr-auto" to="/">
+          <img alt="logo" src={logo} />
+        </Link>
+      </div>
 
-      <div className="flex flex-auto justify-between relative">
-        <ul className="flex max-w-[75em] px-[.9375rem] mx-auto">
+      <div className="col-span-8 flex mx-auto justify-between relative">
+        <ul className="flex justify-center px-[.9375rem] mx-auto flex-wrap">
           {tabs.map((tab, i) => (
             <Fragment key={tab.name}>
               {
@@ -41,8 +43,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
             </Fragment>
           ))}
         </ul>
-        <Search setShow={setShow} show={show} />
       </div>
+      <Search setShow={setShow} show={show} />
       {show && (
         <section
           className="w-screen max-w-[75rem] z-index-10 flex items-center font-futura bg-white z-50"
