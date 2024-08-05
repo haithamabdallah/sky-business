@@ -14,6 +14,7 @@ import OrganicFoods from "./components/organicFoods/OrganicFoods";
 import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
+import logo from "./navbar/logo.jpeg";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
@@ -66,7 +67,7 @@ const App = () => {
       sendRequest({ method: "post", endpoint: "blog-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-            setBlogData(res.data);
+          setBlogData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "contact-page" }).then((res) => {
@@ -75,18 +76,18 @@ const App = () => {
           setContactData(res.data);
         }
       }),
-    ]).then(( ) => {
-      setLoading( false );
+    ]).then(() => {
+      setLoading(false);
     });
   }, []);
-  if (loading) {
-    return (
-      <div className="w-full h-screen flex justify-center items-center">
-        loading...
-      </div>
-    );
-  }
-  return (
+  return loading ? (
+    <div
+      className="min-w-[100vw] min-h-[100vh] absolute flex items-center justify-center
+      top-0 z-50 bg-white bg-opacity-50"
+    >
+      <img alt="loading" src={logo} className="animate-breath w-36" />
+    </div>
+  ) : (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
         <Navbar />
