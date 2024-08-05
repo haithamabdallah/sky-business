@@ -1,7 +1,13 @@
+import facebook from "./assets/facebook.svg";
+import twitter from "./assets/twitter.svg";
+import instagram from "./assets/insta.svg";
+import linkedin from "./assets/linkedin.svg";
+import whatsApp from "./assets/whatsapp.svg";
 export const data = [
-    // './footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/linkedin.svg',
-    { name : 'facebook' , src : '/src/footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/facebook.svg',},
-    { name : 'twitter' , src : '/src/footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/twitter.svg',},
-    { name : 'instagram' , src : '/src/footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/insta.svg',},
-    { name : 'linkedin' , src : '/src/footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/linkedin.svg',},
+  // './footer/components/middleFooter/components/contactUs/components/socials/components/socialList/assets/linkedin.svg',
+  { name: "facebook", src: facebook },
+  { name: "twitter", src: twitter },
+  { name: "instagram", src: instagram },
+  { name: "linkedin", src: linkedin },
+  { name: "whatsApp", src: linkedin },
 ];
