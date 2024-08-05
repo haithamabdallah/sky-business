@@ -113,19 +113,19 @@ const Newsletter = () => {
                 }}
               >
                 Yes, sign me up for <strong>Emails*</strong>
-                <br />
-                <small className="text-[80%] leading-[inherit]">
+                {/* <br /> */}
+                {/* <small className="text-[80%] leading-[inherit]">
                   I expressly consent to receiving exclusive news, promotions
                   and opportunities for engagement from Vichy Canada via
                   electronic messages. I understand that I may withdraw my
                   consent at any time from receiving any or all such electronic
                   messages.
                 </small>
-                <span className="text-[0.875rem]">*</span>
+                <span className="text-[0.875rem]">*</span> */}
               </label>
             </div>
           </div>
-          <span className="text-[#626566] text-[14px] leading-[21px]">
+          {/* <span className="text-[#626566] text-[14px] leading-[21px]">
             By using this service, I expressly consent to my data being used in
             accordance to the{" "}
             <Link className="underline" target="_blank" to="#">
@@ -136,8 +136,8 @@ const Newsletter = () => {
               Contact us
             </Link>{" "}
             for more details.
-          </span>
-          <hr className="mb-5" />
+          </span> */}
+          {/* <hr className="mb-5" /> */}
           <div className="mb-5 flex items-start [flex:1_1_100%] flex-wrap">
             {message.length > 0 && (
               <small className="w-full py-5 text-green-700 text-[1rem]">
@@ -158,6 +158,7 @@ const Newsletter = () => {
           </div>
         </form>
       </div>
+        <hr className="mb-5" />
     </div>
   );
 };
