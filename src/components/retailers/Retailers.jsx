@@ -12,7 +12,7 @@ const Retail = ( { retailerData } ) =>{
             subtitle=""
             backgroundImage={`${url}/${retailerData.settings.cover}`}
         />
-        <div className="max-w-[80vw] md:max-w-[70vw] mx-auto my-[6rem]">
+        <div className="my-[6rem] px-[15px]">
             <Header retailerData={retailerData} />
             <Logos retailerData={retailerData} />
         </div>
