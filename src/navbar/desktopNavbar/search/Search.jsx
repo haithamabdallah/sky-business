@@ -6,7 +6,7 @@ const Search = ({ setShow, show }) => {
     <div className="flex flex-auto col-span-2 items-start justify-end">
       <button
         className={`h-full bg-[#f1f2f2] border border-[#f1f2f2] rounded-[1.5625rem] text-[#000]
-        px-[1.25rem] after:bg-[#000] after:h-[1.0625rem] after:w-[1.0625rem] after:inline-block
+        px-[1.25rem] py-[0.5rem] after:bg-[#000] after:h-[1.0625rem] after:w-[1.0625rem] after:inline-block
         after:[mask:url(./navbar/desktopNavbar/search/search.svg)_no-repeat_left/100%]
         after:align-middle hover:border hover:border-black focus:border focus:border-black
         ${show ? "border border-black" : ""}`}
