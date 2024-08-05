@@ -1,31 +1,32 @@
-import freeSamples from "./freeSamples.webp";
-import freeShipping from "./freeShipping.webp";
-import securePayment from "./securePayment.webp";
-import satisfactionGuaranteed from "./satisfactionGuaranteed.webp";
-
+import exportAndImport from "./1.png";
+import bestOffer from "./2.png";
+import brands from "./3.png";
+import manyOptions from "./4.png";
+import consulting from "./5.png";
 export const list = [
   {
     id: 1,
-    src: freeSamples,
-    content: "FREE SAMPLES",
-    subContent: "WITH EVERY ORDER",
+    src: exportAndImport,
+    content: "Export & Import",
   },
   {
     id: 2,
-    src: freeShipping,
-    content: "FREE SHIPPING",
-    subContent: "WITH ORDERS OF 50$",
+    src: bestOffer,
+    content: "Best offer",
   },
   {
     id: 3,
-    src: securePayment,
-    content: "SECURE PAYMENT",
-    subContent: "EASY CHECKOUT",
+    src: brands,
+    content: "180+ Brands",
   },
   {
     id: 4,
-    src: satisfactionGuaranteed,
-    content: "SATISFACTION GUARANTEED",
-    subContent: "30 DAYS RETURNS",
+    src: manyOptions,
+    content: "Many Options",
+  },
+  {
+    id: 5,
+    src: consulting,
+    content: "Consulting",
   },
 ];

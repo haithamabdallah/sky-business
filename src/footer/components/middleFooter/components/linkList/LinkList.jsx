@@ -21,15 +21,15 @@ const LinkList = () => {
             </li>
             <li>
               <ul className="list-none m-0 lg:mt-[5px]">
-                {ul.map(({ id, content, to }) => (
+                {ul.map(({ id, name, route }) => (
                   <li key={id}>
                     <Link
-                      to={to}
+                      to={route}
                       className="inline-block text-black font-normal text-[0.75rem]
                               leading-[1rem] font-futura py-[0.3125rem] no-underline lg:py-0
                               lg:font-normal lg:text-[0.75rem] lg:leading-[1rem] hover:underline"
                     >
-                      {content}
+                      {name}
                     </Link>
                   </li>
                 ))}
