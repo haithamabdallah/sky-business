@@ -1,17 +1,44 @@
+import sendRequest from "../../../../methods/fetchData";
 import { inputs } from "../../data";
 import Input from "./components/input/Input";
-import { useState } from "react";
+import { useState, useEffect, Fragment } from "react";
 const ContactForm = () => {
   const [form, setForm] = useState({});
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
+  }, [message]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setErrors({});
+    }, 2000);
+  }, [errors]);
+
   const handleChange = (e) => {
     const key = e.target.name;
-    const value = key === "receive_emails" ? e.target.checked : e.target.value;
+    if (key === "receive_emails") return;
+    const value = e.target.value;
     setForm({ ...form, [key]: value });
   };
 
   const handleSubmit = () => {
     console.log(`Sending form`);
-    console.log({ form });
+    sendRequest({
+      method: "post",
+      endpoint: "contact-us",
+      body: { ...form },
+    }).then((data) => {
+      if (data.status === "success") {
+        setMessage(data.message);
+      } else {
+        setErrors(data.errors);
+      }
+    });
   };
   return (
     <form
@@ -29,7 +56,7 @@ const ContactForm = () => {
         <div
           key={input.name}
           className={`flex flex-col ${
-            input.type === "textarea"
+            input.type === "textarea" || input.type === "select"
               ? "w-[98%]"
               : "w-[98%] min-[532px]:w-[48%]"
           } relative self-end`}
@@ -38,6 +65,21 @@ const ContactForm = () => {
         </div>
       ))}
       <div className="flex flex-wrap w-[98%]">
+        {message.length > 0 && (
+          <small className="w-full py-5 text-green-700 text-[1rem]">
+            {message}
+          </small>
+        )}
+        {Object.keys(errors).length > 0 && (
+          <small className="w-full py-5 text-red-700 font-semibold">
+            {Object.values(errors).map((error, i) => (
+              <Fragment key={`error ${i + 1}`}>
+                <span>{error}</span>
+                <br />
+              </Fragment>
+            ))}
+          </small>
+        )}
         <input
           className="appearance-none w-[18px] h-[18px] border border-black bg-white
           cursor-pointer checked:bg-[url('./components/contact/components/contactForm/correct.svg')]
@@ -45,8 +87,9 @@ const ContactForm = () => {
           onChange={(e) => handleChange(e)}
           type="checkbox"
           name="receive_emails"
+          required
         />
-        
+
         <small
           className={`w-[80%] ${
             form.receive_emails ? "font-semibold" : "font-normal"

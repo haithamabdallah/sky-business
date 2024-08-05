@@ -20,8 +20,10 @@ const App = () => {
   const [aboutData, setAboutData] = useState({});
   const [beautyData, setBeautyData] = useState({});
   const [retailerData, setRetailerData] = useState({});
+  const [organicFoodsData, setOrganicFoodsData] = useState({});
   const [brandData, setBrandData] = useState({});
   const [blogData, setBlogData] = useState({});
+  const [contactData, setContactData] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -49,16 +51,28 @@ const App = () => {
           setRetailerData(res.data);
         }
       }),
+      sendRequest({ method: "post", endpoint: "organic-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setOrganicFoodsData(res.data);
+        }
+      }),
       sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-            setBrandData(res.data);
+          setBrandData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "blog-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
             setBlogData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "contact-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setContactData(res.data);
         }
       }),
     ]).then(( ) => {
@@ -89,9 +103,18 @@ const App = () => {
             <Route path="/blog" element={<Blog blogData={blogData} />} />
             <Route path="/blog/:id" element={<Article />} />
             <Route path="/brands" element={<Brands brandData={brandData} />} />
-            <Route path="/retailers" element={<Retailers retailerData={retailerData} />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/organic_foods" element={<OrganicFoods />} />
+            <Route
+              path="/retailers"
+              element={<Retailers retailerData={retailerData} />}
+            />
+            <Route
+              path="/contact"
+              element={<Contact contactData={contactData} />}
+            />
+            <Route
+              path="/organic_foods"
+              element={<OrganicFoods organicFoodsData={organicFoodsData} />}
+            />
           </Routes>
         </main>
       </div>

@@ -42,6 +42,12 @@ const Register = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setErrors({});
+    }, 2000);
+  }, [errors]);
+
   return (
     <div>
       <PageCover
@@ -80,14 +86,16 @@ const Register = () => {
               )}
             </div>
           ))}
-          <small className="text-red-500 text-center font-semibold">
-            {Object.values(errors).map((error, i) => (
-              <Fragment key={`error ${i + 1}`}>
-                <span>{error}</span>
-                <br />
-              </Fragment>
-            ))}
-          </small>
+          {Object.keys(errors).length > 0 && (
+            <small className="w-full py-5 text-red-700 text-center font-semibold">
+              {Object.values(errors).map((error, i) => (
+                <Fragment key={`error ${i + 1}`}>
+                  <span>{error}</span>
+                  <br />
+                </Fragment>
+              ))}
+            </small>
+          )}
           <div className="self-center flex flex-wrap gap-2 w-[80%] min-[500px]:w-[30vw] mb-5">
             <button
               type="submit"
