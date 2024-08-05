@@ -71,7 +71,7 @@ export const inputs = [
   {
     name: "subject",
     displayName: "Subject",
-    type: "select",
+    type: "text",
     required: true,
   },
   {

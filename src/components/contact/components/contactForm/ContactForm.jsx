@@ -56,7 +56,7 @@ const ContactForm = () => {
         <div
           key={input.name}
           className={`flex flex-col ${
-            input.type === "textarea" || input.type === "select"
+            input.type === "textarea" || input.name === "subject"
               ? "w-[98%]"
               : "w-[98%] min-[532px]:w-[48%]"
           } relative self-end`}

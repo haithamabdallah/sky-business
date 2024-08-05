@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 const OurFoodServices = ({ ourFoodServices }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
-    <section className="w-full mr-[45px] grid md:grid-cols-2 grid-cols-1 font-futura mb-[45px] mt-[30px]">
+    <section className="w-full mr-[45px] grid md:grid-cols-2 grid-cols-1 font-futura mb-[45px] my-[30px]">
       <div
         className="md:pt-5 md:pr-[45px] md:pb-10 md:pl-5 py-5 px-[25px] content-center
         flex flex-wrap flex-col justify-center md:order-1 order-2"

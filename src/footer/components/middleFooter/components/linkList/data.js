@@ -1,75 +1,10 @@
+import { tabs } from "../../../../../sharedData/tabs";
 export const data = [
 
   {
     id: 1,
     h2: "SKIN CARE",
-    ul: [
-      {
-        id: `sub ul1 1`,
-        to: "#",
-        content: "Best Sellers",
-      },
-      {
-        id: `sub ul1 2`,
-        to: "#",
-        content: "New Products",
-      },
-      {
-        id: `sub ul1 3`,
-        to: "#",
-        content: "Gifts & Sets",
-      },
-      {
-        id: `sub ul1 4`,
-        to: "#",
-        content: "Face Cleansers",
-      },
-      {
-        id: `sub ul1 5`,
-        to: "#",
-        content: "Eye lip & Care",
-      },
-      {
-        id: `sub ul1 6`,
-        to: "#",
-        content: "Face Serums",
-      },
-      {
-        id: `sub ul1 7`,
-        to: "#",
-        content: "Face Moisturizers",
-      },
-      {
-        id: `sub ul1 8`,
-        to: "#",
-        content: "Sun Care",
-      },
-      {
-        id: `sub ul1 9`,
-        to: "#",
-        content: "Makeup Removers",
-      },
-      {
-        id: `sub ul1 10`,
-        to: "#",
-        content: "Body Care",
-      },
-      {
-        id: `sub ul1 11`,
-        to: "#",
-        content: "Face Masks",
-      },
-      {
-        id: `sub ul1 12`,
-        to: "#",
-        content: "Thermal Water",
-      },
-      {
-        id: `sub ul1 13`,
-        to: "#",
-        content: "Mens Care",
-      },
-    ],
+    ul: tabs,
   },
 
   {
