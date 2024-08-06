@@ -10,10 +10,10 @@ const Popup = () => {
       justify-center items-center font-futura z-50"
     >
       <div className="min-w-[60%] bg-white min-h-[10%] max-h-[90%] max-w-[90%] grid grid-cols-2">
-        <div className="h-[80%] flex items-center">
+        <div className="min-h-[10%] max-h-[90%] flex items-center">
           <img className="h-full" src={image} alt="offer image" />
         </div>
-        <div className="flex flex-col px-4 relative">
+        <div className="flex flex-col px-4 relative min-h-[10%] max-h-[90%]">
           <button
             className="absolute right-1 top-2"
             onClick={() => {
