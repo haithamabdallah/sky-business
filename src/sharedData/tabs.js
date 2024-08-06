@@ -15,13 +15,13 @@ export const tabs = [
     type: "link",
   },
   {
-    route: "/health_care",
-    name: "health care",
+    route: "/makeup",
+    name: "makeup",
     type: "link",
   },
   {
-    route: "/makeup",
-    name: "makeup",
+    route: "/health_care",
+    name: "health care",
     type: "link",
   },
   {
