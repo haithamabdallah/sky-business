@@ -7,15 +7,9 @@ import { products } from "../innerPages/components/productList/data";
 import SkinConsultAIBanner from "./components/skinConsultAIBanner/SkinConsultAIBanner";
 import SkinHealthScienceBanner from "./components/skinHealthScienceBanner/SkinHealthScienceBanner";
 import Popup from "./components/popup/Popup";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const Home = ({ homeData }) => {
-  const [showPopup, setShowPopup] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowPopup(true);
-    }, 3000);
-  }, []);
+const Home = ({ homeData, showPopup, setShowPopup }) => {
   return (
     homeData.sliders && (
       <main className="flex flex-col">
@@ -27,7 +21,7 @@ const Home = ({ homeData }) => {
         />
         <SkinConsultAIBanner banner={homeData.settings.banner2} />
         <SkinHealthScienceBanner banner={homeData.settings.banner3} />
-        {showPopup && <Popup />}
+        {showPopup && <Popup setShowPopup={setShowPopup}/>}
       </main>
     )
   );

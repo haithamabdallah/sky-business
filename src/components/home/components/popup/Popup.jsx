@@ -1,11 +1,9 @@
-import { useState } from "react";
 import image from "./1.jpg";
 import PopupForm from "./components/popupForm/PopupForm";
 import logo from "./logo.jpeg";
-const Popup = () => {
-    const [show, setShow] = useState(true)
+const Popup = ({ setShowPopup }) => {
   return (
-   show && <div
+    <div
       className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-65 flex
       justify-center items-center font-futura z-50"
     >
@@ -17,10 +15,15 @@ const Popup = () => {
           <button
             className="absolute right-1 top-2"
             onClick={() => {
-              setShow(false);
+              setShowPopup(false);
             }}
           >
-            <svg  className="scale-[0.8]" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              className="scale-[0.8]"
+              width="26"
+              height="26"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M21 1L1 21m20 0L1 1"
                 stroke="#000"

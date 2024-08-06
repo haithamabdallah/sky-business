@@ -30,6 +30,7 @@ const App = () => {
   const [brandData, setBrandData] = useState({});
   const [blogData, setBlogData] = useState({});
   const [contactData, setContactData] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
 
   const { setValue } = useContext(Context);
   useEffect(() => {
@@ -92,6 +93,9 @@ const App = () => {
       }),
     ]).then(() => {
       setLoading(false);
+      setTimeout(() => {
+        setShowPopup(true);
+      }, 3000);
     });
   }, []);
   return loading ? (
@@ -107,7 +111,16 @@ const App = () => {
         <Navbar />
         <main className="mt-[54px] min-[1200px]:mt-[104px]">
           <Routes>
-            <Route path="/" element={<Home homeData={homeData} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  homeData={homeData}
+                  showPopup={showPopup}
+                  setShowPopup={setShowPopup}
+                />
+              }
+            />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
