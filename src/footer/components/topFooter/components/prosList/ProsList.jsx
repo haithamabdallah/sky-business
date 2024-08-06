@@ -12,9 +12,9 @@ const ProsList = () => {
           className="md:px-[15px] px-[10px] flex flex-col mx-auto items-center"
         >
           <img
-            className=""
+            className="h-[50%]"
             src={src}
-            alt="FREE SAMPLES"
+            alt={content}
           />
           <span
             className="w-fit lg:text-[0.875rem] lg:leading-[1.25rem] inline-block font-semibold
