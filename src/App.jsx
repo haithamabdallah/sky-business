@@ -17,11 +17,13 @@ import sendRequest from "./methods/fetchData";
 import logo from "./navbar/logo.jpeg";
 import { Context } from "./ContextProvider";
 import Makeup from "./components/makeup/Makeup";
+import HairCare from "./components/hairCare/HairCare";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
   const [skinCareData, setSkinCareData] = useState({});
+  const [hairCareData, setHairCareData] = useState({});
   const [retailerData, setRetailerData] = useState({});
   const [healthCareData, setHealthCareData] = useState({});
   const [makeupData, setMakeupData] = useState({});
@@ -49,6 +51,7 @@ const App = () => {
         if (res.status === "success") {
           setSkinCareData(res.data);
           setMakeupData(res.data);
+          setHairCareData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
@@ -130,6 +133,10 @@ const App = () => {
             <Route
               path="/makeup"
               element={<Makeup makeupData={makeupData} />}
+            />
+            <Route
+              path="/hair_care"
+              element={<HairCare hairCareData={hairCareData} />}
             />
           </Routes>
         </main>

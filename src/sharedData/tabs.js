@@ -10,6 +10,11 @@ export const tabs = [
     type: "link",
   },
   {
+    route: "/hair_care",
+    name: "hair care",
+    type: "link",
+  },
+  {
     route: "/health_care",
     name: "health care",
     type: "link",

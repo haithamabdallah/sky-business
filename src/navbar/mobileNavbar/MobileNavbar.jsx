@@ -1,4 +1,4 @@
-import { tabs } from "../data";
+import { tabs } from "../../sharedData/tabs";
 import { useContext, useState } from "react";
 import MenuIcon from "./menuIcon/MenuIcon";
 import Items from "./items/Items";
