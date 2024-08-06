@@ -1,7 +1,7 @@
 const FoodCategoriesList = ({ organics }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
-    <ul className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 font-futura">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-futura">
       {organics.map(({ id, name, image, text }) => (
         <li key={id} className="relative px-[25px] mb-10">
           <img src={`${url}/${image}`} alt={name} className="w-full" />

@@ -9,7 +9,7 @@ const ProsList = () => {
       {list.map(({ id, src, content }) => (
         <li
           key={id}
-          className="md:px-[15px] px-[10px] flex flex-col mx-auto items-center"
+          className="md:px-[15px] px-[10px] flex flex-col mx-auto items-center justify-center"
         >
           <img
             className="h-[50%]"

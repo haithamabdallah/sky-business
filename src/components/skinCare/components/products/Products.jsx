@@ -1,21 +1,18 @@
 const Products = ({ products }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
-    <ul className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 font-futura">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-futura">
       {products.map(({ id, name, image, text }) => (
-        <li key={id} className="relative px-[25px] mb-10 flex flex-col">
+        <li key={id} className="relative px-[25px] mb-10">
           <img src={`${url}/${image}`} alt={name} className="w-full" />
-          <h2
-            className="leading-[0.9] text-center pr-[10px] pl-[20px] pb-[21px]
-            h-[55px] uppercase font-bold mt-10"
-          >
+          <h2 className="leading-[0.9] text-center mt-10 uppercase font-bold">
             {name}
           </h2>
           <div className="absolute top-0 left-0 w-full h-full px-[25px]">
             <div
               className="bg-black w-full h-full text-white
-                flex flex-col opacity-0 px-[25px] py-[15px] justify-center transition-opacity duration-700
-                hover:opacity-100"
+          flex flex-col opacity-0 px-[25px] py-[15px] justify-center transition-opacity duration-700
+          hover:opacity-100"
             >
               <h2 className="text-3xl mb-[5px] leading-none [letter-spacing:0] uppercase font-bold">
                 {name}
@@ -23,16 +20,6 @@ const Products = ({ products }) => {
               <p className="text-base leading-[1.29] pt-[10px] font-sans font-thin">
                 {text}
               </p>
-              {/* <Link
-                className="mt-4 min-w-[auto] w-fit [white-space:nowrap] appearance-none bg-white border
-              border-transparent rounded-[1.5625rem] text-black cursor-pointer inline-block
-              font-semibold text-[0.875rem] leading-4 px-10 py-3 relative
-              text-center no-underline transition-colors duration-250 align-middle
-              hover:text-white hover:bg-black hover:border-white"
-                to="#"
-              >
-                Details
-              </Link> */}
             </div>
           </div>
         </li>
