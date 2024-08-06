@@ -18,7 +18,7 @@ const PopupForm = () => {
         Be the first to hear about our latest news, access exclusive VIP offers,
         and much more!
       </h2>
-      <small className="sm:inline-block hidden font-light text-xs mt-2">
+      {/* <small className="sm:inline-block hidden font-light text-xs mt-2">
         I expressly consent to receiving exclusive news, promotions and
         opportunities for engagement from SKY Business laboratoires via
         electronic messages (e.g.. e-mails ). I understand that I may withdraw
@@ -34,7 +34,7 @@ const PopupForm = () => {
         for more information. SKY Business laboratoires, 1500 Boulevard
         Robert-Bourassa, Bureau 600, Montreal, Quebec, H3A 3S7: {phone} -
         {notificationEmail}
-      </small>
+      </small> */}
       <input
         type="email"
         onChange={(e) => setEmail(e.target.value)}

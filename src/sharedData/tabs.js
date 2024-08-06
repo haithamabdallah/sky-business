@@ -1,5 +1,10 @@
 export const tabs = [
   {
+    route: "/",
+    name: "home",
+    type: "link",
+  },
+  {
     route: "/about",
     name: "about us",
     type: "link",
