@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
 import Register from "./components/Register/register";
@@ -31,6 +31,8 @@ const App = () => {
   const [blogData, setBlogData] = useState({});
   const [contactData, setContactData] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+
+  const { pathname } = useLocation();
 
   const { setValue } = useContext(Context);
   useEffect(() => {
@@ -93,9 +95,11 @@ const App = () => {
       }),
     ]).then(() => {
       setLoading(false);
-      setTimeout(() => {
-        setShowPopup(true);
-      }, 3000);
+      if (pathname === "/") {
+        setTimeout(() => {
+          setShowPopup(true);
+        }, 3000);
+      }
     });
   }, []);
   return loading ? (

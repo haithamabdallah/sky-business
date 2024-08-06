@@ -7,8 +7,8 @@ const Popup = ({ setShowPopup }) => {
       className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-65 flex
       justify-center items-center font-futura z-50"
     >
-      <div className="min-w-[60%] bg-white min-h-[10%] max-h-[90%] max-w-[90%] grid grid-cols-2">
-        <div className="min-h-[10%] max-h-[90%]">
+      <div className="bg-white lg:w-[40rem] md:w-[40rem] sm:w-[35rem] w-[90vw] grid grid-cols-2">
+        <div className="">
           <img className="h-full" src={image} alt="offer image" />
         </div>
         <div className="flex flex-col lg:gap-y-3 gap-y-1 justify-between px-4 relative min-h-[10%] max-h-[90%]">
@@ -37,7 +37,7 @@ const Popup = ({ setShowPopup }) => {
             src={logo}
             alt="offer image"
           />
-          <h2 className="sm:text-3xl text-base text-red-600 font-semibold">
+          <h2 className=" text-red-600 font-semibold min-[500px]:text-base text-xs">
             Sign up and be the first to know about our biggest offers of the
             year!
           </h2>
