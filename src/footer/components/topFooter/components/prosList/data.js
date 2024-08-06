@@ -21,11 +21,6 @@ export const list = [
   },
   {
     id: 4,
-    src: manyOptions,
-    content: "Many Options",
-  },
-  {
-    id: 5,
     src: consulting,
     content: "Consulting",
   },

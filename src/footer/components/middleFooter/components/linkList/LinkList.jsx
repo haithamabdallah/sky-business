@@ -3,7 +3,7 @@ import { data } from "./data";
 
 const LinkList = () => {
   return (
-    <div className="lg:px-[1rem] lg:w-[66.66667%] w-auto ">
+    <div className="lg:w-[66.66667%] p-0">
       <div className=" flex flex-wrap max-w-full justify-items-center">
         {data.map(({ id, h2, ul }) => (
           <ul

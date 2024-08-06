@@ -10,7 +10,7 @@ const BannerImage = ({ image }) => {
       flex flex-wrap justify-center items-center text-center"
     >
       <div
-        className="lg:w-full lg:px-[1.4375rem] md:p-[15px] w-full py-[10px]
+        className="lg:w-full lg:px-[1.4375rem] w-full py-[10px]
         flex-[0_0_auto] min-h-0 min-w-0 flex"
       >
         <div className="block relative">

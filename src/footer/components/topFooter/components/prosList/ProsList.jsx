@@ -3,8 +3,8 @@ import { list } from "./data";
 const ProsList = () => {
   return (
     <ul
-      className="md:mx-[-15px] mx-[10px] font-futura flex flex-wrap justify-between
-      py-2 border-t border-t-[#0349ad] border-b border-b-[#0349ad] gap-y-2"
+      className="font-futura flex flex-wrap justify-between
+      py-2 border-b bg-[rgb(209_213_219_/1)] gap-y-2"
     >
       {list.map(({ id, src, content }) => (
         <li
