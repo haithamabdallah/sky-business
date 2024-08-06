@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { tabs } from "../data";
+import { tabs } from "../../sharedData/tabs";
 import SideList from "./sideList/SideList";
 import Search from "./search/Search";
 import { Context } from "../../ContextProvider";
@@ -10,9 +10,9 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
 
-  const { value } = useContext(Context)
-  const logo = `${url}/${value.settings.logo}`
-  
+  const { value } = useContext(Context);
+  const logo = `${url}/${value.settings.logo}`;
+
   let typingTimer;
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -26,8 +26,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
     <nav
       className={`hidden w-screen min-[1200px]:grid grid-cols-12 bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem] items-center
-      transition-[height] duration-300 ${
-        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
+      transition-[height] duration-0 ${
+        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-[104px] fixed"
       }`}
     >
       <div className="col-span-2 flex items-center relative">
@@ -54,7 +54,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
       <Search setShow={setShow} show={show} />
       {show && (
         <section
-          className="w-screen max-w-[75rem] z-index-10 flex items-center font-futura bg-white z-50"
+          className="w-full col-span-12 z-index-10 flex items-center font-futura bg-white z-50"
           onBlur={() => setShow(false)}
         >
           <label

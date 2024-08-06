@@ -5,24 +5,26 @@ import Home from "./components/home/Home";
 import Register from "./components/Register/register";
 import Login from "./components/login/Login";
 import About from "./components/about/About";
-import Beauty from "./components/beauty/Beauty";
+import SkinCare from "./components/skinCare/SkinCare";
 import Blog from "./components/blog/Blog";
 import Brands from "./components/brands/Brands";
 import Retailers from "./components/retailers/Retailers";
 import Contact from "./components/contact/Contact";
-import OrganicFoods from "./components/organicFoods/OrganicFoods";
+import HealthCare from "./components/healthCare/HealthCare";
 import Footer from "./footer/Footer";
 import Article from "./components/blog/components/blogCards/components/article/Article";
 import sendRequest from "./methods/fetchData";
 import logo from "./navbar/logo.jpeg";
 import { Context } from "./ContextProvider";
+import Makeup from "./components/makeup/Makeup";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
-  const [beautyData, setBeautyData] = useState({});
+  const [skinCareData, setSkinCareData] = useState({});
   const [retailerData, setRetailerData] = useState({});
-  const [organicFoodsData, setOrganicFoodsData] = useState({});
+  const [healthCareData, setHealthCareData] = useState({});
+  const [makeupData, setMakeupData] = useState({});
   const [brandData, setBrandData] = useState({});
   const [blogData, setBlogData] = useState({});
   const [contactData, setContactData] = useState({});
@@ -45,7 +47,8 @@ const App = () => {
       sendRequest({ method: "post", endpoint: "beauty-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-          setBeautyData(res.data);
+          setSkinCareData(res.data);
+          setMakeupData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
@@ -57,7 +60,7 @@ const App = () => {
       sendRequest({ method: "post", endpoint: "organic-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-          setOrganicFoodsData(res.data);
+          setHealthCareData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
@@ -99,15 +102,15 @@ const App = () => {
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
         <Navbar />
-        <main className="mt-[54px] min-[1200px]:mt-[73px]">
+        <main className="mt-[54px] min-[1200px]:mt-[104px]">
           <Routes>
             <Route path="/" element={<Home homeData={homeData} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route
-              path="/beauty"
-              element={<Beauty beautyData={beautyData} />}
+              path="/skin_care"
+              element={<SkinCare skinCareData={skinCareData} />}
             />
             <Route path="/blog" element={<Blog blogData={blogData} />} />
             <Route path="/blog/:id" element={<Article />} />
@@ -121,8 +124,12 @@ const App = () => {
               element={<Contact contactData={contactData} />}
             />
             <Route
-              path="/organic_foods"
-              element={<OrganicFoods organicFoodsData={organicFoodsData} />}
+              path="/health_care"
+              element={<HealthCare healthCareData={healthCareData} />}
+            />
+            <Route
+              path="/makeup"
+              element={<Makeup makeupData={makeupData} />}
             />
           </Routes>
         </main>

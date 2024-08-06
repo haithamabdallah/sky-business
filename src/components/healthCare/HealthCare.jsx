@@ -2,20 +2,20 @@ import PageCover from "../innerPages/components/pageCover/PageCover";
 import FoodCategories from "./components/foodCategories/FoodCategories";
 import OurFoodServices from "./components/ourFoodServices/OurFoodServices";
 
-const OrganicFoods = ({ organicFoodsData }) => {
+const HealthCare = ({ healthCareData }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const cover = organicFoodsData.settings.cover;
+  const cover = healthCareData.settings.cover;
   const foodCategories = {
-    organics: organicFoodsData.organics,
-    header: organicFoodsData.settings.header,
-    text: organicFoodsData.settings.text,
+    organics: healthCareData.organics,
+    header: healthCareData.settings.header,
+    text: healthCareData.settings.text,
   };
 
   const ourFoodServices = {
-    header: organicFoodsData.settings.header2,
-    text: organicFoodsData.settings.text2,
-    button: organicFoodsData.settings.button,
-    image: organicFoodsData.settings.image,
+    header: healthCareData.settings.header2,
+    text: healthCareData.settings.text2,
+    button: healthCareData.settings.button,
+    image: healthCareData.settings.image,
   };
 
   return (
@@ -29,4 +29,4 @@ const OrganicFoods = ({ organicFoodsData }) => {
   );
 };
 
-export default OrganicFoods;
+export default HealthCare;

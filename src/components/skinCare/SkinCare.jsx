@@ -1,10 +1,10 @@
 import PageCover from "../innerPages/components/pageCover/PageCover";
 import Products from "./components/products/Products";
 
-const Beauty = ({ beautyData }) => {
+const SkinCare = ({ skinCareData }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const coverData = beautyData.settings
-  const products = beautyData["beauty products"]
+  const coverData = skinCareData.settings
+  const products = skinCareData["beauty products"]
   return (
     <>
       <PageCover
@@ -19,4 +19,4 @@ const Beauty = ({ beautyData }) => {
   );
 };
 
-export default Beauty;
+export default SkinCare;
