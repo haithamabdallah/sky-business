@@ -49,12 +49,22 @@ const App = () => {
           setAboutData(res.data);
         }
       }),
-      sendRequest({ method: "post", endpoint: "beauty-page" }).then((res) => {
+      sendRequest({ method: "post", endpoint: "skin-page" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
           setSkinCareData(res.data);
-          setMakeupData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "hair-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
           setHairCareData(res.data);
+        }
+      }),
+      sendRequest({ method: "post", endpoint: "makeup-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setMakeupData(res.data);
         }
       }),
       sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {

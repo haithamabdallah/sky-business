@@ -23,7 +23,7 @@ const HealthCare = ({ healthCareData }) => {
       <PageCover title="" subtitle="" backgroundImage={`${url}/${cover}`} />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
         <FoodCategories foodCategories={foodCategories} />
-        {/* <OurFoodServices ourFoodServices={ourFoodServices} /> */}
+        <OurFoodServices ourFoodServices={ourFoodServices} />
       </div>
     </>
   );
