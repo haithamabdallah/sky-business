@@ -38,78 +38,98 @@ const App = () => {
   const { setValue } = useContext(Context);
   useEffect(() => {
     Promise.all([
-      sendRequest({ method: "post", endpoint: "home-page" }).then((res) => {
+      sendRequest({ method: "post", endpoint: "settings" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
-          setHomeData(res.data);
+          console.log(res.data);
+          setHomeData(res.data['home_page']);
+          setAboutData(res.data['about_page']);
+          setSkinCareData(res.data['skin_page']);
+          setHairCareData(res.data['hair_page']);
+          setMakeupData(res.data['makeup_page']);
+          setRetailerData(res.data['retailer_page']);
+          setHealthCareData(res.data['organic_page']);
+          setBrandData(res.data['brand_page']);
+          setBlogData(res.data['blog_page']);
+          setContactData(res.data['contact_page']);
+          setRegisterData(res.data['register_page']);
+          setValue(res.data['general']);
+          document.getElementById("app-icon").href = `${import.meta.env.VITE_STORAGE_URL}/${res.data.general.settings.icon}`;
         }
       }),
-      sendRequest({ method: "post", endpoint: "about-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setAboutData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "skin-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setSkinCareData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "hair-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setHairCareData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "makeup-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setMakeupData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setRetailerData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "organic-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setHealthCareData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setBrandData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "blog-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setBlogData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "contact-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setContactData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "register-page" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setRegisterData(res.data);
-        }
-      }),
-      sendRequest({ method: "post", endpoint: "general" }).then((res) => {
-        // console.log({ res });
-        if (res.status === "success") {
-          setValue(res.data);
-        }
-      }),
+      // sendRequest({ method: "post", endpoint: "home-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setHomeData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "about-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setAboutData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "skin-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setSkinCareData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "hair-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setHairCareData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "makeup-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setMakeupData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "retailer-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setRetailerData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "organic-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setHealthCareData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "brand-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setBrandData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "blog-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setBlogData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "contact-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setContactData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "register-page" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setRegisterData(res.data);
+      //   }
+      // }),
+      // sendRequest({ method: "post", endpoint: "general" }).then((res) => {
+      //   // console.log({ res });
+      //   if (res.status === "success") {
+      //     setValue(res.data);
+      //     document.getElementById("app-icon").href = `${import.meta.env.VITE_STORAGE_URL}/${res.data.settings.icon}`;
+      //   }
+      // }),
     ]).then(() => {
       setLoading(false);
       if (pathname === "/") {
