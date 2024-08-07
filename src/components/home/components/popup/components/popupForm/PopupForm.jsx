@@ -1,17 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../../../../../ContextProvider";
-
-const PopupForm = () => {
+import sendRequest from "../../../../../../methods/fetchData";
+const PopupForm = ({ setMessage }) => {
   const [email, setEmail] = useState("");
   const { value } = useContext(Context);
   const phone = value.settings.phone;
   const notificationEmail = value.settings.notification_email;
+  
   return (
     <form
       className="flex flex-col row-span-4"
-      onSubmit={() => {
-        console.log("sending email", email);
+      onSubmit={(e) => {
+        e.preventDefault();
+        sendRequest({
+          method: "get",
+          endpoint: "subscribe",
+          params: { email },
+        }).then((data) => {
+          if (data.status === "success") setMessage(data.message);
+        });
       }}
     >
       <h2 className="leading-6 font-semibold min-[500px]:text-base text-xs">
@@ -41,7 +49,10 @@ const PopupForm = () => {
         placeholder="Email Address"
         className="p-3 my-5 outline-none border border-gray-400"
       />
-      <button className="w-full bg-black text-white p-5 mb-5 text-xl" type="submit">
+      <button
+        className="w-full bg-black text-white p-5 mb-5 text-xl"
+        type="submit"
+      >
         Submit
       </button>
     </form>

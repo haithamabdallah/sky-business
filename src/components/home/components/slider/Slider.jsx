@@ -9,7 +9,6 @@ import "./slider.css";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
-import { slideImages } from "./data";
 
 export default function Slider({ sliders }) {
   const url = import.meta.env.VITE_STORAGE_URL;
@@ -20,7 +19,8 @@ export default function Slider({ sliders }) {
       }}
       modules={[Pagination, Autoplay]}
       autoplay={{
-        delay: 2000,
+        delay: 5000,
+        disableOnInteraction: false,
       }}
       className="mySwiper"
     >

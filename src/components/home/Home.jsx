@@ -10,6 +10,7 @@ import Popup from "./components/popup/Popup";
 import { useEffect } from "react";
 
 const Home = ({ homeData, showPopup, setShowPopup }) => {
+  const isSubscribed = localStorage.getItem("subscribed") ? true : false;
   return (
     homeData.sliders && (
       <main className="flex flex-col">
@@ -21,7 +22,7 @@ const Home = ({ homeData, showPopup, setShowPopup }) => {
         />
         <SkinConsultAIBanner banner={homeData.settings.banner2} />
         <SkinHealthScienceBanner banner={homeData.settings.banner3} />
-        {showPopup && <Popup setShowPopup={setShowPopup}/>}
+        {showPopup && !isSubscribed && <Popup setShowPopup={setShowPopup} />}
       </main>
     )
   );
