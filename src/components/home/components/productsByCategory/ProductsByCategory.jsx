@@ -7,7 +7,7 @@ const ProductsByCategory = ({ categories, explore }) => {
   return (
     <section
       className="max-w-[1200px] m-auto flex flex-wrap justify-center px-0 mt-[66px]
-      gap-x-[15px] lg:gap-x-[30px] font-futura pb-[80px]"
+      gap-[15px] lg:gap-[30px] font-futura pb-[80px]"
     >
       <h2 className="w-full font-normal text-2xl lg:text-[34px] text-center leading-6 lg:leading-[34px] mb-[40px]">
         EXPLORE brands BY CATEGORY

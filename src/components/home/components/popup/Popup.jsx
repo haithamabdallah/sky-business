@@ -64,7 +64,7 @@ const Popup = ({ setShowPopup }) => {
                 src={logo}
                 alt="offer image"
               />
-              <div className="h-[302px] w-full overflow-y-scroll">
+              <div className=" w-full h-[302px] overflow-y-scroll sm:h-auto sm:overflow-y-visible">
                 {parse(popupText)}
               </div>
               <PopupForm setMessage={setMessage} logo={logo} />
@@ -72,7 +72,7 @@ const Popup = ({ setShowPopup }) => {
           </>
         ) : (
           <div
-            className="lg:w-[40rem] h-[40vh] md:w-[40rem] sm:w-[35rem] w-[90vw] flex items-center
+            className="lg:w-[40rem] h-[40vh] md:w-[40rem] sm:w-[35rem] w-[95vw] flex items-center
           justify-center text-green-700"
           >
             <p className="text-2xl">{message}</p>

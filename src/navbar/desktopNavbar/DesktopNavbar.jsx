@@ -30,8 +30,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
         scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-[104px] fixed"
       }`}
     >
-      <div className="col-span-2 flex items-center relative">
-        <Link className="max-w-[10.9375rem] mr-auto" to="/">
+      <div className="col-span-2 flex items-center justify-center relative">
+        <Link className="max-w-[10.9375rem]" to="/">
           <img alt="logo" src={logo} />
         </Link>
       </div>
