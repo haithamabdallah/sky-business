@@ -1,14 +1,14 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/swiper-bundle.css";
 
 import "./slider.css";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { slideImages } from "./data";
 
 export default function Slider({ sliders }) {
@@ -18,12 +18,19 @@ export default function Slider({ sliders }) {
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay]}
+      autoplay={{
+        delay: 2000,
+      }}
       className="mySwiper"
     >
-      {sliders.map((slider) => (
+      {sliders.map((slider, index) => (
         <SwiperSlide key={slider.id}>
-          <img src={`${url}/${slider.background_image}`} alt={`Image ${slider.id}`} />
+          <img
+            className="object-[center_!important]"
+            src={`${url}/${slider.background_image}`}
+            alt={`Image ${slider.id}`}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
