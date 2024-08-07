@@ -1,10 +1,11 @@
 import PageCover from "../innerPages/components/pageCover/PageCover";
 import FoodCategories from "./components/foodCategories/FoodCategories";
+import CoverComponent from "../CoverComponent";
 import OurFoodServices from "./components/ourFoodServices/OurFoodServices";
 
 const HealthCare = ({ healthCareData }) => {
-  const url = import.meta.env.VITE_STORAGE_URL;
-  const cover = healthCareData.settings.cover;
+  const desktopCover = healthCareData.settings.cover_desktop;
+  const mobileCover = healthCareData.settings.cover_mobile;
   const foodCategories = {
     organics: healthCareData.organics,
     header: healthCareData.settings.header,
@@ -20,7 +21,7 @@ const HealthCare = ({ healthCareData }) => {
 
   return (
     <>
-      <PageCover title="" subtitle="" backgroundImage={`${url}/${cover}`} />
+      <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
         <FoodCategories foodCategories={foodCategories} />
         <OurFoodServices ourFoodServices={ourFoodServices} />

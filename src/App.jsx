@@ -29,9 +29,10 @@ const App = () => {
   const [makeupData, setMakeupData] = useState({});
   const [brandData, setBrandData] = useState({});
   const [blogData, setBlogData] = useState({});
+  const [registerData, setRegisterData] = useState({});
   const [contactData, setContactData] = useState({});
   const [showPopup, setShowPopup] = useState(false);
-
+  
   const { pathname } = useLocation();
 
   const { setValue } = useContext(Context);
@@ -97,6 +98,12 @@ const App = () => {
           setContactData(res.data);
         }
       }),
+      sendRequest({ method: "post", endpoint: "register-page" }).then((res) => {
+        // console.log({ res });
+        if (res.status === "success") {
+          setRegisterData(res.data);
+        }
+      }),
       sendRequest({ method: "post", endpoint: "general" }).then((res) => {
         // console.log({ res });
         if (res.status === "success") {
@@ -135,7 +142,7 @@ const App = () => {
                 />
               }
             />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register registerData={registerData} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route

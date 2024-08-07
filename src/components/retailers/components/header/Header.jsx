@@ -1,13 +1,18 @@
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
-const header = ( { retailerData } ) => {
-    return (
-      retailerData.settings &&
+const header = ({ retailerData }) => {
+  return (
+    retailerData.settings && (
       <div className="text-center my-[3rem] ">
-        <h1 className="text-[1.5rem] lg:text-[3.3rem] my-5 font-[700] px-[4vw]">{retailerData.settings.header}</h1>
-        <p className="text-[1.1rem] px-[2vw] max-w-[1000px] mx-auto">{parse(`${retailerData.settings.text}`)}</p>
+        <h1 className="text-[1.5rem] lg:text-[3.3rem] my-5 font-[700] px-[4vw]">
+          {retailerData.settings.header}
+        </h1>
+        <div className="text-[1.1rem] px-[2vw] max-w-[1000px] mx-auto">
+          {parse(`${retailerData.settings.text}`)}
+        </div>
       </div>
-    );
-  };
-  
-  export default header;
+    )
+  );
+};
+
+export default header;

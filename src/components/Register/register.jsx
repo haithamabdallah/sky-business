@@ -3,14 +3,18 @@ import { inputs } from "./data";
 import Input from "./components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import PageCover from "../innerPages/components/pageCover/PageCover";
+import CoverComponent from "../CoverComponent";
 import sendRequest from "../../methods/fetchData";
 
-const Register = () => {
+const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState("");
   const [countries, setCountries] = useState("");
 
   const navigate = useNavigate();
+
+  const desktopCover = registerData.settings.cover_desktop;
+  const mobileCover = registerData.settings.cover_mobile;
   useEffect(() => {
     const fetchCountries = async () => {
       const result = await sendRequest({ method: "get", endpoint: "register" });
@@ -50,11 +54,7 @@ const Register = () => {
 
   return (
     <div>
-      <PageCover
-        title=""
-        subtitle=""
-        backgroundImage="https://images.unsplash.com/photo-1559329513-4980242cf53d?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
+      <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
       <div className="my-[3rem]">
         <form
           className="flex flex-col gap-y-2 px-0 sm:px-4"
