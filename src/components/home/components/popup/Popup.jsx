@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import image from "./1.jpg";
+import { useState, useEffect, useContext } from "react";
 import PopupForm from "./components/popupForm/PopupForm";
-import logo from "./logo.jpeg";
+import { Context } from "../../../../ContextProvider";
+import parse from "html-react-parser";
 const Popup = ({ setShowPopup }) => {
   const [message, setMessage] = useState("");
+  const { value } = useContext(Context);
+
+  const url = import.meta.env.VITE_STORAGE_URL;
+  const popupText = value.settings.popup_text;
+  const popupImage = value.settings.popup_image;
+  const logo = `${url}/${value.settings.logo}`;
 
   useEffect(() => {
     if (message.length) {
-      localStorage.setItem('subscribed', 'true')
+      localStorage.setItem("subscribed", "true");
       setTimeout(() => {
         setShowPopup(false);
       }, 1500);
@@ -26,7 +32,11 @@ const Popup = ({ setShowPopup }) => {
         {message.length === 0 ? (
           <>
             <div>
-              <img className="h-full" src={image} alt="offer image" />
+              <img
+                className="h-full"
+                src={`${url}/${popupImage}`}
+                alt="offer image"
+              />
             </div>
             <div className="flex flex-col lg:gap-y-3 gap-y-1 justify-between px-4 relative min-h-[10%] max-h-[90%]">
               <button
@@ -54,11 +64,10 @@ const Popup = ({ setShowPopup }) => {
                 src={logo}
                 alt="offer image"
               />
-              <h2 className="text-red-600 font-semibold min-[500px]:text-base text-xs">
-                Sign up and be the first to know about our biggest offers of the
-                year!
-              </h2>
-              <PopupForm setMessage={setMessage} />
+              <div className="h-[302px] w-full overflow-y-scroll">
+                {parse(popupText)}
+              </div>
+              <PopupForm setMessage={setMessage} logo={logo} />
             </div>
           </>
         ) : (
