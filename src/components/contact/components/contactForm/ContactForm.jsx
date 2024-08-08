@@ -97,12 +97,12 @@ const ContactForm = () => {
         >
           Yes, sign me up for <span className="font-bold">Emails</span>
           <br />
-          <span className="text-[10px]">
+          {/* <span className="text-[10px]">
             I expressly consent to receiving exclusive news, promotions and
             opportunities for engagement from Vichy Canada via electronic
             messages. I understand that I may withdraw my consent at any time
             from receiving any or all such electronic messages.
-          </span>
+          </span> */}
         </small>
       </div>
       <div className="w-[98%] justify-start">
