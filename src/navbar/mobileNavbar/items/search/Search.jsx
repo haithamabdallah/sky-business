@@ -1,18 +1,39 @@
 import React from "react";
+import BlogCards from "../../../../components/blog/components/blogCards/BlogCards";
+import SendRequest from "../../../../methods/fetchData";
 import { useState } from "react";
 
-const Search = () => {
-  const [term, setTerm] = useState("");
+let typingTimer;
+const handleSearch = (e, setPosts, setStatus, setLoading) => {
+  clearTimeout(typingTimer);
+  setPosts([]);
+  setStatus("");
+  setLoading(false);
+  if (e.target.value.length > 0) {
+    typingTimer = setTimeout(() => {
+      const value = e.target.value;
+      setLoading(true);
+      SendRequest({
+        method: "post",
+        endpoint: "search",
+        body: { search: value },
+      }).then((res) => {
+        if (res.status === "success") {
+          setLoading(false);
+          setStatus(res.status);
+          setPosts(res.data.posts);
+        }
+      });
+    }, 1500);
+  }
+};
+
+const Search = ({ logo }) => {
   const [show, setShow] = useState(false);
   const [foucs, setFoucs] = useState(false);
-  let typingTimer;
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(() => {
-      setTerm(value);
-    }, 500);
-  };
+  const [posts, setPosts] = useState([]);
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
   return (
     <div>
       <button
@@ -20,6 +41,10 @@ const Search = () => {
         type="button"
         onClick={(e) => {
           setShow(!show);
+          document.querySelector("body").classList.toggle("overflow-hidden");
+          setPosts([]);
+          setStatus("");
+          setLoading(false);
         }}
       >
         <svg
@@ -41,8 +66,13 @@ const Search = () => {
             <button
               className="absolute right-4 top-13"
               onClick={() => {
-                setTerm("");
                 setShow(false);
+                document
+                  .querySelector("body")
+                  .classList.remove("overflow-hidden");
+                setPosts([]);
+                setStatus("");
+                setLoading(false);
               }}
             >
               <svg
@@ -73,7 +103,7 @@ const Search = () => {
               I'm Looking for...
             </label>
             <input
-              onChange={handleSearch}
+              onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
               onFocus={() => setFoucs(true)}
               onBlur={(e) => {
                 if (!e.target.value) setFoucs(false);
@@ -84,10 +114,41 @@ const Search = () => {
             h-[2.1rem] text-[14px] font-semibold"
               autoFocus
             />
+            <div
+              className="w-full bg-white overflow-auto"
+              onClick={() => {
+                setPosts([]);
+                document
+                  .querySelector("body")
+                  .classList.remove("overflow-hidden");
+                setStatus("");
+                setShow(false);
+              }}
+            >
+              {!loading && posts.length > 0 && <BlogCards posts={posts} />}
+              {loading && posts.length === 0 && (
+                <div className="flex items-center justify-center min-h-20">
+                  <img
+                    alt="loading"
+                    src={logo}
+                    className="animate-breath w-36"
+                  />
+                </div>
+              )}
+
+              {status.length > 0 && posts.length === 0 && (
+                <p
+                  className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
+                w-auto min-h-20"
+                >
+                  There is no post with the term provided above.
+                </p>
+              )}
+            </div>
           </section>
           <section
             tabIndex="0"
-            className="w-screen z-index-10 absolute left-0 hidden lg:flex items-center font-futura
+            className="w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
             bg-white z-50 pointer-events-auto"
           >
             <label
@@ -97,12 +158,43 @@ const Search = () => {
               I'm Looking for...
             </label>
             <input
-              onChange={handleSearch}
+              onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
               type="text"
               name="search"
               className="outline-none font-semibold leading-[initial] text-[2.125rem] h-20 px-[0.625rem] flex-auto"
               autoFocus
             />
+            <div
+              className="w-full"
+              onClick={() => {
+                setPosts([]);
+                document
+                  .querySelector("body")
+                  .classList.remove("overflow-hidden");
+                setStatus("");
+                setShow(false);
+              }}
+            >
+              {!loading && posts.length > 0 && <BlogCards posts={posts} />}
+              {loading && posts.length === 0 && (
+                <div className="flex items-center justify-center min-h-20">
+                  <img
+                    alt="loading"
+                    src={logo}
+                    className="animate-breath w-36"
+                  />
+                </div>
+              )}
+
+              {status.length > 0 && posts.length === 0 && (
+                <p
+                  className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
+                w-auto min-h-20"
+                >
+                  There is no post with the term provided above.
+                </p>
+              )}
+            </div>
           </section>
         </>
       )}

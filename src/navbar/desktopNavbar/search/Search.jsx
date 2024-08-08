@@ -10,7 +10,7 @@ const Search = ({ setShow, show }) => {
         after:[mask:url(./navbar/desktopNavbar/search/search.svg)_no-repeat_left/100%]
         after:align-middle hover:border hover:border-black focus:border focus:border-black
         ${show ? "border border-black" : ""}`}
-        onClick={() => setShow(!show)}
+        onClick={() => setShow(true)}
       >
         <span className="text-[12px] leading-4 font-semibold mr-[1rem]">
           SEARCH

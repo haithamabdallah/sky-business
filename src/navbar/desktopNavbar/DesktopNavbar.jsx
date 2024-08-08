@@ -1,28 +1,49 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { tabs } from "../../sharedData/tabs";
+import BlogCards from "../../components/blog/components/blogCards/BlogCards";
+import SendRequest from "../../methods/fetchData";
 import SideList from "./sideList/SideList";
 import Search from "./search/Search";
 import { Context } from "../../ContextProvider";
 
+let typingTimer;
+const handleSearch = (e, setPosts, setStatus, setLoading) => {
+  clearTimeout(typingTimer);
+  setPosts([]);
+  setStatus("");
+  setLoading(false);
+  if (e.target.value.length > 0) {
+    typingTimer = setTimeout(() => {
+      const value = e.target.value;
+      setLoading(true);
+      SendRequest({
+        method: "post",
+        endpoint: "search",
+        body: { search: value },
+      }).then((res) => {
+        console.log("hello");
+        if (res.status === "success") {
+          setLoading(false);
+          setStatus(res.status);
+          setPosts(res.data.posts);
+        }
+      });
+    }, 1500);
+  }
+};
+
 const DesktopNavbar = ({ scrollStatus }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { value } = useContext(Context);
   const logo = `${url}/${value.settings.logo}`;
 
   const { pathname } = useLocation();
-
-  let typingTimer;
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(() => {
-      setTerm(value);
-    }, 500);
-  };
 
   const upperTabs = tabs.slice(0, 4);
   const restTabs = tabs.slice(4);
@@ -83,8 +104,14 @@ const DesktopNavbar = ({ scrollStatus }) => {
       </div>
       {show && (
         <section
-          className="w-full col-span-12 z-index-10 flex items-center font-futura bg-white z-50"
-          onBlur={() => setShow(false)}
+          tabIndex={0}
+          className="w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center font-futura bg-white z-50"
+          onBlur={(e) => {
+            if (e.relatedTarget?.tagName === "A") return;
+            setPosts([]);
+            setStatus("");
+            setShow(false);
+          }}
         >
           <label
             htmlFor="search"
@@ -93,12 +120,37 @@ const DesktopNavbar = ({ scrollStatus }) => {
             I'm Looking for...
           </label>
           <input
-            onChange={handleSearch}
+            onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
             type="text"
             name="search"
-            className="outline-none font-semibold leading-[initial] text-[2.125rem] h-20 px-[0.625rem] flex-auto"
+            className="outline-none font-semibold leading-[initial] text-[2.125rem] h-20
+            px-[0.625rem] flex-auto"
             autoFocus
           />
+          <div
+            className="w-full"
+            onClick={() => {
+              setPosts([]);
+              setStatus("");
+              setShow(false);
+            }}
+          >
+            {!loading && posts.length > 0 && <BlogCards posts={posts} />}
+            {loading && posts.length === 0 && (
+              <div className="flex items-center justify-center min-h-20">
+                <img alt="loading" src={logo} className="animate-breath w-36" />
+              </div>
+            )}
+
+            {status.length > 0 && posts.length === 0 && (
+              <p
+                className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
+                w-auto min-h-20"
+              >
+                There is no post with the term provided above.
+              </p>
+            )}
+          </div>
         </section>
       )}
     </nav>

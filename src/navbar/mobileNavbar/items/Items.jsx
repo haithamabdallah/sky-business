@@ -1,11 +1,11 @@
 import Cart from "./cart/Cart";
 import FindStore from "./findStore/FindStore";
 import Search from "./search/Search";
-const Items = () => {
+const Items = ({ logo }) => {
   return (
-    <ul className="flex gap-x-[10px] items-center px-5">
+    <ul className="flex gap-x-[10px] items-center px-5 z-50">
       <li>
-        <Search />
+        <Search logo={logo} />
       </li>
     </ul>
   );
