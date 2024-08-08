@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { tabs } from "../../sharedData/tabs";
 import SideList from "./sideList/SideList";
 import Search from "./search/Search";
@@ -13,6 +13,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const { value } = useContext(Context);
   const logo = `${url}/${value.settings.logo}`;
 
+  const { pathname } = useLocation();
+
   let typingTimer;
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -22,27 +24,54 @@ const DesktopNavbar = ({ scrollStatus }) => {
     }, 500);
   };
 
+  const upperTabs = tabs.slice(0, 4);
+  const restTabs = tabs.slice(4);
   return (
     <nav
-      className={`hidden w-screen min-[1200px]:grid grid-cols-12 bg-white text-sm leading-5 font-medium
-      top-0 z-10 font-futuraDemi pt-[.3125rem] px-[1.25rem] pb-[.1875rem] items-center
+      className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
+      top-0 z-10 font-futuraDemi pt-[.3125rem]
       transition-[height] duration-0 ${
-        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-[104px] fixed"
+        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
       }`}
     >
-      <div className="col-span-2 flex items-center justify-center relative">
-        <Link className="max-w-[10.9375rem]" to="/">
-          <img alt="logo" src={logo} />
-        </Link>
-      </div>
-
-      <div className="col-span-8 flex mx-auto justify-between relative">
-        <ul className="flex justify-center px-[.9375rem] mx-auto flex-wrap">
-          {tabs.map((tab, i) => (
+      <div className="w-full bg-[#004aad]">
+        <ul className="flex px-[1.25rem] pb-[.1875rem]">
+          {upperTabs.map((tab, i) => (
             <Fragment key={tab.name}>
               {
                 <li
-                  className={`text-[.875rem] leading-5 font-medium py-[.875rem] px-[1rem]`}
+                  className={`text-[.75rem] text-white leading-5 font-medium py-[.875rem] px-[1rem]`}
+                >
+                  <Link
+                    className={`${
+                      pathname === tab.route
+                        ? "underline decoration-white decoration-4 underline-offset-[10px]"
+                        : ""
+                    }`}
+                    to={tab.route}
+                  >
+                    {tab.name.toUpperCase()}
+                  </Link>
+                </li>
+              }
+            </Fragment>
+          ))}
+        </ul>
+      </div>
+
+      <div className="grid grid-cols-12 relative px-[1.25rem] pb-[.1875rem]">
+        <Link
+          className="col-span-2 max-w-[10.9375rem] flex justify-center mx-auto"
+          to="/"
+        >
+          <img alt="logo" src={logo} />
+        </Link>
+        <ul className="col-span-8 flex ml-auto justify-center items-center px-[.9375rem] mx-auto flex-wrap">
+          {restTabs.map((tab, i) => (
+            <Fragment key={tab.name}>
+              {
+                <li
+                  className={`text-[.75rem] leading-5 font-medium py-[.875rem] px-[1rem]`}
                 >
                   <NavLink to={tab.route}>{tab.name.toUpperCase()}</NavLink>
                 </li>
@@ -50,8 +79,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
             </Fragment>
           ))}
         </ul>
+        <Search setShow={setShow} show={show} />
       </div>
-      <Search setShow={setShow} show={show} />
       {show && (
         <section
           className="w-full col-span-12 z-index-10 flex items-center font-futura bg-white z-50"

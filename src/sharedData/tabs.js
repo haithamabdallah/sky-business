@@ -5,6 +5,21 @@ export const tabs = [
     type: "link",
   },
   {
+    route: "/register",
+    name: "Become a customer",
+    type: "link",
+  },
+  {
+    route: "/blog",
+    name: "Blog",
+    type: "link",
+  },
+  {
+    route: "/contact",
+    name: "Contact",
+    type: "link",
+  },
+  {
     route: "/skin_care",
     name: "skin care",
     type: "link",
@@ -24,29 +39,14 @@ export const tabs = [
     name: "health care",
     type: "link",
   },
-  {
-    route: "/brands",
-    name: "Brands",
-    type: "link",
-  },
+  // {
+  //   route: "/brands",
+  //   name: "Brands",
+  //   type: "link",
+  // },
   {
     route: "/retailers",
     name: "Retailers",
-    type: "link",
-  },
-  {
-    route: "/register",
-    name: "Become a customer",
-    type: "link",
-  },
-  {
-    route: "/blog",
-    name: "Blog",
-    type: "link",
-  },
-  {
-    route: "/contact",
-    name: "Contact",
     type: "link",
   },
 ];

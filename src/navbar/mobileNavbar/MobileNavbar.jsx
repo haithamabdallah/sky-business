@@ -57,7 +57,7 @@ const MobileNavbar = ({ scrollStatus }) => {
             <li key={i} className={`text-xs py-3 leading-5`}>
               <NavLink
                 to={tab.route}
-                className="py-1 px-5 rounded-full"
+                className="py-1 rounded-full"
                 onClick={() => {
                   setShow(false);
                   document
