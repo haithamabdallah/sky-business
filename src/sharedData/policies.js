@@ -8,7 +8,7 @@ export const policies = [
     name: "Privacy Policy",
   },
   {
-    route: "/return",
+    route: "/returns",
     name: "Return Policy",
   },
 ];

@@ -9,9 +9,9 @@ const SocialList = () => {
   return (
     <ul
       className="lg:mb-[2.1875rem] my-3 flex items-center flex-nowrap
-      justify-between leading-none list-none m-0 p-0 text-left"
+      justify-around leading-none list-none m-0 p-0 text-left"
     >
-      {data.map(({ name, src }, index) => (
+      {data.map(({ name, src, to }, index) => (
         <li
           key={index}
           className={
@@ -19,7 +19,7 @@ const SocialList = () => {
             `${name == "facebook" ? "scale-[0.85]" : ""}`
           }
         >
-          <Link target="_blank" to="#">
+          <Link target="_blank" to={`${to}`}>
             <img src={`${src}`} alt={name} width={"15px"} height={"15px"} />
           </Link>
         </li>

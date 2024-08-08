@@ -1,12 +1,12 @@
 export const tabs = [
   {
     route: "/about",
-    name: "about us",
+    name: "About Us",
     type: "link",
   },
   {
     route: "/register",
-    name: "Become a customer",
+    name: "Become A Customer",
     type: "link",
   },
   {
@@ -21,22 +21,22 @@ export const tabs = [
   },
   {
     route: "/skin_care",
-    name: "skin care",
+    name: "Skin Care",
     type: "link",
   },
   {
     route: "/hair_care",
-    name: "hair care",
+    name: "Hair Care",
     type: "link",
   },
   {
     route: "/makeup",
-    name: "makeup",
+    name: "Makeup",
     type: "link",
   },
   {
     route: "/health_care",
-    name: "health care",
+    name: "Health Care",
     type: "link",
   },
   // {

@@ -1,7 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { data } from "./data";
 
 const LinkList = () => {
+  const location = useLocation();
   return (
     <div className="lg:w-[66.66667%] p-0">
       <div className=" flex flex-wrap max-w-full justify-items-center">
@@ -12,7 +13,7 @@ const LinkList = () => {
           >
             <li>
               <h2
-                className="font-semibold lg:text-[1.3rem] lg:leading-[3rem] text-[1.3rem]
+                className="font-semibold lg:text-[.85rem] lg:leading-[3rem] text-[.85rem]
                   leading-[3rem] mb-2"
               >
                 {h2}
@@ -22,14 +23,15 @@ const LinkList = () => {
               <ul className="list-none m-0 lg:mt-[5px]">
                 {ul.map(({ name, route } , index) => (
                   <li key={index}>
-                    <NavLink
+                    <Link
                       to={route}
-                      className="inline-block text-black font-normal text-[0.75rem]
-                              leading-[2rem] font-futura py-[0.3125rem] lg:py-0
-                              lg:font-normal lg:text-[0.9rem] lg:leading-[3rem] hover:opacity-80"
+                      className={`inline-block text-black text-[0.8rem]
+                              leading-[1rem] font-futura py-[0.3125rem] lg:py-0
+                              lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600] ${
+                                location.pathname === route && "opacity-80 font-[600] underline" }`}
                     >
-                      {name.toUpperCase()}
-                    </NavLink>
+                      {name}
+                    </Link>
                   </li>
                 ))}
               </ul>
