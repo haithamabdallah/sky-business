@@ -97,7 +97,7 @@ const App = () => {
               }
             />
             <Route path="/register" element={<Register registerData={registerData} />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login loginData={registerData} />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route
               path="/skin_care"

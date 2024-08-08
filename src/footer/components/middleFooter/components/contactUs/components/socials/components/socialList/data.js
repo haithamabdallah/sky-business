@@ -12,11 +12,11 @@ export const getSocialList = (settings) => {
   const instagramLink = settings.instagram_link
   // const whatsAppLink =  settings.whatsapp_link 
   const data = [
-    { name: "facebook", src: facebook, to: facebookLink},
+    { name: "facebook", src: facebook, route: facebookLink},
     // { name: "twitter", src: twitter, to: twitterXLink},
-    { name: "x", src: x, to: xLink},
-    { name: "instagram", src: instagram, to: instagramLink},
-    { name: "linkedin", src: linkedIn, to:  linkedInLink},
+    { name: "x", src: x, route: xLink},
+    { name: "instagram", src: instagram, route: instagramLink},
+    { name: "linkedin", src: linkedIn, route:  linkedInLink},
     // { name: "whatsApp", src: whatsApp, to: whatsAppLink},
   ];
   return data

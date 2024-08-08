@@ -39,11 +39,11 @@ export const tabs = [
     name: "Health Care",
     type: "link",
   },
-  // {
-  //   route: "/brands",
-  //   name: "Brands",
-  //   type: "link",
-  // },
+  {
+    route: "/brands",
+    name: "Brands",
+    type: "link",
+  },
   {
     route: "/retailers",
     name: "Retailers",

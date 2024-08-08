@@ -50,13 +50,13 @@ const DesktopNavbar = ({ scrollStatus }) => {
   return (
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
-      top-0 z-10 font-futuraDemi pt-[.3125rem]
+      top-0 z-10 font-futuraDemi
       transition-[height] duration-0 ${
         scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
       }`}
     >
-      <div className="w-full bg-[#004aad]">
-        <ul className="flex px-[1.25rem] pb-[.1875rem]">
+      <div className="w-full bg-[#004aad] flex justify-end">
+        <ul className="flex px-[1.25rem] pb-[.1875rem] ml-auto">
           {upperTabs.map((tab, i) => (
             <Fragment key={tab.name}>
               {
@@ -82,7 +82,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
 
       <div className="grid grid-cols-12 relative px-[1.25rem] pb-[.1875rem]">
         <Link
-          className="col-span-2 max-w-[10.9375rem] flex justify-center mx-auto"
+          className="col-span-2 max-w-[10.9375rem] max-h-[70px] flex justify-center mx-auto"
           to="/"
         >
           <img alt="logo" src={logo} />
@@ -115,7 +115,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
         >
           <label
             htmlFor="search"
-            className="text-[34px] leading-7 flex-[0_0_auto] w-auto"
+            className="pl-2 text-[25px] leading-7 flex-[0_0_auto] w-auto"
           >
             I'm Looking for...
           </label>
@@ -123,7 +123,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
             onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
             type="text"
             name="search"
-            className="outline-none font-semibold leading-[initial] text-[2.125rem] h-20
+            className="outline-none font-semibold leading-[initial] text-[25px] h-20
             px-[0.625rem] flex-auto"
             autoFocus
           />

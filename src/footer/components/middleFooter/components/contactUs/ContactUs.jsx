@@ -8,7 +8,7 @@ const ContactUs = () => {
     <div className="flex flex-col lg:px-[0.9375rem] lg:w-1/3">
       <Newsletter />
       <FooterContact />
-      <Socials />
+      {/* <Socials /> */}
     </div>
   );
 };

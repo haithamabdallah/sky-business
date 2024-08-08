@@ -153,7 +153,7 @@ const Search = ({ logo }) => {
           >
             <label
               htmlFor="search"
-              className="text-[34px] leading-7 flex-[0_0_auto] w-auto"
+              className="text-[25px] leading-7 flex-[0_0_auto] w-auto"
             >
               I'm Looking for...
             </label>
@@ -161,7 +161,7 @@ const Search = ({ logo }) => {
               onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
               type="text"
               name="search"
-              className="outline-none font-semibold leading-[initial] text-[2.125rem] h-20 px-[0.625rem] flex-auto"
+              className="outline-none font-semibold leading-[initial] text-[25px] h-20 px-[0.625rem] flex-auto"
               autoFocus
             />
             <div
