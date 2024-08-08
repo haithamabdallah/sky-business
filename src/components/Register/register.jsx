@@ -8,7 +8,7 @@ import sendRequest from "../../methods/fetchData";
 
 const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState({});
   const [countries, setCountries] = useState("");
 
   const navigate = useNavigate();
@@ -47,9 +47,11 @@ const Register = ({ registerData }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setErrors({});
-    }, 2000);
+    if (Object.keys(errors).length) {
+      setTimeout(() => {
+        setErrors({});
+      }, 2000);
+    }
   }, [errors]);
 
   return (
