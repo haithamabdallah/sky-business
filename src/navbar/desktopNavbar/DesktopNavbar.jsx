@@ -22,9 +22,9 @@ const DesktopNavbar = ({ scrollStatus }) => {
   useEffect(() => {
     if (scrollStatus === "down") setShow(false);
   }, [scrollStatus]);
-  
-  const upperTabs = tabs.slice(0, 4);
-  const restTabs = tabs.slice(4);
+
+  const upperTabs = tabs.slice(0, 5);
+  const restTabs = tabs.slice(5);
   return (
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium

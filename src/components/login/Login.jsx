@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import CoverComponent from "../CoverComponent";
-
+import ForgottenPassword from "./components/forgottenPassword/ForgottenPassword";
 const Login = ({ loginData }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -95,10 +95,11 @@ const Login = ({ loginData }) => {
           </button>
           <p className="text-black text-center text-xl mt-3">
             or{" "}
-            <Link to="/register" className="underline">
+            <Link to="/register" className="ml-1 underline underline-offset-2">
               Become a Customer
             </Link>
           </p>
+          <ForgottenPassword />
         </form>
       </section>
     </>
