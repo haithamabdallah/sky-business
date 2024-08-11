@@ -21,8 +21,8 @@ import HairCare from "./components/hairCare/HairCare";
 import Terms from "./components/staticPages/terms/Terms";
 import Privacy from "./components/staticPages/privacy/Privacy";
 import Returns from "./components/staticPages/returns/Returns";
+import Cookies from "./cookies/Cookies";
 const App = () => {
-
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
   const [aboutData, setAboutData] = useState({});
@@ -36,8 +36,9 @@ const App = () => {
   const [registerData, setRegisterData] = useState({});
   const [contactData, setContactData] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+  const [showCookies, setShowCookies] = useState(false);
   const [staticPagesData, setStaticPagesData] = useState({});
-  
+
   const { pathname } = useLocation();
 
   const { setValue } = useContext(Context);
@@ -48,25 +49,30 @@ const App = () => {
         // console.log({ res });
         if (res.status === "success") {
           // console.log(res.data);
-          setHomeData(res.data['home_page']);
-          setAboutData(res.data['about_page']);
-          setSkinCareData(res.data['skin_page']);
-          setHairCareData(res.data['hair_page']);
-          setMakeupData(res.data['makeup_page']);
-          setRetailerData(res.data['retailer_page']);
-          setHealthCareData(res.data['organic_page']);
-          setBrandData(res.data['brand_page']);
-          setBlogData(res.data['blog_page']);
-          setContactData(res.data['contact_page']);
-          setRegisterData(res.data['register_page']);
-          setValue(res.data['general']);
-          setStaticPagesData(res.data['static-pages']);
-          document.getElementById("app-icon").href = `${import.meta.env.VITE_STORAGE_URL}/${res.data.general.settings.icon}`;
+          setHomeData(res.data["home_page"]);
+          setAboutData(res.data["about_page"]);
+          setSkinCareData(res.data["skin_page"]);
+          setHairCareData(res.data["hair_page"]);
+          setMakeupData(res.data["makeup_page"]);
+          setRetailerData(res.data["retailer_page"]);
+          setHealthCareData(res.data["organic_page"]);
+          setBrandData(res.data["brand_page"]);
+          setBlogData(res.data["blog_page"]);
+          setContactData(res.data["contact_page"]);
+          setRegisterData(res.data["register_page"]);
+          setValue(res.data["general"]);
+          setStaticPagesData(res.data["static-pages"]);
+          document.getElementById("app-icon").href = `${
+            import.meta.env.VITE_STORAGE_URL
+          }/${res.data.general.settings.icon}`;
         }
       }),
     ]).then(() => {
       setLoading(false);
-      if (pathname === "/") {
+      setTimeout(() => {
+        setShowCookies(true);
+      }, 2000);
+      if (pathname === "/" && localStorage.getItem("cookies_popup")) {
         setTimeout(() => {
           setShowPopup(true);
         }, 3000);
@@ -83,6 +89,9 @@ const App = () => {
   ) : (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
+        {!localStorage.getItem("cookies_popup") && showCookies && (
+          <Cookies setShowCookies={setShowCookies} />
+        )}
         <Navbar />
         <main>
           <Routes>
@@ -96,7 +105,10 @@ const App = () => {
                 />
               }
             />
-            <Route path="/register" element={<Register registerData={registerData} />} />
+            <Route
+              path="/register"
+              element={<Register registerData={registerData} />}
+            />
             <Route path="/login" element={<Login loginData={registerData} />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route
