@@ -22,6 +22,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
   useEffect(() => {
     if (scrollStatus === "down") setShow(false);
   }, [scrollStatus]);
+  
   const upperTabs = tabs.slice(0, 4);
   const restTabs = tabs.slice(4);
   return (

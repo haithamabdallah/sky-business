@@ -1,11 +1,11 @@
 import Cart from "./cart/Cart";
 import FindStore from "./findStore/FindStore";
 import Search from "./search/Search";
-const Items = ({ logo }) => {
+const Items = ({ scrollStatus }) => {
   return (
     <ul className="flex gap-x-[10px] items-center px-5 z-50">
       <li>
-        <Search logo={logo} />
+        <Search scrollStatus={scrollStatus} />
       </li>
     </ul>
   );

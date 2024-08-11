@@ -29,7 +29,7 @@ const MobileNavbar = ({ scrollStatus }) => {
       >
         <img alt="logo" src={logo} />
       </Link>
-      {show === false && <Items logo={logo}/>}
+      {show === false && <Items scrollStatus={scrollStatus} />}
       <MenuIcon show={show} setShow={setShow} />
       <section
         className={`${
