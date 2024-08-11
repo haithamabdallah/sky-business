@@ -23,10 +23,14 @@ const Navbar = () => {
     };
   }, [lastScrollTop]);
   return (
-    <>
+    <div
+      className={`${
+        scrollStatus === "down" ? "mb-0" : "mb-[54px] min-[1200px]:mb-[124px]"
+      }`}
+    >
       <DesktopNavbar scrollStatus={scrollStatus} />
       <MobileNavbar scrollStatus={scrollStatus} />
-    </>
+    </div>
   );
 };
 

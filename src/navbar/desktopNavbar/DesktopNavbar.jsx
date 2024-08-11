@@ -6,11 +6,13 @@ import SendRequest from "../../methods/fetchData";
 import SideList from "./sideList/SideList";
 import Search from "./search/Search";
 import { Context } from "../../ContextProvider";
+import CategoryBrands from "../../components/brands/components/brandCategories/categoryBrands/CategoryBrands";
 
 let typingTimer;
-const handleSearch = (e, setPosts, setStatus, setLoading) => {
+const handleSearch = (e, setPosts, setBrands, setStatus, setLoading) => {
   clearTimeout(typingTimer);
   setPosts([]);
+  setBrands([]);
   setStatus("");
   setLoading(false);
   if (e.target.value.length > 0) {
@@ -24,9 +26,11 @@ const handleSearch = (e, setPosts, setStatus, setLoading) => {
       }).then((res) => {
         console.log("hello");
         if (res.status === "success") {
+          document.querySelector("body").classList.add("overflow-hidden");
           setLoading(false);
           setStatus(res.status);
           setPosts(res.data.posts);
+          setBrands(res.data.brands);
         }
       });
     }, 1500);
@@ -37,6 +41,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -105,10 +110,13 @@ const DesktopNavbar = ({ scrollStatus }) => {
       {show && (
         <section
           tabIndex={0}
-          className="w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center font-futura bg-white z-50"
+          className="w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
+          font-futura bg-white z-50 max-h-[500px] overflow-auto"
           onBlur={(e) => {
             if (e.relatedTarget?.tagName === "A") return;
+            document.querySelector("body").classList.remove("overflow-hidden");
             setPosts([]);
+            setBrands([]);
             setStatus("");
             setShow(false);
           }}
@@ -120,7 +128,9 @@ const DesktopNavbar = ({ scrollStatus }) => {
             I'm Looking for...
           </label>
           <input
-            onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
+            onChange={(e) =>
+              handleSearch(e, setPosts, setBrands, setStatus, setLoading)
+            }
             type="text"
             name="search"
             className="outline-none font-semibold leading-[initial] text-[25px] h-20
@@ -130,24 +140,29 @@ const DesktopNavbar = ({ scrollStatus }) => {
           <div
             className="w-full"
             onClick={() => {
+              document.querySelector("body").classList.remove("overflow-hidden");
               setPosts([]);
+              setBrands([]);
               setStatus("");
               setShow(false);
             }}
           >
             {!loading && posts.length > 0 && <BlogCards posts={posts} />}
-            {loading && posts.length === 0 && (
+            {!loading && brands.length > 0 && (
+              <CategoryBrands brands={brands} />
+            )}
+            {loading && posts.length === 0 && brands.length === 0 && (
               <div className="flex items-center justify-center min-h-20">
                 <img alt="loading" src={logo} className="animate-breath w-36" />
               </div>
             )}
 
-            {status.length > 0 && posts.length === 0 && (
+            {status.length > 0 && posts.length === 0 && brands.length === 0 && (
               <p
                 className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
                 w-auto min-h-20"
               >
-                There is no post with the term provided above.
+                There is no results with the term provided above.
               </p>
             )}
           </div>
