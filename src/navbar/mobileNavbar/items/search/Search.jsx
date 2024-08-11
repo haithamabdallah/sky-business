@@ -2,11 +2,13 @@ import React from "react";
 import BlogCards from "../../../../components/blog/components/blogCards/BlogCards";
 import SendRequest from "../../../../methods/fetchData";
 import { useState } from "react";
+import CategoryBrands from "../../../../components/brands/components/brandCategories/categoryBrands/CategoryBrands";
 
 let typingTimer;
-const handleSearch = (e, setPosts, setStatus, setLoading) => {
+const handleSearch = (e, setPosts, setBrands, setStatus, setLoading) => {
   clearTimeout(typingTimer);
   setPosts([]);
+  setBrands([]);
   setStatus("");
   setLoading(false);
   if (e.target.value.length > 0) {
@@ -22,6 +24,7 @@ const handleSearch = (e, setPosts, setStatus, setLoading) => {
           setLoading(false);
           setStatus(res.status);
           setPosts(res.data.posts);
+          setBrands(res.data.brands);
         }
       });
     }, 1500);
@@ -31,6 +34,7 @@ const handleSearch = (e, setPosts, setStatus, setLoading) => {
 const Search = ({ logo }) => {
   const [show, setShow] = useState(false);
   const [foucs, setFoucs] = useState(false);
+  const [brands, setBrands] = useState([]);
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,6 +47,7 @@ const Search = ({ logo }) => {
           setShow(!show);
           document.querySelector("body").classList.toggle("overflow-hidden");
           setPosts([]);
+          setBrands([]);
           setStatus("");
           setLoading(false);
         }}
@@ -71,6 +76,7 @@ const Search = ({ logo }) => {
                   .querySelector("body")
                   .classList.remove("overflow-hidden");
                 setPosts([]);
+                setBrands([]);
                 setStatus("");
                 setLoading(false);
               }}
@@ -103,7 +109,9 @@ const Search = ({ logo }) => {
               I'm Looking for...
             </label>
             <input
-              onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
+              onChange={(e) =>
+                handleSearch(e, setPosts, setBrands, setStatus, setLoading)
+              }
               onFocus={() => setFoucs(true)}
               onBlur={(e) => {
                 if (!e.target.value) setFoucs(false);
@@ -118,15 +126,20 @@ const Search = ({ logo }) => {
               className="w-full bg-white overflow-auto"
               onClick={() => {
                 setPosts([]);
+                setBrands([]);
+                setStatus("");
+                setLoading(false);
                 document
                   .querySelector("body")
                   .classList.remove("overflow-hidden");
-                setStatus("");
                 setShow(false);
               }}
             >
               {!loading && posts.length > 0 && <BlogCards posts={posts} />}
-              {loading && posts.length === 0 && (
+              {!loading && brands.length > 0 && (
+                <CategoryBrands brands={brands} />
+              )}
+              {loading && posts.length === 0 && brands.length === 0 && (
                 <div className="flex items-center justify-center min-h-20">
                   <img
                     alt="loading"
@@ -136,20 +149,22 @@ const Search = ({ logo }) => {
                 </div>
               )}
 
-              {status.length > 0 && posts.length === 0 && (
-                <p
-                  className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
+              {status.length > 0 &&
+                posts.length === 0 &&
+                brands.length === 0 && (
+                  <p
+                    className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
                 w-auto min-h-20"
-                >
-                  There is no post with the term provided above.
-                </p>
-              )}
+                  >
+                    There is no results with the term provided above.
+                  </p>
+                )}
             </div>
           </section>
           <section
             tabIndex="0"
             className="w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
-            bg-white z-50 pointer-events-auto"
+            bg-white z-50 pointer-events-auto max-h-[450px] overflow-auto"
           >
             <label
               htmlFor="search"
@@ -158,7 +173,9 @@ const Search = ({ logo }) => {
               I'm Looking for...
             </label>
             <input
-              onChange={(e) => handleSearch(e, setPosts, setStatus, setLoading)}
+              onChange={(e) =>
+                handleSearch(e, setPosts, setBrands, setStatus, setLoading)
+              }
               type="text"
               name="search"
               className="outline-none font-semibold leading-[initial] text-[25px] h-20 px-[0.625rem] flex-auto"
@@ -168,15 +185,20 @@ const Search = ({ logo }) => {
               className="w-full"
               onClick={() => {
                 setPosts([]);
+                setBrands([]);
+                setStatus("");
+                setLoading(false);
                 document
                   .querySelector("body")
                   .classList.remove("overflow-hidden");
-                setStatus("");
                 setShow(false);
               }}
             >
               {!loading && posts.length > 0 && <BlogCards posts={posts} />}
-              {loading && posts.length === 0 && (
+              {!loading && brands.length > 0 && (
+                <CategoryBrands brands={brands} />
+              )}
+              {loading && posts.length === 0 && brands.length === 0 && (
                 <div className="flex items-center justify-center min-h-20">
                   <img
                     alt="loading"
@@ -186,14 +208,16 @@ const Search = ({ logo }) => {
                 </div>
               )}
 
-              {status.length > 0 && posts.length === 0 && (
-                <p
-                  className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
+              {status.length > 0 &&
+                posts.length === 0 &&
+                brands.length === 0 && (
+                  <p
+                    className="flex items-center text-[24px] justify-center leading-7 flex-[0_0_auto]
                 w-auto min-h-20"
-                >
-                  There is no post with the term provided above.
-                </p>
-              )}
+                  >
+                    There is no results with the term provided above.
+                  </p>
+                )}
             </div>
           </section>
         </>

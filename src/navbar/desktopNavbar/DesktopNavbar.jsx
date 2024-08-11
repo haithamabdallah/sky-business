@@ -111,7 +111,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
         <section
           tabIndex={0}
           className="w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
-          font-futura bg-white z-50 max-h-[500px] overflow-auto"
+          font-futura bg-white z-50 max-h-[70vh] overflow-auto"
           onBlur={(e) => {
             if (e.relatedTarget?.tagName === "A") return;
             document.querySelector("body").classList.remove("overflow-hidden");
