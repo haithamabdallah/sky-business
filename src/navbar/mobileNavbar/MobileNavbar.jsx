@@ -51,7 +51,7 @@ const MobileNavbar = ({ scrollStatus }) => {
           </Link>
         </div>
         <ul
-          className={`flex-col w-[50%] flex-auto self-end bg-white px-5 gap-y-5`}
+          className={`flex-col w-[50%] overflow-auto flex-auto self-end bg-white px-5 gap-y-5`}
         >
           {tabs.map((tab, i) => (
             <li key={i} className={`text-xs py-3 leading-5`}>
