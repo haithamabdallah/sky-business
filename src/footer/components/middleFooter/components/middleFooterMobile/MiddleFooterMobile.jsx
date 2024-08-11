@@ -9,7 +9,9 @@ import Links from "./components/links/Links";
 import ContactUs from "../contactUs/ContactUs";
 
 const MiddleFooterMobile = () => {
-    initTWE({ Collapse });
+    useEffect(() => {
+        initTWE({ Collapse });
+    })
     const location = useLocation();
     const { value } = useContext(Context);
     const socialData = getSocialList(value.settings);
@@ -63,12 +65,13 @@ const MiddleFooterMobile = () => {
                             className="group relative flex w-full items-center rounded-t-lg border-0 bg-black px-5 py-4 text-left text-base text-white transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-black [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary dark:[&:not([data-twe-collapse-collapsed])]:shadow-white/10 "
                             type="button"
                             data-twe-collapse-init
+                            data-twe-collapse-collapsed
                             data-twe-target="#collapseTwo"
                             aria-expanded="false"
                             aria-controls="collapseTwo">
                             POLICIES
                             <span
-                                className="-me-1 ms-auto h-5 w-5 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out group-data-[twe-collapse-collapsed]:me-0 group-data-[twe-collapse-collapsed]:rotate-0 motion-reduce:transition-none [&>svg]:h-6 [&>svg]:w-6">
+                                className="-me-1 ms-auto h-5 w-5 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out group-data-[twe-collapse-collapsed]:me-0 group-data-[twe-collapse-collapsed]:rotate-0 motion-reduce:transition-none [&>svg]:h-6 [&>svg]:w-6 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -87,7 +90,6 @@ const MiddleFooterMobile = () => {
                         id="collapseTwo"
                         className="!visible hidden"
                         data-twe-collapse-item
-                        data-twe-collapse-show
                         aria-labelledby="headingTwo"
                         data-twe-parent="#accordionExample">
                         <div className="px-5 py-4">
