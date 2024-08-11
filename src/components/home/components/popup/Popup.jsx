@@ -26,19 +26,20 @@ const Popup = ({ setShowPopup }) => {
       justify-center items-center font-futura z-50"
     >
       <div
-        className="bg-white lg:w-[40rem] md:w-[40rem] sm:w-[35rem] w-[90vw] grid grid-cols-2
-        relative"
+        className="bg-white min-h-[10vh] max-h-[95vh] lg:w-[50rem] md:w-[40rem] sm:w-[35rem] w-[90vw] sm:grid sm:grid-cols-2
+        relative flex flex-col sm:static"
       >
         {message.length === 0 ? (
           <>
             <div>
               <img
-                className="h-full"
+                className="max-h-[10vh] min-[320px]:max-h-[20vh] min-[454px]:max-h-[30vh] sm:max-h-none h-full w-full px-4
+                sm:px-0 mt-12 mb-3 sm:my-0 sm:w-full mx-auto"
                 src={`${url}/${popupImage}`}
                 alt="offer image"
               />
             </div>
-            <div className="flex flex-col lg:gap-y-3 gap-y-1 justify-between px-4 relative min-h-[10%] max-h-[90%]">
+            <div className="flex flex-col lg:gap-y-3 gap-y-1 justify-between px-4 static sm:relative">
               <button
                 className="absolute right-1 top-2"
                 onClick={() => {
@@ -60,11 +61,13 @@ const Popup = ({ setShowPopup }) => {
                 </svg>
               </button>
               <img
-                className="sm:max-w-[10rem] sm:w-auto max-w-none w-[90px] sm:self-center self-start"
+                className="sm:max-w-[10rem] sm:w-auto max-w-none w-[90px] sm:self-center self-start
+                absolute sm:static top-1 left-0"
                 src={logo}
                 alt="offer image"
               />
-              <div className=" w-full h-[302px] overflow-y-scroll sm:h-auto sm:overflow-y-visible">
+              <div className=" w-full max-h-none sm:max-h-[216px] overflow-y-scroll
+              sm:overflow-y-visible">
                 {parse(popupText)}
               </div>
               <PopupForm setMessage={setMessage} logo={logo} />
