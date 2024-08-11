@@ -84,7 +84,7 @@ const App = () => {
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <div className="self-start">
         <Navbar />
-        <main className="mt-[54px] min-[1200px]:mt-[129px]">
+        <main>
           <Routes>
             <Route
               path="/"
