@@ -22,6 +22,7 @@ import Terms from "./components/staticPages/terms/Terms";
 import Privacy from "./components/staticPages/privacy/Privacy";
 import Returns from "./components/staticPages/returns/Returns";
 import Cookies from "./cookies/Cookies";
+import SearchResult from "./searchResult/SearchResult";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
@@ -105,6 +106,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="/search" element={<SearchResult />} />
             <Route
               path="/register"
               element={<Register registerData={registerData} />}

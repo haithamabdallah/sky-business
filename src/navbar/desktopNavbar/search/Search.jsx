@@ -10,10 +10,9 @@ const Search = ({ setShow, show }) => {
         after:[mask:url(./navbar/desktopNavbar/search/search.svg)_no-repeat_left/100%]
         after:align-middle hover:border hover:border-black focus:border focus:border-black
         ${show ? "border border-black" : ""}`}
+        name="search_button"
         onClick={() => {
-          setShow(true);
-          document.querySelector("body").classList.add("overflow-hidden");
-          window.scrollTo({ top: 0 });
+          setShow(!show);
         }}
       >
         <span className="text-[12px] leading-4 font-semibold mr-[1rem]">
