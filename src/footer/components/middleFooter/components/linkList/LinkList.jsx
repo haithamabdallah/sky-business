@@ -1,8 +1,8 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { data } from "./data";
-import { getSocialList } from "../contactUs/components/socials/components/socialList/data";
 import { useContext, useEffect } from "react";
 import { Context } from "../../../../../ContextProvider";
+import { getSocialList } from "../contactUs/components/socials/components/socialList/data";
 
 const LinkList = () => {
   const location = useLocation();
