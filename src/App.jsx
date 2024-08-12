@@ -24,6 +24,7 @@ import Returns from "./components/staticPages/returns/Returns";
 import Cookies from "./cookies/Cookies";
 import SearchResult from "./searchResult/SearchResult";
 import Subscribed from "./components/subscribed/Subscribed";
+import Unsubscribed from "./components/unsubscribed/Unsubscribed";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -157,6 +158,10 @@ const App = () => {
             <Route
               path="/subscribed"
               element={<Subscribed />}
+            />
+            <Route
+              path="/unsubscribed"
+              element={<Unsubscribed />}
             />
           </Routes>
         </main>
