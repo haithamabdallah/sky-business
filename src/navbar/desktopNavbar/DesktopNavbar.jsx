@@ -39,7 +39,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
       <div className="w-full bg-[#004aad] flex justify-end">
         <ul className="flex px-[1.25rem] pb-[.1875rem] ml-auto">
           {upperTabs.map((tab, i) => {
-            if (token && ["/register", "/login"].includes(tab.route)) return;
+            if (token && ["/login"].includes(tab.route)) return;
             return (
               <Fragment key={tab.name}>
                 {
@@ -57,7 +57,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
                       <span
                         className={`flex flex-row gap-2 place-items-center`}
                       >
-                        {["/register", "/login"].includes(tab.route) && (
+                        {["/login"].includes(tab.route) && (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="12"
