@@ -8,9 +8,11 @@ const Newsletter = () => {
   const [checked, setChecked] = useState(false);
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
+      setStatus("");
     }, 2000);
   }, [message]);
   return (
@@ -36,7 +38,8 @@ const Newsletter = () => {
               endpoint: "subscribe",
               params: { ...form },
             }).then((data) => {
-              if (data.status === "success") setMessage(data.message);
+              setMessage(data.message);
+              setStatus(data.status);
             });
           }}
         >
@@ -138,11 +141,20 @@ const Newsletter = () => {
           </span> */}
           {/* <hr className="mb-5" /> */}
           <div className="mb-5 flex items-start [flex:1_1_100%] flex-wrap">
-            {message.length > 0 && (
-              <small className="w-full py-5 text-green-700 text-[1rem]">
-                {message}
-              </small>
-            )}
+            {message.length > 0 &&
+              status ===
+                "success"(
+                  <small className="w-full py-5 text-green-700 text-[1rem]">
+                    {message}
+                  </small>
+                )}
+            {message.length > 0 &&
+              status ===
+                "error"(
+                  <small className="w-full py-5 text-red-700 text-[1rem]">
+                    {message}
+                  </small>
+                )}
             {/* {message.length > 0 && <br/>} */}
             <button
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border
@@ -157,7 +169,7 @@ const Newsletter = () => {
           </div>
         </form>
       </div>
-        <hr className="mb-5" />
+      <hr className="mb-5" />
     </div>
   );
 };

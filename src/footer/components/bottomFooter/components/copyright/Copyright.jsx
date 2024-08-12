@@ -6,7 +6,7 @@ const Copyright = () => {
       className="font-futura text-black"
     >
       <p className="text-[0.75rem]">
-        © COPYRIGHT 2024 <Link className="font-[600]" to="/"> SKY BUSINESS TARDE </Link> , ALL RIGHTS RESERVED
+        © COPYRIGHT 2024 SKY BUSINESS TARDE, ALL RIGHTS RESERVED
       </p>
     </div>
   );

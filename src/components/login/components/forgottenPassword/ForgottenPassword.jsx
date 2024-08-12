@@ -5,7 +5,7 @@ const ForgottenPassword = () => {
     <div className="flex justify-center">
       <Link
         to="/forget_password"
-        className="text-black text-center my-3 font-medium hover:opacity-65"
+        className="text-black text-center my-3 font-medium text-sm hover:opacity-65"
       >
         Forgotten your password?
       </Link>

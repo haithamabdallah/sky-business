@@ -22,7 +22,7 @@ const Links = ({ data }) => {
                     className={"flex justify-center items-center"}
                   >
                     <Link
-                      className="rounded-full border border-black p-2 scale-110"
+                      className="rounded-full border border-black p-2 scale-[1.2] mx-1"
                       target="_blank"
                       to={`${route}`}
                     >

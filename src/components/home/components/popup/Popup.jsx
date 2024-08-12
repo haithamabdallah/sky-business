@@ -4,6 +4,7 @@ import { Context } from "../../../../ContextProvider";
 import parse from "html-react-parser";
 const Popup = ({ setShowPopup }) => {
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
   const { value } = useContext(Context);
 
   const url = import.meta.env.VITE_STORAGE_URL;
@@ -41,7 +42,7 @@ const Popup = ({ setShowPopup }) => {
             </div>
             <div className="flex flex-col lg:gap-y-3 gap-y-1 justify-between px-4 static sm:relative">
               <button
-                className="absolute right-1 top-2"
+                className="absolute right-3 top-2"
                 onClick={() => {
                   setShowPopup(false);
                 }}
@@ -62,24 +63,42 @@ const Popup = ({ setShowPopup }) => {
               </button>
               <img
                 className="sm:max-w-[10rem] sm:w-auto max-w-none w-[90px] sm:self-center self-start
-                absolute sm:static top-1 left-0"
+                absolute sm:static top-1 left-0 ml-4 sm:ml-0"
                 src={logo}
-                alt="offer image"
+                alt="logo image"
               />
-              <div className=" w-full max-h-none sm:max-h-[216px] overflow-y-scroll
-              sm:overflow-y-visible">
+              <div
+                className=" w-full max-h-none sm:max-h-[216px] overflow-y-scroll
+              sm:overflow-y-visible"
+              >
                 {parse(popupText)}
               </div>
-              <PopupForm setMessage={setMessage} logo={logo} />
+              <PopupForm
+                setStatus={setStatus}
+                setMessage={setMessage}
+                logo={logo}
+              />
             </div>
           </>
         ) : (
-          <div
-            className="lg:w-[40rem] h-[40vh] md:w-[40rem] sm:w-[35rem] w-[95vw] flex items-center
-          justify-center text-green-700"
-          >
-            <p className="text-2xl">{message}</p>
-          </div>
+          <>
+            {status === "success" && (
+              <div
+                className="lg:w-[40rem] h-[40vh] md:w-[40rem] sm:w-[35rem] w-[95vw] flex items-center
+          justify-center text-green-700 px-4"
+              >
+                <p className="text-2xl">{message}</p>
+              </div>
+            )}
+            {status === "error" && (
+              <div
+                className="lg:w-[40rem] h-[40vh] md:w-[40rem] sm:w-[35rem] w-[95vw] flex items-center
+          justify-center text-red-700 px-4"
+              >
+                <p className="text-2xl">{message}</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

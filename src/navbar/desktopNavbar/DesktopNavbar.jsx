@@ -33,7 +33,9 @@ const DesktopNavbar = ({ scrollStatus }) => {
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi
       transition-[height] duration-0 ${
-        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
+        scrollStatus === "down"
+          ? "w-0 h-0 static overflow-hidden"
+          : "w-auto h-auto fixed overflow-visible"
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
@@ -44,18 +46,16 @@ const DesktopNavbar = ({ scrollStatus }) => {
               <Fragment key={tab.name}>
                 {
                   <li
-                    className={`text-[.75rem] text-white leading-5 font-medium py-[.875rem] px-[1rem]`}
+                    className={`text-[.75rem] text-white leading-5 font-medium pt-[14px] pb-[10px]
+                      px-[1rem]`}
                   >
-                    <Link
-                      className={`${
-                        pathname === tab.route
-                          ? "underline decoration-white decoration-4 underline-offset-[10px]"
-                          : ""
-                      }`}
-                      to={tab.route}
-                    >
+                    <Link className={``} to={tab.route}>
                       <span
-                        className={`flex flex-row gap-2 place-items-center`}
+                        className={`flex flex-row gap-2 place-items-center px-1 ${
+                          pathname === tab.route
+                            ? "border-b-4 pb-1 border-b-white"
+                            : ""
+                        }`}
                       >
                         {["/login"].includes(tab.route) && (
                           <svg

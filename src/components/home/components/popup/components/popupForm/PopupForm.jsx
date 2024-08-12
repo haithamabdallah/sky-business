@@ -2,12 +2,12 @@ import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../../../../../ContextProvider";
 import sendRequest from "../../../../../../methods/fetchData";
-const PopupForm = ({ setMessage }) => {
+const PopupForm = ({ setMessage, setStatus }) => {
   const [email, setEmail] = useState("");
   const { value } = useContext(Context);
   const phone = value.settings.phone;
   const notificationEmail = value.settings.notification_email;
-  
+
   return (
     <form
       className="flex flex-col row-span-4"
@@ -18,7 +18,8 @@ const PopupForm = ({ setMessage }) => {
           endpoint: "subscribe",
           params: { email },
         }).then((data) => {
-          if (data.status === "success") setMessage(data.message);
+          setMessage(data.message);
+          setStatus(data.status);
         });
       }}
     >
