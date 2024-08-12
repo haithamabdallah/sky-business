@@ -33,7 +33,9 @@ const DesktopNavbar = ({ scrollStatus }) => {
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi
       transition-[height] duration-0 ${
-        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
+        scrollStatus === "down"
+          ? "w-0 h-0 static overflow-hidden"
+          : "w-auto h-auto fixed overflow-visible"
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">

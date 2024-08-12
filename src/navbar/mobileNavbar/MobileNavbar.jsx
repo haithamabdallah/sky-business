@@ -62,7 +62,7 @@ const MobileNavbar = ({ scrollStatus }) => {
         </div>
         <div className="flex w-full h-full mt-[54px]">
           <div
-            className="w-[40px] min-h-screen"
+            className="w-[80px] min-h-screen"
             onClick={() => {
               setShow(false);
               document

@@ -26,6 +26,7 @@ import SearchResult from "./searchResult/SearchResult";
 import ForgetPassword from "./components/forgetPassword/ForgetPassword";
 import Subscribed from "./components/subscribed/Subscribed";
 import Unsubscribed from "./components/unsubscribed/Unsubscribed";
+import ResetPassword from "./components/resetPassword/ResetPassword";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -117,6 +118,7 @@ const App = () => {
             />
             <Route path="/login" element={<Login loginData={registerData} />} />
             <Route path="/forget_password" element={<ForgetPassword />} />
+            <Route path="/password-reset/:token" element={<ResetPassword />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route
               path="/skin_care"
@@ -157,14 +159,8 @@ const App = () => {
               path="/returns"
               element={<Returns staticPagesData={staticPagesData} />}
             />
-            <Route
-              path="/subscribed"
-              element={<Subscribed />}
-            />
-            <Route
-              path="/unsubscribed"
-              element={<Unsubscribed />}
-            />
+            <Route path="/subscribed" element={<Subscribed />} />
+            <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route
               path="*"
               element={
