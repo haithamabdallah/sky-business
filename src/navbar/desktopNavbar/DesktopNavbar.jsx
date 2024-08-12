@@ -46,16 +46,16 @@ const DesktopNavbar = ({ scrollStatus }) => {
               <Fragment key={tab.name}>
                 {
                   <li
-                    className={`text-[.75rem] text-white leading-5 font-medium py-[.875rem] px-[1rem]
-                      ${
-                        pathname === tab.route
-                          ? "underline decoration-white decoration-4 underline-offset-[10px]"
-                          : ""
-                      }`}
+                    className={`text-[.75rem] text-white leading-5 font-medium pt-[14px] pb-[10px]
+                      px-[1rem]`}
                   >
                     <Link className={``} to={tab.route}>
                       <span
-                        className={`flex flex-row gap-2 place-items-center`}
+                        className={`flex flex-row gap-2 place-items-center px-1 ${
+                          pathname === tab.route
+                            ? "border-b-4 pb-1 border-b-white"
+                            : ""
+                        }`}
                       >
                         {["/login"].includes(tab.route) && (
                           <svg
