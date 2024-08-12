@@ -1,12 +1,12 @@
 export const tabs = [
   {
-    route: "/register",
-    name: "Become A Customer",
+    route: "/login",
+    name: "Login",
     type: "link",
   },
   {
-    route: "/login",
-    name: "Login",
+    route: "/register",
+    name: "Become A Customer",
     type: "link",
   },
   {

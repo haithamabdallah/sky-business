@@ -74,7 +74,7 @@ const MobileNavbar = ({ scrollStatus }) => {
             className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 gap-y-5`}
           >
             {tabs.map((tab, i) => {
-              if (token && ["/register", "/login"].includes(tab.route)) return;
+              if (token && ["/login"].includes(tab.route)) return;
               return (
                 <li key={i} className={`text-xs py-3 leading-5`}>
                   <NavLink
