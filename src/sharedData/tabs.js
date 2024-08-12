@@ -6,7 +6,7 @@ export const tabs = [
   },
   {
     route: "/login",
-    name: "login",
+    name: "Login",
     type: "link",
   },
   {
