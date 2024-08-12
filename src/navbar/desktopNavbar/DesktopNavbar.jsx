@@ -29,9 +29,8 @@ const DesktopNavbar = ({ scrollStatus }) => {
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi
-      transition-[height] duration-0 ${
-        scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
-      }`}
+      transition-[height] duration-0 ${scrollStatus === "down" ? "w-0 h-0 static" : "w-auto h-auto fixed"
+        }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
         <ul className="flex px-[1.25rem] pb-[.1875rem] ml-auto">
@@ -42,14 +41,15 @@ const DesktopNavbar = ({ scrollStatus }) => {
                   className={`text-[.75rem] text-white leading-5 font-medium py-[.875rem] px-[1rem]`}
                 >
                   <Link
-                    className={`${
-                      pathname === tab.route
+                    className={`${pathname === tab.route
                         ? "underline decoration-white decoration-4 underline-offset-[10px]"
                         : ""
-                    }`}
+                      }`}
                     to={tab.route}
                   >
-                    {tab.name.toUpperCase()}
+                    <span className={`flex flex-row gap-2 place-items-center`}>
+                      {['/register', '/login'].includes(tab.route) && <svg xmlns="http://www.w3.org/2000/svg" height="12" width="10" viewBox="0 0 448 512"><path fill="#ffffff" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" /></svg>} {tab.name.toUpperCase()}
+                    </span>
                   </Link>
                 </li>
               }
@@ -91,7 +91,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
             navigate("/search", { state: { search: term } });
           }}
           onBlur={(e) => {
-            
+
             if (e.relatedTarget?.name === "search_button") return;
             setShow(false);
           }}

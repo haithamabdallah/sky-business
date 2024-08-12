@@ -1,5 +1,10 @@
 export const tabs = [
   {
+    route: "/register",
+    name: "Become A Customer",
+    type: "link",
+  },
+  {
     route: "/login",
     name: "login",
     type: "link",
@@ -7,11 +12,6 @@ export const tabs = [
   {
     route: "/about",
     name: "About Us",
-    type: "link",
-  },
-  {
-    route: "/register",
-    name: "Become A Customer",
     type: "link",
   },
   {
