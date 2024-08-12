@@ -36,7 +36,7 @@ const MobileNavbar = ({ scrollStatus }) => {
           show ? "flex fixed top-0 right-0 z-30" : "hidden"
         } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
-        <div className="w-full h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
+        <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
           <Link
             to="/register"
             onClick={() => {
@@ -50,26 +50,28 @@ const MobileNavbar = ({ scrollStatus }) => {
             Sign in or sign up
           </Link>
         </div>
-        <ul
-          className={`flex-col w-[50%] overflow-auto flex-auto self-end bg-white px-5 gap-y-5`}
-        >
-          {tabs.map((tab, i) => (
-            <li key={i} className={`text-xs py-3 leading-5`}>
-              <NavLink
-                to={tab.route}
-                className="py-1 rounded-full"
-                onClick={() => {
-                  setShow(false);
-                  document
-                    .querySelector("body")
-                    .classList.remove("overflow-hidden");
-                }}
-              >
-                {tab.name.toUpperCase()}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="flex w-full pl-[40px] h-full mt-[54px]">
+          <ul
+            className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 gap-y-5`}
+          >
+            {tabs.map((tab, i) => (
+              <li key={i} className={`text-xs py-3 leading-5`}>
+                <NavLink
+                  to={tab.route}
+                  className="py-1 rounded-full"
+                  onClick={() => {
+                    setShow(false);
+                    document
+                      .querySelector("body")
+                      .classList.remove("overflow-hidden");
+                  }}
+                >
+                  {tab.name.toUpperCase()}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </nav>
   );

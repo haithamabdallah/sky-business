@@ -1,8 +1,8 @@
 const MenuIcon = ({ show, setShow }) => {
   return (
     <button
-      className={`h-full self-center z-40 ${
-        show ? "w-[10%] flex justify-center items-center ml-1" : ""
+      className={`self-center z-40 ${
+        show ? "w-[40px] flex justify-center items-center ml-1" : ""
       }`}
       onClick={() => {
         setShow(!show)
