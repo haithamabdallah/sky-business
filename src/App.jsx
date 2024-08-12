@@ -26,6 +26,7 @@ import SearchResult from "./searchResult/SearchResult";
 import ForgetPassword from "./components/forgetPassword/ForgetPassword";
 import Subscribed from "./components/subscribed/Subscribed";
 import Unsubscribed from "./components/unsubscribed/Unsubscribed";
+import ConfirmSubscribe from "./components/confirmSubscribe/ConfirmSubscribe";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -164,6 +165,10 @@ const App = () => {
             <Route
               path="/unsubscribed"
               element={<Unsubscribed />}
+            />
+            <Route
+              path="/confirm-subscribe"
+              element={<ConfirmSubscribe />}
             />
             <Route
               path="*"
