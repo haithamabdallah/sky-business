@@ -3,6 +3,7 @@ import { data } from "./data";
 import { useContext, useEffect } from "react";
 import { Context } from "../../../../../ContextProvider";
 import { getSocialList } from "../contactUs/components/socials/components/socialList/data";
+import Logout from "../../../../../logout/Logout";
 
 const LinkList = () => {
   const location = useLocation();
@@ -26,12 +27,14 @@ const LinkList = () => {
               </li>
               <li>
                 <ul
-                  className={`list-none m-0 lg:mt-[5px] ${ul[0].src ? "flex gap-x-2" : ""
-                    }`}
+                  className={`list-none m-0 lg:mt-[5px] ${
+                    ul[0].src ? "flex gap-x-2" : ""
+                  }`}
                 >
-                  {ul.map(({ name, route, src }, index) => { 
-                    if (token && ["/register", "/login"].includes(route)) return;
-                    return (src ? (
+                  {ul.map(({ name, route, src }, index) => {
+                    if (token && ["/register", "/login"].includes(route))
+                      return;
+                    return src ? (
                       <li
                         key={index}
                         className={"flex justify-center items-center"}
@@ -45,18 +48,18 @@ const LinkList = () => {
                         </Link>
                       </li>
                     ) : (
-                      <>
                       <li key={index}>
                         <Link
                           to={route}
                           className={`inline-block text-black text-[0.8rem]
                               leading-[1rem] font-futura py-[0.3125rem] lg:py-0
-                              lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600] ${location.pathname === route &&
-                            "opacity-80 font-[600] underline"
-                            }`}
+                              lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600] ${
+                                location.pathname === route &&
+                                "opacity-80 font-[600] underline"
+                              }`}
                         >
                           <span className="flex flex-row gap-2 place-items-center">
-{/*                             {["/register", "/login"].includes(route) && (
+                            {/*                             {["/register", "/login"].includes(route) && (
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="12"
@@ -73,36 +76,9 @@ const LinkList = () => {
                           </span>
                         </Link>
                       </li>
-                      { 
-                        ( h2 == 'COMPANY' && index == ul.length - 1 && token ) && 
-                        <li key={ index + 1 }>
-                          <button
-                            className={`inline-block text-black text-[0.8rem]
-                                leading-[1rem] font-futura py-[0.3125rem] lg:py-0
-                                lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600]`}
-                          >
-                            <span className="flex flex-row gap-2 place-items-center">
-                                {/* <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  height="12"
-                                  width="10"
-                                  viewBox="0 0 448 512"
-                                >
-                                  <path
-                                    fill="#000000"
-                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"
-                                  />
-                                </svg> */}
-                              {" "}
-                              {"Logout"}
-                            </span>
-                          </button>
-                        </li>
-                      }
-                    </>
-                    ) )
-                  }
-                  )}
+                    );
+                  })}
+                  {h2 == "COMPANY" && token && <Logout type="footer" />}
                 </ul>
               </li>
             </ul>

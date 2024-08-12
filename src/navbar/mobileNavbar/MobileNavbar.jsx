@@ -4,6 +4,7 @@ import MenuIcon from "./menuIcon/MenuIcon";
 import Items from "./items/Items";
 import { NavLink, Link } from "react-router-dom";
 import { Context } from "../../ContextProvider";
+import Logout from "../../logout/Logout";
 const MobileNavbar = ({ scrollStatus }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
@@ -11,6 +12,9 @@ const MobileNavbar = ({ scrollStatus }) => {
   const { value } = useContext(Context);
 
   const logo = `${url}/${value.settings.logo}`;
+
+  const token = localStorage.getItem("token");
+
   return (
     <nav
       className={`flex min-[1200px]:hidden w-screen bg-white top-0 ${
@@ -63,22 +67,26 @@ const MobileNavbar = ({ scrollStatus }) => {
           <ul
             className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 gap-y-5`}
           >
-            {tabs.map((tab, i) => (
-              <li key={i} className={`text-xs py-3 leading-5`}>
-                <NavLink
-                  to={tab.route}
-                  className="py-1 rounded-full"
-                  onClick={() => {
-                    setShow(false);
-                    document
-                      .querySelector("body")
-                      .classList.remove("overflow-hidden");
-                  }}
-                >
-                  {tab.name.toUpperCase()}
-                </NavLink>
-              </li>
-            ))}
+            {tabs.map((tab, i) => {
+              if (token && ["/register", "/login"].includes(tab.route)) return;
+              return (
+                <li key={i} className={`text-xs py-3 leading-5`}>
+                  <NavLink
+                    to={tab.route}
+                    className="py-1 rounded-full"
+                    onClick={() => {
+                      setShow(false);
+                      document
+                        .querySelector("body")
+                        .classList.remove("overflow-hidden");
+                    }}
+                  >
+                    {tab.name.toUpperCase()}
+                  </NavLink>
+                </li>
+              );
+            })}
+            {token && <Logout />}
           </ul>
         </div>
       </section>

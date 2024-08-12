@@ -7,6 +7,7 @@ import SideList from "./sideList/SideList";
 import Search from "./search/Search";
 import { Context } from "../../ContextProvider";
 import CategoryBrands from "../../components/brands/components/brandCategories/categoryBrands/CategoryBrands";
+import Logout from "../../logout/Logout";
 
 const DesktopNavbar = ({ scrollStatus }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
@@ -26,6 +27,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const upperTabs = tabs.slice(0, 5);
   const restTabs = tabs.slice(5);
   const token = localStorage.getItem("token");
+
   return (
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
@@ -76,28 +78,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
               </Fragment>
             );
           })}
-          {token && (
-            <li
-              className={`text-[.75rem] text-white leading-5 font-medium py-[.875rem] px-[1rem]`}
-            >
-              <button>
-                <span className={`flex flex-row gap-2 place-items-center`}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="12"
-                    width="10"
-                    viewBox="0 0 448 512"
-                  >
-                    <path
-                      fill="#ffffff"
-                      d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"
-                    />
-                  </svg>
-                  LOGOUT
-                </span>
-              </button>
-            </li>
-          )}
+          {token && <Logout />}
         </ul>
       </div>
 

@@ -1,6 +1,9 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import Logout from "../../../../../../../logout/Logout";
 
 const Links = ({ data }) => {
+  const token = localStorage.getItem("token");
+  const location = useLocation();
   return (
     <div className="">
       {[data].map(({ id, h2, ul }) => (
@@ -11,8 +14,9 @@ const Links = ({ data }) => {
                 ul[0].src ? "flex gap-x-2" : ""
               }`}
             >
-              {ul.map(({ name, route, src }, index) =>
-                src ? (
+              {ul.map(({ name, route, src }, index) => {
+                if (token && ["/register", "/login"].includes(route)) return;
+                return src ? (
                   <li
                     key={index}
                     className={"flex justify-center items-center"}
@@ -39,8 +43,9 @@ const Links = ({ data }) => {
                       {name}
                     </Link>
                   </li>
-                )
-              )}
+                );
+              })}
+              {h2 == "COMPANY" && token && <Logout type="footer" />}
             </ul>
           </li>
         </ul>
