@@ -50,7 +50,16 @@ const MobileNavbar = ({ scrollStatus }) => {
             Sign in or sign up
           </Link>
         </div>
-        <div className="flex w-full pl-[40px] h-full mt-[54px]">
+        <div className="flex w-full h-full mt-[54px]">
+          <div
+            className="w-[40px] min-h-screen"
+            onClick={() => {
+              setShow(false);
+              document
+                .querySelector("body")
+                .classList.remove("overflow-hidden");
+            }}
+          ></div>
           <ul
             className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 gap-y-5`}
           >

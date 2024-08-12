@@ -9,12 +9,12 @@ const Products = ({ productsData }) => {
       >
         {productsData.header}
       </h2>
-      <p
+      <div
         className="text-[18px] leading-[26px] text-[#393839] text-center mb-[72px]
         [letter-spacing:_1.8px] [word-wrap:_break-word] font-sans font-thin"
       >
         {parse(productsData.text)}
-      </p>
+      </div>
       <ProductList products={productsData.products} />
     </section>
   );
