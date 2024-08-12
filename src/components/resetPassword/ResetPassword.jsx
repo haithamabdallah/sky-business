@@ -47,8 +47,8 @@ const ResetPassword = () => {
       <section className="font-futura flex flex-col">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col max-w-[75rem] w-[60%] xl:w-[50%] xl:max-w-[800px]
-        mx-auto my-[60px]"
+          className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
+          my-12"
         >
           <label className="mb-2" htmlFor="email">
             Password

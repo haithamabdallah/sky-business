@@ -141,20 +141,16 @@ const Newsletter = () => {
           </span> */}
           {/* <hr className="mb-5" /> */}
           <div className="mb-5 flex items-start [flex:1_1_100%] flex-wrap">
-            {message.length > 0 &&
-              status ===
-                "success"(
-                  <small className="w-full py-5 text-green-700 text-[1rem]">
-                    {message}
-                  </small>
-                )}
-            {message.length > 0 &&
-              status ===
-                "error"(
-                  <small className="w-full py-5 text-red-700 text-[1rem]">
-                    {message}
-                  </small>
-                )}
+            {message.length > 0 && status === "success" && (
+              <small className="w-full py-5 text-green-700 text-[1rem]">
+                {message}
+              </small>
+            )}
+            {message.length > 0 && status === "error" && (
+              <small className="w-full py-5 text-red-700 text-[1rem]">
+                {message}
+              </small>
+            )}
             {/* {message.length > 0 && <br/>} */}
             <button
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border

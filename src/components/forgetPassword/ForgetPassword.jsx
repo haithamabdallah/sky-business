@@ -39,11 +39,13 @@ const ForgetPassword = () => {
       >
         Forgot Password
       </div>
-      <section className="font-futura flex flex-col">
+      <section
+        className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
+      my-12"
+      >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col max-w-[75rem] w-[60%] xl:w-[50%] xl:max-w-[800px]
-        mx-auto my-[60px]"
+          className="flex flex-col px-4 w-[90%] min-[400px]:w-[300px]"
         >
           <label className="mb-2" htmlFor="email">
             Enter your email address
