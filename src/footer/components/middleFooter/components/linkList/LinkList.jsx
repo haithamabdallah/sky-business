@@ -33,18 +33,14 @@ const LinkList = () => {
                     src ? (
                       <li
                         key={index}
-                        className={
-                          "border border-[#000] rounded-full flex justify-center items-center px-[6px] py-2" +
-                          `${name == "facebook" ? "scale-[0.50]" : ""}`
-                        }
+                        className={"flex justify-center items-center"}
                       >
-                        <Link target="_blank" to={`${route}`}>
-                          <img
-                            src={`${src}`}
-                            alt={name}
-                            width={"15px"}
-                            height={"15px"}
-                          />
+                        <Link
+                          className="rounded-full border border-black p-2 scale-110"
+                          target="_blank"
+                          to={`${route}`}
+                        >
+                          <img src={`${src}`} alt={name} />
                         </Link>
                       </li>
                     ) : (
