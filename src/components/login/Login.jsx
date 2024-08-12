@@ -45,18 +45,18 @@ const Login = () => {
       text-[36px] bg-black text-white">
          Login
       </div>
-      <section className="font-futura flex flex-col">
+      <section className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
+      my-12">
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}
-          className="flex flex-col max-w-[75rem] w-[60%] xl:w-[50%] xl:max-w-[800px]
-        mx-auto my-[60px]"
+          className="flex flex-col px-4 w-[90%] min-[400px]:w-[300px]"
         >
           <label className="mb-2" htmlFor="email">
             Email
           </label>
           <input
-            className="outline-none w-full px-3 py-2 border border-black mb-4"
+            className="outline-none px-3 py-2 border border-black mb-4"
             name="email"
             type="email"
             required
@@ -66,7 +66,7 @@ const Login = () => {
             Password
           </label>
           <input
-            className="outline-none w-full px-3 py-2 border border-black mb-4"
+            className="outline-none px-3 py-2 border border-black mb-4"
             name="password"
             type="password"
             required
@@ -84,8 +84,7 @@ const Login = () => {
           <button
             className="text-center w-fit self-center appearance-none bg-[#000]
                   border border-transparent rounded-[1.5625rem] text-[#fff] cursor-pointer
-                  text-xl leading-[1] min-w-[10.625rem]
-                  py-[1.0625rem] relative
+                  leading-[1] py-2 px-4 relative
                   [transition:_background-color_.25s_ease-out,_color_.25s_ease-out] align-middle
                   hover:bg-white hover:text-black hover:border-black flex justify-center
                   items-center gap-x-1"
@@ -93,7 +92,7 @@ const Login = () => {
           >
             Login <span className="flex pt-1 ml-1">{`>`}</span>
           </button>
-          <p className="text-black text-center text-xl mt-3">
+          <p className="text-black text-center mt-3">
             or{" "}
             <Link to="/register" className="ml-1 underline underline-offset-2">
               Become a Customer

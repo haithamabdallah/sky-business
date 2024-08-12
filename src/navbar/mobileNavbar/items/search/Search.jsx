@@ -19,7 +19,7 @@ const Search = ({ scrollStatus }) => {
   return (
     <div>
       <button
-        className="mt-2 block lg:hidden"
+        className="block lg:hidden"
         type="button"
         onClick={(e) => {
           setShow(!show);
@@ -41,7 +41,7 @@ const Search = ({ scrollStatus }) => {
       </button>
 
       <button
-        className="mt-2 hidden lg:block"
+        className="hidden lg:block"
         type="button"
         onClick={(e) => {
           setShow(!show);
