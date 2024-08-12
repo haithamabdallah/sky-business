@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import logoutHandler from "./logoutHandler";
 
 
-const Logout = ({ type }) => {
+const Logout = ({ type, setShow }) => {
     const navigate = useNavigate();
   return type === "footer" ? (
     <li>
@@ -24,7 +24,7 @@ const Logout = ({ type }) => {
       <button
         className="py-1 rounded-full flex flex-row gap-2 place-items-center
         min-[1200px]:py-0  min-[1200px]:rounded-none min-[1200px]:block"
-        onClick={() => logoutHandler(navigate)}
+        onClick={() => {logoutHandler(navigate, setShow)}}
       >
         <span className={`flex flex-row gap-2 place-items-center`}>
           <svg

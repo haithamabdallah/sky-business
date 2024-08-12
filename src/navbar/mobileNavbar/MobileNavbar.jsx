@@ -41,18 +41,24 @@ const MobileNavbar = ({ scrollStatus }) => {
         } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
-          <Link
-            to="/register"
-            onClick={() => {
-              setShow(false);
-              document
-                .querySelector("body")
-                .classList.remove("overflow-hidden");
-            }}
-            className="text-white underline w-full text-center"
-          >
-            Sign in or sign up
-          </Link>
+          {token ? (
+            <p className="text-white w-full text-center">
+              You are logged in
+            </p>
+          ) : (
+            <Link
+              to="/register"
+              onClick={() => {
+                setShow(false);
+                document
+                  .querySelector("body")
+                  .classList.remove("overflow-hidden");
+              }}
+              className="text-white underline w-full text-center"
+            >
+              Sign in or sign up
+            </Link>
+          )}
         </div>
         <div className="flex w-full h-full mt-[54px]">
           <div
@@ -86,7 +92,7 @@ const MobileNavbar = ({ scrollStatus }) => {
                 </li>
               );
             })}
-            {token && <Logout />}
+            {token && <Logout setShow={setShow} />}
           </ul>
         </div>
       </section>
