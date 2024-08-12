@@ -26,6 +26,7 @@ import SearchResult from "./searchResult/SearchResult";
 import ForgetPassword from "./components/forgetPassword/ForgetPassword";
 import Subscribed from "./components/subscribed/Subscribed";
 import Unsubscribed from "./components/unsubscribed/Unsubscribed";
+import ConfirmSubscribe from "./components/confirmSubscribe/ConfirmSubscribe";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 
 const App = () => {
@@ -161,6 +162,10 @@ const App = () => {
             />
             <Route path="/subscribed" element={<Subscribed />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
+            <Route
+              path="/confirm-subscribe"
+              element={<ConfirmSubscribe />}
+            />
             <Route
               path="*"
               element={
