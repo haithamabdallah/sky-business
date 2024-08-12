@@ -23,6 +23,8 @@ import Privacy from "./components/staticPages/privacy/Privacy";
 import Returns from "./components/staticPages/returns/Returns";
 import Cookies from "./cookies/Cookies";
 import SearchResult from "./searchResult/SearchResult";
+import Subscribed from "./components/subscribed/Subscribed";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
@@ -151,6 +153,10 @@ const App = () => {
             <Route
               path="/returns"
               element={<Returns staticPagesData={staticPagesData} />}
+            />
+            <Route
+              path="/subscribed"
+              element={<Subscribed />}
             />
           </Routes>
         </main>
