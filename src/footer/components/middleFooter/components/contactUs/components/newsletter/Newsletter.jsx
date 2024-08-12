@@ -41,7 +41,7 @@ const Newsletter = () => {
           }}
         >
           <p className="text-[0.75rem] mb-5 text-black">
-            Required fields are marked with an asterisk
+            Sign Up To Receive The Latest News And Special Offers
             <span className="text-[0.875rem]"> (*)</span>
           </p>
           <div className="flex items-start flex-grow mx-[-0.625rem] text-[#626566] mb-[0.625rem]">

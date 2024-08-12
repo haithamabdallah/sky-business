@@ -23,6 +23,7 @@ import Privacy from "./components/staticPages/privacy/Privacy";
 import Returns from "./components/staticPages/returns/Returns";
 import Cookies from "./cookies/Cookies";
 import SearchResult from "./searchResult/SearchResult";
+import ForgetPassword from "./components/forgetPassword/ForgetPasswod";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [homeData, setHomeData] = useState({});
@@ -112,6 +113,7 @@ const App = () => {
               element={<Register registerData={registerData} />}
             />
             <Route path="/login" element={<Login loginData={registerData} />} />
+            <Route path="/forget_password" element={<ForgetPassword />} />
             <Route path="/about" element={<About aboutData={aboutData} />} />
             <Route
               path="/skin_care"

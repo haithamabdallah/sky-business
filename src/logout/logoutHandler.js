@@ -8,7 +8,7 @@ const logoutHandler = (navigate, setShow = null) => {
   }).then((res) => {
     if (res.status === "success") {
       document.querySelector("body").classList.remove("overflow-hidden");
-      setShow(false);
+      if (setShow) setShow(false);
       localStorage.removeItem("token");
       navigate("/");
     }

@@ -3,14 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import CoverComponent from "../CoverComponent";
 import ForgottenPassword from "./components/forgottenPassword/ForgottenPassword";
-const Login = ({ loginData }) => {
+const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
-
-  const desktopCover = loginData.settings.cover_desktop;
-  const mobileCover = loginData.settings.cover_mobile;
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -44,7 +41,10 @@ const Login = ({ loginData }) => {
 
   return (
     <>
-      <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
+      <div className="flex justify-center items-center w-full min-h-[148.75px] px-[15px] font-futura
+      text-[36px] bg-black text-white">
+         Login
+      </div>
       <section className="font-futura flex flex-col">
         <form
           onChange={handleChange}
