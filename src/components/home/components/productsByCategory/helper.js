@@ -18,24 +18,28 @@ const structureData = (categories, explore) => {
       image: explore.image1,
       category: category1.name,
       category_id: category1.id,
+      link: "/skin_care",
     },
     {
       id: 2,
       image: explore.image2,
       category: category2.name,
       category_id: category2.id,
+      link: "/hair_care",
     },
     {
       id: 3,
       image: explore.image3,
       category: category3.name,
       category_id: category3.id,
+      link: "/health_care",
     },
     {
       id: 4,
       image: explore.image4,
       category: category4.name,
       category_id: category4.id,
+      link: "/makeup",
     },
   ];
   return categoriesInfo;

@@ -12,12 +12,12 @@ const ProductsByCategory = ({ categories, explore }) => {
       <h2 className="w-full font-normal text-2xl lg:text-[34px] text-center leading-6 lg:leading-[34px] mb-[40px]">
         EXPLORE brands BY CATEGORY
       </h2>
-      {categoriesInfo.map((categoryInfo) => (
+      {categoriesInfo.map((categoryInfo , index) => (
         <div
           key={categoryInfo.id}
           className="flex flex-col rounded-[.5625rem] overflow-hidden gap-y-[27px] max-w-auto w-[46%] min-[230px]:w-[40%] lg:max-w-[22.5%] lg:w-auto "
         >
-          <Link to="#" className="flex flex-col gap-y-[20px] h-zoom-in">
+          <Link to={`${categoryInfo.link}`} className="flex flex-col gap-y-[20px] h-zoom-in">
             <div className="rounded-[.5625rem] overflow-hidden ">
               <img
                 src={`${url}/${categoryInfo.image}`}
