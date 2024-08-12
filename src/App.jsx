@@ -163,6 +163,16 @@ const App = () => {
               path="/unsubscribed"
               element={<Unsubscribed />}
             />
+            <Route
+              path="*"
+              element={
+                <Home
+                  homeData={homeData}
+                  showPopup={showPopup}
+                  setShowPopup={setShowPopup}
+                />
+              }
+            />
           </Routes>
         </main>
       </div>
