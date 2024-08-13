@@ -41,16 +41,21 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full min-h-[148.75px] px-[15px] font-futura
-      text-[36px] bg-black text-white">
-         Login
+      <div
+        className="flex justify-center items-center w-full min-h-[148.75px] px-[15px] font-futura
+      text-[36px] bg-black text-white"
+      >
+        Login
       </div>
-      <section className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
-      my-12">
+      <section
+        className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
+      my-12"
+      >
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}
-          className="flex flex-col px-4 w-[90%] min-[400px]:w-[300px]"
+          className="flex flex-col px-4 w-[80%] min-[500px]:w-[50vw]
+              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
         >
           <label className="mb-2" htmlFor="email">
             Email

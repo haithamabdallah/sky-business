@@ -71,7 +71,8 @@ const Register = ({ registerData }) => {
           {inputs.map((input) => (
             <div
               key={input.name}
-              className="self-center flex flex-col gap-y-1 w-[80%] min-[500px]:w-[30vw]"
+              className="self-center flex flex-col gap-y-1 w-[80%] min-[500px]:w-[50vw]
+              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
             >
               <label
                 htmlFor={input.name}
@@ -101,16 +102,20 @@ const Register = ({ registerData }) => {
               ))}
             </small>
           )}
-          <div className="self-center flex flex-wrap gap-2 w-[80%] min-[500px]:w-[30vw] mb-5">
+          <div
+            className="flex flex-wrap justify-center sm:justify-between items-center gap-y-4 gap-x-2 mx-auto w-[80%]
+            min-[500px]:w-[50vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] mb-5"
+          >
             <button
               type="submit"
-              className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
+              className="w-fit text-white px-3 py-2
+              bg-black rounded-md"
             >
               Sign Up
             </button>
-            <p className="ml-auto">
+            <p className="col-span-2">
               Returning Customer?{" "}
-              <Link to="/login" className="text-cyan-700">
+              <Link to="/login" className="text-black font-semibold">
                 Login →
               </Link>
             </p>

@@ -44,11 +44,14 @@ const ResetPassword = () => {
       >
         Reset Password
       </div>
-      <section className="font-futura flex flex-col">
+      <section
+        className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
+      my-12"
+      >
         <form
           onSubmit={handleSubmit}
-          className="font-futura max-w-[75rem] mx-auto flex flex-col justify-center items-center
-          my-12"
+          className="flex flex-col px-4 w-[80%] min-[500px]:w-[50vw]
+              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
         >
           <label className="mb-2" htmlFor="email">
             Password
@@ -93,8 +96,7 @@ const ResetPassword = () => {
           <button
             className="text-center w-fit self-center appearance-none bg-[#000]
                   border border-transparent rounded-[1.5625rem] text-[#fff] cursor-pointer
-                  text-xl leading-[1] min-w-[10.625rem]
-                  py-[1.0625rem] relative
+                  leading-[1] py-2 px-4 relative
                   [transition:_background-color_.25s_ease-out,_color_.25s_ease-out] align-middle
                   hover:bg-white hover:text-black hover:border-black flex justify-center
                   items-center gap-x-1"

@@ -25,7 +25,7 @@ const BlogCards = ({ posts }) => {
               <p
                 to="#"
                 className="mb-5 px-3 py-2 bg-[#0249af] text-white w-fit rounded-md
-                text-[12px] font-semibold uppercase leading-[20px] hover:text-[#0249af]
+                text-[12px] font-semibold uppercase leading-[20px] hover:text-white
               hover:bg-black"
               >
                 {post.label}

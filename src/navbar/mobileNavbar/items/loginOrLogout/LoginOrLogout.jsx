@@ -10,8 +10,8 @@ const LoginOrLogout = () => {
       <Link to="/login">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="12"
-          width="10"
+          height="15"
+          width="13"
           viewBox="0 0 448 512"
         >
           <path

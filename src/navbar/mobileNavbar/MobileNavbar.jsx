@@ -23,7 +23,7 @@ const MobileNavbar = ({ scrollStatus }) => {
         scrollStatus === "down"
           ? "translate-y-[-120px] static"
           : "translate-y-0 fixed"
-      } h-[54px] z-50 items-center font-futura transition-all duration-500`}
+      } h-[54px] z-50 items-center font-futura transition-transform duration-500`}
     >
       <Link
         className={`max-w-[6.5625rem] ${show ? "hidden" : "mr-auto"}`}
@@ -38,8 +38,10 @@ const MobileNavbar = ({ scrollStatus }) => {
       {show === false && <Items scrollStatus={scrollStatus} />}
       <MenuIcon show={show} setShow={setShow} />
       <section
-        className={`${
-          show ? "flex fixed top-0 right-0 z-30" : "hidden"
+        className={`transition-opacity duration-500 ${
+          show
+            ? "fixed top-0 right-0 z-30 opacity-100"
+            : "opacity-0"
         } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
@@ -71,12 +73,12 @@ const MobileNavbar = ({ scrollStatus }) => {
             }}
           ></div>
           <ul
-            className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 gap-y-5`}
+            className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 pt-3`}
           >
             {tabs.map((tab, i) => {
               if (token && ["/login"].includes(tab.route)) return;
               return (
-                <li key={i} className={`text-xs py-3 leading-5`}>
+                <li key={i} className={`text-xs my-3 leading-5`}>
                   <NavLink
                     to={tab.route}
                     className="py-1 rounded-full"
