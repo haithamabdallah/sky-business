@@ -13,7 +13,10 @@ const Search = ({ scrollStatus }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (scrollStatus === "down") setShow(false);
+    if (scrollStatus === "down") {
+      setShow(false);
+      setTerm("");
+    }
   }, [scrollStatus]);
 
   return (
@@ -111,6 +114,7 @@ const Search = ({ scrollStatus }) => {
           </label>
 
           <input
+            value={term}
             onChange={(e) => setTerm(e.target.value)}
             onFocus={() => setFoucs(true)}
             onBlur={(e) => {
@@ -153,6 +157,7 @@ const Search = ({ scrollStatus }) => {
             I'm Looking for...
           </label>
           <input
+            value={term}
             onChange={(e) => setTerm(e.target.value)}
             type="text"
             name="search"

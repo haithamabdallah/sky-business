@@ -22,7 +22,10 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (scrollStatus === "down") setTerm("");
+    if (scrollStatus === "down") {
+      setShow(false);
+      setTerm("");
+    }
   }, [scrollStatus]);
 
   const upperTabs = tabs.slice(0, 5);
@@ -36,7 +39,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
       transition-all duration-500 ${
         scrollStatus === "down"
           ? "static translate-y-[-120px]"
-          : "fixed translate-y-0"
+          : "fixed translate-y-0 delay-100"
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
@@ -130,6 +133,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
           I'm Looking for...
         </label>
         <input
+          value={term}
           onChange={(e) => setTerm(e.target.value)}
           type="text"
           name="search"
