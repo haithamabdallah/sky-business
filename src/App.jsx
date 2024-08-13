@@ -28,6 +28,7 @@ import Subscribed from "./components/subscribed/Subscribed";
 import Unsubscribed from "./components/unsubscribed/Unsubscribed";
 import ConfirmSubscribe from "./components/confirmSubscribe/ConfirmSubscribe";
 import ResetPassword from "./components/resetPassword/ResetPassword";
+import ScrollToTop from "./scrollToTop/ScrollToTop";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -95,6 +96,7 @@ const App = () => {
     </div>
   ) : (
     <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
+      <ScrollToTop />
       <div className="self-start">
         {!localStorage.getItem("cookies_popup") && showCookies && (
           <Cookies setShowCookies={setShowCookies} />
@@ -162,10 +164,7 @@ const App = () => {
             />
             <Route path="/subscribed" element={<Subscribed />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
-            <Route
-              path="/confirm-subscribe"
-              element={<ConfirmSubscribe />}
-            />
+            <Route path="/confirm-subscribe" element={<ConfirmSubscribe />} />
             <Route
               path="*"
               element={
