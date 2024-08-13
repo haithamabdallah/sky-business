@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       keyframes: {
+        pushToSide: {
+         "0%" : { transform: "translateX(0px)"},
+         "100%": { transform: "translateX(100vw)"}
+        },
         fadeIn: {
           "0%": { opacity: 0, height: "0px" },
           "50%": { opacity: 0.5, height: "80px" },
@@ -21,6 +25,7 @@ export default {
         },
       },
       animation: {
+        pushToSide: "pushToSide 0.1s forwards",
         fadeIn: "fadeIn 0.5s linear",
         fadeOut: "fadeOut .2s linear",
         breath: "breath 1s infinite forwards",

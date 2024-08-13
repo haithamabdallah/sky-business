@@ -17,12 +17,10 @@ const MobileNavbar = ({ scrollStatus }) => {
 
   return (
     <nav
-      className={`flex min-[1200px]:hidden w-screen bg-white top-0 ${
+      className={`flex fixed min-[1200px]:hidden w-screen bg-white top-0 ${
         show ? "" : "px-[15px]"
       } ${
-        scrollStatus === "down"
-          ? "translate-y-[-120px] static"
-          : "translate-y-0 fixed"
+        scrollStatus === "down" ? "translate-y-[-54px]" : "translate-y-0"
       } h-[54px] z-50 items-center font-futura transition-transform duration-500`}
     >
       <Link
@@ -40,8 +38,8 @@ const MobileNavbar = ({ scrollStatus }) => {
       <section
         className={`transition-opacity duration-500 ${
           show
-            ? "fixed top-0 right-0 z-30 opacity-100"
-            : "opacity-0"
+            ? "fixed top-0 right-0 z-30 opacity-100 translate-x-0"
+            : "opacity-0 animate-pushToSide [animation-delay:500ms]"
         } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">

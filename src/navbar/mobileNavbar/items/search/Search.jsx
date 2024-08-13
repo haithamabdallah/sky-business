@@ -66,10 +66,10 @@ const Search = ({ scrollStatus }) => {
       <>
         <form
           className={`w-screen h-screen absolute top-0 left-0 bg-white flex lg:hidden
-            flex-col z-50 pt-10  transition-all duration-300 ${
+            flex-col z-50 pt-10  transition-transform duration-300 ${
               show
                 ? "overflow-visible translate-x-0"
-                : "translate-x-[100vw] overflow-hidden"
+                : "translate-x-[300%] overflow-hidden"
             }`}
           onSubmit={(e) => {
             e.preventDefault();
@@ -123,7 +123,9 @@ const Search = ({ scrollStatus }) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
-                console.log("hello from search mobile navbar");
+                document
+                  .querySelector("body")
+                  .classList.remove("overflow-hidden");
                 navigate("/search", { state: { search: term } });
                 setShow(false);
               }

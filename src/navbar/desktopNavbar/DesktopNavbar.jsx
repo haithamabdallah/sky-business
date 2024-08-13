@@ -35,11 +35,11 @@ const DesktopNavbar = ({ scrollStatus }) => {
   return (
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
-      top-0 z-10 font-futuraDemi
+      top-0 z-10 font-futuraDemi fixed
       transition-transform duration-500 ${
         scrollStatus === "down"
-          ? "static translate-y-[-120px]"
-          : "fixed translate-y-0 delay-100"
+          ? "translate-y-[-120px]"
+          : "translate-y-0 delay-100"
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
