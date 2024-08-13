@@ -5,7 +5,7 @@ import Socials from "./components/socials/Socials";
 
 const ContactUs = () => {
   return (
-    <div className="flex flex-col lg:px-[0.9375rem] lg:w-1/3">
+    <div className="lg:mt-9 mt-5 flex flex-col lg:px-[0.9375rem] lg:w-1/3">
       <Newsletter />
       <FooterContact />
       {/* <Socials /> */}

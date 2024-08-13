@@ -6,7 +6,6 @@ import { getSocialList } from "../contactUs/components/socials/components/social
 import Logout from "../../../../../logout/Logout";
 
 const LinkList = () => {
-  const location = useLocation();
   const { value } = useContext(Context);
   const socialData = getSocialList(value.settings);
   const token = localStorage.getItem("token");
@@ -53,10 +52,7 @@ const LinkList = () => {
                           to={route}
                           className={`inline-block text-black text-[0.8rem]
                               leading-[1rem] font-futura py-[0.3125rem] lg:py-0
-                              lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600] ${
-                                location.pathname === route &&
-                                "opacity-80 font-[600] underline"
-                              }`}
+                              lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600]`}
                         >
                           <span className="flex flex-row gap-2 place-items-center">
                             {name}

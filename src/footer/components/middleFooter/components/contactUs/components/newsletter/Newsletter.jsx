@@ -16,7 +16,7 @@ const Newsletter = () => {
     }, 2000);
   }, [message]);
   return (
-    <div className="bg-transparent mt-5 pt-0 lg:pt-0 font-futura">
+    <div className="bg-transparent pt-0 lg:pt-0 font-futura">
       <div className="text-[#626566]">
         <h2
           className="text-[#000] block lg:hidden mb-[.9375rem]
@@ -43,7 +43,7 @@ const Newsletter = () => {
             });
           }}
         >
-          <p className="text-[0.75rem] mb-5 text-black">
+          <p className="text-[0.75rem] lg:leading-[3rem] leading-[3rem] mb-2">
             Sign Up To Receive The Latest News And Special Offers
           </p>
           <div className="flex items-start flex-grow mx-[-0.625rem] text-[#626566] mb-[0.625rem]">

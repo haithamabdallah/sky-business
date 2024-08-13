@@ -3,7 +3,6 @@ import Logout from "../../../../../../../logout/Logout";
 
 const Links = ({ data }) => {
   const token = localStorage.getItem("token");
-  const location = useLocation();
   return (
     <div className="">
       {[data].map(({ id, h2, ul }) => (
@@ -35,10 +34,7 @@ const Links = ({ data }) => {
                       to={route}
                       className={`inline-block text-black text-[0.8rem]
                                     leading-[1rem] font-futura py-[0.3125rem] lg:py-0
-                                    lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600] ${
-                                      location.pathname === route &&
-                                      "opacity-80 font-[600] underline"
-                                    }`}
+                                    lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600]`}
                     >
                       {name}
                     </Link>
