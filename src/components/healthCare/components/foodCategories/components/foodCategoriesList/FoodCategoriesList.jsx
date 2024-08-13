@@ -3,8 +3,12 @@ const FoodCategoriesList = ({ organics }) => {
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-futura">
       {organics.map(({ id, name, image, text }) => (
-        <li key={id} className="relative px-[25px] mb-10">
-          <img src={`${url}/${image}`} alt={name} className="w-full" />
+        <li key={id} className="cursor-pointer relative px-[25px] mb-10">
+          <img
+            src={`${url}/${image}`}
+            alt={name}
+            className="w-full h-full aspect-square"
+          />
           <h2
             className="absolute text-3xl leading-[0.9] bottom-0 pr-[10px] pl-[20px] pb-[21px]
           text-white h-[55px] uppercase font-bold"

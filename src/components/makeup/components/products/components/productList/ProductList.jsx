@@ -3,8 +3,14 @@ const ProductList = ({ products }) => {
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-futura">
       {products.map(({ id, name, image, text }) => (
-        <li key={id} className="relative px-[25px] mb-10">
-          <img src={`${url}/${image}`} alt={name} className="w-full" />
+        <li
+          key={id}
+          className="cursor-pointer relative px-[25px] mb-10 w-full grid grid-rows-5"
+        >
+          <img
+            src={`${url}/${image}`}
+            alt={name}
+            className="row-span-4 w-full h-full aspect-square"          />
           <h2 className="leading-[0.9] text-center mt-10 uppercase font-bold">
             {name}
           </h2>
