@@ -55,7 +55,7 @@ const SearchResult = () => {
     }
   }, [search]);
   return (
-    <section className="font-futura my-10 px-4">
+    <section className="font-futura my-10 px-4 flex flex-col gap-y-3">
       {!loading && posts.length > 0 && <BlogCards posts={posts} />}
       {!loading && brands.length > 0 && <CategoryBrands brands={brands} />}
       {loading && posts.length === 0 && brands.length === 0 && (
