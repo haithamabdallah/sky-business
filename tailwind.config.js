@@ -5,18 +5,25 @@ export default {
     extend: {
       keyframes: {
         fadeIn: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+          "0%": { opacity: 0, height: "0px" },
+          "50%": { opacity: 0.5, height: "80px" },
+          "100%": { opacity: 1, height: "auto" },
+        },
+        fadeOut: {
+          "0%": { opacity: 1, height: "auto" },
+          "50%": { opacity: 0.5, height: "30px" },
+          "100%": { opacity: 0, height: "0px" },
         },
         breath: {
-          '0%': { transform: 'scale(1.05)' },
-          '50%': { transform: 'scale(0.95)' },
-          '100%': { transform: 'scale(1.05)' },
+          "0%": { transform: "scale(1.05)" },
+          "50%": { transform: "scale(0.95)" },
+          "100%": { transform: "scale(1.05)" },
         },
       },
       animation: {
-        fadeIn: "fadeIn .2s linear",
-        breath: 'breath 1s infinite forwards',
+        fadeIn: "fadeIn 0.5s linear",
+        fadeOut: "fadeOut .2s linear",
+        breath: "breath 1s infinite forwards",
       },
       colors: {},
       fontFamily: {

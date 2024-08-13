@@ -60,42 +60,45 @@ const Search = ({ scrollStatus }) => {
           />
         </svg>
       </button>
-      {show && (
-        <>
-          <form
-            className="w-screen h-screen absolute top-0 left-0 bg-white flex lg:hidden
-            flex-col z-50 pt-10"
-            onSubmit={(e) => {
-              e.preventDefault();
+      <>
+        <form
+          className={`w-screen h-screen absolute top-0 left-0 bg-white flex lg:hidden
+            flex-col z-50 pt-10  transition-all duration-300 ${
+              show
+                ? "overflow-visible translate-x-0"
+                : "translate-x-[100vw] overflow-hidden"
+            }`}
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <button
+            className="absolute right-4 top-13"
+            onClick={() => {
+              setShow(false);
+              document
+                .querySelector("body")
+                .classList.remove("overflow-hidden");
             }}
           >
-            <button
-              className="absolute right-4 top-13"
-              onClick={() => {
-                setShow(false);
-                document
-                  .querySelector("body")
-                  .classList.remove("overflow-hidden");
-              }}
+            <svg
+              width="22"
+              height="22"
+              xmlns="http://www.w3.org/2000/svg"
+              className="scale-[0.6818181818181818]"
             >
-              <svg
-                width="22"
-                height="22"
-                xmlns="http://www.w3.org/2000/svg"
-                className="scale-[0.6818181818181818]"
-              >
-                <path
-                  d="M21 1 1 21m20 0L1 1"
-                  stroke="#000"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-              </svg>
-            </button>
+              <path
+                d="M21 1 1 21m20 0L1 1"
+                stroke="#000"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            </svg>
+          </button>
 
-            <label
-              htmlFor="search"
-              className={`max-w-full p-[0_.3125rem] overflow-hidden pointer-events-none absolute
+          <label
+            htmlFor="search"
+            className={`max-w-full p-[0_.3125rem] overflow-hidden pointer-events-none absolute
     text-left left-4 [transition:transform_.2s,_font-size_.2s,_left_.2s] 
     whitespace-nowrap w-auto z-[1]
     ${
@@ -103,57 +106,61 @@ const Search = ({ scrollStatus }) => {
         ? "h-auto top-3 text-[.6875rem] [transform:translate3d(0,-.5rem,0)] text-[#626566] font-light"
         : `[transform:translateZ(0)] top-13 h-[3.125rem] text-[12px] font-normal`
     }`}
-            >
-              I'm Looking for...
-            </label>
-
-            <input
-              onChange={(e) => setTerm(e.target.value)}
-              onFocus={() => setFoucs(true)}
-              onBlur={(e) => {
-                if (!e.target.value) setFoucs(false);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  console.log("hello from search mobile navbar");
-                  navigate("/search", { state: { search: term } });
-                  setShow(false);
-                }
-              }}
-              type="text"
-              name="search"
-              className="outline-none py-[0.25rem] px-[0.3125rem]
-               h-[2.1rem] text-[14px] font-semibold"
-              autoFocus
-            />
-          </form>
-          <form
-            tabIndex="0"
-            className="w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
-            bg-white z-50 pointer-events-auto max-h-[450px] overflow-auto"
-            onSubmit={(e) => {
-              e.preventDefault();
-              navigate("/search", { state: { search: term } });
-              setShow(false);
-            }}
           >
-            <label
-              htmlFor="search"
-              className="text-[25px] leading-7 flex-[0_0_auto] w-auto"
-            >
-              I'm Looking for...
-            </label>
-            <input
-              onChange={(e) => setTerm(e.target.value)}
-              type="text"
-              name="search"
-              className="outline-none font-semibold leading-[initial] text-[25px] h-20 px-[0.625rem] flex-auto"
-              autoFocus
-            />
-          </form>
-        </>
-      )}
+            I'm Looking for...
+          </label>
+
+          <input
+            onChange={(e) => setTerm(e.target.value)}
+            onFocus={() => setFoucs(true)}
+            onBlur={(e) => {
+              if (!e.target.value) setFoucs(false);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                console.log("hello from search mobile navbar");
+                navigate("/search", { state: { search: term } });
+                setShow(false);
+              }
+            }}
+            type="text"
+            name="search"
+            className="outline-none py-[0.25rem] px-[0.3125rem]
+               h-[2.1rem] text-[14px] font-semibold"
+            autoFocus
+          />
+        </form>
+        <form
+          tabIndex="0"
+          className={`w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
+            bg-white z-50 pointer-events-auto max-h-[450px] overflow-auto transition-all duration-500
+            ${
+              show
+                ? "opacity-100 h-[80px] overflow-visible"
+                : "opacity-0 h-0 overflow-hidden"
+            }`}
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/search", { state: { search: term } });
+            setShow(false);
+          }}
+        >
+          <label
+            htmlFor="search"
+            className="text-[25px] leading-7 flex-[0_0_auto] w-auto"
+          >
+            I'm Looking for...
+          </label>
+          <input
+            onChange={(e) => setTerm(e.target.value)}
+            type="text"
+            name="search"
+            className="outline-none font-semibold leading-[initial] text-[25px] px-[0.625rem] flex-auto"
+            autoFocus
+          />
+        </form>
+      </>
     </div>
   );
 };

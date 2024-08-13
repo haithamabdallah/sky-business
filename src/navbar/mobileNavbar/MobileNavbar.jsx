@@ -20,8 +20,10 @@ const MobileNavbar = ({ scrollStatus }) => {
       className={`flex min-[1200px]:hidden w-screen bg-white top-0 ${
         show ? "" : "px-[15px]"
       } ${
-        scrollStatus === "down" ? "h-0 static" : "h-[54px] fixed"
-      } h-[54px] z-50 items-center font-futura`}
+        scrollStatus === "down"
+          ? "translate-y-[-120px] static"
+          : "translate-y-0 fixed"
+      } h-[54px] z-50 items-center font-futura transition-all duration-500`}
     >
       <Link
         className={`max-w-[6.5625rem] ${show ? "hidden" : "mr-auto"}`}
@@ -42,9 +44,7 @@ const MobileNavbar = ({ scrollStatus }) => {
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
           {token ? (
-            <p className="text-white w-full text-center">
-              You are logged in
-            </p>
+            <p className="text-white w-full text-center">You are logged in</p>
           ) : (
             <Link
               to="/register"

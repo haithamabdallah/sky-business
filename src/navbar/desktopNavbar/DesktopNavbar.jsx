@@ -13,6 +13,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState("");
+
   const navigate = useNavigate();
 
   const { value } = useContext(Context);
@@ -21,7 +22,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (scrollStatus === "down") setShow(false);
+    if (scrollStatus === "down") setTerm("");
   }, [scrollStatus]);
 
   const upperTabs = tabs.slice(0, 5);
@@ -32,10 +33,10 @@ const DesktopNavbar = ({ scrollStatus }) => {
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi
-      transition-[height] duration-0 ${
+      transition-all duration-500 ${
         scrollStatus === "down"
-          ? "w-0 h-0 static overflow-hidden"
-          : "w-auto h-auto fixed overflow-visible"
+          ? "static translate-y-[-120px]"
+          : "fixed translate-y-0"
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
@@ -104,37 +105,38 @@ const DesktopNavbar = ({ scrollStatus }) => {
         </ul>
         <Search setShow={setShow} show={show} />
       </div>
-      {show && (
-        <form
-          tabIndex={0}
-          className="w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
-          font-futura bg-white z-50 max-h-[70vh] overflow-auto"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setShow(false);
-            navigate("/search", { state: { search: term } });
-          }}
-          onBlur={(e) => {
-            if (e.relatedTarget?.name === "search_button") return;
-            setShow(false);
-          }}
+      <form
+        tabIndex={0}
+        className={`w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
+          font-futura z-50 max-h-[70vh] overflow-auto transition-all duration-500 ${
+            show
+              ? "opacity-100 h-[80px] overflow-visible"
+              : "opacity-0 h-0 overflow-hidden"
+          }`}
+        onSubmit={(e) => {
+          e.preventDefault();
+          setShow(false);
+          navigate("/search", { state: { search: term } });
+        }}
+        onBlur={(e) => {
+          if (e.relatedTarget?.name === "search_button") return;
+          setShow(false);
+        }}
+      >
+        <label
+          htmlFor="search"
+          className="pl-2 text-[25px] leading-7 flex-[0_0_auto] w-auto"
         >
-          <label
-            htmlFor="search"
-            className="pl-2 text-[25px] leading-7 flex-[0_0_auto] w-auto"
-          >
-            I'm Looking for...
-          </label>
-          <input
-            onChange={(e) => setTerm(e.target.value)}
-            type="text"
-            name="search"
-            className="outline-none font-semibold leading-[initial] text-[25px] h-20
+          I'm Looking for...
+        </label>
+        <input
+          onChange={(e) => setTerm(e.target.value)}
+          type="text"
+          name="search"
+          className="outline-none font-semibold leading-[initial] text-[25px]
             px-[0.625rem] flex-auto"
-            autoFocus
-          />
-        </form>
-      )}
+        />
+      </form>
     </nav>
   );
 };
