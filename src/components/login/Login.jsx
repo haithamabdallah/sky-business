@@ -71,13 +71,14 @@ const Login = () => {
             Password
           </label>
           <input
-            className="outline-none px-3 py-2 border border-black mb-4"
+            className={`outline-none px-3 py-2 border border-black
+              ${Object.keys(errors).length === 0 && "mb-4"}`}
             name="password"
             type="password"
             required
           />
           {Object.keys(errors).length > 0 && (
-            <small className="w-full py-5 text-red-700 text-center font-semibold mb-4">
+            <small className="w-full text-red-700 py-5 text-center font-semibold my-4">
               {Object.values(errors).map((error, i) => (
                 <Fragment key={`error ${i + 1}`}>
                   <span>{error}</span>
