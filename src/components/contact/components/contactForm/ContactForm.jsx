@@ -14,9 +14,11 @@ const ContactForm = () => {
   }, [message]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setErrors({});
-    }, 2000);
+    if (Object.keys(errors).length) {
+      setTimeout(() => {
+        setErrors({});
+      }, 2000);
+    }
   }, [errors]);
 
   const handleChange = (e) => {
@@ -59,9 +61,15 @@ const ContactForm = () => {
             input.type === "textarea" || input.name === "subject"
               ? "w-[98%]"
               : "w-[98%] min-[532px]:w-[48%]"
-          } relative self-end`}
+          } relative self-start`}
         >
           <Input handleChange={handleChange} input={input} />
+          {errors[input.name]?.length > 0 && (
+            <small className="w-full py-1 text-red-700 font-semibold">
+              <span>{errors[input.name][0]}</span>
+              <br />
+            </small>
+          )}
         </div>
       ))}
       <div className="flex flex-wrap w-[98%]">
@@ -70,16 +78,7 @@ const ContactForm = () => {
             {message}
           </small>
         )}
-        {Object.keys(errors).length > 0 && (
-          <small className="w-full py-5 text-red-700 font-semibold">
-            {Object.values(errors).map((error, i) => (
-              <Fragment key={`error ${i + 1}`}>
-                <span>{error}</span>
-                <br />
-              </Fragment>
-            ))}
-          </small>
-        )}
+
         <input
           className="appearance-none w-[18px] h-[18px] border border-black bg-white
           cursor-pointer checked:bg-[url('./components/contact/components/contactForm/correct.svg')]
@@ -97,12 +96,6 @@ const ContactForm = () => {
         >
           Yes, sign me up for <span className="font-bold">Emails</span>
           <br />
-          {/* <span className="text-[10px]">
-            I expressly consent to receiving exclusive news, promotions and
-            opportunities for engagement from Vichy Canada via electronic
-            messages. I understand that I may withdraw my consent at any time
-            from receiving any or all such electronic messages.
-          </span> */}
         </small>
       </div>
       <div className="w-[98%] justify-start">

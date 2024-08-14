@@ -90,18 +90,14 @@ const Register = ({ registerData }) => {
               ) : (
                 <Input handleChange={handleChange} input={input} />
               )}
+              {errors[input.name]?.length > 0 && (
+                <small className="w-full text-left py-1 text-red-700 font-semibold">
+                  <span>{errors[input.name][0]}</span>
+                </small>
+              )}
             </div>
           ))}
-          {Object.keys(errors).length > 0 && (
-            <small className="w-full py-5 text-red-700 text-center font-semibold">
-              {Object.values(errors).map((error, i) => (
-                <Fragment key={`error ${i + 1}`}>
-                  <span>{error}</span>
-                  <br />
-                </Fragment>
-              ))}
-            </small>
-          )}
+
           <div
             className="flex flex-wrap justify-center sm:justify-between items-center gap-y-4 gap-x-2 mx-auto w-[80%]
             min-[500px]:w-[50vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] mb-5"
