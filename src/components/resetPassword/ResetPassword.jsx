@@ -76,6 +76,7 @@ const ResetPassword = () => {
         >
           {inputs.map((input) => (
             <div
+              key={input.name}
               className={`flex flex-col w-[80%] min-[532px]:w-[50%] relative`}
             >
               <Input handleChange={handleChange} input={input} />

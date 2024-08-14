@@ -62,7 +62,7 @@ const Register = ({ registerData }) => {
       <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
       <div className="my-[3rem] max-w-[75rem] mx-auto px-3 sm:px-0">
         <form
-          className="w-full flex flex-wrap items-center gap-x-5 gap-y-9"
+          className="w-full flex flex-col justify-center items-center px-[15px] gap-x-5 gap-y-9"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
@@ -74,10 +74,8 @@ const Register = ({ registerData }) => {
               className={`flex flex-col ${
                 input.type === "textarea" || input.name === "subject"
                   ? "w-[98%]"
-                  : "w-[98%] min-[532px]:w-[48%]"
-              } relative ${
-                input.name === "postal_code" ? "self-end" : "self-start"
-              }`}
+                  : "w-[98%] sm:w-[70%] md:w-[60%] lg:w-[50%]"
+              } relative`}
             >
               {input.type === "select" ? (
                 <Input
@@ -86,10 +84,7 @@ const Register = ({ registerData }) => {
                   countries={countries}
                 />
               ) : (
-                <Input
-                  handleChange={handleChange}
-                  input={input}
-                />
+                <Input handleChange={handleChange} input={input} />
               )}
               {errors[input.name]?.length > 0 && (
                 <small className="w-full text-left py-1 text-red-700 font-semibold">
@@ -100,13 +95,15 @@ const Register = ({ registerData }) => {
           ))}
 
           <div
-            className="flex flex-wrap justify-start items-center gap-y-4 gap-x-2
+            className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
             mb-5"
           >
+
             <button
               type="submit"
               className="w-fit text-white px-3 py-2
-              bg-black rounded-md"
+              bg-black rounded-md hover:bg-white hover:text-black transition-colors
+              duration-300"
             >
               Sign Up
             </button>
