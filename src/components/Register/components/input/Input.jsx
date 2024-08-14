@@ -1,5 +1,5 @@
 // import { countries } from "../../data";
-const Input = ({ input, handleChange, countries }) => {
+const Input = ({ input, handleChange, countries, setFocus }) => {
   return input.type === "select" ? (
     <select
       defaultValue=""
@@ -20,14 +20,15 @@ const Input = ({ input, handleChange, countries }) => {
     </select>
   ) : (
     <input
-      className="px-2 py-[0.6rem] mb-2 border border-gray-400 border-opacity-60
-      focus-visible:outline-none 
-placeholder:font-medium placeholder:text-xs placeholder-gray-400
-placeholder-opacity-80 w-full"
+      className="outline-none border-b border-black py-[0.25rem] px-[0.3125rem]
+        h-[2.1rem] text-[14px] font-semibold"
+      onFocus={() => setFocus(true)}
+      onBlur={(e) => {
+        if (!e.target.value) setFocus(false);
+      }}
       onChange={(e) => handleChange(e)}
       type={input.type}
       name={input.name}
-      placeholder={input.placeholder}
       required={input.required}
     />
   );

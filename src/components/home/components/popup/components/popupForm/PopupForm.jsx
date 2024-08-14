@@ -1,16 +1,16 @@
-import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Context } from "../../../../../../ContextProvider";
+import { useState, useEffect } from "react";
 import sendRequest from "../../../../../../methods/fetchData";
+import Input from "../../../../../contact/components/contactForm/components/input/Input";
 const PopupForm = ({ setMessage, setStatus }) => {
   const [email, setEmail] = useState("");
-  const { value } = useContext(Context);
-  const phone = value.settings.phone;
-  const notificationEmail = value.settings.notification_email;
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <form
-      className="flex flex-col row-span-4"
+      className="flex flex-col row-span-4 mt-6"
       onSubmit={(e) => {
         e.preventDefault();
         sendRequest({
@@ -23,35 +23,25 @@ const PopupForm = ({ setMessage, setStatus }) => {
         });
       }}
     >
-      {/* <h2 className="leading-6 font-semibold min-[500px]:text-base text-xs">
-        Be the first to hear about our latest news, access exclusive VIP offers,
-        and much more!
-      </h2> */}
-      {/* <small className="sm:inline-block hidden font-light text-xs mt-2">
-        I expressly consent to receiving exclusive news, promotions and
-        opportunities for engagement from SKY Business laboratoires via
-        electronic messages (e.g.. e-mails ). I understand that I may withdraw
-        my consent at any time from receiving an or all such electronic
-        messages.{" "}
-        <Link to="/contact" className="underline">
-          Contact us
-        </Link>{" "}
-        or refer to our{" "}
-        <Link to="#" className="underline">
-          privacy policy
-        </Link>{" "}
-        for more information. SKY Business laboratoires, 1500 Boulevard
-        Robert-Bourassa, Bureau 600, Montreal, Quebec, H3A 3S7: {phone} -
-        {notificationEmail}
-      </small> */}
-      <input
+      <div className={`flex flex-col w-full relative`}>
+        <Input
+          handleChange={handleChange}
+          input={{
+            name: "email",
+            displayName: "Email",
+            type: "email",
+            required: true,
+          }}
+        />
+      </div>
+      {/* <input
         type="email"
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email Address"
         className="p-3 my-5 outline-none border border-gray-400"
-      />
+      /> */}
       <button
-        className="w-full bg-black text-white p-5 mb-5 text-xl"
+        className="w-full bg-black text-white mt-5 p-5 mb-5 text-xl"
         type="submit"
       >
         Submit

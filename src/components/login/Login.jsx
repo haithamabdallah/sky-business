@@ -1,12 +1,27 @@
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
-import CoverComponent from "../CoverComponent";
+import Input from "../contact/components/contactForm/components/input/Input";
 import ForgottenPassword from "./components/forgottenPassword/ForgottenPassword";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
+  const inputs = [
+    {
+      name: "email",
+      displayName: "Email",
+      type: "email",
+      required: true,
+    },
+
+    {
+      name: "password",
+      displayName: "Password",
+      type: "password",
+      required: true,
+    },
+  ];
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -54,31 +69,21 @@ const Login = () => {
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}
-          className="flex flex-col px-4 w-[80%] min-[500px]:w-[50vw]
-              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
+          className="w-full flex flex-col justify-center items-center gap-x-5 gap-y-9"
         >
-          <label className="mb-2" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="outline-none px-3 py-2 border border-black mb-4"
-            name="email"
-            type="email"
-            required
-          />
-
-          <label className="mb-2" htmlFor="password">
-            Password
-          </label>
-          <input
-            className={`outline-none px-3 py-2 border border-black
-              ${Object.keys(errors).length === 0 && "mb-4"}`}
-            name="password"
-            type="password"
-            required
-          />
+          {inputs.map((input) => (
+            <div
+              className={`flex flex-col ${
+                input.type === "textarea" || input.name === "subject"
+                  ? "w-[98%]"
+                  : "w-[80%] min-[532px]:w-[50%]"
+              } relative`}
+            >
+              <Input handleChange={handleChange} input={input} />
+            </div>
+          ))}
           {Object.keys(errors).length > 0 && (
-            <small className="w-full text-red-700 py-5 text-center font-semibold my-4">
+            <small className="w-full text-red-700 py-1 text-center font-semibold">
               {Object.values(errors).map((error, i) => (
                 <Fragment key={`error ${i + 1}`}>
                   <span>{error}</span>
@@ -93,7 +98,7 @@ const Login = () => {
                   leading-[1] py-2 px-4 relative
                   [transition:_background-color_.25s_ease-out,_color_.25s_ease-out] align-middle
                   hover:bg-white hover:text-black hover:border-black flex justify-center
-                  items-center gap-x-1"
+                  items-center gap-x-1 mt-4"
             type="submit"
           >
             Login <span className="flex pt-1 ml-1">{`>`}</span>

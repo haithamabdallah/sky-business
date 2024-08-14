@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { inputs } from "./data";
-import Input from "./components/input/Input";
+import Input from "../contact/components/contactForm/components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
@@ -9,7 +9,7 @@ import sendRequest from "../../methods/fetchData";
 const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
-  const [countries, setCountries] = useState("");
+  const [countries, setCountries] = useState([]);
 
   const navigate = useNavigate();
 
@@ -60,9 +60,9 @@ const Register = ({ registerData }) => {
   return (
     <div>
       <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
-      <div className="my-[3rem]">
+      <div className="my-[3rem] max-w-[75rem] mx-auto px-3 sm:px-0">
         <form
-          className="flex flex-col gap-y-2 px-0 sm:px-4"
+          className="w-full flex flex-wrap items-center gap-x-5 gap-y-9"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
@@ -71,16 +71,14 @@ const Register = ({ registerData }) => {
           {inputs.map((input) => (
             <div
               key={input.name}
-              className="self-center flex flex-col gap-y-1 w-[80%] min-[500px]:w-[50vw]
-              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
+              className={`flex flex-col ${
+                input.type === "textarea" || input.name === "subject"
+                  ? "w-[98%]"
+                  : "w-[98%] min-[532px]:w-[48%]"
+              } relative ${
+                input.name === "postal_code" ? "self-end" : "self-start"
+              }`}
             >
-              <label
-                htmlFor={input.name}
-                className="font-medium text-xs min-[500px]:text-[0.9rem] min-[500px]:font-semibold"
-              >
-                {input.displayName}{" "}
-                {input.required && <span className="text-red-600">*</span>}
-              </label>
               {input.type === "select" ? (
                 <Input
                   handleChange={handleChange}
@@ -88,7 +86,10 @@ const Register = ({ registerData }) => {
                   countries={countries}
                 />
               ) : (
-                <Input handleChange={handleChange} input={input} />
+                <Input
+                  handleChange={handleChange}
+                  input={input}
+                />
               )}
               {errors[input.name]?.length > 0 && (
                 <small className="w-full text-left py-1 text-red-700 font-semibold">
@@ -99,8 +100,8 @@ const Register = ({ registerData }) => {
           ))}
 
           <div
-            className="flex flex-wrap justify-center sm:justify-between items-center gap-y-4 gap-x-2 mx-auto w-[80%]
-            min-[500px]:w-[50vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] mb-5"
+            className="flex flex-wrap justify-start items-center gap-y-4 gap-x-2
+            mb-5"
           >
             <button
               type="submit"

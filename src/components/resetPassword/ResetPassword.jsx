@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
+import Input from "../contact/components/contactForm/components/input/Input";
 
 const ResetPassword = () => {
   const [form, setForm] = useState({ password: "", password_confirmation: "" });
@@ -12,6 +13,27 @@ const ResetPassword = () => {
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get("email");
   const navigate = useNavigate();
+
+  const inputs = [
+    {
+      name: "password",
+      displayName: "Password",
+      type: "password",
+      required: true,
+    },
+    {
+      name: "password_confirmation",
+      displayName: "Confirm Password",
+      type: "password",
+      required: true,
+    },
+  ];
+
+  const handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setForm({ ...form, [key]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,31 +72,16 @@ const ResetPassword = () => {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col px-4 w-[80%] min-[500px]:w-[50vw]
-              sm:w-[50vw] md:w-[40vw] lg:w-[30vw]"
+          className="w-full flex flex-col justify-center items-center gap-x-5 gap-y-9"
         >
-          <label className="mb-2" htmlFor="email">
-            Password
-          </label>
-          <input
-            className="outline-none w-full px-3 py-2 border border-black mb-4"
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-            name="password"
-            type="password"
-            required
-          />
-          <label className="mb-2" htmlFor="email">
-            Password Confirmation
-          </label>
-          <input
-            className="outline-none w-full px-3 py-2 border border-black mb-4"
-            onChange={(e) =>
-              setForm({ ...form, password_confirmation: e.target.value })
-            }
-            name="password_confirmation"
-            type="password"
-            required
-          />
+          {inputs.map((input) => (
+            <div
+              className={`flex flex-col w-[80%] min-[532px]:w-[50%] relative`}
+            >
+              <Input handleChange={handleChange} input={input} />
+            </div>
+          ))}
+
           {loading && (
             <div
               className="flex items-center text-yellow-600  justify-center min-h-20
@@ -102,7 +109,7 @@ const ResetPassword = () => {
                   items-center gap-x-1"
             type="submit"
           >
-            Reset Password
+            Send Reset Email
           </button>
         </form>
       </section>
