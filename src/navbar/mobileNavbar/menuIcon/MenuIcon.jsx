@@ -1,12 +1,16 @@
-const MenuIcon = ({ show, setShow }) => {
+const MenuIcon = ({ show, setShow, setShowSearch, setTerm }) => {
   return (
     <button
       className={`self-center z-40 ${
         show ? "w-[40px] flex justify-center items-center ml-1" : ""
       }`}
       onClick={() => {
-        setShow(!show)
-        document.querySelector('body').classList.toggle('overflow-hidden')
+        setShow(!show);
+        if (show) {
+          setShowSearch(false);
+          setTerm("");
+        }
+        document.querySelector("body").classList.toggle("overflow-hidden");
       }}
     >
       {show ? (

@@ -9,7 +9,7 @@ import { Context } from "../../ContextProvider";
 import CategoryBrands from "../../components/brands/components/brandCategories/categoryBrands/CategoryBrands";
 import Logout from "../../logout/Logout";
 
-const DesktopNavbar = ({ scrollStatus }) => {
+const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState("");
@@ -23,8 +23,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
 
   useEffect(() => {
     if (scrollStatus === "down") {
-      setShow(false);
-      setTerm("");
+      clearSearch(setTerm, setShow);
     }
   }, [scrollStatus]);
 
@@ -53,7 +52,10 @@ const DesktopNavbar = ({ scrollStatus }) => {
                     className={`text-[.75rem] text-white leading-5 font-medium pt-[14px] pb-[10px]
                       px-[1rem]`}
                   >
-                    <Link className={``} to={tab.route}>
+                    <Link
+                      onClick={() => clearSearch(setTerm, setShow)}
+                      to={tab.route}
+                    >
                       <span
                         className={`flex flex-row gap-2 place-items-center px-1 ${
                           pathname === tab.route
@@ -90,6 +92,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
         <Link
           className="col-span-2 max-w-[10.9375rem] max-h-[70px] flex justify-center mx-auto"
           to="/"
+          onClick={() => clearSearch(setTerm, setShow)}
         >
           <img alt="logo" src={logo} />
         </Link>
@@ -99,6 +102,7 @@ const DesktopNavbar = ({ scrollStatus }) => {
               {
                 <li
                   className={`text-[.75rem] leading-5 font-medium py-[.875rem] px-[1rem]`}
+                  onClick={() => clearSearch(setTerm, setShow)}
                 >
                   <NavLink to={tab.route}>{tab.name.toUpperCase()}</NavLink>
                 </li>

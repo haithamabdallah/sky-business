@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import logoutHandler from "./logoutHandler";
 
-const Logout = ({ type, setShow }) => {
+const Logout = ({ type, setShow, setTerm, setShowSearch }) => {
   const navigate = useNavigate();
   return type === "footer" ? (
     <li>
       <button
-        onClick={() => logoutHandler(navigate)}
+        onClick={() => {
+          logoutHandler(navigate);
+        }}
         className={`inline-block text-black text-[0.8rem]
                  leading-[1rem] font-futura py-[0.3125rem] lg:py-0
                  lg:font-normal lg:text-[0.8rem] lg:leading-[1rem] hover:opacity-80 hover:font-[600]`}
@@ -24,7 +26,7 @@ const Logout = ({ type, setShow }) => {
         className="py-1 rounded-full flex flex-row gap-2 place-items-center
         min-[1200px]:py-0  min-[1200px]:rounded-none min-[1200px]:block"
         onClick={() => {
-          logoutHandler(navigate, setShow);
+          logoutHandler(navigate, setShow, setTerm, setShowSearch);
         }}
       >
         <span className={`flex flex-row gap-2 place-items-center`}>

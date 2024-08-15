@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
 import Logout from "../../../../logout/Logout";
 
-const LoginOrLogout = () => {
+const LoginOrLogout = ({ setShow, setTerm }) => {
   const token = localStorage.getItem("token");
   return token ? (
-    <Logout type="mobileNav"/>
+    <div
+      onClick={() => {
+        setShow(false);
+        setTerm("");
+      }}
+    >
+      <Logout type="mobileNav" />
+    </div>
   ) : (
-    <li>
+    <li
+      onClick={() => {
+        setShow(false);
+        setTerm("");
+      }}
+    >
       <Link to="/login">
         <svg
           xmlns="http://www.w3.org/2000/svg"

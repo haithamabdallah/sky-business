@@ -1,6 +1,11 @@
 import sendRequest from "../methods/fetchData";
 
-const logoutHandler = (navigate, setShow = null) => {
+const logoutHandler = (
+  navigate,
+  setShow = null,
+  setTerm = null,
+  setShowSearch = null
+) => {
   sendRequest({
     method: "post",
     endpoint: "logout",
@@ -9,6 +14,8 @@ const logoutHandler = (navigate, setShow = null) => {
     if (res.status === "success") {
       document.querySelector("body").classList.remove("overflow-hidden");
       if (setShow) setShow(false);
+      if (setShow) setTerm("");
+      if (setShow) setShowSearch(false);
       localStorage.removeItem("token");
       navigate("/");
     }

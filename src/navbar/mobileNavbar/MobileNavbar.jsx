@@ -5,9 +5,11 @@ import Items from "./items/Items";
 import { NavLink, Link } from "react-router-dom";
 import { Context } from "../../ContextProvider";
 import Logout from "../../logout/Logout";
-const MobileNavbar = ({ scrollStatus }) => {
+const MobileNavbar = ({ scrollStatus, clearSearch }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const [show, setShow] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [term, setTerm] = useState("");
 
   const { value } = useContext(Context);
 
@@ -27,14 +29,28 @@ const MobileNavbar = ({ scrollStatus }) => {
         className={`max-w-[6.5625rem] ${show ? "hidden" : "mr-auto"}`}
         onClick={() => {
           setShow(false);
+          clearSearch(setTerm, setShowSearch);
           document.querySelector("body").classList.remove("overflow-hidden");
         }}
         to="/"
       >
         <img alt="logo" src={logo} />
       </Link>
-      {show === false && <Items scrollStatus={scrollStatus} />}
-      <MenuIcon show={show} setShow={setShow} />
+      {show === false && (
+        <Items
+          scrollStatus={scrollStatus}
+          show={showSearch}
+          setShow={setShowSearch}
+          term={term}
+          setTerm={setTerm}
+        />
+      )}
+      <MenuIcon
+        show={show}
+        setShow={setShow}
+        setShowSearch={setShowSearch}
+        setTerm={setTerm}
+      />
       <section
         className={`transition-opacity duration-500 ${
           show
@@ -50,6 +66,7 @@ const MobileNavbar = ({ scrollStatus }) => {
               to="/register"
               onClick={() => {
                 setShow(false);
+                clearSearch(setTerm, setShowSearch);
                 document
                   .querySelector("body")
                   .classList.remove("overflow-hidden");
@@ -65,6 +82,7 @@ const MobileNavbar = ({ scrollStatus }) => {
             className="w-[80px] min-h-screen"
             onClick={() => {
               setShow(false);
+              clearSearch(setTerm, setShowSearch);
               document
                 .querySelector("body")
                 .classList.remove("overflow-hidden");
@@ -82,6 +100,7 @@ const MobileNavbar = ({ scrollStatus }) => {
                     className="py-1 rounded-full"
                     onClick={() => {
                       setShow(false);
+                      clearSearch(setTerm, setShowSearch);
                       document
                         .querySelector("body")
                         .classList.remove("overflow-hidden");
@@ -92,7 +111,13 @@ const MobileNavbar = ({ scrollStatus }) => {
                 </li>
               );
             })}
-            {token && <Logout setShow={setShow} />}
+            {token && (
+              <Logout
+                setShow={setShow}
+                setTerm={setTerm}
+                setShowSearch={setShowSearch}
+              />
+            )}
           </ul>
         </div>
       </section>

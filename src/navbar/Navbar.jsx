@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import DesktopNavbar from "./desktopNavbar/DesktopNavbar";
 import MobileNavbar from "./mobileNavbar/MobileNavbar";
 
+const clearSearch = (setTerm, setShow) => {
+  setShow(false);
+  setTerm("");
+};
 const Navbar = () => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollStatus, setScrollStatus] = useState(undefined);
@@ -24,8 +28,8 @@ const Navbar = () => {
   }, [lastScrollTop]);
   return (
     <div>
-      <DesktopNavbar scrollStatus={scrollStatus} />
-      <MobileNavbar scrollStatus={scrollStatus} />
+      <DesktopNavbar scrollStatus={scrollStatus} clearSearch={clearSearch} />
+      <MobileNavbar scrollStatus={scrollStatus} clearSearch={clearSearch} />
     </div>
   );
 };

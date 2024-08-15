@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import CategoryBrands from "../../../../components/brands/components/brandCategories/categoryBrands/CategoryBrands";
 import { useNavigate } from "react-router-dom";
 
-const Search = ({ scrollStatus }) => {
-  const [show, setShow] = useState(false);
+const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
   const [foucs, setFoucs] = useState(false);
-  const [term, setTerm] = useState("");
 
   const navigate = useNavigate();
 
