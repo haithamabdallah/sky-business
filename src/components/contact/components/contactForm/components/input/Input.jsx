@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { selectOptions } from "../../../../data";
-const Input = ({ input, handleChange }) => {
+
+const Input = ({ input, handleChange, countries }) => {
   const [focus, setFocus] = useState(false);
   return input.type === "select" ? (
     <>
@@ -24,9 +24,9 @@ const Input = ({ input, handleChange }) => {
         <option value="" disabled>
           {`Select Question`.toUpperCase()}
         </option>
-        {selectOptions.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.label.toLocaleUpperCase()}
+        {Object.entries(countries).map(([id, name]) => (
+          <option key={id} value={id}>
+            {name}
           </option>
         ))}
       </select>
@@ -87,7 +87,7 @@ const Input = ({ input, handleChange }) => {
         name={input.name}
         required={input.required}
         className="outline-none border-b border-black py-[0.25rem] px-[0.3125rem]
-      h-[2.1rem] text-[14px] font-semibold"
+        h-[2.1rem] text-[14px] font-semibold"
       />
     </>
   );

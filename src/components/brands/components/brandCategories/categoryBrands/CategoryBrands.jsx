@@ -8,8 +8,8 @@ const CategoryBrands = ({ brands }) => {
           <img
             alt={`brand ${brand.id}`}
             src={`${url}/${brand.image}`}
-            className="rounded-full transition-transform duration-500 scale-100 hover:scale-125
-            object-contain"
+            className="cursor-pointer rounded-full transition-transform duration-500 scale-100 hover:scale-125
+            object-contain object-center aspect-square"
           />
           <p className="text-center pt-10">{brand.name}</p>
         </li>

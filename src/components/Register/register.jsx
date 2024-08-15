@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { inputs } from "./data";
-import Input from "./components/input/Input";
+import Input from "../contact/components/contactForm/components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
@@ -9,7 +9,7 @@ import sendRequest from "../../methods/fetchData";
 const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
-  const [countries, setCountries] = useState("");
+  const [countries, setCountries] = useState([]);
 
   const navigate = useNavigate();
 
@@ -39,14 +39,17 @@ const Register = ({ registerData }) => {
     });
     const result = response.data;
     if (response.status === "success") {
+      console.log("here");
       navigate("/");
       localStorage.setItem("token", result.token);
     } else {
+      console.log({ result });
       setErrors(result);
     }
   };
 
   useEffect(() => {
+    console.log({ errors });
     if (Object.keys(errors).length) {
       setTimeout(() => {
         setErrors({});
@@ -57,9 +60,9 @@ const Register = ({ registerData }) => {
   return (
     <div>
       <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
-      <div className="my-[3rem]">
+      <div className="my-[3rem] max-w-[75rem] mx-auto px-3 sm:px-0">
         <form
-          className="flex flex-col gap-y-2 px-0 sm:px-4"
+          className="w-full flex flex-col justify-center items-center px-[15px] gap-x-5 gap-y-9"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
@@ -68,15 +71,12 @@ const Register = ({ registerData }) => {
           {inputs.map((input) => (
             <div
               key={input.name}
-              className="self-center flex flex-col gap-y-1 w-[80%] min-[500px]:w-[30vw]"
+              className={`flex flex-col ${
+                input.type === "textarea" || input.name === "subject"
+                  ? "w-[98%]"
+                  : "w-[98%] sm:w-[70%] md:w-[60%] lg:w-[50%]"
+              } relative`}
             >
-              <label
-                htmlFor={input.name}
-                className="font-medium text-xs min-[500px]:text-[0.9rem] min-[500px]:font-semibold"
-              >
-                {input.displayName}{" "}
-                {input.required && <span className="text-red-600">*</span>}
-              </label>
               {input.type === "select" ? (
                 <Input
                   handleChange={handleChange}
@@ -86,28 +86,30 @@ const Register = ({ registerData }) => {
               ) : (
                 <Input handleChange={handleChange} input={input} />
               )}
+              {errors[input.name]?.length > 0 && (
+                <small className="w-full text-left py-1 text-red-700 font-semibold">
+                  <span>{errors[input.name][0]}</span>
+                </small>
+              )}
             </div>
           ))}
-          {Object.keys(errors).length > 0 && (
-            <small className="w-full py-5 text-red-700 text-center font-semibold">
-              {Object.values(errors).map((error, i) => (
-                <Fragment key={`error ${i + 1}`}>
-                  <span>{error}</span>
-                  <br />
-                </Fragment>
-              ))}
-            </small>
-          )}
-          <div className="self-center flex flex-wrap gap-2 w-[80%] min-[500px]:w-[30vw] mb-5">
+
+          <div
+            className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
+            mb-5"
+          >
+
             <button
               type="submit"
-              className="self-center w-fit text-white px-3 py-2 bg-cyan-500 rounded-md"
+              className="w-fit text-white px-3 py-2
+              bg-black rounded-md hover:bg-white hover:text-black transition-colors
+              duration-300"
             >
               Sign Up
             </button>
-            <p className="ml-auto">
+            <p className="col-span-2">
               Returning Customer?{" "}
-              <Link to="/login" className="text-cyan-700">
+              <Link to="/login" className="text-black font-semibold">
                 Login →
               </Link>
             </p>
