@@ -7,14 +7,14 @@ const OurFoodServices = ({ ourFoodServices }) => {
   return (
     <section className="w-full mr-[45px] grid md:grid-cols-2 grid-cols-1 font-futura mb-[45px] my-[30px]">
       <div
-        className="md:pt-5 md:pr-[45px] md:pb-10 md:pl-5 py-5 px-[25px] content-center
-        flex flex-wrap flex-col justify-center md:order-1 order-2"
+        className="md:h-[700px] md:overflow-auto md:pt-5 md:pr-[45px] md:pb-10 md:pl-5 py-5 px-[25px]
+        flex flex-col md:order-1 order-2 mt-3 md:mt-0"
       >
         <h3 className="min-[992px]:text-[50px] text-3xl leading-none font-bold mb-[15px] uppercase">
           {ourFoodServices.header}
         </h3>
         {parse(ourFoodServices.text)}
-        <Link
+        {/* <Link
           className="mb-[0.3125rem] text-white bg-black flex items-center justify-center border
         border-black rounded-[10px] font-semibold text-sm leading-5 h-[3.125rem]
         px-5 uppercase before:inline-block before:align-middle transition-colors
@@ -22,7 +22,7 @@ const OurFoodServices = ({ ourFoodServices }) => {
           to="#"
         >
           {ourFoodServices.button}
-        </Link>
+        </Link> */}
       </div>
       <img
         src={`${url}/${ourFoodServices.image}`}
