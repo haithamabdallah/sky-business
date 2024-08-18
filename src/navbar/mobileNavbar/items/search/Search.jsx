@@ -64,7 +64,7 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
       <>
         <form
           className={`w-screen h-screen absolute top-0 left-0 bg-white flex lg:hidden
-            flex-col z-50 pt-10  transition-transform duration-300 ${
+            flex-col z-50 pt-10  transition-transform duration-500 ${
               show
                 ? "overflow-visible translate-x-0"
                 : "translate-x-[300%] overflow-hidden"
@@ -138,7 +138,8 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
         <form
           tabIndex="0"
           className={`w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
-            bg-white z-50 pointer-events-auto max-h-[450px] overflow-auto transition-all duration-500
+            bg-white z-50 px-20 pointer-events-auto max-h-[450px]
+            [transition:opacity_0.5s,_height_0.5s]
             ${
               show
                 ? "opacity-100 h-[80px] overflow-visible"
@@ -148,6 +149,7 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
             e.preventDefault();
             navigate("/search", { state: { search: term } });
             setShow(false);
+            setTerm("");
           }}
         >
           <label
@@ -161,7 +163,8 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
             onChange={(e) => setTerm(e.target.value)}
             type="text"
             name="search"
-            className="outline-none font-semibold leading-[initial] text-[25px] px-[0.625rem] flex-auto"
+            className="outline-none font-semibold leading-[initial] text-[25px]
+            p-[0.625rem] mx-[0.625rem] flex-auto shadow shadow-gray-500"
             autoFocus
           />
         </form>

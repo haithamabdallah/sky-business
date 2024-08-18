@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Search = ({ setShow, show }) => {
+const Search = ({ setShow, show, setTerm }) => {
   return (
     <div className="flex col-span-2 items-center">
       <button
@@ -13,6 +13,7 @@ const Search = ({ setShow, show }) => {
         name="search_button"
         onClick={() => {
           setShow(!show);
+          setTerm("");
         }}
       >
         <span className="text-[12px] leading-4 font-semibold mr-[1rem]">

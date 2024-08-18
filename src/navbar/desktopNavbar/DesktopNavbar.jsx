@@ -21,6 +21,9 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
 
   const { pathname } = useLocation();
 
+  const handleChange = (e) => {
+    setTerm(e.target.value);
+  };
   useEffect(() => {
     if (scrollStatus === "down") {
       clearSearch(setTerm, setShow);
@@ -110,12 +113,12 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
             </Fragment>
           ))}
         </ul>
-        <Search setShow={setShow} show={show} />
+        <Search setShow={setShow} setTerm={setTerm} show={show} />
       </div>
       <form
         tabIndex={0}
         className={`w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
-          font-futura z-50 max-h-[70vh] overflow-auto transition-all duration-500 ${
+          font-futura z-50 px-20 max-h-[70vh] overflow-auto transition-[opacity_0.5s,height_0.5s] ${
             show
               ? "opacity-100 h-[80px] overflow-visible"
               : "opacity-0 h-0 overflow-hidden"
@@ -123,6 +126,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
         onSubmit={(e) => {
           e.preventDefault();
           setShow(false);
+          setTerm("");
           navigate("/search", { state: { search: term } });
         }}
         onBlur={(e) => {
@@ -138,11 +142,11 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
         </label>
         <input
           value={term}
-          onChange={(e) => setTerm(e.target.value)}
+          onChange={handleChange}
           type="text"
           name="search"
           className="outline-none font-semibold leading-[initial] text-[25px]
-            px-[0.625rem] flex-auto"
+            p-[0.625rem] mx-[0.625rem] flex-auto shadow shadow-gray-500"
         />
       </form>
     </nav>
