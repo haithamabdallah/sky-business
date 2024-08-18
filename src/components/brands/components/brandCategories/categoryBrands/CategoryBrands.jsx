@@ -7,7 +7,7 @@ const CategoryBrands = ({ brands }) => {
         <li className="flex flex-col" key={brand.id}>
           <div
             className="peer cursor-pointer rounded-full transition-transform duration-500
-            scale-100 hover:scale-125 p-8 border border-black border-opacity-50 pee"
+            scale-100 hover:scale-125 p-[16.5%] border border-black border-opacity-50 pee"
           >
             <img
               alt={`brand ${brand.id}`}
