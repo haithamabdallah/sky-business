@@ -56,8 +56,18 @@ const SearchResult = () => {
   }, [search]);
   return (
     <section className="font-futura my-10 px-4 flex flex-col gap-y-3">
-      {!loading && posts.length > 0 && <BlogCards posts={posts} />}
-      {!loading && brands.length > 0 && <CategoryBrands brands={brands} />}
+      {!loading && posts.length > 0 && (
+        <>
+          <p className="text-[18px] leading-6 uppercase ml-[21px]">Articles</p>
+          <BlogCards posts={posts} />
+        </>
+      )}
+      {!loading && brands.length > 0 && (
+        <>
+          <p className="text-[18px] leading-6 uppercase ml-[21px] my-5">Brands</p>
+          <CategoryBrands brands={brands} />
+        </>
+      )}
       {loading && posts.length === 0 && brands.length === 0 && (
         <div className="flex items-center justify-center min-h-20">
           <img alt="loading" src={logo} className="animate-breath w-36" />
