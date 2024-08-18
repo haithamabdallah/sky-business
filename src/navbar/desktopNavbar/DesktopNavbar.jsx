@@ -118,7 +118,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
       <form
         tabIndex={0}
         className={`w-full [pointer-events:all] col-span-12 z-index-10 flex flex-wrap items-center
-          font-futura z-50 px-20 max-h-[70vh] overflow-auto transition-[opacity_0.5s,height_0.5s] ${
+          font-futura z-50 px-20 max-h-[70vh] overflow-auto [transition:opacity_0.5s,height_0.5s] ${
             show
               ? "opacity-100 h-[80px] overflow-visible"
               : "opacity-0 h-0 overflow-hidden"

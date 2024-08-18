@@ -16,7 +16,7 @@ const BannerImage = ({ image, imageUrl }) => {
     <img
       alt="SKIN CONSULT AI"
       src={`${url}/${image}`}
-      className="inline-block align-middle cursor-pointer"
+      className="inline-block align-middle"
       width="100%"
       height="697"
     />
