@@ -13,7 +13,11 @@ const BottomBanners = ({ banners }) => {
             : "max-w-[75rem] px-[.9375rem]"
         }`}
       >
-        <BannerImage image={banner.image} isFull={banner.is_full} />
+        <BannerImage
+          image={banner.image}
+          isFull={banner.is_full}
+          imageUrl={banner.url}
+        />
         <Description
           header={banner.header}
           buttonText={banner.button_text}
