@@ -40,7 +40,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
       top-0 z-10 font-futuraDemi fixed
       transition-transform duration-500 ${
         scrollStatus === "down"
-          ? "translate-y-[-120px]"
+          ? "translate-y-[-128px]"
           : "translate-y-0 delay-100"
       }`}
     >

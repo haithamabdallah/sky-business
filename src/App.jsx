@@ -95,17 +95,14 @@ const App = () => {
       <img alt="loading" src={logo} className="animate-breath w-36" />
     </div>
   ) : (
-    <main
-      className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden mt-[54px]
-      min-[1200px]:mt-[120px]"
-    >
+    <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
       <ScrollToTop />
       <div className="self-start">
         {!localStorage.getItem("cookies_popup") && showCookies && (
           <Cookies setShowCookies={setShowCookies} />
         )}
         <Navbar />
-        <main>
+        <main className="mt-[54px] min-[1200px]:mt-[128px]">
           <Routes>
             <Route
               path="/"

@@ -1,19 +1,30 @@
+import BannerImage from "./home/components/bottomBanners/bannerImage/BannerImage";
+import Description from "./home/components/bottomBanners/description/Description";
+
 const CoverComponent = ({ desktopCover, mobileCover }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const h = `${(100 * 400) / 1200}vw`;
   return (
-    <div className="w-screen relative">
-      <img
-        className="md:block hidden w-full"
-        alt="desktop cover"
-        src={`${url}/${desktopCover}`}
-      />
-      <img
-        className="md:hidden block w-full"
-        alt="mobile cover"
-        src={`${url}/${mobileCover}`}
-      />
-    </div>
+    <>
+      <div className="w-screen relative md:block hidden">
+        <BannerImage image={desktopCover} />
+        <Description />
+      </div>
+      <div className="w-screen relative md:hidden block">
+        <BannerImage image={mobileCover} />
+        <Description />
+      </div>
+    </>
+    //   <img
+    //     className=""
+    //     alt="desktop cover"
+    //     src={`${url}/${desktopCover}`}
+    //   />
+    //   <img
+    //     className=" w-full"
+    //     alt="mobile cover"
+    //     src={`${url}/${mobileCover}`}
+    //   />
+    // </div>
   );
 };
 

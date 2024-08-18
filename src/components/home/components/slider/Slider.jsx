@@ -9,6 +9,7 @@ import "./slider.css";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
+import SliderContents from "./components/sliderContents/SliderContents";
 
 export default function Slider({ sliders }) {
   const url = import.meta.env.VITE_STORAGE_URL;
@@ -24,13 +25,9 @@ export default function Slider({ sliders }) {
       }}
       className="mySwiper"
     >
-      {sliders.map((slider, index) => (
+      {sliders.map((slider) => (
         <SwiperSlide key={slider.id}>
-          <img
-            className="object-[center_!important]"
-            src={`${url}/${slider.background_image}`}
-            alt={`Image ${slider.id}`}
-          />
+          <SliderContents slider={slider}/>
         </SwiperSlide>
       ))}
     </Swiper>
