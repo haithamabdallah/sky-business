@@ -2,7 +2,7 @@ import { tabs } from "../../sharedData/tabs";
 import { useContext, useState } from "react";
 import MenuIcon from "./menuIcon/MenuIcon";
 import Items from "./items/Items";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../../ContextProvider";
 import Logout from "../../logout/Logout";
 const MobileNavbar = ({ scrollStatus, clearSearch }) => {
@@ -59,22 +59,8 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
         } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
-          {token ? (
+          {token && (
             <p className="text-white w-full text-center">You are logged in</p>
-          ) : (
-            <Link
-              to="/register"
-              onClick={() => {
-                setShow(false);
-                clearSearch(setTerm, setShowSearch);
-                document
-                  .querySelector("body")
-                  .classList.remove("overflow-hidden");
-              }}
-              className="text-white underline w-full text-center"
-            >
-              Sign in or sign up
-            </Link>
           )}
         </div>
         <div className="flex w-full h-full mt-[54px]">
@@ -95,7 +81,7 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
               if (token && ["/login"].includes(tab.route)) return;
               return (
                 <li key={i} className={`text-xs my-3 leading-5`}>
-                  <NavLink
+                  <Link
                     to={tab.route}
                     className="py-1 rounded-full"
                     onClick={() => {
@@ -107,7 +93,7 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
                     }}
                   >
                     {tab.name.toUpperCase()}
-                  </NavLink>
+                  </Link>
                 </li>
               );
             })}
