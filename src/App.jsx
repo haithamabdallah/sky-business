@@ -54,9 +54,7 @@ const App = () => {
   useEffect(() => {
     Promise.all([
       sendRequest({ method: "post", endpoint: "settings" }).then((res) => {
-        // console.log({ res });
         if (res.status === "success") {
-          console.log(res.data);
           setHomeData(res.data["home_page"]);
           setAboutData(res.data["about_page"]);
           setSkinCareData(res.data["skin_page"]);

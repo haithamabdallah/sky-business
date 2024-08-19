@@ -19,7 +19,6 @@ const Article = () => {
   useEffect(() => {
     if (!postInfo) {
       sendRequest({ method: "post", endpoint: "post-page/" + id }).then((res) => {
-        // console.log({ res });
         if (res.status === "success") {
           setPostData(res.data);
         }

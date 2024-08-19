@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import BannerImage from "./bannerImage/BannerImage";
 import Description from "./description/Description";
 const BottomBanners = ({ banners }) => {
-  console.log({ banners });
+
   return banners.map((banner, index) => (
     <div className="relative" key={`new banner ${index + 1}`}>
       <section

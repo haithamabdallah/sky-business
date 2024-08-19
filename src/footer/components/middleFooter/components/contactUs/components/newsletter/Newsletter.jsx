@@ -26,7 +26,6 @@ const Newsletter = () => {
         </h2>
         <form
           onChange={(e) => {
-            console.log(e.target);
             const key = e.target.name;
             const value = e.target.value;
             setForm({ ...form, [key]: value });

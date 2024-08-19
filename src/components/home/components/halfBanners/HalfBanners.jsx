@@ -13,7 +13,7 @@ const HalfBanners = ({ banners, isFull }) => {
       }`}
     >
       {banners.map((banner, i) => (
-        <div className="relative">
+        <div className="relative" key={i}>
           <img
             alt="Committed to skin health science"
             src={`${url}/${banner.image}`}

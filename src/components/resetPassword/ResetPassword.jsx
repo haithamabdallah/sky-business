@@ -38,7 +38,6 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log({ email, ...form, token });
     const response = await sendRequest({
       method: "post",
       endpoint: "reset-password",

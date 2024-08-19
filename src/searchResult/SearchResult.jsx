@@ -17,7 +17,6 @@ const handleSearch = (search, setPosts, setBrands, setStatus, setLoading) => {
       endpoint: "search",
       body: { search },
     }).then((res) => {
-      console.log("hello");
       if (res.status === "success") {
         setLoading(false);
         setStatus(res.status);
@@ -36,7 +35,7 @@ const SearchResult = () => {
   const state = useLocation().state
     ? useLocation().state
     : { search: undefined };
-  console.log({ state });
+
   const search = state.search;
 
   const navigate = useNavigate();
@@ -64,7 +63,9 @@ const SearchResult = () => {
       )}
       {!loading && brands.length > 0 && (
         <>
-          <p className="text-[18px] leading-6 uppercase ml-[21px] my-5">Brands</p>
+          <p className="text-[18px] leading-6 uppercase ml-[21px] my-5">
+            Brands
+          </p>
           <CategoryBrands brands={brands} />
         </>
       )}

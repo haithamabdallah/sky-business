@@ -41,17 +41,14 @@ const Register = ({ registerData }) => {
     });
     const result = response.data;
     if (response.status === "success") {
-      console.log("here");
       navigate("/");
       localStorage.setItem("token", result.token);
     } else {
-      console.log({ result });
       setErrors(result);
     }
   };
 
   useEffect(() => {
-    console.log({ errors });
     if (Object.keys(errors).length) {
       setTimeout(() => {
         setErrors({});

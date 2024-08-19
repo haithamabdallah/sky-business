@@ -9,7 +9,6 @@ const Description = ({
   isSlider,
   isCover,
 }) => {
-  console.log({ buttonStatus, buttonText });
   return (
     (header?.length > 0 ||
       text?.length > 0 ||

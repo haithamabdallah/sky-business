@@ -29,7 +29,6 @@ const ContactForm = () => {
   };
 
   const handleSubmit = () => {
-    console.log(`Sending form`);
     sendRequest({
       method: "post",
       endpoint: "contact-us",
