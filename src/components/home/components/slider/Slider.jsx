@@ -28,6 +28,7 @@ export default function Slider({ sliders }) {
       {sliders.map((slider) => (
         <SwiperSlide key={slider.id}>
           <SliderContents slider={slider}/>
+          
         </SwiperSlide>
       ))}
     </Swiper>
