@@ -8,7 +8,7 @@ const ProsList = () => {
   return (
     <ul
       className="font-futura flex flex-wrap
-       py-5 md:py-10 gap-y-2 w-fit mx-auto gap-x-12"
+       py-5 md:py-10 gap-y-5 w-fit mx-auto justify-center gap-x-12"
     >
       {list.map(({ text, image }, index) => (
         <li key={index} className="flex flex-col items-center justify-center px-[10px]">
