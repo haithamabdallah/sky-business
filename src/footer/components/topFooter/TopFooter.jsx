@@ -5,8 +5,8 @@ import { Context } from "../../../ContextProvider";
 const TopFooter = () => {
   return (
     <div>
-      <div className="w-full mx-auto">
-        <div className="w-full mx-auto">
+      <div className="w-full mx-auto bg-black">
+        <div className="w-full max-w-[75rem] mx-auto">
           <ProsList />
         </div>
       </div>

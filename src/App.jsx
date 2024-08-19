@@ -102,7 +102,7 @@ const App = () => {
           <Cookies setShowCookies={setShowCookies} />
         )}
         <Navbar />
-        <main className="mt-[54px] min-[1200px]:mt-[128px]">
+        <main className="mt-[54px] min-[1200px]:mt-[120px]">
           <Routes>
             <Route
               path="/"

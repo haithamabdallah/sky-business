@@ -164,7 +164,7 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
             type="text"
             name="search"
             className="outline-none font-semibold leading-[initial] text-[25px]
-            p-[0.625rem] mx-[0.625rem] flex-auto shadow shadow-gray-500"
+            p-[0.625rem] mx-[0.625rem] flex-auto h-full"
             autoFocus
           />
         </form>

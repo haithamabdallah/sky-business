@@ -18,11 +18,11 @@ const Description = ({
       <div
         className={`h-full w-full max-w-[75rem] pointer-events-none  mx-auto
         relative items-center
-          font-futura ${
+          font-futura flex ${
             isSlider || isCover
-              ? `hidden md:flex md:px-[0.9375rem]
+              ? `md:px-[0.9375rem]
               md:absolute md:top-[50%] md:left-[50%] md:[transform:translate(-50%,-50%)]`
-              : `flex lg:px-[0.9375rem] lg:left-[50%]
+              : `lg:px-[0.9375rem] lg:left-[50%]
               lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)]`
           }`}
       >
@@ -42,9 +42,9 @@ const Description = ({
             ${
               isSlider || isCover
                 ? `md:text-[2.125rem] text-[1.5rem] md:leading-[2.125rem] leading-[1.5]
-                md:mb-[.75rem] mb-[0.375rem]`
+                md:mb-[.75rem] mb-[0.375rem] md:w-[90%] w-auto`
                 : `lg:text-[2.125rem] text-[1.5rem] lg:leading-[2.125rem] leading-[1.5]
-                lg:mb-[.75rem] mb-[0.375rem]`
+                lg:mb-[.75rem] mb-[0.375rem] w-auto`
             }`}
             >
               {header}
@@ -52,8 +52,10 @@ const Description = ({
           )}
           {text?.length > 0 && (
             <p
-              className="text-[#000] lg:text-[.875rem] text-[0.75rem] lg:leading-[1.25rem]
-          leading-[1rem] pb-[1.625rem] font-futura pointer-events-auto"
+              className={`text-[#000] lg:text-[.875rem] text-[0.75rem] lg:leading-[1.25rem]
+              leading-[1rem] pb-[1.625rem] font-futura pointer-events-auto ${
+                isSlider || isCover ? "md:w-[90%] w-auto" : "w-auto"
+              }`}
             >
               {parse(text)}
             </p>

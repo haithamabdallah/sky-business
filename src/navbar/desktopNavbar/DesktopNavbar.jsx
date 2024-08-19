@@ -146,7 +146,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
           type="text"
           name="search"
           className="outline-none font-semibold leading-[initial] text-[25px]
-            p-[0.625rem] mx-[0.625rem] flex-auto"
+            p-[0.625rem] mx-[0.625rem] h-full flex-auto"
         />
       </form>
     </nav>

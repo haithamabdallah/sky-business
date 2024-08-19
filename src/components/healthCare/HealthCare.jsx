@@ -14,12 +14,15 @@ const HealthCare = ({ healthCareData }) => {
     text: healthCareData.settings.text,
   };
 
-  const ourServices = {
-    header: healthCareData.settings.header2,
-    text: healthCareData.settings.text2,
-    button: healthCareData.settings.button,
-    image: healthCareData.settings.image,
-  };
+  const ourServices =
+    settings.section_4_status === 0
+      ? null
+      : {
+          header: healthCareData.settings.header2,
+          text: healthCareData.settings.text2,
+          button: healthCareData.settings.button,
+          image: healthCareData.settings.image,
+        };
 
   return (
     <>
@@ -31,7 +34,7 @@ const HealthCare = ({ healthCareData }) => {
       />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-12 font-futura">
         <FoodCategories foodCategories={foodCategories} />
-        <OurFoodServices ourServices={ourServices} />
+        {ourServices && <OurFoodServices ourServices={ourServices} />}
       </div>
     </>
   );
