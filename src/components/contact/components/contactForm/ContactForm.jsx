@@ -10,14 +10,14 @@ const ContactForm = () => {
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
-    }, 2000);
+    }, 3000);
   }, [message]);
 
   useEffect(() => {
     if (Object.keys(errors).length) {
       setTimeout(() => {
         setErrors({});
-      }, 2000);
+      }, 3000);
     }
   }, [errors]);
 
