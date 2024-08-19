@@ -18,17 +18,16 @@ export default function Slider({ sliders }) {
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination]}
-      // autoplay={{
-      //   delay: 5000,
-      //   disableOnInteraction: false,
-      // }}
+      modules={[Pagination, Autoplay]}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
       className="mySwiper"
     >
       {sliders.map((slider) => (
         <SwiperSlide key={slider.id}>
-          <SliderContents slider={slider}/>
-          
+          <SliderContents slider={slider} />
         </SwiperSlide>
       ))}
     </Swiper>

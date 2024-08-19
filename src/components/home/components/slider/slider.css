@@ -32,13 +32,23 @@
   margin: 5px 0 0;
   font-size: 1em;
 }
-.swiper .swiper-pagination-bullet {
+.swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0px;
+}
+.swiper .swiper-pagination .swiper-pagination-bullet {
   width: 25px;
   height: 2px;
   border-radius: 0;
   background: #cccccc;
   opacity: 1;
 }
-.swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.swiper .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: #000;
+}
+
+@media (min-width: 768px) {
+  .swiper .swiper-pagination {
+    bottom: 24px;
+  }
 }/*# sourceMappingURL=slider.css.map */

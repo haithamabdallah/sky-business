@@ -30,15 +30,25 @@
       }
     }
   }
-  .swiper-pagination-bullet {
-    width: 25px;
-    height: 2px;
-    border-radius: 0;
-    background: #cccccc;
-    opacity: 1;
-    &.swiper-pagination-bullet-active {
-      background: #000;
+  .swiper-pagination {
+    position: absolute;
+    bottom: 0px;
+    .swiper-pagination-bullet {
+      width: 25px;
+      height: 2px;
+      border-radius: 0;
+      background: #cccccc;
+      opacity: 1;
+      &.swiper-pagination-bullet-active {
+        background: #000;
+      }
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .swiper .swiper-pagination {
+    bottom: 24px;
   }
 }
 // // `sm` applies to x-small devices (portrait phones, less than 576px)
