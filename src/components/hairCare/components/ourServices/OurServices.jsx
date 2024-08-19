@@ -1,34 +1,58 @@
-import { Link } from "react-router-dom";
-
 import parse from "html-react-parser";
+import { useEffect, useState, useRef } from "react";
 
 const OurServices = ({ ourServices }) => {
+  const [showMore, setShowMore] = useState(false);
+  const [height, setHeight] = useState(0);
+  const elementRef = useRef(null);
   const url = import.meta.env.VITE_STORAGE_URL;
+
+  useEffect(() => {
+    if (elementRef.current) {
+      const elementHeight = elementRef.current.scrollHeight;
+      if (elementHeight > 600) {
+        setHeight(elementHeight);
+      }
+    }
+  }, []);
   return (
-    <section className="w-full mr-[45px] grid md:grid-cols-2 grid-cols-1 font-futura mb-[45px] my-[30px]">
-      <div
-        className="md:h-[700px] md:overflow-auto md:pt-5 md:pr-[45px] md:pb-10 md:pl-5 py-5 px-[25px]
-        flex flex-col md:order-1 order-2 mt-3 md:mt-0"
-      >
-        <h3 className="min-[992px]:text-[50px] text-3xl leading-none font-bold mb-[15px] uppercase">
-          {ourServices.header}
-        </h3>
-        {parse(ourServices.text)}
-        {/* <Link
-          className="mb-[0.3125rem] text-white bg-black flex items-center justify-center border
-        border-black rounded-[10px] font-semibold text-sm leading-5 h-[3.125rem]
-        px-5 uppercase before:inline-block before:align-middle transition-colors
-        duration-300 hover:bg-white hover:text-black sm:max-w-[300px] w-fit mt-[10px]"
-          to="#"
-        >
-          {ourServices.button}
-        </Link> */}
-      </div>
+    <section className="w-full h-full mr-[45px] block font-futura mb-[45px] px-[25px] my-[30px]">
       <img
         src={`${url}/${ourServices.image}`}
         alt="shop_img"
-        className="md:order-2 order-1 md:h-[700px] h-auto object-cover object-top w-full px-[25px]"
+        className="md:order-2 order-1 md:float-right md:h-[700px] h-auto object-cover object-top
+          md:w-1/2 w-full inline md:pl-3 pl-0"
       />
+      <div
+        ref={elementRef}
+        className={`${
+          height > 600 &&
+          `[transition:_max-height_1s,_opacity_0.2s__0.2s_ease-in-out] ${
+            showMore
+              ? `md:max-h-[3000px] md:overflow-y-visible`
+              : "md:max-h-[300px] md:overflow-y-hidden"
+          }`
+        }`}
+      >
+        <h3
+          className="min-[992px]:text-[50px] text-3xl leading-none font-bold mb-[15px] uppercase
+        mt-5 md:mt-0"
+        >
+          {ourServices.header}
+        </h3>
+        {parse(ourServices.text)}
+      </div>
+      {height > 600 && (
+        <button
+          className="hidden md:flex mb-[0.3125rem] text-white bg-black items-center justify-center border
+          border-black rounded-[10px] font-semibold text-sm leading-5 h-[3.125rem]
+          px-5 uppercase before:inline-block before:align-middle transition-colors
+          duration-300 hover:bg-white hover:text-black sm:max-w-[300px] w-fit mt-4"
+          onClick={() => setShowMore(!showMore)}
+        >
+          {showMore ? "Read Less" : "Read More"}
+        </button>
+      )}
     </section>
   );
 };
