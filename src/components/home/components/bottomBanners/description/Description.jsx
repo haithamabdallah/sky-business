@@ -16,20 +16,36 @@ const Description = ({
       Number(buttonStatus) === 1 ||
       buttonText?.length > 0) && (
       <div
-        className={`h-full w-full max-w-[75rem] pointer-events-none lg:left-[50%] lg:px-[0.9375rem]
-          lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)] mx-auto relative items-center
-          font-futura ${isSlider || isCover ? "hidden lg:flex" : "flex"}`}
+        className={`h-full w-full max-w-[75rem] pointer-events-none  mx-auto
+        relative items-center
+          font-futura ${
+            isSlider || isCover
+              ? `hidden md:flex md:px-[0.9375rem]
+              md:absolute md:top-[50%] md:left-[50%] md:[transform:translate(-50%,-50%)]`
+              : `flex lg:px-[0.9375rem] lg:left-[50%]
+              lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)]`
+          }`}
       >
         <div
-          className={`mx-0 lg:w-[50%] w-full inline-block lg:py-10
-          py-5 ${isSlider ? "text-center lg:text-left" : "text-left"} ${
-            isCover ? "px-4" : "lg:px-[0.9375rem] px-0"
+          className={`mx-0 w-full inline-block lg:py-10
+          py-5 ${
+            isSlider
+              ? "px-4 text-center md:w-[50%] md:text-left"
+              : "text-left lg:w-[50%]"
+          } ${
+            isCover ? "px-4 md:w-[50%]" : "lg:px-[0.9375rem] lg:w-[50%] px-0"
           }`}
         >
           {header?.length > 0 && (
             <h2
-              className="lg:text-[2.125rem] text-[1.5rem] lg:leading-[2.125rem] leading-[1.5]
-            lg:mb-[.75rem] mb-[0.375rem] [letter-spacing:-.05125rem] pointer-events-auto"
+              className={`[letter-spacing:-.05125rem] pointer-events-auto
+            ${
+              isSlider || isCover
+                ? `md:text-[2.125rem] text-[1.5rem] md:leading-[2.125rem] leading-[1.5]
+                md:mb-[.75rem] mb-[0.375rem]`
+                : `lg:text-[2.125rem] text-[1.5rem] lg:leading-[2.125rem] leading-[1.5]
+                lg:mb-[.75rem] mb-[0.375rem]`
+            }`}
             >
               {header}
             </h2>
@@ -46,7 +62,7 @@ const Description = ({
             <div>
               <div
                 className={`w-full inline-block relative align-top
-              ${isSlider && "flex justify-center lg:block"}`}
+              ${isSlider && "flex justify-center md:block"}`}
               >
                 <Link
                   to={buttonUrl}

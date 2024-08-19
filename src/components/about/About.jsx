@@ -1,4 +1,3 @@
-import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
 import parse from "html-react-parser";
 
