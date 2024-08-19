@@ -58,9 +58,9 @@ const Input = ({ input, handleChange, countries }) => {
         maxLength="3498"
         className="outline-none border-b border-black min-h-[60px] pt-[14px] text-[14px] font-semibold"
       ></textarea>
-      <small className="text-[#626566] text-[10px] leading-3 ml-auto mt-[6px]">
+      {/* <small className="text-[#626566] text-[10px] leading-3 ml-auto mt-[6px]">
         Limit to 3498 Characters*
-      </small>
+      </small> */}
     </>
   ) : (
     <>

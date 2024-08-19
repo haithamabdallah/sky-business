@@ -23,7 +23,7 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
         show ? "" : "px-[15px]"
       } ${
         scrollStatus === "down" ? "translate-y-[-54px]" : "translate-y-0"
-      } h-[54px] z-50 items-center font-futura transition-transform duration-500`}
+      } h-[54px] z-50 items-center font-futura transition-transform duration-500 shadow`}
     >
       <Link
         className={`max-w-[6.5625rem] ${show ? "hidden" : "mr-auto"}`}

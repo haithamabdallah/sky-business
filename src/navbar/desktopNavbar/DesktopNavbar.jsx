@@ -38,7 +38,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
     <nav
       className={`hidden w-screen min-[1200px]:flex flex-col bg-white text-sm leading-5 font-medium
       top-0 z-10 font-futuraDemi fixed
-      transition-transform duration-500 ${
+      transition-transform duration-500 shadow ${
         scrollStatus === "down"
           ? "translate-y-[-128px]"
           : "translate-y-0 delay-100"
@@ -146,7 +146,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
           type="text"
           name="search"
           className="outline-none font-semibold leading-[initial] text-[25px]
-            p-[0.625rem] mx-[0.625rem] flex-auto shadow shadow-gray-500"
+            p-[0.625rem] mx-[0.625rem] flex-auto"
         />
       </form>
     </nav>
