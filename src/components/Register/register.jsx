@@ -13,8 +13,10 @@ const Register = ({ registerData }) => {
 
   const navigate = useNavigate();
 
-  const desktopCover = registerData.settings.cover_desktop;
-  const mobileCover = registerData.settings.cover_mobile;
+  const settings = registerData.settings;
+  const desktopCover = settings.cover_desktop;
+  const mobileCover = settings.cover_mobile;
+  const { cover_header: headerCover, cover_text: textCover } = settings;
   useEffect(() => {
     const fetchCountries = async () => {
       const result = await sendRequest({ method: "get", endpoint: "register" });
@@ -59,7 +61,12 @@ const Register = ({ registerData }) => {
 
   return (
     <div>
-      <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
+      <CoverComponent
+        desktopCover={desktopCover}
+        mobileCover={mobileCover}
+        header={headerCover}
+        text={textCover}
+      />
       <div className="my-[3rem] max-w-[75rem] mx-auto px-3 sm:px-0">
         <form
           className="w-full flex flex-col justify-center items-center px-[15px] gap-x-5 gap-y-9"
@@ -98,7 +105,6 @@ const Register = ({ registerData }) => {
             className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
             mb-5"
           >
-
             <button
               type="submit"
               className="w-fit text-white px-3 py-2

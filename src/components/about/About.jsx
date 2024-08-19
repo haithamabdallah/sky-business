@@ -4,12 +4,20 @@ import parse from "html-react-parser";
 
 const About = ({ aboutData }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const desktopCover = aboutData.settings.cover_desktop;
-  const mobileCover = aboutData.settings.cover_mobile;
+  const settings = aboutData.settings
+  const desktopCover = settings.cover_desktop;
+  const mobileCover = settings.cover_mobile;
+  const { cover_header: header, cover_text: text } = settings;
+
   return (
     aboutData.settings && (
       <div className="">
-        <CoverComponent desktopCover={desktopCover} mobileCover={mobileCover} />
+        <CoverComponent
+          desktopCover={desktopCover}
+          mobileCover={mobileCover}
+          header={header}
+          text={text}
+        />
         <div className="max-w-[1170px] mx-auto px-[15px] my-[3rem]">
           {/* section 1 large screen */}
           <div className="hidden lg:grid place-items-center  lg:grid-cols-2  gap-y-[3rem] my-[3rem]">

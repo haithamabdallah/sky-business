@@ -7,6 +7,7 @@ const Description = ({
   buttonStatus,
   buttonUrl,
   isSlider,
+  isCover,
 }) => {
   console.log({ buttonStatus, buttonText });
   return (
@@ -15,14 +16,15 @@ const Description = ({
       Number(buttonStatus) === 1 ||
       buttonText?.length > 0) && (
       <div
-        className={`h-full w-full max-w-[75rem] pointer-events-none lg:left-[50%] lg:px-[0.9375rem] lg:absolute lg:top-[50%]
-        lg:[transform:translate(-50%,-50%)] mx-auto relative items-center font-futura ${
-          isSlider ? "hidden lg:flex" : "flex"
-        }`}
+        className={`h-full w-full max-w-[75rem] pointer-events-none lg:left-[50%] lg:px-[0.9375rem]
+          lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)] mx-auto relative items-center
+          font-futura ${isSlider ? "hidden lg:flex" : "flex"}`}
       >
         <div
-          className={`lg:px-[0.9375rem] mx-0 lg:w-[50%] w-full inline-block lg:py-10
-      py-5 ${isSlider ? "text-center lg:text-left" : "text-left"}`}
+          className={`mx-0 lg:w-[50%] w-full inline-block lg:py-10
+          py-5 ${isSlider ? "text-center lg:text-left" : "text-left"} ${
+            isCover ? "px-4" : "lg:px-[0.9375rem] px-0"
+          }`}
         >
           {header?.length > 0 && (
             <h2

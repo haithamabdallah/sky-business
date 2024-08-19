@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import { useEffect, useState, useRef } from "react";
 
-const OurServices = ({ ourServices }) => {
+const OurFoodServices = ({ ourServices }) => {
   const [showMore, setShowMore] = useState(false);
   const [height, setHeight] = useState(0);
   const elementRef = useRef(null);
@@ -29,7 +29,7 @@ const OurServices = ({ ourServices }) => {
           height > 600 &&
           `[transition:_max-height_1s,_opacity_0.2s__0.2s_ease-in-out] ${
             showMore
-              ? `md:max-h-[3000px] md:overflow-y-visible`
+              ? `md:max-h-[10000px] md:overflow-y-visible`
               : "md:max-h-[300px] md:overflow-y-hidden"
           }`
         }`}
@@ -57,4 +57,4 @@ const OurServices = ({ ourServices }) => {
   );
 };
 
-export default OurServices;
+export default OurFoodServices;

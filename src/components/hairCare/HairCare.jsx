@@ -5,7 +5,9 @@ import Products from "./components/products/Products";
 
 const HairCare = ({ hairCareData }) => {
   const settings = hairCareData.settings;
-
+  const desktopCover = settings.cover_desktop;
+  const mobileCover = settings.cover_mobile;
+  const { cover_header: headerCover, cover_text: textCover } = settings;
   const productsData = {
     products: hairCareData["hair products"],
     header: settings.header,
@@ -23,8 +25,10 @@ const HairCare = ({ hairCareData }) => {
   return (
     <>
       <CoverComponent
-        desktopCover={settings.cover_desktop}
-        mobileCover={settings.cover_mobile}
+        desktopCover={desktopCover}
+        mobileCover={mobileCover}
+        header={headerCover}
+        text={textCover}
       />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
         <Products productsData={productsData} />
