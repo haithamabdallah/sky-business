@@ -18,7 +18,7 @@ const Retail = ({ retailerData }) => {
           text={textCover}
         />
         <div className="max-w-[75rem] mx-auto">
-          <div className="my-[6rem] px-[15px]">
+          <div className="px-[15px]">
             <Header retailerData={retailerData} />
             <Logos retailerData={retailerData} />
           </div>

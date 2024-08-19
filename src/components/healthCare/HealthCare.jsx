@@ -29,7 +29,7 @@ const HealthCare = ({ healthCareData }) => {
         header={headerCover}
         text={textCover}
       />
-      <div className="flex flex-col max-w-[75rem] mx-auto mt-[154px] font-futura">
+      <div className="flex flex-col max-w-[75rem] mx-auto mt-12 font-futura">
         <FoodCategories foodCategories={foodCategories} />
         <OurFoodServices ourServices={ourServices} />
       </div>
