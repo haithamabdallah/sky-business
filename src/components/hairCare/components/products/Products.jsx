@@ -2,7 +2,7 @@ import ProductList from "./components/productList/ProductList";
 import parse from "html-react-parser";
 const Products = ({ productsData }) => {
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center px-4">
       <h2
         className="text-center text-5xl mb-[30px] font-bold leading-[48px]
     uppercase [letter-spacing:_0]"

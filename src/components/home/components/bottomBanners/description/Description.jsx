@@ -18,7 +18,7 @@ const Description = ({
       <div
         className={`h-full w-full max-w-[75rem] pointer-events-none lg:left-[50%] lg:px-[0.9375rem]
           lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)] mx-auto relative items-center
-          font-futura ${isSlider ? "hidden lg:flex" : "flex"}`}
+          font-futura ${isSlider || isCover ? "hidden lg:flex" : "flex"}`}
       >
         <div
           className={`mx-0 lg:w-[50%] w-full inline-block lg:py-10
