@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import sendRequest from "../../methods/fetchData";
 const Unsubscribe = () => {
+  const [form, setForm] = useState({});
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage("");
+      setStatus("");
+    }, 2000);
+  }, [message]);
   return (
     <div className="w-screen h-screen m-0 p-0 box-border bg-[#eeeeee] pt-[50px] overflow-hidden">
       <div
@@ -13,7 +23,25 @@ const Unsubscribe = () => {
           </h1>
         </div>
         <div className="text-left max-w-[340px] m-auto mt-[30px]">
-          <form className="w-full">
+          <form
+            className="w-full"
+            onChange={(e) => {
+              const key = e.target.name;
+              const value = e.target.value;
+              setForm({ ...form, [key]: value });
+            }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendRequest({
+                method: "get",
+                endpoint: "unsubscribe",
+                params: { ...form },
+              }).then((data) => {
+                setMessage(data.message);
+                setStatus(data.status);
+              });
+            }}
+          >
             <label className="block mb-[5px] font-bold" htmlFor="email">
               Email <span className="text-red-500">*</span>
             </label>
@@ -24,6 +52,16 @@ const Unsubscribe = () => {
               name="email"
               placeholder="Your Email"
             />
+            {message.length > 0 && status === "success" && (
+              <small className="w-full py-5 text-green-700 text-[1rem]">
+                {message}
+              </small>
+            )}
+            {message.length > 0 && status === "error" && (
+              <small className="w-full text-center my-5 text-red-700 text-xs font-bold">
+                {message}
+              </small>
+            )}
             <button
               type="submit"
               className="cursor-pointer bg-[#0364cc] text-center text-[#ffffff]
