@@ -38,6 +38,7 @@ const Newsletter = () => {
               params: { ...form },
             }).then((data) => {
               e.target.reset();
+              setForm({});
               setChecked(false);
               setMessage(data.message);
               setStatus(data.status);

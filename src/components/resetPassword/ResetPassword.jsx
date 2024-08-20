@@ -43,6 +43,10 @@ const ResetPassword = () => {
       endpoint: "reset-password",
       body: { email, ...form, token },
     });
+    if (response.status === "success") {
+      setForm({ password: "", password_confirmation: "" });
+      e.target.reset();
+    }
     setLoading(false);
     setMessage(response.message);
     setStatus(response.status);

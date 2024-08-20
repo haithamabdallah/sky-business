@@ -28,14 +28,16 @@ const ContactForm = () => {
     setForm({ ...form, [key]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     sendRequest({
       method: "post",
       endpoint: "contact-us",
       body: { ...form },
     }).then((data) => {
       if (data.status === "success") {
+        e.target.reset();
         setMessage(data.message);
+        setForm({});
       } else {
         setErrors(data.errors);
       }
@@ -46,7 +48,7 @@ const ContactForm = () => {
       className="w-full flex flex-wrap justify-center items-center gap-x-5 gap-y-9"
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit();
+        handleSubmit(e);
       }}
     >
       <p className="w-full text-center text-[12px] leading-[18px] text-[rgb(98,101,102)">

@@ -39,6 +39,8 @@ const Login = () => {
     });
     const result = response.data;
     if (response.status === "success") {
+      setForm({ email: "", password: "" });
+      e.target.reset();
       navigate("/");
       localStorage.setItem("token", result.token);
     } else {

@@ -42,6 +42,8 @@ const Unsubscribe = () => {
                 setMessage(data.message);
                 setStatus(data.status);
                 if (data.status === "success") {
+                  setForm({});
+                  e.target.reset();
                   navigate("/unsubscribed", { state: { email: form.email } });
                 }
               });
@@ -58,16 +60,16 @@ const Unsubscribe = () => {
               placeholder="Your Email"
             />
             <div className="mt-[30px]">
-            {message.length > 0 && status === "success" && (
-              <small className="w-full py-5 text-green-700 text-[1rem]">
-                {message}
-              </small>
-            )}
-            {message.length > 0 && status === "error" && (
-              <small className="w-full text-center my-5 text-red-700 text-xs font-bold">
-                {message}
-              </small>
-            )}
+              {message.length > 0 && status === "success" && (
+                <small className="w-full py-5 text-green-700 text-[1rem]">
+                  {message}
+                </small>
+              )}
+              {message.length > 0 && status === "error" && (
+                <small className="w-full text-center my-5 text-red-700 text-xs font-bold">
+                  {message}
+                </small>
+              )}
             </div>
             <button
               type="submit"

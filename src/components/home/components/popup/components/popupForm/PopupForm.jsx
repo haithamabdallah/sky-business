@@ -20,6 +20,10 @@ const PopupForm = ({ setMessage, setStatus }) => {
         }).then((data) => {
           setMessage(data.message);
           setStatus(data.status);
+          if (data.status === "success"){
+             setEmail("")
+             e.target.reset();
+            };
         });
       }}
     >
@@ -34,12 +38,6 @@ const PopupForm = ({ setMessage, setStatus }) => {
           }}
         />
       </div>
-      {/* <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email Address"
-        className="p-3 my-5 outline-none border border-gray-400"
-      /> */}
       <button
         className="w-full bg-black text-white mt-5 p-5 mb-5 text-xl"
         type="submit"

@@ -25,6 +25,10 @@ const ForgetPassword = () => {
     setLoading(false);
     setMessage(response.message);
     setStatus(response.status);
+    if (response.status === "success") {
+      e.target.reset();
+      setEmail("");
+    }
   };
 
   useEffect(() => {

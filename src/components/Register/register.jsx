@@ -33,7 +33,7 @@ const Register = ({ registerData }) => {
     setForm({ ...form, [key]: value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     const response = await sendRequest({
       method: "post",
       endpoint: "register",
@@ -41,6 +41,8 @@ const Register = ({ registerData }) => {
     });
     const result = response.data;
     if (response.status === "success") {
+      setForm({});
+      e.target.reset();
       navigate("/");
       localStorage.setItem("token", result.token);
     } else {
@@ -69,7 +71,7 @@ const Register = ({ registerData }) => {
           className="w-full flex flex-col justify-center items-center px-[15px] gap-x-5 gap-y-9"
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit();
+            handleSubmit(e);
           }}
         >
           {inputs.map((input) => (
