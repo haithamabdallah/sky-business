@@ -7,8 +7,8 @@ const ProsList = () => {
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <ul
-      className="font-futura flex flex-wrap
-       py-5 md:py-10 gap-y-5 w-fit mx-auto justify-between gap-x-12"
+      className="m-5 md:m-0 font-futura flex flex-wrap
+       py-5 md:py-10 gap-y-5 justify-between gap-x-12"
     >
       {list.map(({ text, image }, index) => (
         <li key={index} className="flex flex-col items-center justify-center px-[10px]">

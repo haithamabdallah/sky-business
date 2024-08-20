@@ -8,22 +8,21 @@ const Description = ({
   buttonUrl,
   isSlider,
   isCover,
+  isDark,
 }) => {
+  console.log({ buttonStatus });
   return (
-    (header?.length > 0 ||
-      text?.length > 0 ||
-      Number(buttonStatus) === 1 ||
-      buttonText?.length > 0) && (
+    (header?.length > 0 || text?.length > 0 || Number(buttonStatus) === 1) && (
       <div
         className={`h-full w-full max-w-[75rem] pointer-events-none  mx-auto
         relative items-center
-          font-futura flex ${
-            isCover
-              ? `md:px-[0.9375rem]
+        font-futura flex ${
+          isCover
+            ? `md:px-[0.9375rem]
               md:absolute md:top-[50%] md:left-[50%] md:[transform:translate(-50%,-50%)]`
-              : `lg:px-[0.9375rem] lg:left-[50%]
+            : `lg:px-[0.9375rem] lg:left-[50%]
               lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)]`
-          }`}
+        }`}
       >
         <div
           className={`mx-0 w-full inline-block lg:py-10
@@ -44,7 +43,9 @@ const Description = ({
                 md:mb-[.75rem] mb-[0.375rem] md:w-[90%] w-auto`
                 : `lg:text-[2.125rem] text-[1.5rem] lg:leading-[2.125rem] leading-[1.5]
                 lg:mb-[.75rem] mb-[0.375rem] w-auto`
-            } ${isSlider ? "lg:w-[90%] w-auto" : "w-auto"}`}
+            } ${isSlider ? "lg:w-[90%] w-auto" : "w-auto"} ${
+                isDark ? "lg:text-white text-black" : "text-black"
+              }`}
             >
               {header}
             </h2>
@@ -54,12 +55,13 @@ const Description = ({
               className={`text-[#000] lg:text-[.875rem] text-[0.75rem] lg:leading-[1.25rem]
               leading-[1rem] pb-[1.625rem] font-futura pointer-events-auto ${
                 isCover ? "md:w-[90%] w-auto" : "w-auto"
-              } ${isSlider ? "lg:w-[90%] w-auto" : "w-auto"}`}
+              } ${isSlider ? "lg:w-[90%] w-auto" : "w-auto"}
+              ${isDark ? "lg:text-white text-black" : "text-black"}`}
             >
               {parse(text)}
             </p>
           )}
-          {(Number(buttonStatus) === 1 || buttonText?.length > 0) && (
+          {Number(buttonStatus) === 1 && (
             <div>
               <div
                 className={`w-full inline-block relative align-top
@@ -67,12 +69,19 @@ const Description = ({
               >
                 <Link
                   to={buttonUrl}
-                  className="text-center pointer-events-auto appearance-none bg-[#000]
-                  border border-transparent rounded-[1.5625rem] text-[#fff] cursor-pointer
+                  className={`text-center pointer-events-auto appearance-none
+                  border border-transparent rounded-[1.5625rem] cursor-pointer
                   inline-block font-semibold text-[.875rem] leading-[1] min-w-[10.625rem]
                   py-[1.0625rem] relative
                   [transition:_background-color_.25s_ease-out,_color_.25s_ease-out] align-middle
-                  hover:bg-white hover:text-black hover:border-black"
+                  
+                  ${
+                    isDark
+                      ? `lg:bg-[#fff] lg:text-[#000] lg:hover:bg-black lg:hover:text-white
+                      lg:hover:border-[#fff] bg-[#000] text-[#fff] hover:bg-white
+                      hover:text-black hover:border-black`
+                      : `bg-[#000] text-[#fff] hover:bg-white hover:text-black hover:border-black`
+                  }`}
                 >
                   {buttonText}
                 </Link>
