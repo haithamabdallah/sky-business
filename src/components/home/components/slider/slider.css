@@ -47,8 +47,8 @@
   background: #000;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .swiper .swiper-pagination {
-    bottom: 24px;
+    bottom: 3rem;
   }
 }/*# sourceMappingURL=slider.css.map */
