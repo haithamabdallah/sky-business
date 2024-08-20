@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sendRequest from "../../methods/fetchData";
 const Unsubscribe = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
@@ -37,8 +38,12 @@ const Unsubscribe = () => {
                 endpoint: "unsubscribe",
                 params: { ...form },
               }).then((data) => {
+                e.target.reset();
                 setMessage(data.message);
                 setStatus(data.status);
+                if (data.status === "success") {
+                  navigate("/unsubscribed", { state: { email: form.email } });
+                }
               });
             }}
           >
@@ -52,6 +57,7 @@ const Unsubscribe = () => {
               name="email"
               placeholder="Your Email"
             />
+            <div className="mt-[30px]">
             {message.length > 0 && status === "success" && (
               <small className="w-full py-5 text-green-700 text-[1rem]">
                 {message}
@@ -62,6 +68,7 @@ const Unsubscribe = () => {
                 {message}
               </small>
             )}
+            </div>
             <button
               type="submit"
               className="cursor-pointer bg-[#0364cc] text-center text-[#ffffff]
@@ -77,7 +84,7 @@ const Unsubscribe = () => {
             to="/"
             className="text-[12px] font-bold m-0 leading-[22px] mb-5 text-[#34ac60]"
           >
-            Go to home
+            Go to Website
           </Link>
         </div>
       </div>

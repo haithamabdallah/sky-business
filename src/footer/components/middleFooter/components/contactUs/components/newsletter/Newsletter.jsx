@@ -37,6 +37,8 @@ const Newsletter = () => {
               endpoint: "subscribe",
               params: { ...form },
             }).then((data) => {
+              e.target.reset();
+              setChecked(false);
               setMessage(data.message);
               setStatus(data.status);
             });
