@@ -9,7 +9,7 @@ const HalfBanners = ({ banners, isFull }) => {
     <section
       className={`mx-auto mb-[60px] grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1
       gap-[10px] ${
-        Number(isFull) === 1 ? "w-full px-0" : "max-w-[75rem] px-[.9375rem]"
+        Number(isFull) === 1 ? "w-full px-[.9375rem]" : "max-w-[75rem] px-[.9375rem]"
       }`}
     >
       {banners.map((banner, i) => (
