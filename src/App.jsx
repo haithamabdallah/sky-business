@@ -26,6 +26,7 @@ import SearchResult from "./searchResult/SearchResult";
 import ForgetPassword from "./components/forgetPassword/ForgetPassword";
 import Subscribed from "./components/subscribed/Subscribed";
 import Unsubscribed from "./components/unsubscribed/Unsubscribed";
+import Unsubscribe from "./components/unsubscribe/Unsubscribe";
 import ConfirmSubscribe from "./components/confirmSubscribe/ConfirmSubscribe";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 import ScrollToTop from "./scrollToTop/ScrollToTop";
@@ -48,6 +49,10 @@ const App = () => {
   const [staticPagesData, setStaticPagesData] = useState({});
 
   const { pathname } = useLocation();
+
+  const isEmailPage = /(\/subscribed|\/unsubscribed|\/unsubscribe)/.test(
+    pathname
+  );
 
   const { setValue } = useContext(Context);
 
@@ -93,93 +98,115 @@ const App = () => {
       <img alt="loading" src={logo} className="animate-breath w-36" />
     </div>
   ) : (
-    <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
-      <ScrollToTop />
-      <div className="self-start">
-        {!localStorage.getItem("cookies_popup") && showCookies && (
-          <Cookies setShowCookies={setShowCookies} />
-        )}
-        <Navbar />
-        <main className="mt-[54px] min-[1200px]:mt-[120px]">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  homeData={homeData}
-                  showPopup={showPopup}
-                  setShowPopup={setShowPopup}
+    <>
+      <Routes>
+        <Route path="/subscribed" element={<Subscribed />} />
+        <Route path="/unsubscribed" element={<Unsubscribed />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} />
+      </Routes>
+      {isEmailPage === false && (
+        <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
+          <ScrollToTop />
+          <div className="self-start">
+            {!localStorage.getItem("cookies_popup") && showCookies && (
+              <Cookies setShowCookies={setShowCookies} />
+            )}
+            <Navbar />
+            <main className="mt-[54px] min-[1200px]:mt-[120px]">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      homeData={homeData}
+                      showPopup={showPopup}
+                      setShowPopup={setShowPopup}
+                    />
+                  }
                 />
-              }
-            />
-            <Route path="/search" element={<SearchResult />} />
-            <Route
-              path="/register"
-              element={<Register registerData={registerData} />}
-            />
-            <Route path="/login" element={<Login loginData={registerData} />} />
-            <Route path="/forget_password" element={<ForgetPassword />} />
-            <Route path="/password-reset/:token" element={<ResetPassword />} />
-            <Route path="/about" element={<About aboutData={aboutData} />} />
-            <Route
-              path="/skin_care"
-              element={<SkinCare skinCareData={skinCareData} />}
-            />
-            <Route path="/blog" element={<Blog blogData={blogData} />} />
-            <Route path="/blog/:id" element={<Article />} />
-            <Route path="/brands" element={<Brands brandData={brandData} />} />
-            <Route
-              path="/retailers"
-              element={<Retailers retailerData={retailerData} />}
-            />
-            <Route
-              path="/contact"
-              element={<Contact contactData={contactData} />}
-            />
-            <Route
-              path="/health_care"
-              element={<HealthCare healthCareData={healthCareData} />}
-            />
-            <Route
-              path="/makeup"
-              element={<Makeup makeupData={makeupData} />}
-            />
-            <Route
-              path="/hair_care"
-              element={<HairCare hairCareData={hairCareData} />}
-            />
-            <Route
-              path="/terms"
-              element={<Terms staticPagesData={staticPagesData} />}
-            />
-            <Route
-              path="/privacy"
-              element={<Privacy staticPagesData={staticPagesData} />}
-            />
-            <Route
-              path="/returns"
-              element={<Returns staticPagesData={staticPagesData} />}
-            />
-            <Route path="/subscribed" element={<Subscribed />} />
-            <Route path="/unsubscribed" element={<Unsubscribed />} />
-            <Route path="/confirm-subscribe" element={<ConfirmSubscribe />} />
-            <Route
-              path="*"
-              element={
-                <Home
-                  homeData={homeData}
-                  showPopup={showPopup}
-                  setShowPopup={setShowPopup}
+                <Route path="/search" element={<SearchResult />} />
+                <Route
+                  path="/register"
+                  element={<Register registerData={registerData} />}
                 />
-              }
-            />
-          </Routes>
+                <Route
+                  path="/login"
+                  element={<Login loginData={registerData} />}
+                />
+                <Route path="/forget_password" element={<ForgetPassword />} />
+                <Route
+                  path="/password-reset/:token"
+                  element={<ResetPassword />}
+                />
+                <Route
+                  path="/about"
+                  element={<About aboutData={aboutData} />}
+                />
+                <Route
+                  path="/skin_care"
+                  element={<SkinCare skinCareData={skinCareData} />}
+                />
+                <Route path="/blog" element={<Blog blogData={blogData} />} />
+                <Route path="/blog/:id" element={<Article />} />
+                <Route
+                  path="/brands"
+                  element={<Brands brandData={brandData} />}
+                />
+                <Route
+                  path="/retailers"
+                  element={<Retailers retailerData={retailerData} />}
+                />
+                <Route
+                  path="/contact"
+                  element={<Contact contactData={contactData} />}
+                />
+                <Route
+                  path="/health_care"
+                  element={<HealthCare healthCareData={healthCareData} />}
+                />
+                <Route
+                  path="/makeup"
+                  element={<Makeup makeupData={makeupData} />}
+                />
+                <Route
+                  path="/hair_care"
+                  element={<HairCare hairCareData={hairCareData} />}
+                />
+                <Route
+                  path="/terms"
+                  element={<Terms staticPagesData={staticPagesData} />}
+                />
+                <Route
+                  path="/privacy"
+                  element={<Privacy staticPagesData={staticPagesData} />}
+                />
+                <Route
+                  path="/returns"
+                  element={<Returns staticPagesData={staticPagesData} />}
+                />
+                <Route
+                  path="/confirm-subscribe"
+                  element={<ConfirmSubscribe />}
+                />
+                <Route
+                  path="*"
+                  element={
+                    <Home
+                      homeData={homeData}
+                      showPopup={showPopup}
+                      setShowPopup={setShowPopup}
+                    />
+                  }
+                />
+              </Routes>
+            </main>
+          </div>
+          <div className="self-end">
+            <Footer />
+          </div>
         </main>
-      </div>
-      <div className="self-end">
-        <Footer />
-      </div>
-    </main>
+      )}
+    </>
   );
 };
 
