@@ -45,7 +45,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
       }`}
     >
       <div className="w-full bg-[#004aad] flex justify-end">
-        <ul className="flex px-[1.25rem] pb-[.1875rem] ml-auto">
+        <ul className="flex px-[1.25rem] ml-auto">
           {upperTabs.map((tab, i) => {
             if (token && ["/login"].includes(tab.route)) return;
             return (
@@ -91,7 +91,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-12 relative px-[1.25rem] pb-[.1875rem]">
+      <div className="grid grid-cols-12 relative px-[1.25rem]">
         <Link
           className="col-span-2 max-w-[10.9375rem] max-h-[70px] flex justify-center mx-auto"
           to="/"
