@@ -55,7 +55,7 @@ const Unsubscribe = () => {
             <input
               className="border border-[#cbcbcb] py-[10px] px-[15px] text-xs outline-none
               block w-full placeholder-black placeholder-opacity-60"
-              type="text"
+              type="email"
               name="email"
               required
               placeholder="Your Email"
