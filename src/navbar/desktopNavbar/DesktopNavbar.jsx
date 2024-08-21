@@ -40,31 +40,29 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
       top-0 z-10 font-futuraDemi fixed
       transition-transform duration-500 shadow ${
         scrollStatus === "down"
-          ? "translate-y-[-128px]"
+          ? "translate-y-[-110px]"
           : "translate-y-0 delay-100"
       }`}
     >
-      <div className="w-full bg-[#004aad] flex justify-end">
-        <ul className="flex px-[1.25rem] ml-auto">
+      <div className="w-full bg-[#004aad] flex justify-end items-center h-[40px]">
+        <ul className="flex px-[1.25rem] ml-auto h-full">
           {upperTabs.map((tab, i) => {
             if (token && ["/login"].includes(tab.route)) return;
             return (
               <Fragment key={tab.name}>
                 {
                   <li
-                    className={`text-[.75rem] text-white leading-5 font-medium pt-[14px] pb-[10px]
+                    className={`text-[.75rem] flex justify-center items-center
+                      text-white leading-5 font-medium py-[10px]
                       px-[1rem]`}
                   >
                     <Link
                       onClick={() => clearSearch(setTerm, setShow)}
+                      className="relative"
                       to={tab.route}
                     >
                       <span
-                        className={`flex flex-row gap-2 place-items-center px-1 ${
-                          pathname === tab.route
-                            ? "border-b-4 pb-1 border-b-white"
-                            : ""
-                        }`}
+                        className={`flex flex-row gap-2 place-items-center px-1`}
                       >
                         {["/login"].includes(tab.route) && (
                           <svg
@@ -81,6 +79,9 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
                         )}{" "}
                         {tab.name.toUpperCase()}
                       </span>
+                      {pathname === tab.route && (
+                        <hr className="h-1 w-full bg-white absolute bottom-[-6px]" />
+                      )}
                     </Link>
                   </li>
                 }
@@ -91,7 +92,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-12 relative px-[1.25rem]">
+      <div className="grid grid-cols-12 relative px-[1.25rem] h-[70px]">
         <Link
           className="col-span-2 max-w-[10.9375rem] max-h-[70px] flex justify-center mx-auto"
           to="/"
@@ -104,10 +105,10 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
             <Fragment key={tab.name}>
               {
                 <li
-                  className={`text-[.75rem] leading-5 font-medium py-[.875rem] px-[1rem]`}
+                  className={`text-[.75rem] h-full leading-5 font-medium px-[1rem]`}
                   onClick={() => clearSearch(setTerm, setShow)}
                 >
-                  <NavLink to={tab.route}>{tab.name.toUpperCase()}</NavLink>
+                  <NavLink className="h-full flex items-center" to={tab.route}>{tab.name.toUpperCase()}</NavLink>
                 </li>
               }
             </Fragment>

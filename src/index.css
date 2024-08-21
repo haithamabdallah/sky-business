@@ -1,9 +1,7 @@
 
 .active {
-  text-decoration: underline;
-  text-decoration-color: #0449ae;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 10px;
+  padding-top: 4px;
+  border-bottom: 4px solid #0449ae;
 }
 
 @font-face {
