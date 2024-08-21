@@ -136,7 +136,6 @@ const Search = ({ scrollStatus, show, setShow, term, setTerm }) => {
           />
         </form>
         <form
-          tabIndex="0"
           className={`w-screen z-index-10 absolute left-0 hidden lg:flex flex-wrap items-center font-futura
             bg-white z-50 px-20 pointer-events-auto max-h-[450px]
             [transition:opacity_0.5s,_height_0.5s]
