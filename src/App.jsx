@@ -73,6 +73,12 @@ const App = () => {
           setRegisterData(res.data["register_page"]);
           setValue(res.data["general"]);
           setStaticPagesData(res.data["static-pages"]);
+          localStorage.setItem(
+            "icon",
+            `${import.meta.env.VITE_STORAGE_URL}/${
+              res.data.general.settings.icon
+            }`
+          );
           document.getElementById("app-icon").href = `${
             import.meta.env.VITE_STORAGE_URL
           }/${res.data.general.settings.icon}`;

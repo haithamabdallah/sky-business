@@ -1,10 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/*" href="/icon.jpg" id="app-icon"/>
+    <link rel="icon" type="image/*" href="" id="app-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SKY Business</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("icon")) {
+          document.getElementById("app-icon").href =
+            localStorage.getItem("icon");
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
