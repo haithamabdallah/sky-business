@@ -10,7 +10,6 @@ const Description = ({
   isCover,
   isDark,
 }) => {
-  console.log({ buttonStatus });
   return (
     (header?.length > 0 || text?.length > 0 || Number(buttonStatus) === 1) && (
       <div

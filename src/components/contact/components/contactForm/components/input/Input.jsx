@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Input = ({ input, handleChange, countries }) => {
+const Input = ({ input, handleChange, countries, status }) => {
   const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    if (status === "success") setFocus(false);
+  }, [status]);
   return input.type === "select" ? (
     <>
       <label
@@ -47,9 +51,10 @@ const Input = ({ input, handleChange, countries }) => {
         {input.displayName} {input.required && <span>*</span>}
       </label>
       <textarea
-        onChange={(e) => handleChange(e)}
+        onInput={handleChange}
         onFocus={() => setFocus(true)}
         onBlur={(e) => {
+
           if (!e.target.value) setFocus(false);
         }}
         type={input.type}

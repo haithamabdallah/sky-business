@@ -6,10 +6,12 @@ const ContactForm = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
-
+  const [status, setStatus] = useState("");
+  
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
+      setStatus("");
     }, 3000);
   }, [message]);
 
@@ -22,6 +24,7 @@ const ContactForm = () => {
   }, [errors]);
 
   const handleChange = (e) => {
+
     const key = e.target.name;
     if (key === "receive_emails") return;
     const value = e.target.value;
@@ -29,6 +32,7 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (e) => {
+  
     sendRequest({
       method: "post",
       endpoint: "contact-us",
@@ -37,6 +41,7 @@ const ContactForm = () => {
       if (data.status === "success") {
         e.target.reset();
         setMessage(data.message);
+        setStatus("success");
         setForm({});
       } else {
         setErrors(data.errors);
@@ -64,7 +69,7 @@ const ContactForm = () => {
               : "w-[98%] min-[532px]:w-[48%]"
           } relative self-start`}
         >
-          <Input handleChange={handleChange} input={input} />
+         <Input handleChange={handleChange} input={input} status={status} />
           {errors[input.name]?.length > 0 && (
             <small className="w-full py-1 text-red-700 font-semibold">
               <span>{errors[input.name][0]}</span>
