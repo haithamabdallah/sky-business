@@ -19,7 +19,7 @@ const MiddleFooterMobile = () => {
   return (
     <div className="m-5 font-futura">
       <div id="accordionExample">
-        <div className="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-body-dark">
+        <div className="rounded-t-lg bg-white">
           <h2 className="mb-0" id="headingOne">
             <button
               className="group relative flex w-full items-center rounded-t-lg border-0 
@@ -63,7 +63,7 @@ const MiddleFooterMobile = () => {
             </div>
           </div>
         </div>
-        <div className="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-body-dark">
+        <div className="rounded-t-lg bg-white">
           <h2 className="mb-0" id="headingThree">
             <button
               className="group relative flex w-full items-center border-0 bg-black px-5 py-4
@@ -113,10 +113,10 @@ const MiddleFooterMobile = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-body-dark">
+        <div className="rounded-t-lg bg-white">
           <h2 className="mb-0" id="headingTwo">
             <button
-              className="group relative flex w-full items-center rounded-t-lg border-0 bg-black px-5 py-4 text-left text-xs text-white transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-black [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary dark:[&:not([data-twe-collapse-collapsed])]:shadow-white/10 "
+              className="group relative flex w-full items-center border-0 bg-black px-5 py-4 text-left text-xs text-white transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-black [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary"
               type="button"
               data-twe-collapse-init
               data-twe-collapse-collapsed
@@ -156,7 +156,7 @@ const MiddleFooterMobile = () => {
           </div>
         </div>
 
-        <div className="rounded-b-lg border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-body-dark">
+        <div className="rounded-t-lg bg-white">
           <h2 className="accordion-header mb-0" id="headingFour">
             <button
               className="data-[twe-collapse-collapsed] group relative flex w-full items-center border-0 bg-black px-5 py-4 text-left text-xs text-white transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none data-[twe-collapse-collapsed]:rounded-b-lg dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-black [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary  dark:[&:not([data-twe-collapse-collapsed])]:shadow-white/10"
