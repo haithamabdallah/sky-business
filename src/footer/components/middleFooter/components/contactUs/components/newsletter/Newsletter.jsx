@@ -15,6 +15,10 @@ const Newsletter = () => {
       setStatus("");
     }, 2000);
   }, [message]);
+
+  useEffect(() => {
+    setFocus(false);
+  }, [status]);
   return (
     <div className="bg-transparent pt-0 lg:pt-0 font-futura">
       <div className="text-[#626566]">

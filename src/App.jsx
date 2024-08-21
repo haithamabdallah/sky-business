@@ -105,11 +105,13 @@ const App = () => {
     </div>
   ) : (
     <>
-      <Routes>
-        <Route path="/subscribed" element={<Subscribed />} />
-        <Route path="/unsubscribed" element={<Unsubscribed />} />
-        <Route path="/unsubscribe" element={<Unsubscribe />} />
-      </Routes>
+      {isEmailPage && (
+        <Routes>
+          <Route path="/subscribed" element={<Subscribed />} />
+          <Route path="/unsubscribed" element={<Unsubscribed />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
+        </Routes>
+      )}
       {isEmailPage === false && (
         <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
           <ScrollToTop />

@@ -88,7 +88,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
               </Fragment>
             );
           })}
-          {token && <Logout />}
+          {token && <Logout setShowSearch={setShow} setTerm={setTerm}/>}
         </ul>
       </div>
 

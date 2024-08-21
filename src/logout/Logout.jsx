@@ -19,7 +19,7 @@ const Logout = ({ type, setShow, setTerm, setShowSearch }) => {
   ) : (
     <li
       className={`text-xs py-3 leading-5 min-[1200px]:text-[.75rem] min-[1200px]:text-white
-        min-[1200px]:leading-5 min-[1200px]:font-medium min-[1200px]:py-[.875rem]
+        min-[1200px]:leading-5 min-[1200px]:font-medium min-[1200px]:py-[10px]
         min-[1200px]:px-[1rem]`}
     >
       <button

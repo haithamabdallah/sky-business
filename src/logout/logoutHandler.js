@@ -14,8 +14,8 @@ const logoutHandler = (
     if (res.status === "success") {
       document.querySelector("body").classList.remove("overflow-hidden");
       if (setShow) setShow(false);
-      if (setShow) setTerm("");
-      if (setShow) setShowSearch(false);
+      if (setTerm) setTerm("");
+      if (setShowSearch) setShowSearch(false);
       localStorage.removeItem("token");
       navigate("/");
     }
