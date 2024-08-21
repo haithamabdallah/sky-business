@@ -50,13 +50,13 @@ const ContactForm = () => {
   };
   return (
     <form
-      className="w-full flex flex-wrap justify-center items-center gap-x-5 gap-y-9"
+      className="w-full col-span-2 flex flex-wrap gap-x-2 gap-y-9"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(e);
       }}
     >
-      <p className="w-full text-center text-[12px] leading-[18px] text-[rgb(98,101,102)">
+      <p className="w-full text-[12px] leading-[18px] text-[rgb(98,101,102)">
         {`Required fields are marked with an asterisk (*)`}
       </p>
 

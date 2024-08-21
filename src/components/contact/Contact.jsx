@@ -20,10 +20,15 @@ const Contact = ({ contactData }) => {
         header={headerCover}
         text={textCover}
       />
-      <section className="flex flex-col items-center justify-center max-w-[75rem] mx-auto px-4 mt-[70px] font-futura my-[3rem]">
+      <section
+        className="flex flex-col items-center justify-center max-w-[75rem] mx-auto px-4
+      mt-[70px] font-futura my-[3rem]"
+      >
         <p className="text-3xl leading-7 mb-12">{header}</p>
-        {parse(text)}
-        <ContactForm />
+        <div className="grid grid-cols-3 gap-x-9">
+          <div className="col-span-1">{parse(text)}</div>
+          <ContactForm />
+        </div>
       </section>
     </>
   );
