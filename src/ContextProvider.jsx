@@ -1,16 +1,18 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 // Create a Context
 export const Context = createContext();
 
 // Create a Provider component
 const ContextProvider = ({ children }) => {
-  const [value, setValue] = useState({});
-  
+  const [state, setState] = useState({
+    showPopup: false,
+    showCookies: false,
+    loading: true,
+  });
+
   return (
-    <Context.Provider value={{ value, setValue }}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ state, setState }}>{children}</Context.Provider>
   );
 };
 

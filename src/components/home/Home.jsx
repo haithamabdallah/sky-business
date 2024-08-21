@@ -4,11 +4,22 @@ import Slider from "./components/slider/Slider";
 import Popup from "./components/popup/Popup";
 import BottomBanners from "./components/bottomBanners/BottomBanners";
 import HalfBanners from "./components/halfBanners/HalfBanners";
+import { useContext, useEffect } from "react";
+import { Context } from "../../ContextProvider";
 
-const Home = ({ homeData, showPopup, setShowPopup }) => {
+const Home = () => {
+  const { state, setState } = useContext(Context);
   const isSubscribed = localStorage.getItem("subscribed") ? true : false;
+  useEffect(() => {
+    if (!isSubscribed && localStorage.getItem("cookies_popup")) {
+      setTimeout(() => {
+        setState((prev) => ({ ...prev, showPopup: true }));
+      }, 3000);
+    }
+  }, []);
+  
   return (
-    homeData.sliders && (
+    state.homeData.sliders && (
       <main className="flex flex-col">
         <Slider sliders={homeData.sliders} />
         <Banners banner={homeData.settings.banner1} />
@@ -21,7 +32,9 @@ const Home = ({ homeData, showPopup, setShowPopup }) => {
           isFull={homeData.settings.half_banners_container_is_full}
         />
         <BottomBanners banners={homeData.settings.banners} />
-        {showPopup && !isSubscribed && <Popup setShowPopup={setShowPopup} />}
+        {state.showPopup && (
+          <Popup setShowPopup={setShowPopup} />
+        )}
       </main>
     )
   );

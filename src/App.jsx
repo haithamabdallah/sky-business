@@ -32,47 +32,46 @@ import ResetPassword from "./components/resetPassword/ResetPassword";
 import ScrollToTop from "./scrollToTop/ScrollToTop";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  const [homeData, setHomeData] = useState({});
-  const [aboutData, setAboutData] = useState({});
-  const [skinCareData, setSkinCareData] = useState({});
-  const [hairCareData, setHairCareData] = useState({});
-  const [retailerData, setRetailerData] = useState({});
-  const [healthCareData, setHealthCareData] = useState({});
-  const [makeupData, setMakeupData] = useState({});
-  const [brandData, setBrandData] = useState({});
-  const [blogData, setBlogData] = useState({});
-  const [registerData, setRegisterData] = useState({});
-  const [contactData, setContactData] = useState({});
-  const [showPopup, setShowPopup] = useState(false);
-  const [showCookies, setShowCookies] = useState(false);
-  const [staticPagesData, setStaticPagesData] = useState({});
-
   const { pathname } = useLocation();
 
   const isEmailPage = /(\/subscribed|\/unsubscribed|\/unsubscribe)/.test(
     pathname
   );
 
-  const { setValue } = useContext(Context);
+  const { setState, state } = useContext(Context);
 
   useEffect(() => {
     Promise.all([
       sendRequest({ method: "post", endpoint: "settings" }).then((res) => {
         if (res.status === "success") {
-          setHomeData(res.data["home_page"]);
-          setAboutData(res.data["about_page"]);
-          setSkinCareData(res.data["skin_page"]);
-          setHairCareData(res.data["hair_page"]);
-          setMakeupData(res.data["makeup_page"]);
-          setRetailerData(res.data["retailer_page"]);
-          setHealthCareData(res.data["organic_page"]);
-          setBrandData(res.data["brand_page"]);
-          setBlogData(res.data["blog_page"]);
-          setContactData(res.data["contact_page"]);
-          setRegisterData(res.data["register_page"]);
-          setValue(res.data["general"]);
-          setStaticPagesData(res.data["static-pages"]);
+          // setHomeData(res.data["home_page"]);
+          // setAboutData(res.data["about_page"]);
+          // setSkinCareData(res.data["skin_page"]);
+          // setHairCareData(res.data["hair_page"]);
+          // setMakeupData(res.data["makeup_page"]);
+          // setRetailerData(res.data["retailer_page"]);
+          // setHealthCareData(res.data["organic_page"]);
+          // setBrandData(res.data["brand_page"]);
+          // setBlogData(res.data["blog_page"]);
+          // setContactData(res.data["contact_page"]);
+          // setRegisterData(res.data["register_page"]);
+          // setValue(res.data["general"]);
+          // setStaticPagesData(res.data["static-pages"]);
+          setState({
+            homeData: res.data["home_page"],
+            aboutData: res.data["about_page"],
+            skinCareData: res.data["skin_page"],
+            hairCareData: res.data["hair_page"],
+            makeupData: res.data["makeup_page"],
+            retailerData: res.data["retailer_page"],
+            healthCareData: res.data["organic_page"],
+            brandData: res.data["brand_page"],
+            blogData: res.data["blog_page"],
+            contactData: res.data["contact_page"],
+            registerData: res.data["register_page"],
+            staticPagesData: res.data["static-pages"],
+            general: res.data["general"],
+          });
           localStorage.setItem(
             "icon",
             `${import.meta.env.VITE_STORAGE_URL}/${
@@ -85,14 +84,11 @@ const App = () => {
         }
       }),
     ]).then(() => {
-      setLoading(false);
-      setTimeout(() => {
-        setShowCookies(true);
-      }, 2000);
-      if (pathname === "/" && localStorage.getItem("cookies_popup")) {
+      setState((prev) => ({ ...prev, loading: false }));
+      if (!localStorage.getItem("cookies_popup")) {
         setTimeout(() => {
-          setShowPopup(true);
-        }, 3000);
+          setState((prev) => ({ ...prev, showCookies: true }));
+        }, 2000);
       }
     });
   }, []);
@@ -116,9 +112,7 @@ const App = () => {
         <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
           <ScrollToTop />
           <div className="self-start">
-            {!localStorage.getItem("cookies_popup") && showCookies && (
-              <Cookies setShowCookies={setShowCookies} />
-            )}
+            {state.showCookies && <Cookies />}
             <Navbar />
             <main className="mt-[54px] min-[1200px]:mt-[110px]">
               <Routes>

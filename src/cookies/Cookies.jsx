@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-const Cookies = ({ setShowCookies }) => {
+import { Context } from "../ContextProvider";
+const Cookies = () => {
+  const { setState } = useContext(Context);
   return (
     <div
       className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-65 flex
@@ -11,7 +14,7 @@ const Cookies = ({ setShowCookies }) => {
       >
         <button
           onClick={() => {
-            setShowCookies(false);
+            setState((prev) => ({ ...prev, showCookies: false }));
             localStorage.setItem("cookies_popup", "true");
           }}
           className="underline text-sm text-right"
@@ -32,7 +35,7 @@ const Cookies = ({ setShowCookies }) => {
           cookies, visit our{" "}
           <Link
             onClick={() => {
-              setShowCookies(false);
+               setState((prev) => ({ ...prev, showCookies: false }));
               localStorage.setItem("cookies_popup", "true");
             }}
             className="text-blue-600 underline"
@@ -44,7 +47,7 @@ const Cookies = ({ setShowCookies }) => {
         <div className="flex justify-center gap-x-4">
           <button
             onClick={() => {
-              setShowCookies(false);
+               setState((prev) => ({ ...prev, showCookies: false }));
               localStorage.setItem("cookies_popup", "true");
             }}
             className="mb-[0.3125rem] text-[#000] bg-white flex items-center justify-center
@@ -55,7 +58,7 @@ const Cookies = ({ setShowCookies }) => {
           </button>
           <button
             onClick={() => {
-              setShowCookies(false);
+               setState((prev) => ({ ...prev, showCookies: false }));
               localStorage.setItem("cookies_popup", "true");
             }}
             className="text-center appearance-none bg-[#000]
