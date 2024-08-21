@@ -80,7 +80,7 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
                         {tab.name.toUpperCase()}
                       </span>
                       {pathname === tab.route && (
-                        <hr className="h-1 w-full bg-white absolute bottom-[-6px]" />
+                        <hr className="h-1 w-full bg-white absolute bottom-[-9.5px]" />
                       )}
                     </Link>
                   </li>
