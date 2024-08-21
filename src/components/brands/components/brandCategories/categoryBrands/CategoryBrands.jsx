@@ -10,7 +10,7 @@ const CategoryBrands = ({ brands }) => {
             className="peer cursor-pointer rounded-full transition-transform duration-500 scale-100
             hover:scale-125 object-contain object-center aspect-square"
           />
-          <p className="text-center transition-[margin] duration-500 mt-5 peer-hover:mt-10">
+          <p className="text-center mt-7">
             {brand.name}
           </p>
         </li>
