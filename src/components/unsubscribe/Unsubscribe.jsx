@@ -57,6 +57,7 @@ const Unsubscribe = () => {
               block w-full placeholder-black placeholder-opacity-60"
               type="text"
               name="email"
+              required
               placeholder="Your Email"
             />
             <div className="mt-[30px]">
