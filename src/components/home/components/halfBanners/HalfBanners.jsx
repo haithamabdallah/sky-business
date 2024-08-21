@@ -8,7 +8,7 @@ const HalfBanners = ({ banners, isFull }) => {
   return (
     <section
       className={`mx-auto mb-[60px] grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1
-      gap-[10px] ${
+      gap-5 ${
         Number(isFull) === 1 ? "w-full px-0" : "max-w-[75rem] px-[.9375rem]"
       }`}
     >
