@@ -3,7 +3,7 @@ import Description from "../../../bottomBanners/description/Description";
 
 const SliderContents = ({ slider }) => {
   return (
-    <div className="relative pb-5 w-full h-full">
+    <div className="relative w-full h-full">
       <div className="hidden lg:block">
         <BannerImage image={slider.image_desktop} />
       </div>
