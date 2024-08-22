@@ -9,6 +9,7 @@ import sendRequest from "../../methods/fetchData";
 const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState("");
   const [countries, setCountries] = useState([]);
 
   const navigate = useNavigate();
@@ -42,9 +43,7 @@ const Register = ({ registerData }) => {
     const result = response.data;
     if (response.status === "success") {
       setForm({});
-      e.target.reset();
-      navigate("/");
-      localStorage.setItem("token", result.token);
+      setMessage(response.message);
     } else {
       setErrors(result);
     }
@@ -57,6 +56,15 @@ const Register = ({ registerData }) => {
       }, 2000);
     }
   }, [errors]);
+
+  useEffect(() => {
+    if (message.length) {
+      setTimeout(() => {
+        setMessage("");
+        navigate("/");
+      }, 5000);
+    }
+  }, [message]);
 
   return (
     <div>
@@ -99,7 +107,9 @@ const Register = ({ registerData }) => {
               )}
             </div>
           ))}
-
+          <small className="w-full text-center py-1 text-green-700 font-semibold">
+            <span>{message}</span>
+          </small>
           <div
             className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
             mb-5"
