@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop) {
+    if (currentScroll > lastScrollTop && currentScroll > 10) {
       setScrollStatus("down");
     } else {
       setScrollStatus("up");
