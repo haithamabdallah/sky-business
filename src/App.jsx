@@ -47,7 +47,7 @@ const App = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showCookies, setShowCookies] = useState(false);
   const [staticPagesData, setStaticPagesData] = useState({});
-
+  const [showMargin, setShowMargin] = useState(true);
   const { pathname } = useLocation();
 
   const isEmailPage = /(\/subscribed|\/unsubscribed|\/unsubscribe)/.test(
@@ -119,8 +119,10 @@ const App = () => {
             {!localStorage.getItem("cookies_popup") && showCookies && (
               <Cookies setShowCookies={setShowCookies} />
             )}
-            <Navbar />
-            <main className="mt-[54px] min-[1200px]:mt-[110px]">
+            <Navbar setShowMargin={setShowMargin} />
+            <main className={`transition-[margin] duration-500 ${
+              showMargin ? "mt-[54px] min-[1200px]:mt-[110px]" : "mt-0"
+            }`}>
               <Routes>
                 <Route
                   path="/"

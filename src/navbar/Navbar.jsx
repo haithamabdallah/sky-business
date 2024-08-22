@@ -6,16 +6,23 @@ const clearSearch = (setTerm, setShow) => {
   setShow(false);
   setTerm("");
 };
-const Navbar = () => {
+const Navbar = ({ setShowMargin }) => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollStatus, setScrollStatus] = useState(undefined);
 
   const handleScroll = () => {
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop && currentScroll > 10) {
+    console.log({
+      currentScroll,
+      lastScrollTop,
+      windowWidth: window.innerWidth,
+    });
+    if (currentScroll > lastScrollTop) {
       setScrollStatus("down");
+      setShowMargin(false);
     } else {
       setScrollStatus("up");
+      setShowMargin(true);
     }
     setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
   };
