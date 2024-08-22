@@ -12,11 +12,6 @@ const Navbar = ({ setShowMargin }) => {
 
   const handleScroll = () => {
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
-    console.log({
-      currentScroll,
-      lastScrollTop,
-      windowWidth: window.innerWidth,
-    });
     if (currentScroll > lastScrollTop) {
       setScrollStatus("down");
       setShowMargin(false);
