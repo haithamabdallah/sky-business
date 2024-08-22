@@ -16,9 +16,8 @@ const HalfBanners = ({ banners, isFull }) => {
         <div className="relative" key={i}>
           <img
             alt="Committed to skin health science"
+            className="w-full h-full"
             src={`${url}/${banner.image}`}
-            width="100%"
-            height="299"
           />
           <h2
             className={`text-[28px] leading-10 font-semibold absolute left-5 top-5 ${
