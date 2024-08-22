@@ -50,7 +50,7 @@ const ContactForm = () => {
   };
   return (
     <form
-      className="w-full col-span-2 flex flex-wrap gap-x-2 gap-y-9"
+      className="w-full col-span-2 flex flex-wrap gap-x-5 gap-y-9"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(e);
