@@ -26,7 +26,7 @@ const Input = ({ input, handleChange, countries, status }) => {
         required={input.required}
       >
         <option value="" disabled>
-          {`Select Question`.toUpperCase()}
+          {`Select Country`.toUpperCase()}
         </option>
         {Object.entries(countries).map(([id, name]) => (
           <option key={id} value={id}>
