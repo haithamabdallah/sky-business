@@ -7,7 +7,11 @@ const HealthCare = ({ healthCareData }) => {
   const settings = healthCareData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: headerCover, cover_text: textCover } = settings;
+  const {
+    cover_header: headerCover,
+    cover_text: textCover,
+    is_dark: isDark,
+  } = settings;
   const foodCategories = {
     organics: healthCareData.organics,
     header: healthCareData.settings.header,
@@ -31,6 +35,7 @@ const HealthCare = ({ healthCareData }) => {
         mobileCover={mobileCover}
         header={headerCover}
         text={textCover}
+        isDark={isDark}
       />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-12 font-futura">
         <FoodCategories foodCategories={foodCategories} />

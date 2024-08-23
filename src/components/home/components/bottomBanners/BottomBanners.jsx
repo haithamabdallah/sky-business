@@ -24,6 +24,7 @@ const BottomBanners = ({ banners }) => {
           buttonUrl={banner.button_url}
           buttonStatus={banner.button_status}
           text={banner.text}
+          isDark={banner.is_dark}
         />
       </section>
     </div>

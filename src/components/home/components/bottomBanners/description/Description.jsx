@@ -13,7 +13,7 @@ const Description = ({
   return (
     (header?.length > 0 || text?.length > 0 || Number(buttonStatus) === 1) && (
       <div
-        className={`h-full w-full max-w-[75rem] pointer-events-none  mx-auto
+        className={`h-full w-full max-w-[75rem] pointer-events-none mx-auto
         relative items-center
         font-futura flex ${
           isCover

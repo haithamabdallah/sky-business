@@ -10,7 +10,11 @@ const Contact = ({ contactData }) => {
   const text = settings.text;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: headerCover, cover_text: textCover } = settings;
+  const {
+    cover_header: headerCover,
+    cover_text: textCover,
+    is_dark: isDark,
+  } = settings;
   return (
     <>
       <CoverComponent
@@ -18,6 +22,7 @@ const Contact = ({ contactData }) => {
         mobileCover={mobileCover}
         header={headerCover}
         text={textCover}
+        isDark={isDark}
       />
       <section
         className="flex flex-col items-center justify-center max-w-[75rem] mx-auto px-4

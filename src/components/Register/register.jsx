@@ -17,7 +17,11 @@ const Register = ({ registerData }) => {
   const settings = registerData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: headerCover, cover_text: textCover } = settings;
+  const {
+    cover_header: headerCover,
+    cover_text: textCover,
+    is_dark: isDark,
+  } = settings;
   useEffect(() => {
     const fetchCountries = async () => {
       const result = await sendRequest({ method: "get", endpoint: "register" });
@@ -73,6 +77,7 @@ const Register = ({ registerData }) => {
         mobileCover={mobileCover}
         header={headerCover}
         text={textCover}
+        isDark={isDark}
       />
       <div className="my-[3rem] max-w-[75rem] mx-auto px-3 sm:px-0">
         <form

@@ -4,10 +4,10 @@ import CoverComponent from "../CoverComponent";
 import parse from "html-react-parser";
 
 const Blog = ({ blogData }) => {
-  const settings = blogData.settings
+  const settings = blogData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: header, cover_text: text } = settings;
+  const { cover_header: header, cover_text: text, is_dark: isDark } = settings;
   return (
     blogData.settings && (
       <>
@@ -16,6 +16,7 @@ const Blog = ({ blogData }) => {
           mobileCover={mobileCover}
           header={header}
           text={text}
+          isDark={isDark}
         />
         <div className="flex flex-col max-w-[75rem] mx-auto my-[5rem] font-futura">
           <BlogCards posts={blogData.posts} />

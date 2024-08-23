@@ -3,10 +3,10 @@ import parse from "html-react-parser";
 
 const About = ({ aboutData }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
-  const settings = aboutData.settings
+  const settings = aboutData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: header, cover_text: text } = settings;
+  const { cover_header: header, cover_text: text, is_dark: isDark } = settings;
 
   return (
     aboutData.settings && (
@@ -16,6 +16,7 @@ const About = ({ aboutData }) => {
           mobileCover={mobileCover}
           header={header}
           text={text}
+          isDark={isDark}
         />
         <div className="max-w-[1170px] mx-auto px-[15px] my-[3rem]">
           {/* section 1 large screen */}
