@@ -22,30 +22,30 @@ const About = ({ aboutData }) => {
           {/* section 1 large screen */}
           <div className="hidden lg:grid place-items-center  lg:grid-cols-2  gap-y-[3rem] my-[3rem]">
             <img src={`${url}/${aboutData.settings.images[0 + 1]}`} alt="" />
-            <div className="text-gray-500 max-w-[455px] ml-auto p-5">
+            <div className="text-gray-500 max-w-[455px] ml-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[0 + 1]}`)}
             </div>
-            <div className="text-gray-500 max-w-[455px] mr-auto p-5">
+            <div className="text-gray-500 max-w-[455px] mr-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[1 + 1]}`)}
             </div>
             <img src={`${url}/${aboutData.settings.images[1 + 1]}`} alt="" />
             <img src={`${url}/${aboutData.settings.images[2 + 1]}`} alt="" />
-            <div className="text-gray-500 max-w-[455px] ml-auto p-5">
+            <div className="text-gray-500 max-w-[455px] ml-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[2 + 1]}`)}
             </div>
           </div>
           {/* section 1 mobile */}
           <div className="grid place-items-center grid-cols-1 lg:hidden gap-y-[3rem] my-[3rem]">
             <img src={`${url}/${aboutData.settings.images[0 + 1]}`} alt="" />
-            <div className="text-gray-500 max-w-[455px] mx-auto p-5">
+            <div className="text-gray-500 max-w-[455px] mx-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[0 + 1]}`)}
             </div>
             <img src={`${url}/${aboutData.settings.images[1 + 1]}`} alt="" />
-            <div className="text-gray-500 max-w-[455px] mx-auto p-5">
+            <div className="text-gray-500 max-w-[455px] mx-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[1 + 1]}`)}
             </div>
             <img src={`${url}/${aboutData.settings.images[2 + 1]}`} alt="" />
-            <div className="text-gray-500 max-w-[455px] mx-auto p-5">
+            <div className="text-gray-500 max-w-[455px] mx-auto p-5 [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[2 + 1]}`)}
             </div>
           </div>
@@ -55,21 +55,21 @@ const About = ({ aboutData }) => {
               src={`${url}/${aboutData.settings.images[3 + 1]}`}
               alt="image3"
             />
-            <div className="p-5 text-center font-[600]">
+            <div className="p-5 text-center font-[600] [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[3 + 1]}`)}
             </div>
             <img
               src={`${url}/${aboutData.settings.images[4 + 1]}`}
               alt="image4"
             />
-            <div className="p-5 text-center font-[600]">
+            <div className="p-5 text-center font-[600] [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[4 + 1]}`)}
             </div>
             <img
               src={`${url}/${aboutData.settings.images[5 + 1]}`}
               alt="image5"
             />
-            <div className="p-5 text-center font-[600]">
+            <div className="p-5 text-center font-[600] [&_*]:text-[#6b7280!important] [&_*]:font-futura">
               {parse(`${aboutData.settings.texts[5 + 1]}`)}
             </div>
           </div>
