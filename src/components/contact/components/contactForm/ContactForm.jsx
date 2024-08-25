@@ -2,6 +2,10 @@ import sendRequest from "../../../../methods/fetchData";
 import { inputs } from "../../data";
 import Input from "./components/input/Input";
 import { useState, useEffect, Fragment } from "react";
+import IntlTelInput from "intl-tel-input/reactWithUtils";
+import "intl-tel-input/styles";
+
+
 const ContactForm = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
@@ -60,7 +64,27 @@ const ContactForm = () => {
         {`Required fields are marked with an asterisk (*)`}
       </p>
 
-      {inputs.map((input) => (
+      {inputs.map((input) => {
+        // if (input.name == "phone") return (
+        //   <div           
+        //     key={input.name}
+        //     className={`flex flex-col ${
+        //       input.type === "textarea" || input.name === "subject"
+        //         ? "w-[98%]"
+        //         : "w-[98%] min-[532px]:w-[48%]"
+        //       } relative self-start`}>
+        //     <IntlTelInput
+        //         className="hidden"
+        //         style={{display: "none"}}
+        //         onChangeNumber={()=>{}}
+        //         onChangeValidity={()=>{}}
+        //         initOptions={{
+        //             initialCountry: "ca",
+        //         }}
+        //     />
+        //   </div>
+        // );
+        return(
         <div
           key={input.name}
           className={`flex flex-col ${
@@ -68,8 +92,8 @@ const ContactForm = () => {
               ? "w-[98%]"
               : "w-[98%] min-[532px]:w-[48%]"
           } relative self-start`}
-        >
-         <Input handleChange={handleChange} input={input} status={status} />
+          >
+          <Input handleChange={handleChange} input={input} status={status} />
           {errors[input.name]?.length > 0 && (
             <small className="w-full py-1 text-red-700 font-semibold">
               <span>{errors[input.name][0]}</span>
@@ -77,7 +101,7 @@ const ContactForm = () => {
             </small>
           )}
         </div>
-      ))}
+      )})}
       <div className="flex flex-wrap w-[98%]">
         {message.length > 0 && (
           <small className="w-full py-5 text-green-700 text-[1rem]">
