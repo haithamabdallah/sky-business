@@ -2,16 +2,13 @@ import sendRequest from "../../../../methods/fetchData";
 import { inputs } from "../../data";
 import Input from "./components/input/Input";
 import { useState, useEffect, Fragment } from "react";
-import IntlTelInput from "intl-tel-input/reactWithUtils";
-import "intl-tel-input/styles";
-
 
 const ContactForm = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
-  
+
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
@@ -28,7 +25,7 @@ const ContactForm = () => {
   }, [errors]);
 
   const handleChange = (e) => {
-
+    
     const key = e.target.name;
     if (key === "receive_emails") return;
     const value = e.target.value;
@@ -36,7 +33,7 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (e) => {
-  
+    console.log({ form });
     sendRequest({
       method: "post",
       endpoint: "contact-us",
@@ -66,7 +63,7 @@ const ContactForm = () => {
 
       {inputs.map((input) => {
         // if (input.name == "phone") return (
-        //   <div           
+        //   <div
         //     key={input.name}
         //     className={`flex flex-col ${
         //       input.type === "textarea" || input.name === "subject"
@@ -84,24 +81,30 @@ const ContactForm = () => {
         //     />
         //   </div>
         // );
-        return(
-        <div
-          key={input.name}
-          className={`flex flex-col ${
-            input.type === "textarea" || input.name === "subject"
-              ? "w-[98%]"
-              : "w-[98%] min-[532px]:w-[48%]"
-          } relative self-start`}
+        return (
+          <div
+            key={input.name}
+            className={`flex flex-col ${
+              input.type === "textarea" || input.name === "subject"
+                ? "w-[98%]"
+                : "w-[98%] min-[532px]:w-[48%]"
+            } relative self-start`}
           >
-          <Input handleChange={handleChange} input={input} status={status} />
-          {errors[input.name]?.length > 0 && (
-            <small className="w-full py-1 text-red-700 font-semibold">
-              <span>{errors[input.name][0]}</span>
-              <br />
-            </small>
-          )}
-        </div>
-      )})}
+            <Input
+              handleChange={handleChange}
+              input={input}
+              status={status}
+              setForm={setForm}
+            />
+            {errors[input.name]?.length > 0 && (
+              <small className="w-full py-1 text-red-700 font-semibold">
+                <span>{errors[input.name][0]}</span>
+                <br />
+              </small>
+            )}
+          </div>
+        );
+      })}
       <div className="flex flex-wrap w-[98%]">
         {message.length > 0 && (
           <small className="w-full py-5 text-green-700 text-[1rem]">

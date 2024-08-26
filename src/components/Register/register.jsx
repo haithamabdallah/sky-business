@@ -39,6 +39,7 @@ const Register = ({ registerData }) => {
   };
 
   const handleSubmit = async (e) => {
+    console.log({ form });
     const response = await sendRequest({
       method: "post",
       endpoint: "register",
@@ -103,7 +104,7 @@ const Register = ({ registerData }) => {
                   countries={countries}
                 />
               ) : (
-                <Input handleChange={handleChange} input={input} />
+                <Input handleChange={handleChange} input={input} setForm={setForm} />
               )}
               {errors[input.name]?.length > 0 && (
                 <small className="w-full text-left py-1 text-red-700 font-semibold">
