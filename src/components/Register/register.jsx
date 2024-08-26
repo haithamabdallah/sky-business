@@ -5,13 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
 import sendRequest from "../../methods/fetchData";
-
+import Loading from "../Loading";
 const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
   const [countries, setCountries] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const settings = registerData.settings;
@@ -39,12 +39,13 @@ const Register = ({ registerData }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log({ form });
+    setLoading(true);
     const response = await sendRequest({
       method: "post",
       endpoint: "register",
       body: { ...form },
     });
+    setLoading(false);
     const result = response.data;
     if (response.status === "success") {
       setForm({});
@@ -58,7 +59,7 @@ const Register = ({ registerData }) => {
     if (Object.keys(errors).length) {
       setTimeout(() => {
         setErrors({});
-      }, 2000);
+      }, 5000);
     }
   }, [errors]);
 
@@ -104,7 +105,11 @@ const Register = ({ registerData }) => {
                   countries={countries}
                 />
               ) : (
-                <Input handleChange={handleChange} input={input} setForm={setForm} />
+                <Input
+                  handleChange={handleChange}
+                  input={input}
+                  setForm={setForm}
+                />
               )}
               {errors[input.name]?.length > 0 && (
                 <small className="w-full text-left py-1 text-red-700 font-semibold">
@@ -120,6 +125,7 @@ const Register = ({ registerData }) => {
             className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
             mb-5"
           >
+            <Loading loading={loading} />
             <button
               type="submit"
               className="w-fit text-white px-3 py-2

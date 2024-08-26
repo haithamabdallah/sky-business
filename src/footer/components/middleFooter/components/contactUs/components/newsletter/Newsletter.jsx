@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import sendRequest from "../../../../../../../methods/fetchData";
-
+import Loading from "../../../../../../../components/Loading";
 const Newsletter = () => {
   const checkbox = useRef(null);
   const [focus, setFocus] = useState(false);
@@ -9,11 +9,12 @@ const Newsletter = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
       setStatus("");
-    }, 2000);
+    }, 5000);
   }, [message]);
 
   useEffect(() => {
@@ -36,11 +37,13 @@ const Newsletter = () => {
           }}
           onSubmit={(e) => {
             e.preventDefault();
+            setLoading(true);
             sendRequest({
               method: "get",
               endpoint: "subscribe",
               params: { ...form },
             }).then((data) => {
+              setLoading(false);
               e.target.reset();
               setForm({});
               setChecked(false);
@@ -157,7 +160,9 @@ const Newsletter = () => {
                 {message}
               </small>
             )}
-            {/* {message.length > 0 && <br/>} */}
+            <div className="flex w-full justify-center">
+              <Loading loading={loading} />
+            </div>
             <button
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border
               border-transparent rounded-[1.5625rem] text-white cursor-pointer inline-block

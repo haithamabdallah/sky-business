@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import Input from "../contact/components/contactForm/components/input/Input";
-
+import Loading from "../Loading";
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -37,7 +37,7 @@ const ForgetPassword = () => {
       if (status === "success") {
         navigate("/");
       }
-    }, 2000);
+    }, 5000);
   }, [message]);
 
   return (
@@ -67,14 +67,7 @@ const ForgetPassword = () => {
               }}
             />
           </div>
-          {loading && (
-            <div
-              className="flex items-center text-yellow-600  justify-center min-h-20
-              animate-breath"
-            >
-              Loading
-            </div>
-          )}
+          <Loading loading={loading} />
           {message.length > 0 && status === "success" && (
             <small className="w-full py-5 text-center text-green-700 text-[1rem]">
               {message}

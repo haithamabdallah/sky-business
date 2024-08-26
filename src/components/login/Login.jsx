@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import Input from "../contact/components/contactForm/components/input/Input";
 import ForgottenPassword from "./components/forgottenPassword/ForgottenPassword";
+import Loading from "../Loading";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-
+  const [loading, setLoading] = useState(false);
   const inputs = [
     {
       name: "email",
@@ -32,11 +33,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await sendRequest({
       method: "post",
       endpoint: "login",
       body: { ...form },
     });
+    setLoading(false);
     const result = response.data;
     if (response.status === "success") {
       setForm({ email: "", password: "" });
@@ -96,6 +99,7 @@ const Login = () => {
             </small>
           )}
           <div className="flex flex-col items-center">
+            <Loading loading={loading} />
             <button
               className="text-center w-fit self-center appearance-none bg-[#000]
                   border border-transparent rounded-[1.5625rem] text-[#fff] cursor-pointer

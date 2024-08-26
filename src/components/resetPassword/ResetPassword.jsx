@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import Input from "../contact/components/contactForm/components/input/Input";
-
+import Loading from "../Loading";
 const ResetPassword = () => {
   const [form, setForm] = useState({ password: "", password_confirmation: "" });
   const [message, setMessage] = useState("");
@@ -58,7 +58,7 @@ const ResetPassword = () => {
       if (status === "success") {
         navigate("/login");
       }
-    }, 2000);
+    }, 5000);
   }, [message]);
 
   return (
@@ -86,14 +86,8 @@ const ResetPassword = () => {
             </div>
           ))}
 
-          {loading && (
-            <div
-              className="flex items-center text-yellow-600  justify-center min-h-20
-              animate-breath"
-            >
-              Loading
-            </div>
-          )}
+          <Loading loading={loading} />
+
           {message.length > 0 && status === "success" && (
             <small className="w-full py-5 text-center text-green-700 text-[1rem]">
               {message}

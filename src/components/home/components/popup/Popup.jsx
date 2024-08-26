@@ -17,7 +17,7 @@ const Popup = ({ setShowPopup }) => {
       localStorage.setItem("subscribed", "true");
       setTimeout(() => {
         setShowPopup(false);
-      }, 1500);
+      }, 5000);
     }
   }, [message]);
 
