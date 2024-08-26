@@ -9,7 +9,7 @@ const Home = ({ homeData, showPopup, setShowPopup }) => {
   const isSubscribed = localStorage.getItem("subscribed") ? true : false;
   return (
     homeData.sliders && (
-      <main className="flex flex-col">
+      <main className="flex flex-col overflow-hidden">
         <Slider sliders={homeData.sliders} />
         <Banners banner={homeData.settings.banner1} />
         <ProductsByCategory

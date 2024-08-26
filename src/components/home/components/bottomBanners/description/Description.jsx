@@ -19,7 +19,7 @@ const Description = ({
           isCover
             ? `md:px-[0.9375rem]
               md:absolute md:top-[50%] md:left-[50%] md:[transform:translate(-50%,-50%)]`
-            : `lg:px-[0.9375rem] lg:left-[50%]
+            : `lg:px-[1.5cm] lg:left-[50%]
               lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)]`
         }`}
       >

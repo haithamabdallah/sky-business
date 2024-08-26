@@ -55,7 +55,7 @@ const Login = () => {
     if (Object.keys(errors).length) {
       setTimeout(() => {
         setErrors({});
-      }, 2000);
+      }, 5000);
     }
   }, [errors]);
 
