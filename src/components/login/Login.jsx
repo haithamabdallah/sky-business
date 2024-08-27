@@ -46,7 +46,6 @@ const Login = () => {
       setForm({ email: "", password: "" });
       e.target.reset();
       setStatus("success");
-      localStorage.setItem("token", result.token);
     } else {
       setErrors(result);
     }

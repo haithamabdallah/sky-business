@@ -50,6 +50,7 @@ const Register = ({ registerData }) => {
     const result = response.data;
     if (response.status === "success") {
       setForm({});
+      e.target.reset();
       setMessage(response.message);
       setStatus("success")
     } else {
