@@ -6,7 +6,6 @@ const ProductsByCategory = ({ categories, explore }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   const categoriesInfo = structureData(categories, explore);
   return (
-    <OpacityAnimation>
       <section
         className="max-w-[1200px] m-auto flex flex-wrap justify-center px-0 my-[60px]
       gap-[15px] lg:gap-[30px] font-futura"
@@ -38,7 +37,6 @@ const ProductsByCategory = ({ categories, explore }) => {
           </LeftToRightAnimation>
         ))}
       </section>
-    </OpacityAnimation>
   );
 };
 

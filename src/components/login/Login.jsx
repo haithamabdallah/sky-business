@@ -7,6 +7,7 @@ import Loading from "../Loading";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const inputs = [
     {
@@ -44,7 +45,7 @@ const Login = () => {
     if (response.status === "success") {
       setForm({ email: "", password: "" });
       e.target.reset();
-      navigate("/");
+      setStatus("success");
       localStorage.setItem("token", result.token);
     } else {
       setErrors(result);
@@ -85,7 +86,11 @@ const Login = () => {
                   : "w-[80%] min-[532px]:w-[50%]"
               } relative`}
             >
-              <Input handleChange={handleChange} input={input} />
+              <Input
+                handleChange={handleChange}
+                input={input}
+                status={status}
+              />
             </div>
           ))}
           {Object.keys(errors).length > 0 && (

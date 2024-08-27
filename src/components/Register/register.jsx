@@ -10,6 +10,7 @@ const Register = ({ registerData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const Register = ({ registerData }) => {
     if (response.status === "success") {
       setForm({});
       setMessage(response.message);
+      setStatus("success")
     } else {
       setErrors(result);
     }
@@ -67,7 +69,7 @@ const Register = ({ registerData }) => {
     if (message.length) {
       setTimeout(() => {
         setMessage("");
-        navigate("/");
+        setStatus("");
       }, 5000);
     }
   }, [message]);
@@ -108,6 +110,7 @@ const Register = ({ registerData }) => {
                 <Input
                   handleChange={handleChange}
                   input={input}
+                  status={status}
                   setForm={setForm}
                 />
               )}

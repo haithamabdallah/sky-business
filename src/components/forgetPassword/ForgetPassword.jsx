@@ -34,9 +34,7 @@ const ForgetPassword = () => {
   useEffect(() => {
     setTimeout(() => {
       setMessage("");
-      if (status === "success") {
-        navigate("/");
-      }
+      setStatus("");
     }, 5000);
   }, [message]);
 
@@ -65,6 +63,7 @@ const ForgetPassword = () => {
                 type: "email",
                 required: true,
               }}
+              status={status}
             />
           </div>
           <Loading loading={loading} />

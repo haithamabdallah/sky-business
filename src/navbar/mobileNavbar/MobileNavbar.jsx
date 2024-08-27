@@ -56,14 +56,15 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
           show
             ? "fixed top-0 right-0 z-30 opacity-100 translate-x-0"
             : "opacity-0 animate-pushToSide [animation-delay:500ms]"
-        } w-full h-screen flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
+        } w-full h-screen flex flex-col absolute right-0 top-0 bg-black bg-opacity-40`}
       >
         <div className="absolute top-0 left-0 w-full max-h-[54px] h-[54px] flex items-center bg-black z-10 font-futura text-sm leading-5">
           {token && (
             <p className="text-white w-full text-center">You are logged in</p>
           )}
         </div>
-        <div className="flex w-full h-full mt-[54px]">
+        <div className="min-h-[54px] min-w-[100vw]"></div>
+        <div className="flex w-full flex-auto h-full">
           <div
             className="w-[80px] min-h-screen"
             onClick={() => {
@@ -74,37 +75,37 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
                 .classList.remove("overflow-hidden");
             }}
           ></div>
-          <ul
-            className={`flex flex-col w-full overflow-auto h-full self-end bg-white px-5 pt-3`}
-          >
-            {tabs.map((tab, i) => {
-              if (token && ["/login"].includes(tab.route)) return;
-              return (
-                <li key={i} className={`text-xs my-3 leading-5`}>
-                  <Link
-                    to={tab.route}
-                    className="py-1 rounded-full"
-                    onClick={() => {
-                      setShow(false);
-                      clearSearch(setTerm, setShowSearch);
-                      document
-                        .querySelector("body")
-                        .classList.remove("overflow-hidden");
-                    }}
-                  >
-                    {tab.name.toUpperCase()}
-                  </Link>
-                </li>
-              );
-            })}
-            {token && (
-              <Logout
-                setShow={setShow}
-                setTerm={setTerm}
-                setShowSearch={setShowSearch}
-              />
-            )}
-          </ul>
+          <div className="w-full overflow-scroll pb-[54px] bg-white h-full">
+            <ul className={`flex flex-col px-5 pt-3`}>
+              {tabs.map((tab, i) => {
+                if (token && ["/login"].includes(tab.route)) return;
+                return (
+                  <li key={i} className={`text-xs my-3 leading-5`}>
+                    <Link
+                      to={tab.route}
+                      className="py-1 rounded-full"
+                      onClick={() => {
+                        setShow(false);
+                        clearSearch(setTerm, setShowSearch);
+                        document
+                          .querySelector("body")
+                          .classList.remove("overflow-hidden");
+                      }}
+                    >
+                      {tab.name.toUpperCase()}
+                    </Link>
+                  </li>
+                );
+              })}
+              {token && (
+                <Logout
+                  setShow={setShow}
+                  setTerm={setTerm}
+                  setShowSearch={setShowSearch}
+                />
+              )}
+            </ul>
+          </div>
         </div>
       </section>
     </nav>
