@@ -47,12 +47,14 @@ const Register = ({ registerData }) => {
       body: { ...form },
     });
     setLoading(false);
+    setErrors({});
     const result = response.data;
     if (response.status === "success") {
       setForm({});
       e.target.reset();
       setMessage(response.message);
       setStatus("success")
+      navigate("/thank-you", { state: { message: response.message } });
     } else {
       setErrors(result);
     }

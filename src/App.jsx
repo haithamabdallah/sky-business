@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
 import Register from "./components/Register/register";
+import ThankYou from "./components/Register/components/thankYou/ThankYou";
 import Login from "./components/login/Login";
 import About from "./components/about/About";
 import SkinCare from "./components/skinCare/SkinCare";
@@ -138,6 +139,10 @@ const App = () => {
                 <Route
                   path="/register"
                   element={<Register registerData={registerData} />}
+                />
+                <Route
+                  path="/thank-you"
+                  element={<ThankYou />}
                 />
                 <Route
                   path="/login"
