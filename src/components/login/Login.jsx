@@ -9,6 +9,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const inputs = [
     {
       name: "email",
@@ -24,7 +25,6 @@ const Login = () => {
       required: true,
     },
   ];
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -47,6 +47,7 @@ const Login = () => {
       setForm({ email: "", password: "" });
       e.target.reset();
       setStatus("success");
+      navigate("/");
     } else {
       setErrors(result);
     }
