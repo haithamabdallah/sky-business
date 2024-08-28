@@ -35,6 +35,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrors({});
     const response = await sendRequest({
       method: "post",
       endpoint: "login",
