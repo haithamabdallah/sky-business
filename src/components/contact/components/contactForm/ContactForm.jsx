@@ -3,6 +3,7 @@ import { inputs } from "../../data";
 import Input from "./components/input/Input";
 import { useState, useEffect, Fragment } from "react";
 import Loading from "../../../Loading";
+import ShowMessage from "../../../ShowMessage";
 const ContactForm = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
@@ -10,20 +11,20 @@ const ContactForm = () => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setMessage("");
-      setStatus("");
-    }, 5000);
-  }, [message]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setMessage("");
+  //     setStatus("");
+  //   }, 5000);
+  // }, [message]);
 
-  useEffect(() => {
-    if (Object.keys(errors).length) {
-      setTimeout(() => {
-        setErrors({});
-      }, 5000);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.keys(errors).length) {
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 5000);
+  //   }
+  // }, [errors]);
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -34,6 +35,9 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     setLoading(true);
+    setMessage("");
+    setStatus("");
+    setErrors({});
     sendRequest({
       method: "post",
       endpoint: "contact-us",
@@ -108,11 +112,15 @@ const ContactForm = () => {
       })}
       <div className="flex flex-wrap w-[98%]">
         {message.length > 0 && (
-          <small className="w-full py-5 text-green-700 text-[1rem]">
-            {message}
-          </small>
+          // <small className="w-full py-5 text-green-700 text-[1rem]">
+          //   {message}
+          // </small>
+          <ShowMessage
+            message={message}
+            classes="w-full py-5 text-green-700 text-[1rem]"
+          />
         )}
-       <Loading loading={loading} />
+        <Loading loading={loading} />
         <input
           className="appearance-none w-[18px] h-[18px] border border-black bg-white
           cursor-pointer checked:bg-[url('./components/contact/components/contactForm/correct.svg')]
@@ -132,7 +140,7 @@ const ContactForm = () => {
           <br />
         </small>
       </div>
-      
+
       <div className="w-[98%] justify-start">
         <button
           className="rounded-[1.5625rem] px-16 py-5 bg-black text-white text-sm

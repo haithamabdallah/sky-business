@@ -53,13 +53,13 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length) {
-      setTimeout(() => {
-        setErrors({});
-      }, 5000);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.keys(errors).length) {
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 5000);
+  //   }
+  // }, [errors]);
 
   return (
     <>

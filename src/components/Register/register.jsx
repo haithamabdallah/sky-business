@@ -41,41 +41,43 @@ const Register = ({ registerData }) => {
 
   const handleSubmit = async (e) => {
     setLoading(true);
+    setErrors({});
+    setMessage("");
+    setStatus("");
     const response = await sendRequest({
       method: "post",
       endpoint: "register",
       body: { ...form },
     });
     setLoading(false);
-    setErrors({});
     const result = response.data;
     if (response.status === "success") {
       setForm({});
       e.target.reset();
       setMessage(response.message);
-      setStatus("success")
+      setStatus("success");
       navigate("/thank-you", { state: { message: response.message } });
     } else {
       setErrors(result);
     }
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length) {
-      setTimeout(() => {
-        setErrors({});
-      }, 5000);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.keys(errors).length) {
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 5000);
+  //   }
+  // }, [errors]);
 
-  useEffect(() => {
-    if (message.length) {
-      setTimeout(() => {
-        setMessage("");
-        setStatus("");
-      }, 5000);
-    }
-  }, [message]);
+  // useEffect(() => {
+  //   if (message.length) {
+  //     setTimeout(() => {
+  //       setMessage("");
+  //       setStatus("");
+  //     }, 5000);
+  //   }
+  // }, [message]);
 
   return (
     <div>
@@ -124,9 +126,15 @@ const Register = ({ registerData }) => {
               )}
             </div>
           ))}
-          <small className="w-full text-center py-1 text-green-700 font-semibold">
+          {/* <small className="w-full text-center py-1 text-green-700 font-semibold">
             <span>{message}</span>
-          </small>
+          </small> */}
+          {message.length > 0 && (
+            <ShowMessage
+              message={message}
+              classes="w-full text-center py-1 text-green-700 font-semibold"
+            />
+          )}
           <div
             className="w-full flex flex-col justify-center items-center gap-y-4 gap-x-2
             mb-5"

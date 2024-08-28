@@ -1,17 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sendRequest from "../../methods/fetchData";
+import ShowMessage from "../ShowMessage";
 const Unsubscribe = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    setTimeout(() => {
-      setMessage("");
-      setStatus("");
-    }, 2000);
-  }, [message]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setMessage("");
+  //     setStatus("");
+  //   }, 2000);
+  // }, [message]);
   return (
     <div className="w-screen h-screen m-0 p-0 box-border bg-[#eeeeee] pt-[50px] overflow-hidden">
       <div
@@ -61,15 +62,16 @@ const Unsubscribe = () => {
               placeholder="Your Email"
             />
             <div className="mt-[30px]">
-              {message.length > 0 && status === "success" && (
-                <small className="w-full py-5 text-green-700 text-[1rem]">
-                  {message}
-                </small>
-              )}
               {message.length > 0 && status === "error" && (
-                <small className="w-full text-center my-5 text-red-700 text-xs font-bold">
-                  {message}
-                </small>
+                // <small className="w-full text-center my-5 text-red-700 text-xs font-bold">
+                //   {message}
+                // </small>
+                <ShowMessage
+                  message={message}
+                  classes={
+                    "w-full text-center my-5 text-red-700 text-xs font-bold"
+                  }
+                />
               )}
             </div>
             <button
