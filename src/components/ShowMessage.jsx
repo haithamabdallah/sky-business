@@ -4,7 +4,7 @@ const ShowMessage = ({ message, classes }) => {
   const [open, setOpen] = useState(true);
   return (
     open && (
-      <div className="relative py-5 w-full">
+      <div className="relative py-5">
         <button
           className="absolute right-0 top-[-20px]"
           onClick={() => {

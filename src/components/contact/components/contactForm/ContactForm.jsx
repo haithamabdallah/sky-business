@@ -115,10 +115,13 @@ const ContactForm = () => {
           // <small className="w-full py-5 text-green-700 text-[1rem]">
           //   {message}
           // </small>
-          <ShowMessage
-            message={message}
-            classes="w-full py-5 text-green-700 text-[1rem]"
-          />
+          <div className="w-full">
+            <ShowMessage
+              message={message}
+              classes="w-full py-5 text-green-700 text-[1rem]"
+            />
+            
+          </div>
         )}
         <Loading loading={loading} />
         <input
