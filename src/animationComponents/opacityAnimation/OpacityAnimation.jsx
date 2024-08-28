@@ -19,6 +19,7 @@ const OpacityAnimation = ({ children, index }) => {
           scrollTrigger: {
             trigger: childRef.current,
             start: "top 100%",
+            scrub: false,
             toggleActions: "play none none none",
           },
         }

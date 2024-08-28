@@ -20,6 +20,7 @@ const RightToLeftAnimation = ({ children, index }) => {
           scrollTrigger: {
             trigger: childRef.current,
             toggleActions: "play none none none", // Animation should play once
+            scrub: false,
             once: true, // Ensure animation triggers only once
           },
         }

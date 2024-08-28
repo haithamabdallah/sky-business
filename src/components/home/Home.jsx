@@ -1,9 +1,15 @@
-import Banners from "./components/banners/Banners";
-import ProductsByCategory from "./components/productsByCategory/ProductsByCategory";
-import Slider from "./components/slider/Slider";
-import Popup from "./components/popup/Popup";
-import BottomBanners from "./components/bottomBanners/BottomBanners";
-import HalfBanners from "./components/halfBanners/HalfBanners";
+import { lazy } from "react";
+const Banners = lazy(() => import("./components/banners/Banners"));
+const ProductsByCategory = lazy(() =>
+  import("./components/productsByCategory/ProductsByCategory")
+);
+const Slider = lazy(() => import("./components/slider/Slider"));
+const Popup = lazy(() => import("./components/popup/Popup"));
+const BottomBanners = lazy(() =>
+  import("./components/bottomBanners/BottomBanners")
+);
+const HalfBanners = lazy(() => import("./components/halfBanners/HalfBanners"));
+
 const Home = ({ homeData, showPopup, setShowPopup }) => {
   const isSubscribed = localStorage.getItem("subscribed") ? true : false;
   return (

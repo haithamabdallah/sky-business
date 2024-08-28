@@ -20,7 +20,9 @@ const LeftToRightAnimation = ({ children, index }) => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: childRef.current,
-            toggleActions: "play none none none", // Animation should play once
+            toggleActions: "play none none none",
+            start: "center 100%",
+            scrub: false,
             once: true, // Ensure animation triggers only once
           },
         }
