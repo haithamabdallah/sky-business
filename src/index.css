@@ -9,6 +9,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Futura PT Book"), url("./assets/FuturaCyrillicBook.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -16,6 +17,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Futura PT Light"), url("./assets/FuturaCyrillicLight.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +26,7 @@
   font-weight: normal;
   src: local("Futura PT Medium"),
     url("./assets/FuturaCyrillicMedium.woff") format("woff");
+    font-display: swap;
 }
 
 @font-face {
@@ -31,6 +34,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Futura PT Demi"), url("./assets/FuturaCyrillicDemi.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -38,6 +42,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Futura PT Heavy"), url("./assets/FuturaCyrillicHeavy.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -45,6 +50,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Futura PT Bold"), url("./assets/FuturaCyrillicBold.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -53,6 +59,7 @@
   font-weight: normal;
   src: local("Futura PT Extra Bold"),
     url("./assets/FuturaCyrillicExtraBold.woff") format("woff");
+    font-display: swap;
 }
 
 @tailwind base;
