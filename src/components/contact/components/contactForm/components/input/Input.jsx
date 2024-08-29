@@ -18,7 +18,7 @@ const Input = ({ input, handleChange, countries, status, setForm }) => {
       <select
         defaultValue=""
         name={input.name}
-        className="px-[18px] rounded-[1.5625rem] text-[12px] leading-5 h-[2.1rem]
+        className="px-[18px] rounded-[1.5625rem] leading-5 h-[2.1rem]
          bg-[url('./components/contact/components/contactForm/components/input/down-arrow.png')]
         bg-[center_right_18px] bg-[length:12px_12px] bg-no-repeat appearance-none
         border border-black
