@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DesktopNavbar from "./desktopNavbar/DesktopNavbar";
 import MobileNavbar from "./mobileNavbar/MobileNavbar";
+import { Context } from "../ContextProvider";
 
 const clearSearch = (setTerm, setShow) => {
   setShow(false);
@@ -8,16 +9,16 @@ const clearSearch = (setTerm, setShow) => {
 };
 const Navbar = ({ setShowMargin }) => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [scrollStatus, setScrollStatus] = useState(undefined);
-
+  const [scrollStatus, setScrollStatus] = useState("up");
+  const { setState } = useContext(Context);
   const handleScroll = () => {
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
     if (currentScroll > lastScrollTop) {
       setScrollStatus("down");
-      setShowMargin(false);
+      setState((prev) => ({ ...prev, showMargin: false }));
     } else {
       setScrollStatus("up");
-      setShowMargin(true);
+      setState((prev) => ({ ...prev, showMargin: true }));
     }
     setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
   };

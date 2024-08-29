@@ -2,21 +2,21 @@ import { useState, useEffect, useContext } from "react";
 import PopupForm from "./components/popupForm/PopupForm";
 import { Context } from "../../../../ContextProvider";
 import parse from "html-react-parser";
-const Popup = ({ setShowPopup }) => {
+const Popup = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
-  const { value } = useContext(Context);
+  const { state, setState } = useContext(Context);
 
   const url = import.meta.env.VITE_STORAGE_URL;
-  const popupText = value.settings.popup_text;
-  const popupImage = value.settings.popup_image;
-  const logo = `${url}/${value.settings.logo}`;
+  const popupText = state.general.settings.popup_text;
+  const popupImage = state.general.settings.popup_image;
+  const logo = `${url}/${state.general.settings.logo}`;
 
   useEffect(() => {
     if (message.length) {
       localStorage.setItem("subscribed", "true");
       setTimeout(() => {
-        setShowPopup(false);
+        setState((prev) => ({ ...prev, showPopup: false }));
       }, 5000);
     }
   }, [message]);
@@ -44,7 +44,7 @@ const Popup = ({ setShowPopup }) => {
               <button
                 className="absolute right-3 top-2"
                 onClick={() => {
-                  setShowPopup(false);
+                  setState((prev) => ({ ...prev, showPopup: false }));
                 }}
               >
                 <svg

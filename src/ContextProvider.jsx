@@ -9,6 +9,9 @@ const ContextProvider = ({ children }) => {
     showPopup: false,
     showCookies: false,
     loading: true,
+    showMargin: true,
+    searchBlogPosts: [],
+    searchBrands: [],
   });
 
   return (

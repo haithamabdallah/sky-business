@@ -11,9 +11,9 @@ const MobileNavbar = ({ scrollStatus, clearSearch }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [term, setTerm] = useState("");
 
-  const { value } = useContext(Context);
+  const { state } = useContext(Context);
 
-  const logo = `${url}/${value.settings.logo}`;
+  const logo = `${url}/${state.general.settings.logo}`;
 
   const token = localStorage.getItem("token");
 

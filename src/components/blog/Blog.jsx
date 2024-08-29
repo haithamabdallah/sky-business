@@ -1,25 +1,22 @@
-import PageCover from "../innerPages/components/pageCover/PageCover";
 import BlogCards from "./components/blogCards/BlogCards";
 import CoverComponent from "../CoverComponent";
-import parse from "html-react-parser";
+import { Context } from "../../ContextProvider";
+import { useContext } from "react";
 
-const Blog = ({ blogData }) => {
-  const settings = blogData.settings;
-  const desktopCover = settings.cover_desktop;
-  const mobileCover = settings.cover_mobile;
-  const { cover_header: header, cover_text: text, is_dark: isDark } = settings;
+const Blog = () => {
+  const { state } = useContext(Context);
   return (
-    blogData.settings && (
+    state.blogData.settings && (
       <>
         <CoverComponent
-          desktopCover={desktopCover}
-          mobileCover={mobileCover}
-          header={header}
-          text={text}
-          isDark={isDark}
+          desktopCover={state.blogData.settings.cover_desktop}
+          mobileCover={state.blogData.settings.cover_mobile}
+          header={state.blogData.settings.cover_header}
+          text={state.blogData.settings.cover_text}
+          isDark={state.blogData.settings.is_dark}
         />
         <div className="flex flex-col max-w-[75rem] mx-auto my-[5rem] font-futura">
-          <BlogCards posts={blogData.posts} />
+          <BlogCards />
         </div>
       </>
     )

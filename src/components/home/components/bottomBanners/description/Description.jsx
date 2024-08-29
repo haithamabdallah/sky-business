@@ -50,7 +50,7 @@ const Description = ({
             </h2>
           )}
           {text?.length > 0 && (
-            <p
+            <div
               className={`text-[#000] lg:text-[.875rem] text-[0.75rem] lg:leading-[1.25rem]
               leading-[1rem] pb-[1.625rem] font-futura pointer-events-auto ${
                 isCover ? "md:w-[90%] w-auto" : "w-auto"
@@ -58,7 +58,7 @@ const Description = ({
               ${isDark ? "lg:text-white text-black" : "text-black"}`}
             >
               {parse(text)}
-            </p>
+            </div>
           )}
           {Number(buttonStatus) === 1 && (
             <div>

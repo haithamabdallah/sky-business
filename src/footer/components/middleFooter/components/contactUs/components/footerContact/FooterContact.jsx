@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Context } from "../../../../../../../ContextProvider";
 
 const FooterContact = () => {
-  const { value } = useContext(Context);
-  const workHours = value.settings.work_hours;
-  const phone = value.settings.phone;
+  const { state } = useContext(Context);
+  const workHours = state.general.settings.work_hours;
+  const phone = state.general.settings.phone;
   return (
     <section className="lg:pb-10 block pb-0 font-futura lg:mt-0 mt-5">
       <span

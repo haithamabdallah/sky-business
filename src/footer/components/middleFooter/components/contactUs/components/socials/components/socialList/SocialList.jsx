@@ -4,8 +4,8 @@ import { getSocialList } from "./data";
 import { Context } from "../../../../../../../../../ContextProvider";
 
 const SocialList = () => {
-  const { value } = useContext(Context);
-  const data = getSocialList(value.settings);
+  const { state } = useContext(Context);
+  const data = getSocialList(state.general.settings);
   return (
     <ul
       className="lg:mb-[2.1875rem] my-3 flex items-center flex-nowrap

@@ -1,46 +1,26 @@
+import { useContext } from "react";
 import CoverComponent from "../CoverComponent";
-import PageCover from "../innerPages/components/pageCover/PageCover";
 import OurServices from "./components/ourServices/OurServices";
 import Products from "./components/products/Products";
+import { Context } from "../../ContextProvider";
 
-const SkinCare = ({ skinCareData }) => {
-  const settings = skinCareData.settings;
-  const desktopCover = settings.cover_desktop;
-  const mobileCover = settings.cover_mobile;
-  const {
-    cover_header: headerCover,
-    cover_text: textCover,
-    is_dark: isDark,
-  } = settings;
+const SkinCare = () => {
+  const { state } = useContext(Context);
 
-  const productsData = {
-    products: skinCareData["skin products"],
-    header: settings.header,
-    text: settings.text,
-  };
-  const ourServices =
-    settings.section_4_status === 0
-      ? null
-      : {
-          header: settings.header2,
-          text: settings.text2,
-          button: settings.button,
-          image: settings.image,
-        };
   return (
-    <>
+    <div>
       <CoverComponent
-        desktopCover={desktopCover}
-        mobileCover={mobileCover}
-        header={headerCover}
-        text={textCover}
-        isDark={isDark}
+        desktopCover={state.skinCareData.settings.cover_desktop}
+        mobileCover={state.skinCareData.settings.cover_mobile}
+        header={state.skinCareData.settings.cover_header}
+        text={state.skinCareData.settings.cover_text}
+        isDark={state.skinCareData.settings.is_dark}
       />
       <div className="flex flex-col max-w-[75rem] mx-auto mt-12 font-futura">
-        <Products productsData={productsData} />
-        {ourServices && <OurServices ourServices={ourServices} />}
+        <Products />
+        <OurServices />
       </div>
-    </>
+    </div>
   );
 };
 

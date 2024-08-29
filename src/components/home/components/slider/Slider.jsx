@@ -10,9 +10,11 @@ import "./slider.css";
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import SliderContents from "./components/sliderContents/SliderContents";
+import { useContext } from "react";
+import { Context } from "../../../../ContextProvider";
 
-export default function Slider({ sliders }) {
-  const url = import.meta.env.VITE_STORAGE_URL;
+export default function Slider() {
+  const { state } = useContext(Context);
   return (
     <Swiper
       pagination={{
@@ -25,7 +27,7 @@ export default function Slider({ sliders }) {
       }}
       className="mySwiper"
     >
-      {sliders.map((slider) => (
+      {state.homeData.sliders.map((slider) => (
         <SwiperSlide key={slider.id}>
           <SliderContents slider={slider} />
         </SwiperSlide>

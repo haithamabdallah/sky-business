@@ -16,8 +16,8 @@ const DesktopNavbar = ({ scrollStatus, clearSearch }) => {
 
   const navigate = useNavigate();
 
-  const { value } = useContext(Context);
-  const logo = `${url}/${value.settings.logo}`;
+  const { state } = useContext(Context);
+  const logo = `${url}/${state.general.settings.logo}`;
 
   const { pathname } = useLocation();
 

@@ -5,12 +5,12 @@ import timeImage from "./time-icon.svg";
 import { Context } from "../../../../../../ContextProvider";
 import { Link } from "react-router-dom";
 const ContactMethods = () => {
-  const { value } = useContext(Context);
+  const { state } = useContext(Context);
   const {
     notification_email: notificationEmail,
     phone,
     work_hours: workHours,
-  } = value.settings;
+  } = state.general.settings;
   return (
     <div className="flex flex-col gap-y-4 mt-5">
       <div className="flex gap-x-4 w-full">

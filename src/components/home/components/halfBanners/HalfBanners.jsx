@@ -5,8 +5,13 @@ import imageDefault from "./default.jpg";
 import { Link } from "react-router-dom";
 import LeftToRightAnimation from "../../../../animationComponents/leftToRightAnimation/LeftToRightAnimation";
 import RightToLeftAnimation from "../../../../animationComponents/rightToLeftAnimation/RightToLeftAnimation";
-const HalfBanners = ({ banners, isFull }) => {
+import { useContext } from "react";
+import { Context } from "../../../../ContextProvider";
+const HalfBanners = () => {
   const url = import.meta.env.VITE_STORAGE_URL;
+  const { state } = useContext(Context);
+  const banners = state.homeData.settings.half_banners;
+  const isFull = state.homeData.settings.half_banners_container_is_full;
   return (
     <section
       className={`mx-auto mb-[60px] grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1

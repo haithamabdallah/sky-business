@@ -1,26 +1,24 @@
-import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
 import BrandCategories from "./components/brandCategories/BrandCategories";
+import { Context } from "../../ContextProvider";
+import { useContext } from "react";
 
-const Brands = ({ brandData }) => {
-  const settings = brandData.settings;
-  const desktopCover = settings.cover_desktop;
-  const mobileCover = settings.cover_mobile;
-  const { cover_header: header, cover_text: text, is_dark: isDark } = settings;
+const Brands = () => {
+  const { state } = useContext(Context);
   return (
-    brandData.settings && (
-      <>
+    state.brandData.settings && (
+      <div>
         <CoverComponent
-          desktopCover={desktopCover}
-          mobileCover={mobileCover}
-          header={header}
-          text={text}
-          isDark={isDark}
+          desktopCover={state.brandData.settings.cover_desktop}
+          mobileCover={state.brandData.settings.cover_mobile}
+          header={state.brandData.settings.cover_header}
+          text={state.brandData.settings.cover_text}
+          isDark={state.brandData.settings.is_dark}
         />
         <section className="max-w-[75rem] mx-auto mt-16 px-5">
-          <BrandCategories categories={brandData.categories} />
+          <BrandCategories />
         </section>
-      </>
+      </div>
     )
   );
 };

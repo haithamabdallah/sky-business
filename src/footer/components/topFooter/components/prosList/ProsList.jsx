@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Context } from "../../../../../ContextProvider";
 
 const ProsList = () => {
-  const { value } = useContext(Context);
-  const list = value.settings.top_footer;
+  const { state } = useContext(Context);
+  const list = state.general.settings.top_footer;
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <ul

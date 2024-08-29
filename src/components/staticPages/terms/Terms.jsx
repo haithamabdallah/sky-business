@@ -1,6 +1,9 @@
 import parse from "html-react-parser";
-const Terms = ({ staticPagesData }) => {
-    const policy = staticPagesData.pages.filter( page => page.id == 1 ) [0] ;
+import { Context } from "../../../ContextProvider";
+import { useContext } from "react";
+const Terms = () => {
+    const { state } = useContext(Context);
+    const policy = state.staticPagesData.pages.filter( page => page.id == 1 )[0];
     return (
         <div className="">
             <div className="bg-black w-[100vw] h-[20vw] grid place-items-center"> 

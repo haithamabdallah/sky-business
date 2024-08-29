@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useContext } from "react";
 import { inputs } from "./data";
 import Input from "../contact/components/contactForm/components/input/Input";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +6,8 @@ import PageCover from "../innerPages/components/pageCover/PageCover";
 import CoverComponent from "../CoverComponent";
 import sendRequest from "../../methods/fetchData";
 import Loading from "../Loading";
-const Register = ({ registerData }) => {
+import { Context } from "../../ContextProvider";
+const Register = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
@@ -14,8 +15,9 @@ const Register = ({ registerData }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { state } = useContext(Context);
 
-  const settings = registerData.settings;
+  const settings = state.registerData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
   const {

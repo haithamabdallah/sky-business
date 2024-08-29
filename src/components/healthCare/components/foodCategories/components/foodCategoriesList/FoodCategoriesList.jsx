@@ -1,5 +1,10 @@
-const FoodCategoriesList = ({ organics }) => {
+import { useContext } from "react";
+import { Context } from "../../../../../../ContextProvider";
+
+const FoodCategoriesList = () => {
   const url = import.meta.env.VITE_STORAGE_URL;
+  const { state } = useContext(Context);
+  const organics = state.healthCareData.organics;
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[50px] font-futura">
       {organics.map(({ id, name, image, text }) => (

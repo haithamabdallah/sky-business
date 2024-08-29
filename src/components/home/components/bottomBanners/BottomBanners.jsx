@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import BannerImage from "./bannerImage/BannerImage";
 import Description from "./description/Description";
 import BottomToTopAnimation from "../../../../animationComponents/bottomToTopAnimation/BottomToTopAnimation";
-const BottomBanners = ({ banners }) => {
+import { Context } from "../../../../ContextProvider";
+import { useContext } from "react";
+const BottomBanners = () => {
+  const { state } = useContext(Context);
+  const banners = state.homeData.settings.banners;
   return banners.map((banner, index) => (
     <BottomToTopAnimation key={`new banner ${index + 1}`} index={index}>
       <div className="relative">

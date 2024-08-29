@@ -12,9 +12,8 @@ const MiddleFooterMobile = () => {
   useEffect(() => {
     initTWE({ Collapse });
   });
-  const location = useLocation();
-  const { value } = useContext(Context);
-  const socialData = getSocialList(value.settings);
+  const { state } = useContext(Context);
+  const socialData = getSocialList(state.general.settings);
 
   return (
     <div className="m-5 font-futura">

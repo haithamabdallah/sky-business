@@ -57,7 +57,8 @@ const App = () => {
           // setRegisterData(res.data["register_page"]);
           // setValue(res.data["general"]);
           // setStaticPagesData(res.data["static-pages"]);
-          setState({
+          setState((prev) => ({
+            ...prev,
             homeData: res.data["home_page"],
             aboutData: res.data["about_page"],
             skinCareData: res.data["skin_page"],
@@ -71,7 +72,7 @@ const App = () => {
             registerData: res.data["register_page"],
             staticPagesData: res.data["static-pages"],
             general: res.data["general"],
-          });
+          }));
           localStorage.setItem(
             "icon",
             `${import.meta.env.VITE_STORAGE_URL}/${
@@ -93,7 +94,7 @@ const App = () => {
     });
   }, []);
 
-  return loading ? (
+  return state.loading ? (
     <div
       className="min-w-[100vw] min-h-[100vh] absolute flex items-center justify-center
       top-0 z-50 bg-white bg-opacity-50"
@@ -113,101 +114,44 @@ const App = () => {
         <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
           <ScrollToTop />
           <div className="self-start">
-            {!localStorage.getItem("cookies_popup") && showCookies && (
-              <Cookies setShowCookies={setShowCookies} />
+            {!localStorage.getItem("cookies_popup") && state.showCookies && (
+              <Cookies />
             )}
-            <Navbar setShowMargin={setShowMargin} />
+            <Navbar />
             <main
               className={`transition-[margin] duration-500 ${
-                showMargin ? "mt-[54px] min-[1200px]:mt-[110px]" : "mt-0"
+                state.showMargin ? "mt-[54px] min-[1200px]:mt-[110px]" : "mt-0"
               }`}
             >
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Home
-                      homeData={homeData}
-                      showPopup={showPopup}
-                      setShowPopup={setShowPopup}
-                    />
-                  }
-                />
+                <Route path="/" element={<Home />} />
                 <Route path="/search" element={<SearchResult />} />
-                <Route
-                  path="/register"
-                  element={<Register registerData={registerData} />}
-                />
+                <Route path="/register" element={<Register />} />
                 <Route path="/thank-you" element={<ThankYou />} />
-                <Route
-                  path="/login"
-                  element={<Login loginData={registerData} />}
-                />
+                <Route path="/login" element={<Login />} />
                 <Route path="/forget_password" element={<ForgetPassword />} />
                 <Route
                   path="/password-reset/:token"
                   element={<ResetPassword />}
                 />
-                <Route
-                  path="/about"
-                  element={<About aboutData={aboutData} />}
-                />
-                <Route
-                  path="/skin_care"
-                  element={<SkinCare skinCareData={skinCareData} />}
-                />
-                <Route path="/blog" element={<Blog blogData={blogData} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/skin_care" element={<SkinCare />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<Article />} />
-                <Route
-                  path="/brands"
-                  element={<Brands brandData={brandData} />}
-                />
-                <Route
-                  path="/retailers"
-                  element={<Retailers retailerData={retailerData} />}
-                />
-                <Route
-                  path="/contact"
-                  element={<Contact contactData={contactData} />}
-                />
-                <Route
-                  path="/health_care"
-                  element={<HealthCare healthCareData={healthCareData} />}
-                />
-                <Route
-                  path="/makeup"
-                  element={<Makeup makeupData={makeupData} />}
-                />
-                <Route
-                  path="/hair_care"
-                  element={<HairCare hairCareData={hairCareData} />}
-                />
-                <Route
-                  path="/terms"
-                  element={<Terms staticPagesData={staticPagesData} />}
-                />
-                <Route
-                  path="/privacy"
-                  element={<Privacy staticPagesData={staticPagesData} />}
-                />
-                <Route
-                  path="/returns"
-                  element={<Returns staticPagesData={staticPagesData} />}
-                />
+                <Route path="/brands" element={<Brands />} />
+                <Route path="/retailers" element={<Retailers />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/health_care" element={<HealthCare />} />
+                <Route path="/makeup" element={<Makeup />} />
+                <Route path="/hair_care" element={<HairCare />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/returns" element={<Returns />} />
                 <Route
                   path="/confirm-subscribe"
                   element={<ConfirmSubscribe />}
                 />
-                <Route
-                  path="*"
-                  element={
-                    <Home
-                      homeData={homeData}
-                      showPopup={showPopup}
-                      setShowPopup={setShowPopup}
-                    />
-                  }
-                />
+                <Route path="*" element={<Home />} />
               </Routes>
             </main>
           </div>

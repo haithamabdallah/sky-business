@@ -6,8 +6,8 @@ import { getSocialList } from "../contactUs/components/socials/components/social
 import Logout from "../../../../../logout/Logout";
 
 const LinkList = () => {
-  const { value } = useContext(Context);
-  const socialData = getSocialList(value.settings);
+  const { state } = useContext(Context);
+  const socialData = getSocialList(state.general.settings);
   const token = localStorage.getItem("token");
 
   return (

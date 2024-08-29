@@ -8,7 +8,6 @@ const CoverComponent = ({
   text,
   isDark,
 }) => {
-  const url = import.meta.env.VITE_STORAGE_URL;
   return (
     <>
       <div className="w-screen relative md:block hidden">

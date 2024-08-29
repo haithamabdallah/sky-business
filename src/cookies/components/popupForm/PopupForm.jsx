@@ -4,9 +4,6 @@ import { Context } from "../../../../../../ContextProvider";
 import sendRequest from "../../../../../../methods/fetchData";
 const PopupForm = ({ setMessage }) => {
   const [email, setEmail] = useState("");
-  const { value } = useContext(Context);
-  const phone = value.settings.phone;
-  const notificationEmail = value.settings.notification_email;
   
   return (
     <form

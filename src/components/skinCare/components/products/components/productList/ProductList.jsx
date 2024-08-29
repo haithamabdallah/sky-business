@@ -1,5 +1,10 @@
-const ProductList = ({ products }) => {
+import { useContext } from "react";
+import { Context } from "../../../../../../ContextProvider";
+
+const ProductList = () => {
   const url = import.meta.env.VITE_STORAGE_URL;
+  const { state } = useContext(Context);
+  const products = state.skinCareData["skin products"];
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[50px] font-futura">
       {products.map(({ id, name, image, text }) => (
@@ -10,7 +15,8 @@ const ProductList = ({ products }) => {
           <img
             src={`${url}/${image}`}
             alt={name}
-            className="row-span-4 w-full h-full aspect-square"          />
+            className="row-span-4 w-full h-full aspect-square"
+          />
           <h2 className="leading-[0.9] text-center mt-10 uppercase font-bold">
             {name}
           </h2>

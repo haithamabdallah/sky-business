@@ -1,34 +1,28 @@
-import PageCover from "../innerPages/components/pageCover/PageCover";
 import Header from "./components/header/Header";
 import Logos from "./components/logos/Logos";
 import CoverComponent from "../CoverComponent";
+import { Context } from "../../ContextProvider";
+import { useContext } from "react";
 
-const Retail = ({ retailerData }) => {
-  const settings = retailerData.settings;
-  const desktopCover = settings.cover_desktop;
-  const mobileCover = settings.cover_mobile;
-  const {
-    cover_header: headerCover,
-    cover_text: textCover,
-    is_dark: isDark,
-  } = settings;
+const Retail = () => {
+  const { state } = useContext(Context);
   return (
-    retailerData.settings && (
-      <>
+    state.retailerData.settings && (
+      <div>
         <CoverComponent
-          desktopCover={desktopCover}
-          mobileCover={mobileCover}
-          header={headerCover}
-          text={textCover}
-          isDark={isDark}
+          desktopCover={state.retailerData.settings.cover_desktop}
+          mobileCover={state.retailerData.settings.cover_mobile}
+          header={state.retailerData.settings.cover_header}
+          text={state.retailerData.settings.cover_text}
+          isDark={state.retailerData.settings.is_dark}
         />
         <div className="max-w-[75rem] mx-auto">
           <div className="px-[15px]">
-            <Header retailerData={retailerData} />
-            <Logos retailerData={retailerData} />
+            <Header />
+            <Logos />
           </div>
         </div>
-      </>
+      </div>
     )
   );
 };
