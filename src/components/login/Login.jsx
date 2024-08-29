@@ -3,10 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import Input from "../contact/components/contactForm/components/input/Input";
 import ForgottenPassword from "./components/forgottenPassword/ForgottenPassword";
+import Loading from "../Loading";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const inputs = [
     {
       name: "email",
@@ -22,7 +25,6 @@ const Login = () => {
       required: true,
     },
   ];
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -32,29 +34,32 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setErrors({});
     const response = await sendRequest({
       method: "post",
       endpoint: "login",
       body: { ...form },
     });
+    setLoading(false);
     const result = response.data;
     if (response.status === "success") {
       setForm({ email: "", password: "" });
       e.target.reset();
+      setStatus("success");
       navigate("/");
-      localStorage.setItem("token", result.token);
     } else {
       setErrors(result);
     }
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length) {
-      setTimeout(() => {
-        setErrors({});
-      }, 2000);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.keys(errors).length) {
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 5000);
+  //   }
+  // }, [errors]);
 
   return (
     <>
@@ -82,7 +87,11 @@ const Login = () => {
                   : "w-[80%] min-[532px]:w-[50%]"
               } relative`}
             >
-              <Input handleChange={handleChange} input={input} />
+              <Input
+                handleChange={handleChange}
+                input={input}
+                status={status}
+              />
             </div>
           ))}
           {Object.keys(errors).length > 0 && (
@@ -96,6 +105,7 @@ const Login = () => {
             </small>
           )}
           <div className="flex flex-col items-center">
+            <Loading loading={loading} />
             <button
               className="text-center w-fit self-center appearance-none bg-[#000]
                   border border-transparent rounded-[1.5625rem] text-[#fff] cursor-pointer

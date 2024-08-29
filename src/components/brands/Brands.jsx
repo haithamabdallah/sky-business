@@ -6,7 +6,7 @@ const Brands = ({ brandData }) => {
   const settings = brandData.settings;
   const desktopCover = settings.cover_desktop;
   const mobileCover = settings.cover_mobile;
-  const { cover_header: header, cover_text: text } = settings;
+  const { cover_header: header, cover_text: text, is_dark: isDark } = settings;
   return (
     brandData.settings && (
       <>
@@ -15,6 +15,7 @@ const Brands = ({ brandData }) => {
           mobileCover={mobileCover}
           header={header}
           text={text}
+          isDark={isDark}
         />
         <section className="max-w-[75rem] mx-auto mt-16 px-5">
           <BrandCategories categories={brandData.categories} />

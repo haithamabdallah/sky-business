@@ -1,33 +1,39 @@
 const FoodCategoriesList = ({ organics }) => {
   const url = import.meta.env.VITE_STORAGE_URL;
   return (
-    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-futura">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[50px] font-futura">
       {organics.map(({ id, name, image, text }) => (
-        <li key={id} className="cursor-pointer relative px-[25px] mb-10">
+        <li
+          key={id}
+          className="group cursor-pointer relative mb-10 
+        before:bg-gradient-to-t before:from-black before:to-[rgba(0,0,0,0.1)] before:w-full
+        before:h-full before:block before:absolute before:inset-[5%]
+        before:top-0 before:left-0 before:transition-colors before:duration-500
+        before:bg-black before:bg-opacity-0 hover:before:bg-opacity-100"
+        >
           <img
             src={`${url}/${image}`}
             alt={name}
             className="w-full h-full aspect-square"
           />
-          <h2
-            className="absolute text-3xl leading-[0.9] bottom-0 pr-[10px] pl-[20px] pb-[21px]
-          text-white h-[55px] uppercase font-bold"
+          <div
+            className="transition-[top,transform] duration-500 delay-200
+            pr-[10px] pl-[20px] absolute top-[80%]
+          group-hover:top-[50%] group-hover:translate-y-[-50%]"
           >
-            {name}
-          </h2>
-          <div className="absolute top-0 left-0 w-full h-full px-[25px]">
-            <div
-              className="bg-black w-full h-full text-white
-            flex flex-col opacity-0 px-[25px] py-[15px] justify-center transition-opacity duration-700
-            hover:opacity-100"
+            <h2
+              className="text-3xl leading-[0.9]
+          text-white uppercase font-bold"
             >
-              <h2 className="text-3xl mb-[5px] leading-none [letter-spacing:0] uppercase font-bold">
-                {name}
-              </h2>
-              <p className="text-base leading-[1.29] pt-[10px] font-sans font-thin">
-                {text}
-              </p>
-            </div>
+              {name}
+            </h2>
+            <p
+              className="text-base opacity-0 group-hover:opacity-100 text-white
+            leading-[1.29] pt-[10px] font-sans font-thin
+            transition-opacity duration-500 delay-200"
+            >
+              {text}
+            </p>
           </div>
         </li>
       ))}

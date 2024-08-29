@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-
-const Input = ({ input, handleChange, countries, status }) => {
+import PhoneInput from "./components/phoneInput/PhoneInput";
+const Input = ({ input, handleChange, countries, status, setForm }) => {
   const [focus, setFocus] = useState(false);
 
   useEffect(() => {
     if (status === "success") setFocus(false);
   }, [status]);
+
   return input.type === "select" ? (
     <>
       <label
@@ -20,13 +21,14 @@ const Input = ({ input, handleChange, countries, status }) => {
         className="px-[18px] rounded-[1.5625rem] text-[12px] leading-5 h-[2.1rem]
          bg-[url('./components/contact/components/contactForm/components/input/down-arrow.png')]
         bg-[center_right_18px] bg-[length:12px_12px] bg-no-repeat appearance-none
-      hover:[box-shadow:inset_0_0_0_.0625rem_#000] hover:border hover:border-black
-      focus-visible:outline-none cursor-pointer [transition:box-shadow_.2s,border-color_.2s_ease-in-out]"
+        border border-black
+        focus-visible:outline-none cursor-pointer
+        [transition:box-shadow_.2s,border-color_.2s_ease-in-out]"
         onChange={(e) => handleChange(e)}
         required={input.required}
       >
         <option value="" disabled>
-          {`Select Question`.toUpperCase()}
+          {`Select Country`.toUpperCase()}
         </option>
         {Object.entries(countries).map(([id, name]) => (
           <option key={id} value={id}>
@@ -54,7 +56,6 @@ const Input = ({ input, handleChange, countries, status }) => {
         onInput={handleChange}
         onFocus={() => setFocus(true)}
         onBlur={(e) => {
-
           if (!e.target.value) setFocus(false);
         }}
         type={input.type}
@@ -67,6 +68,8 @@ const Input = ({ input, handleChange, countries, status }) => {
         Limit to 3498 Characters*
       </small> */}
     </>
+  ) : input.name === "phone" || input.name === "business_phone" ? (
+    <PhoneInput setForm={setForm} input={input} />
   ) : (
     <>
       <label

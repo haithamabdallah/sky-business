@@ -13,13 +13,13 @@ const Description = ({
   return (
     (header?.length > 0 || text?.length > 0 || Number(buttonStatus) === 1) && (
       <div
-        className={`h-full w-full max-w-[75rem] pointer-events-none  mx-auto
+        className={`h-full w-full max-w-[75rem] pointer-events-none mx-auto
         relative items-center
         font-futura flex ${
           isCover
             ? `md:px-[0.9375rem]
               md:absolute md:top-[50%] md:left-[50%] md:[transform:translate(-50%,-50%)]`
-            : `lg:px-[0.9375rem] lg:left-[50%]
+            : `lg:px-[1.5cm] lg:left-[50%]
               lg:absolute lg:top-[50%] lg:[transform:translate(-50%,-50%)]`
         }`}
       >

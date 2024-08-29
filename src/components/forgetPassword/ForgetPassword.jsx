@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import sendRequest from "../../methods/fetchData";
 import Input from "../contact/components/contactForm/components/input/Input";
-
+import Loading from "../Loading";
+import ShowMessage from "../ShowMessage";
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -23,6 +24,8 @@ const ForgetPassword = () => {
       body: { email },
     });
     setLoading(false);
+    setMessage("");
+    setStatus("");
     setMessage(response.message);
     setStatus(response.status);
     if (response.status === "success") {
@@ -31,14 +34,12 @@ const ForgetPassword = () => {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setMessage("");
-      if (status === "success") {
-        navigate("/");
-      }
-    }, 2000);
-  }, [message]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setMessage("");
+  //     setStatus("");
+  //   }, 5000);
+  // }, [message]);
 
   return (
     <>
@@ -65,25 +66,27 @@ const ForgetPassword = () => {
                 type: "email",
                 required: true,
               }}
+              status={status}
             />
           </div>
-          {loading && (
-            <div
-              className="flex items-center text-yellow-600  justify-center min-h-20
-              animate-breath"
-            >
-              Loading
-            </div>
-          )}
+          <Loading loading={loading} />
           {message.length > 0 && status === "success" && (
-            <small className="w-full py-5 text-center text-green-700 text-[1rem]">
-              {message}
-            </small>
+            // <small className="w-full py-5 text-center text-green-700 text-[1rem]">
+            //   {message}
+            // </small>
+            <ShowMessage
+              message={message}
+              classes={"w-full py-5 text-center text-green-700 text-[1rem]"}
+            />
           )}
           {message.length > 0 && status === "error" && (
-            <small className="w-full text-center py-5 text-red-700 text-[1rem]">
-              {message}
-            </small>
+            // <small className="w-full text-center py-5 text-red-700 text-[1rem]">
+            //   {message}
+            // </small>
+            <ShowMessage
+              message={message}
+              classes={"w-full text-center py-5 text-red-700 text-[1rem]"}
+            />
           )}
           <button
             className="text-center w-fit self-center appearance-none bg-[#000]

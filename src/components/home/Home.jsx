@@ -19,8 +19,13 @@ const Home = () => {
   }, []);
   
   return (
+<<<<<<< HEAD
     state.homeData.sliders && (
       <main className="flex flex-col">
+=======
+    homeData.sliders && (
+      <main className="flex flex-col overflow-hidden">
+>>>>>>> main
         <Slider sliders={homeData.sliders} />
         <Banners banner={homeData.settings.banner1} />
         <ProductsByCategory
@@ -39,5 +44,4 @@ const Home = () => {
     )
   );
 };
-
 export default Home;

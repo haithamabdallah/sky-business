@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Home from "./components/home/Home";
 import Register from "./components/Register/register";
+import ThankYou from "./components/Register/components/thankYou/ThankYou";
 import Login from "./components/login/Login";
 import About from "./components/about/About";
 import SkinCare from "./components/skinCare/SkinCare";
@@ -33,7 +34,6 @@ import ScrollToTop from "./scrollToTop/ScrollToTop";
 
 const App = () => {
   const { pathname } = useLocation();
-
   const isEmailPage = /(\/subscribed|\/unsubscribed|\/unsubscribe)/.test(
     pathname
   );
@@ -92,6 +92,7 @@ const App = () => {
       }
     });
   }, []);
+
   return loading ? (
     <div
       className="min-w-[100vw] min-h-[100vh] absolute flex items-center justify-center
@@ -112,9 +113,15 @@ const App = () => {
         <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
           <ScrollToTop />
           <div className="self-start">
-            {state.showCookies && <Cookies />}
-            <Navbar />
-            <main className="mt-[54px] min-[1200px]:mt-[110px]">
+            {!localStorage.getItem("cookies_popup") && showCookies && (
+              <Cookies setShowCookies={setShowCookies} />
+            )}
+            <Navbar setShowMargin={setShowMargin} />
+            <main
+              className={`transition-[margin] duration-500 ${
+                showMargin ? "mt-[54px] min-[1200px]:mt-[110px]" : "mt-0"
+              }`}
+            >
               <Routes>
                 <Route
                   path="/"
@@ -131,6 +138,7 @@ const App = () => {
                   path="/register"
                   element={<Register registerData={registerData} />}
                 />
+                <Route path="/thank-you" element={<ThankYou />} />
                 <Route
                   path="/login"
                   element={<Login loginData={registerData} />}
@@ -211,5 +219,4 @@ const App = () => {
     </>
   );
 };
-
 export default App;

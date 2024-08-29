@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import sendRequest from "../../../../../../../methods/fetchData";
-
+import Loading from "../../../../../../../components/Loading";
+import ShowMessage from "../../../../../../../components/ShowMessage";
 const Newsletter = () => {
   const checkbox = useRef(null);
   const [focus, setFocus] = useState(false);
@@ -9,15 +10,20 @@ const Newsletter = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
-  useEffect(() => {
-    setTimeout(() => {
-      setMessage("");
-      setStatus("");
-    }, 2000);
-  }, [message]);
+  const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setMessage("");
+  //     setStatus("");
+  //   }, 5000);
+  // }, [message]);
+
+  // useEffect(() => {
+  //   setFocus(false);
+  // }, [status]);
 
   useEffect(() => {
-    setFocus(false);
+    if (status.length > 0) setFocus(false);
   }, [status]);
   return (
     <div className="bg-transparent pt-0 lg:pt-0 font-futura">
@@ -36,11 +42,15 @@ const Newsletter = () => {
           }}
           onSubmit={(e) => {
             e.preventDefault();
+            setLoading(true);
+            setMessage("");
+            setStatus("");
             sendRequest({
               method: "get",
               endpoint: "subscribe",
               params: { ...form },
             }).then((data) => {
+              setLoading(false);
               e.target.reset();
               setForm({});
               setChecked(false);
@@ -148,16 +158,26 @@ const Newsletter = () => {
           {/* <hr className="mb-5" /> */}
           <div className="mb-5 flex items-start [flex:1_1_100%] flex-wrap">
             {message.length > 0 && status === "success" && (
-              <small className="w-full py-5 text-green-700 text-[1rem]">
-                {message}
-              </small>
+              // <small className="w-full py-5 text-green-700 text-[1rem]">
+              //   {message}
+              // </small>
+              <ShowMessage
+                message={message}
+                classes="w-full py-5 text-green-700 text-[1rem]"
+              />
             )}
             {message.length > 0 && status === "error" && (
-              <small className="w-full py-5 text-red-700 text-[1rem]">
-                {message}
-              </small>
+              // <small className="w-full py-5 text-red-700 text-[1rem]">
+              //   {message}
+              // </small>
+              <ShowMessage
+                message={message}
+                classes="w-full py-5 text-red-700 text-[1rem]"
+              />
             )}
-            {/* {message.length > 0 && <br/>} */}
+            <div className="flex w-full justify-center">
+              <Loading loading={loading} />
+            </div>
             <button
               className="min-w-[auto] [white-space:nowrap] appearance-none bg-black border
               border-transparent rounded-[1.5625rem] text-white cursor-pointer inline-block
