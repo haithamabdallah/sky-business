@@ -23,7 +23,7 @@ const Input = ({ input, handleChange, countries, status, setForm }) => {
         bg-[center_right_18px] bg-[length:12px_12px] bg-no-repeat appearance-none
         border border-black
         focus-visible:outline-none cursor-pointer
-        [transition:box-shadow_.2s,border-color_.2s_ease-in-out]"
+        [transition:box-shadow_.2s,border-color_.2s_ease-in-out] text-[16px]"
         onChange={(e) => handleChange(e)}
         required={input.required}
       >
