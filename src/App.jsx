@@ -44,19 +44,6 @@ const App = () => {
     Promise.all([
       sendRequest({ method: "post", endpoint: "settings" }).then((res) => {
         if (res.status === "success") {
-          // setHomeData(res.data["home_page"]);
-          // setAboutData(res.data["about_page"]);
-          // setSkinCareData(res.data["skin_page"]);
-          // setHairCareData(res.data["hair_page"]);
-          // setMakeupData(res.data["makeup_page"]);
-          // setRetailerData(res.data["retailer_page"]);
-          // setHealthCareData(res.data["organic_page"]);
-          // setBrandData(res.data["brand_page"]);
-          // setBlogData(res.data["blog_page"]);
-          // setContactData(res.data["contact_page"]);
-          // setRegisterData(res.data["register_page"]);
-          // setValue(res.data["general"]);
-          // setStaticPagesData(res.data["static-pages"]);
           setState((prev) => ({
             ...prev,
             homeData: res.data["home_page"],

@@ -1,8 +1,3 @@
-import image1024 from "./1024.jpg";
-import image768 from "./768.jpg";
-import imageRest from "./rest.jpg";
-import imageDefault from "./default.jpg";
-import { Link } from "react-router-dom";
 import LeftToRightAnimation from "../../../../animationComponents/leftToRightAnimation/LeftToRightAnimation";
 import RightToLeftAnimation from "../../../../animationComponents/rightToLeftAnimation/RightToLeftAnimation";
 import { useContext } from "react";
