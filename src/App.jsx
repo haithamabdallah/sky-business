@@ -7,6 +7,21 @@ import logo from "./navbar/logo.jpeg";
 import { Context } from "./ContextProvider";
 import ScrollToTop from "./scrollToTop/ScrollToTop";
 import Cookies from "./cookies/Cookies";
+import {
+  getAboutPageImages,
+  getBannersImages,
+  getBlogPageImages,
+  getBrandsPageImages,
+  getContactPageImages,
+  getGeneralImages,
+  getHairCarePageImages,
+  getHealthCarePageImages,
+  getMakeupPageImages,
+  getRegisterPageImages,
+  getRetailersPageImages,
+  getSkinCarePageImages,
+  getSliderImages,
+} from "./methods/collectImages";
 
 const preloadComponents = async () => {
   const components = [
@@ -68,6 +83,67 @@ const App = () => {
       const res = await sendRequest({ method: "post", endpoint: "settings" });
 
       if (res.status === "success") {
+        const url = import.meta.env.VITE_STORAGE_URL;
+        const sliderImages = getSliderImages(res.data["home_page"].sliders);
+        const exploreByCategoriesAndBanner1 = [
+          `${url}/${res.data["home_page"].settings.explore.image1}`,
+          `${url}/${res.data["home_page"].settings.explore.image2}`,
+          `${url}/${res.data["home_page"].settings.explore.image3}`,
+          `${url}/${res.data["home_page"].settings.explore.image4}`,
+          `${url}/${res.data["home_page"].settings.banner1}`,
+        ];
+
+        const bottomBannersImages = getBannersImages(
+          res.data["home_page"].settings.banners
+        );
+
+        const aboutPageImages = getAboutPageImages(res.data["about_page"]);
+
+        const retailersPageImages = getRetailersPageImages(
+          res.data["retailer_page"]
+        );
+
+        const brandsPageImages = getBrandsPageImages(res.data["brand_page"]);
+
+        const healthCarePageImages = getHealthCarePageImages(
+          res.data["organic_page"]
+        );
+
+        const blogPageImages = getBlogPageImages(res.data["blog_page"]);
+
+        const contactPageImages = getContactPageImages(
+          res.data["contact_page"]
+        );
+
+        const registerPageImages = getRegisterPageImages(
+          res.data["register_page"]
+        );
+
+        const skinCarePageImages = getSkinCarePageImages(res.data["skin_page"]);
+
+        const makeupPageImages = getMakeupPageImages(res.data["makeup_page"]);
+
+        const hairCarePageImages = getHairCarePageImages(res.data["hair_page"]);
+
+        const generalImages = getGeneralImages(res.data["general"]);
+        const images = [
+          ...sliderImages,
+          ...exploreByCategoriesAndBanner1,
+          ...bottomBannersImages,
+          ...aboutPageImages,
+          ...retailersPageImages,
+          ...brandsPageImages,
+          ...healthCarePageImages,
+          ...blogPageImages,
+          ...contactPageImages,
+          ...registerPageImages,
+          ...skinCarePageImages,
+          ...makeupPageImages,
+          ...hairCarePageImages,
+          ...generalImages,
+        ];
+        await preloadImages(images);
+      console.log("All images preloaded successfully");
         setState((prev) => ({
           ...prev,
           homeData: res.data["home_page"],
@@ -83,6 +159,7 @@ const App = () => {
           registerData: res.data["register_page"],
           staticPagesData: res.data["static-pages"],
           general: res.data["general"],
+          images: images,
         }));
 
         // Set the favicon icon in localStorage
@@ -97,18 +174,6 @@ const App = () => {
         }/${res.data.general.settings.icon}`;
       }
 
-      // Preload images
-      const imageUrls = [
-        "https://board.skybusiness.ca/storage/makeup/cover_desktop/pVLCFg6Er4xGtIOk36EtyPnMNeHSg6xVTTWjQ5ms.jpg",
-        "https://board.skybusiness.ca/storage/beauty/p6xvHEkces0howKdT4Gyv9n0sSiVaWvVAbXRXCYk.jpg",
-        "https://board.skybusiness.ca/storage/beauty/lYa2uXxiJv8xtqQVLAdvjYbigkioRrO2jKChBtQM.jpg",
-        "https://board.skybusiness.ca/storage/beauty/8rAy72G5UA4ROuJYbwGyY0yT9CEMSEJmGs3Gt3wJ.jpg",
-        "https://board.skybusiness.ca/storage/beauty/eAmD6jjImDkgPDOpIkooqSFWPuatiTHOtMagxFEW.jpg",
-      ];
-
-      await preloadImages(imageUrls);
-      console.log("All images preloaded successfully");
-      
       const preloadedComponents = await preloadComponents();
 
       const componentNames = [
