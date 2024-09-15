@@ -12,6 +12,7 @@ const ContextProvider = ({ children }) => {
     showMargin: true,
     searchBlogPosts: [],
     searchBrands: [],
+    images: [],
   });
 
   return (
