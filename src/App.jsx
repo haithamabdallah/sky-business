@@ -215,11 +215,11 @@ const App = () => {
       setState((prev) => ({ ...prev, loading: false }));
     }
 
-    if (!localStorage.getItem("cookies_popup")) {
+
       setTimeout(() => {
         setState((prev) => ({ ...prev, cookiesPopup: true }));
       }, 2000);
-    }
+
   }, [setState]);
 
   useEffect(() => {
@@ -275,9 +275,7 @@ const App = () => {
         <main className="grid grid-cols-1 gap-0 min-h-[100vh] overflow-x-hidden">
           <ScrollToTop />
           <div className="self-start">
-            {!localStorage.getItem("cookies_popup") && state.showCookies && (
-              <Cookies />
-            )}
+            <Cookies />
             <Navbar />
             <main
               className={`transition-[margin] duration-500 ${
