@@ -4,7 +4,7 @@ const Loading = ({ loading }) =>
       className="flex w-full items-center text-yellow-600  justify-center min-h-20
               animate-breath"
     >
-      {/*Loading*/}
+      checking...
     </div>
   );
 

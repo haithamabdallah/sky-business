@@ -73,9 +73,12 @@ const Newsletter = () => {
                     <div className="flex items-start mx-[-0.625rem] text-[#626566] mb-[0.625rem]">
                         <div className="mx-[0.625rem] mb-5 relative w-full">
                             <input
-                                className="appearance-none bg-white border border-black shadow-sm
-                           text-black block w-full px-[0.25rem] py-[0.75rem] text-sm
-                           focus:outline-none"
+                                className="appearance-none bg-white border-none rounded-none
+                shadow-[0_0.0625rem_0_0_#000] box-border text-black block font-semibold
+                text-[0.875rem] leading-normal h-[3.125rem] px-[0.25rem] pl-[0.3125rem]
+                [transition:_box-shadow_.2s,_border-color_.2s_ease-in-out] w-full
+                focus:border-none focus:[box-shadow:_0_.0625rem_0_0_#000] outline-none
+                focus:[transition:_box-shadow_.2s,_border-color_.2s_ease-in-out]"
                                 type="email"
                                 name="email"
                                 required
@@ -83,27 +86,48 @@ const Newsletter = () => {
                                 onBlur={(e) => !e.target.value && setFocus(false)}
                             />
                             <label
-                                className={`absolute left-2 top-2 transition-all duration-200 
-                           ${focus ? "text-xs -top-3" : "text-sm"}`}
+                                htmlFor="email"
+                                className={`text-black left-0 max-w-full overflow-hidden pointer-events-none
+                absolute text-left truncate top-0 [transform:_translateZ(0)]
+                [transition:_transform_.2s,_font-size_.2s,_left_.2s] duration-200 whitespace-nowrap
+                w-auto z-10 cursor-pointer block
+                 ${
+                                    focus
+                                        ? "h-auto top-[-16px] text-[.6875rem] [transform:translate3d(0,-.5rem,0)] text-[#626566] font-light"
+                                        : `[transform:translateZ(0)] top-0 h-[3.125rem] text-[12px] font-normal`
+                                }`}
                             >
-                                Email address *
+                                Email address
+                                <span className="text-[0.875rem] text-[#000] leading-[3.125rem] font-futura">
+                  *
+                </span>
                             </label>
                         </div>
                     </div>
+
                     <div className="flex items-start mx-[-0.625rem] flex-wrap">
                         <div className="mx-[0.625rem] mb-5 relative w-full">
                             <input
                                 className="hidden"
                                 type="checkbox"
                                 name="checkbox"
+                                onClick={(e) => {
+                                    setChecked(!checked);
+                                    checkbox.current.checked = !checked;
+                                }}
                                 ref={checkbox}
                             />
                             <label
-                                className={`relative cursor-pointer pl-8 before:absolute before:content-[''] 
-                            before:w-5 before:h-5 before:left-0 before:top-0 before:bg-white 
-                            before:border before:border-gray-400 before:rounded ${
+                                className={`text-[#000] pl-[1.875rem] inline-block text-[0.75rem] leading-[1.25rem]
+                [outline-width:0] w-auto cursor-pointer m-0 relative
+                before:content-[''] before:bg-white before:border before:border-[#525252]
+                before:absolute before:w-[1.25rem] before:h-[1.25rem] before:left-0
+                before:top-0 [transition:_box-shadow_.2s,_border-color_.2s_ease-in-out]
+                before:inline-block before:align-top ${
                                     checked
-                                        ? "before:bg-[url('/path/to/correct.svg')]"
+                                        ? `before:bg-[url('./components/contact/components/contactForm/correct.svg')]
+                    before:bg-[50%] before:bg-no-repeat before:[background-size:111.11111%]
+                    before:border before:border-[#000] font-semibold`
                                         : ""
                                 }`}
                                 onClick={() => setChecked(!checked)}
